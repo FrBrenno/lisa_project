@@ -4,12 +4,12 @@
 HomeFrame::HomeFrame()
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer")
 {
-    //=== Menu Initialization ===//
 
+    //=== Menu Initialization ===//
     // File Menu
     wxMenu* menuFile = new wxMenu;
-    menuFile->Append(ID_FILE_INSTRUMENT_CONFIGURATION_SETTINGS,
-        "&Instrument Configuration Settings", "Save and Load camera settings...");
+    menuFile->Append(ID_FILE_INSTRUMENT_SELECTION,
+        "&Select Instrument", "Detect and Select instrument in use...");
     menuFile->Append(ID_FILE_SPOTFIELD_IMAGE, "&Save/Load Spotfield Image", "Save and Load spotfield bitmap file...");
     menuFile->Append(ID_FILE_MEASUREMENT_DATA, "&Save Measurement Data", "Save measurement data to file...");
     menuFile->Append(ID_FILE_CENTROID_DATA, "&Save Centroid Data", "Save centroid data to file...");
@@ -58,8 +58,19 @@ HomeFrame::HomeFrame()
 
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items
+    Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
+}
+
+void HomeFrame::setListener(HomeFrameController* controller)
+{
+	this->listener = listener;
+}
+
+void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
+{
+    listener->selectInstrument();
 }
 
 void HomeFrame::OnExit(wxCommandEvent& event)

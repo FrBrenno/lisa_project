@@ -45,6 +45,12 @@
     <ClCompile Include="Test.cpp">
       <Filter>Fichiers sources\Test</Filter>
     </ClCompile>
+    <ClCompile Include="HomeFrameController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeFrameController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">

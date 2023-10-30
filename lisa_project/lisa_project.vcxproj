@@ -140,6 +140,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HomeFrameController.cpp" />
+    <ClCompile Include="HomeFrameController.h" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
     <ClCompile Include="Test.cpp" />
