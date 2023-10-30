@@ -12,7 +12,7 @@ class MyApp : public wxApp
     Instrument* instrument;
     HomeFrameController* homeFrameController;
 
-    void setInstrument(Instrument instrument);
+    void setInstrument(Instrument *instrument);
 
 public:
     virtual bool OnInit();
@@ -34,6 +34,9 @@ bool MyApp::OnInit()
      return true;
 }
 
-void MyApp::setInstrument(Instrument instrument){
+void MyApp::setInstrument(Instrument *instrument){
+    this->instrument = instrument;  
     return;
 }
+
+

@@ -36,5 +36,6 @@ class Instrument{
 	int spots_y;
 
 public:
-	Instrument();
+	void setWfsDriverVersion(std::string version_wfs_driver);
+	void setCamDriverVersion(std::string version_cam_driver);
 };

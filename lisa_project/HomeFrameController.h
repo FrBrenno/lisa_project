@@ -1,11 +1,12 @@
 #pragma once
 #include <wx/wx.h>
+#include "Instrument.h"
 
 class HomeFrameController{
 private:
 	wxApp* main;
 public:
 	HomeFrameController(wxApp *main);
-	void selectInstrument();
-	void reviseDrive();
+	Instrument* selectInstrument();
+	void reviseDrive(Instrument* instrument);
 };

@@ -51,6 +51,9 @@
     <ClCompile Include="HomeFrameController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="Instrument.cpp">
+      <Filter>Fichiers sources\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
