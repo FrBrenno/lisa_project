@@ -114,6 +114,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\brenn\source\repos\lisa_project\lisa_project\thorlabs_api;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Users\brenn\source\repos\lisa_project\lisa_project\thorlabs_api\WFS_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,16 +144,21 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseController.cpp" />
+    <ClCompile Include="BaseController.h" />
     <ClCompile Include="HomeFrameController.cpp" />
     <ClCompile Include="HomeFrameController.h" />
     <ClCompile Include="Instrument.cpp" />
+    <ClCompile Include="InstrumentController.cpp" />
+    <ClCompile Include="InstrumentSelectionDialog.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraSettings.h" />
-    <ClInclude Include="Message.h" />
+    <ClInclude Include="InstrumentController.h" />
+    <ClInclude Include="InstrumentSelectionDialog.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Instrument.h" />
     <ClInclude Include="Settings.h" />

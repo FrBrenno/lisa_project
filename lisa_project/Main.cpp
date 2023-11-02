@@ -2,6 +2,9 @@
 #include <wx/wxprec.h>
 #include "HomeFrame.h"
 #include "Instrument.h"
+#include "HomeFrameController.h"
+#include "InstrumentController.h"
+#include "InstrumentSelectionDialog.h"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -9,9 +12,18 @@
 
 class MyApp : public wxApp
 {
+    //=== Models ===//
     Instrument* instrument;
-    HomeFrameController* homeFrameController;
 
+    //=== Controllers ===//
+    HomeFrameController* homeFrameController;
+    InstrumentController* instrumentSelectionController;
+
+    //== Views ===//
+    HomeFrame* homeFrame;
+
+
+    //=== Models Methods ===//
     void setInstrument(Instrument *instrument);
 
 public:
@@ -24,12 +36,17 @@ bool MyApp::OnInit()
 {
     //=== Controller initialization ===//
     this->homeFrameController = new HomeFrameController(this);
+    this->instrumentSelectionController = new InstrumentController(this);
 
     //=== View initialization ===//
-    HomeFrame* home = new HomeFrame();
-    home->setListener(this->homeFrameController);
+    homeFrame = new HomeFrame();
+    homeFrame->setListener(this->homeFrameController);
+    // Before Showing the software, do instrument selection
+    InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(homeFrame);
+    instrumentSelectionDialog->setListener(this->instrumentSelectionController);
+    instrumentSelectionDialog->ShowModal();
 
-    home->Show(true);
+    homeFrame->Show(true);
 
      return true;
 }

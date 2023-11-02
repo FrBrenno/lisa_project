@@ -54,6 +54,18 @@
     <ClCompile Include="Instrument.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
+    <ClCompile Include="InstrumentSelectionDialog.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="InstrumentController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
@@ -68,14 +80,17 @@
     <ClInclude Include="Instrument.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
     </ClInclude>
-    <ClInclude Include="Message.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
     <ClInclude Include="CameraSettings.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentSelectionDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
