@@ -12,7 +12,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent): wxDialog
     panelSizer->Add(instrumentList, 1, wxEXPAND | wxALL, 5);
 
     // Populate Instrument List
-    listener->PopulateInstrumentList(instrumentList);
+    //listener->populateInstrumentList(instrumentList);
     instrumentList->Append("Hello"); //DEBUG
     instrumentList->Append("World"); //DEBUG
 
@@ -49,12 +49,12 @@ void InstrumentSelectionDialog::setListener(InstrumentController* listener)
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)
 {
     int selectedIndex = event.GetSelection();
-    listener->OnInstrumentSelected(selectedIndex);
+    listener->onInstrumentSelected(selectedIndex);
 }
 
 void InstrumentSelectionDialog::OnClose(wxCloseEvent& event)
 {
-	listener->OnClose();
+	listener->onClose();
     this->Destroy();
 }
 

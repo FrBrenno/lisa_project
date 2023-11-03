@@ -36,7 +36,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="MyApp.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="HomeFrame.cpp">
@@ -60,11 +60,8 @@
     <ClCompile Include="InstrumentController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="BaseController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
+    <ClCompile Include="EventDispatcher.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="InstrumentController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="MyApp.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDispatcher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

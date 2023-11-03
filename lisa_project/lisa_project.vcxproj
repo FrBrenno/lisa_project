@@ -144,23 +144,25 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BaseController.cpp" />
-    <ClCompile Include="BaseController.h" />
+    <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="HomeFrameController.cpp" />
     <ClCompile Include="HomeFrameController.h" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="InstrumentController.cpp" />
     <ClCompile Include="InstrumentSelectionDialog.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraSettings.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="InstrumentController.h" />
     <ClInclude Include="InstrumentSelectionDialog.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Instrument.h" />
+    <ClInclude Include="MyApp.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="MenuID.h" />
     <ClInclude Include="HomeFrame.h" />

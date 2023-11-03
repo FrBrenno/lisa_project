@@ -1,9 +1,14 @@
 #pragma once
-#include "BaseController.h"
-#include "Instrument.h"
+#include "wx/wx.h"
+#include "Event.h"
 
-class HomeFrameController: public BaseController{
+class HomeFrameController{
+
+	void handleInstrumentSelected(const Event& event);
 
 public:
-	HomeFrameController(wxApp *main);
+	HomeFrameController();
+
+	void onInstrumentSelection(wxWindow* parent);
+
 };

@@ -1,80 +1,127 @@
 #include "InstrumentController.h"
+#include "EventDispatcher.h"
+#include "InstrumentSelectionDialog.h"
 
-
-InstrumentController::InstrumentController(wxApp* main): BaseController(main)
+InstrumentController::InstrumentController()
 {
+	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
+		[this](const Event& event) {
+			HandleInstrumentSelection(event);
+		});
+
 	this->selectedInstrument = new Instrument();
 	this->reviseDrive(this->selectedInstrument);
 	return;
 }
 
-void InstrumentController::PopulateInstrumentList(wxListBox* list)
+void InstrumentController::HandleInstrumentSelection(const Event& event)
+{
+	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr);
+	instrumentSelectionDialog->setListener(this);
+	instrumentSelectionDialog->ShowModal();
+}
+
+void InstrumentController::populateInstrumentList(wxListBox* list)
 {
 	// Clear list
 	list->Clear();
 
 	// Variable Initialization
-	ViInt32 instrumentCount, device_id;
-	ViInt32 err, in_use;
+	ViInt32 device_id;
+	ViInt32 in_use;
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
 	ViChar resourceName[WFS_BUFFER_SIZE];
 
 	// Get instrument count
-	if (err = WFS_GetInstrumentListLen(VI_NULL, &instrumentCount))
+	if (err = WFS_GetInstrumentListLen(VI_NULL, &this->instrumentCount))
 	{
 		this->handleError(err, "Not able to get the count of instruments connected");
 	}
-
-	if (instrumentCount == 0) 
-	{
-		// No instrument found
-		wxMessageBox("No instrument found.", "INFO", wxOK | wxICON_INFORMATION);
-	}
-	else
-	{
-		for (int i = 0; i < instrumentCount; i++)
+	else {
+		if (instrumentCount == 0)
 		{
-			if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
+			// No instrument found
+			wxMessageBox("No instrument found.", "INFO", wxOK | wxICON_INFORMATION);
+		}
+		else
+		{
+			for (int i = 0; i < instrumentCount; i++)
 			{
-				this->handleError(err, "Not able to get instrument's information");
-			 }
-			list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use)? "" : "(inUse)"));
+				if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
+				{
+					this->handleError(err, "Not able to get instrument's information");
+				}
+				list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use) ? "" : "(inUse)"));
+			}
 		}
 	}
 }
 
-void InstrumentController::OnInstrumentSelected(int selectedIndex)
+void InstrumentController::onInstrumentSelected(int selectedIndex)
 {
-	// Confirm selection
-	wxMessageBox("OnInstrumentSelected");
+	ViInt32 device_id;
+	ViChar resourceName[WFS_BUFFER_SIZE];
 
+	if (err = WFS_GetInstrumentListInfo(VI_NULL, selectedIndex, &device_id, VI_NULL, VI_NULL, VI_NULL, resourceName))
+	{
+		this->handleError(err, "Not able to get instrument's information");
+	}
+	else{
+		this->selectedInstrument->setDeviceId(device_id);
+
+		this->initInstrument(resourceName);
+	}
 }
 
-void InstrumentController::OnClose() {
-	// Close dialog
-	wxMessageBox("OnClose");
-
+void InstrumentController::onClose() {
+	// No instrument is selected
+	wxMessageBox("No instrument is selected.\nTo select a instrument, go to FILE -> \"Select Instrument\"", "INFO", wxOK | wxICON_INFORMATION);
 }
 
 void InstrumentController::reviseDrive(Instrument* instrument) {
 	ViChar version_wfs_driver[256];
 	ViChar version_cam_driver[256];
-	int err;
 
 	if (err = WFS_revision_query(NULL, version_wfs_driver, version_cam_driver)) {
 		printf("%d\n", err);
 		wxMessageBox(wxString::Format("Error %d: %s", err, (err)), "Error", wxOK | wxICON_ERROR);
 		return;
 	}
+	else {
+		wxMessageBox(
+			wxString::Format("WFS Driver Version: %s\nCam Driver Version: %s", version_wfs_driver, version_cam_driver),
+			"Driver Revision", wxOK | wxICON_INFORMATION
+		);
 
-	wxMessageBox(
-		wxString::Format("WFS Driver Version: %s\nCam Driver Version: %s", version_wfs_driver, version_cam_driver),
-		"Driver Revision", wxOK | wxICON_INFORMATION
-	);
+		instrument->setWfsDriverVersion(static_cast<std::string> (version_wfs_driver));
+		instrument->setCamDriverVersion(static_cast<std::string> (version_cam_driver));
+	}
+}
 
-	instrument->setWfsDriverVersion(static_cast<std::string> (version_wfs_driver));
-	instrument->setCamDriverVersion(static_cast<std::string> (version_cam_driver));
+void InstrumentController::initInstrument(ViRsrc resourceName) 
+{
+	ViSession* handle = this->selectedInstrument->getHandle();
+	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE], serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
+
+	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, handle))
+	{
+		this->handleError(err, "Not able to initialize instrument");
+	}
+	else{
+		if (err = WFS_GetInstrumentInfo(*handle, manufacturer_name, instrument_name, serial_number_wfs, serial_number_cam))
+		{
+			this->handleError(err, "Not able to get instrument's information");
+		}
+		else {
+			this->selectedInstrument->setInstrumentInfo(static_cast<std::string> (manufacturer_name),
+				static_cast<std::string> (instrument_name),
+				static_cast<std::string> (serial_number_wfs),
+				static_cast<std::string> (serial_number_cam)
+			);
+		}
+	}
+
 }
 
 
@@ -89,3 +136,4 @@ void InstrumentController::handleError(int code, std::string message)
 
 	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "Error", wxOK | wxICON_ERROR);
 }
+

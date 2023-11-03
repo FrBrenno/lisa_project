@@ -1,19 +1,23 @@
 #pragma once
 #include "wx/wx.h"
-#include "BaseController.h"
 #include "Instrument.h"
+#include "Event.h"
 
-class InstrumentController : public BaseController {
+class InstrumentController{
 	Instrument* selectedInstrument;
+	ViInt32 instrumentCount;
+	ViInt32 err;
+
+	void HandleInstrumentSelection(const Event& event);
 
 public:
-	InstrumentController(wxApp* main);
-
-	void PopulateInstrumentList(wxListBox* list);
-	void OnInstrumentSelected(int selectedIndex);
-	void OnClose();
+	InstrumentController();
 
 	void reviseDrive(Instrument* instrument);
+	void populateInstrumentList(wxListBox* list);
+	void onInstrumentSelected(int selectedIndex);
+	void initInstrument(ViRsrc resourceName);
+	void onClose();	
 
 	void handleError(int code, std::string message);
 };

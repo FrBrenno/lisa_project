@@ -6,8 +6,8 @@
 
 class Instrument{
 	// Instrument Parameters
-	int selected_id;
-	int handle;
+	int device_id;
+	ViSession handle;
 	int status;
 
 	// WFS Parameters
@@ -36,6 +36,10 @@ class Instrument{
 	int spots_y;
 
 public:
+	void setDeviceId(int device_id);
 	void setWfsDriverVersion(std::string version_wfs_driver);
 	void setCamDriverVersion(std::string version_cam_driver);
+
+	ViSession* getHandle();
+	void setInstrumentInfo(std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam);
 };

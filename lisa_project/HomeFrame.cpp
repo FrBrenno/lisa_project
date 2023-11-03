@@ -1,6 +1,7 @@
 #include "HomeFrame.h"
 #include "HomeFrameController.h"
 #include "MenuID.h"
+#include "InstrumentSelectionDialog.h"
 
 HomeFrame::HomeFrame()
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer")
@@ -59,6 +60,7 @@ HomeFrame::HomeFrame()
 
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items
+    Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
 }
@@ -68,6 +70,10 @@ void HomeFrame::setListener(HomeFrameController* controller)
 	this->listener = listener;
 }
 
+void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
+{
+    this->listener->onInstrumentSelection(this);
+}
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
     Close(true);
