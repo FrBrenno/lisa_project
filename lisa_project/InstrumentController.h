@@ -13,6 +13,8 @@ class InstrumentController{
 public:
 	InstrumentController();
 
+	std::string getInstrumentName();
+
 	void reviseDrive(Instrument* instrument);
 	void populateInstrumentList(wxListBox* list);
 	void onInstrumentSelected(int selectedIndex);

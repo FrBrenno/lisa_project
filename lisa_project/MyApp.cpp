@@ -12,17 +12,12 @@ bool MyApp::OnInit()
     homeFrame = new HomeFrame();
     homeFrame->setListener(this->homeFrameController);
     // Before Showing the software, do instrument selection
-    InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(homeFrame);
-    instrumentSelectionDialog->setListener(this->instrumentController);
+    InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(homeFrame, instrumentController);
     instrumentSelectionDialog->ShowModal();
-
+    homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     homeFrame->Show(true);
 
      return true;
 }
 
-void MyApp::setInstrument(Instrument *instrument){
-    this->instrument = instrument;  
-    return;
-}
 

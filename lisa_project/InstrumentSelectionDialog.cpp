@@ -1,8 +1,9 @@
 #include "InstrumentSelectionDialog.h"
 
-InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent): wxDialog(parent, wxID_ANY, "Select Instrument")
+InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, InstrumentController* listener): wxDialog(parent, wxID_ANY, "LISA - PCV: Select Instrument")
 {
     this->parent = parent;
+    this->listener = listener;
 
     wxPanel* panel = new wxPanel(this, wxID_ANY);
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
@@ -12,9 +13,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent): wxDialog
     panelSizer->Add(instrumentList, 1, wxEXPAND | wxALL, 5);
 
     // Populate Instrument List
-    //listener->populateInstrumentList(instrumentList);
-    instrumentList->Append("Hello"); //DEBUG
-    instrumentList->Append("World"); //DEBUG
+    listener->populateInstrumentList(instrumentList);
 
     // Show popup if one or more instruments are available
     if (instrumentList->GetCount() > 0)
@@ -41,15 +40,11 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent): wxDialog
 	}
 }
 
-void InstrumentSelectionDialog::setListener(InstrumentController* listener)
-{
-	this->listener = listener;
-}
-
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)
 {
     int selectedIndex = event.GetSelection();
     listener->onInstrumentSelected(selectedIndex);
+    this->Destroy();
 }
 
 void InstrumentSelectionDialog::OnClose(wxCloseEvent& event)

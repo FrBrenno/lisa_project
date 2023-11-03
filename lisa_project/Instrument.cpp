@@ -25,3 +25,15 @@ void Instrument::setInstrumentInfo(std::string manufacturer_name, std::string in
 	this->serial_number_wfs = serial_number_wfs;
 	this->serial_number_cam = serial_number_cam;
 }
+
+void Instrument::setInitialized(bool is_initialized) {
+	this->is_initialized = is_initialized;
+}
+
+bool Instrument::isInitialized() {
+	return this->is_initialized;
+}
+
+std::string Instrument::getInstrumentName(){
+	return this->instrument_name;
+}

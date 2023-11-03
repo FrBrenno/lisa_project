@@ -9,17 +9,21 @@ InstrumentController::InstrumentController()
 			HandleInstrumentSelection(event);
 		});
 
+	this->err = VI_SUCCESS;
+	this->instrumentCount = 0;
 	this->selectedInstrument = new Instrument();
-	this->reviseDrive(this->selectedInstrument);
-	return;
+
 }
+
+//=== Event Handlers ===//
 
 void InstrumentController::HandleInstrumentSelection(const Event& event)
 {
-	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr);
-	instrumentSelectionDialog->setListener(this);
+	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
 	instrumentSelectionDialog->ShowModal();
 }
+
+//=== WFS API Functions ===//
 
 void InstrumentController::populateInstrumentList(wxListBox* list)
 {
@@ -32,28 +36,27 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
 	ViChar resourceName[WFS_BUFFER_SIZE];
-
-	// Get instrument count
-	if (err = WFS_GetInstrumentListLen(VI_NULL, &this->instrumentCount))
+	
+	// Get instrument count 
+	if (err = WFS_GetInstrumentListLen(VI_NULL, &instrumentCount))
 	{
 		this->handleError(err, "Not able to get the count of instruments connected");
 	}
-	else {
-		if (instrumentCount == 0)
+
+	if (instrumentCount == 0)
+	{
+		// No instrument found
+		wxMessageBox("No instrument found.", "INFO", wxOK | wxICON_INFORMATION);
+	}
+	else
+	{
+		for (int i = 0; i < instrumentCount; i++)
 		{
-			// No instrument found
-			wxMessageBox("No instrument found.", "INFO", wxOK | wxICON_INFORMATION);
-		}
-		else
-		{
-			for (int i = 0; i < instrumentCount; i++)
+			if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
 			{
-				if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
-				{
-					this->handleError(err, "Not able to get instrument's information");
-				}
-				list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use) ? "" : "(inUse)"));
+				this->handleError(err, "Not able to get instrument's information");
 			}
+			list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use) ? "" : "(inUse)"));
 		}
 	}
 }
@@ -63,6 +66,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 	ViInt32 device_id;
 	ViChar resourceName[WFS_BUFFER_SIZE];
 
+	// Get information of selected instrument
 	if (err = WFS_GetInstrumentListInfo(VI_NULL, selectedIndex, &device_id, VI_NULL, VI_NULL, VI_NULL, resourceName))
 	{
 		this->handleError(err, "Not able to get instrument's information");
@@ -70,11 +74,20 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 	else{
 		this->selectedInstrument->setDeviceId(device_id);
 
+		// Initialize instrument
 		this->initInstrument(resourceName);
+		// Driver Revision
+		this->reviseDrive(this->selectedInstrument);
 	}
 }
 
 void InstrumentController::onClose() {
+	// If instrument is initialized, just close it
+	if (this->selectedInstrument->isInitialized()) 
+	{
+		return;
+	}
+
 	// No instrument is selected
 	wxMessageBox("No instrument is selected.\nTo select a instrument, go to FILE -> \"Select Instrument\"", "INFO", wxOK | wxICON_INFORMATION);
 }
@@ -102,7 +115,8 @@ void InstrumentController::reviseDrive(Instrument* instrument) {
 void InstrumentController::initInstrument(ViRsrc resourceName) 
 {
 	ViSession* handle = this->selectedInstrument->getHandle();
-	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE], serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
+	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE],
+		serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
 
 	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, handle))
 	{
@@ -121,9 +135,14 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 			);
 		}
 	}
+	this->selectedInstrument->setInitialized(true);
 
 }
 
+//=== Utility Functions ===//
+std::string InstrumentController::getInstrumentName() {
+	return this->selectedInstrument->getInstrumentName();
+}
 
 void InstrumentController::handleError(int code, std::string message)
 {

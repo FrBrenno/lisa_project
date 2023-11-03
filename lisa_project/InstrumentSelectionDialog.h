@@ -7,9 +7,7 @@ class InstrumentSelectionDialog: public wxDialog{
 	InstrumentController* listener;
 
 public:	
-	InstrumentSelectionDialog(wxWindow* parent);
-
-	void setListener(InstrumentController* listener);
+	InstrumentSelectionDialog(wxWindow* parent, InstrumentController* listener);
 
 	void OnOK(wxCommandEvent& event);
 	void OnClose(wxCloseEvent& event);

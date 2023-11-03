@@ -9,6 +9,7 @@ class Instrument{
 	int device_id;
 	ViSession handle;
 	int status;
+	bool is_initialized;
 
 	// WFS Parameters
 	std::string version_wfs_driver;
@@ -42,4 +43,7 @@ public:
 
 	ViSession* getHandle();
 	void setInstrumentInfo(std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam);
+	void setInitialized(bool is_initialized);
+	bool isInitialized();
+	std::string getInstrumentName();
 };

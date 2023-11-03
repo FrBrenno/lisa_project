@@ -4,7 +4,7 @@
 #include "InstrumentSelectionDialog.h"
 
 HomeFrame::HomeFrame()
-    : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer")
+    : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
 
     //=== Menu Initialization ===//
@@ -56,7 +56,7 @@ HomeFrame::HomeFrame()
     SetMenuBar(menuBar);
 
     CreateStatusBar();
-    SetStatusText("Welcome to Plenoptic Camera Visualizer!");
+    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrument_name));
 
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items
@@ -67,7 +67,12 @@ HomeFrame::HomeFrame()
 
 void HomeFrame::setListener(HomeFrameController* controller)
 {
-	this->listener = listener;
+	this->listener = controller;
+}
+
+void HomeFrame::setInstrumentName(std::string instrument_name)
+{
+    this->instrument_name = instrument_name;
 }
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)

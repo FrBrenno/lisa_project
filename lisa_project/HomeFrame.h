@@ -5,6 +5,7 @@
 class HomeFrame : public wxFrame
 {
     HomeFrameController* listener;
+    std::string instrument_name;
 
     void OnInstrumentSelection(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
@@ -14,6 +15,5 @@ class HomeFrame : public wxFrame
 public:
     HomeFrame();
     void setListener(HomeFrameController* controller);
-
-
+    void setInstrumentName(std::string instrument_name);
 };
