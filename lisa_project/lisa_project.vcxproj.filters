@@ -75,6 +75,15 @@
     <ClCompile Include="MlaSelectionDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
+    <ClCompile Include="CameraConfig.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraConfig.cpp">
+      <Filter>Fichiers sources\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
@@ -109,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="MlaSelectionDialog.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

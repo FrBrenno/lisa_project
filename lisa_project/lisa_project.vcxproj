@@ -144,9 +144,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraConfig.cpp" />
+    <ClCompile Include="CameraConfig.h" />
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="HomeFrameController.cpp" />
     <ClCompile Include="HomeFrameController.h" />
+    <ClCompile Include="ImageController.cpp" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="InstrumentController.cpp" />
     <ClCompile Include="InstrumentSelectionDialog.cpp" />
@@ -161,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventDispatcher.h" />
+    <ClInclude Include="ImageController.h" />
     <ClInclude Include="InstrumentController.h" />
     <ClInclude Include="InstrumentSelectionDialog.h" />
     <ClInclude Include="Instrument.h" />

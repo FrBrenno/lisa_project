@@ -198,13 +198,25 @@ void InstrumentController::cameraConfiguration()
 	}
 }
 
+void InstrumentController::closeInstrument() {
+	if (err = WFS_close(*this->selectedInstrument->getHandle())) {
+		this->handleError(err, "Not able to close instrument");
+		return;
+	}
+	else {
+		this->selectedInstrument->setInitialized(false);
+	}
+}
+
 
 //=== Utility Functions ===//
 std::string InstrumentController::getInstrumentName() {
 	return this->selectedInstrument->getInstrumentName();
 }
 
-
+Instrument* InstrumentController::getInstrument() {
+	return this->selectedInstrument;
+}
 
 void InstrumentController::handleError(int code, std::string message)
 {
@@ -213,7 +225,7 @@ void InstrumentController::handleError(int code, std::string message)
 	if (!code) return;
 
 	// Get error string
-	if (err != -1)
+	if (code != -1)
 	{
 		WFS_error_message(VI_NULL, code, description);
 	}

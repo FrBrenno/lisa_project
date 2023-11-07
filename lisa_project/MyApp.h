@@ -5,7 +5,8 @@
 #include "HomeFrame.h"
 #include "HomeFrameController.h"
 #include "InstrumentController.h"
-#include "InstrumentSelectionDialog.h"
+#include "MlaController.h"
+#include "ImageController.h"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -16,6 +17,8 @@ class MyApp : public wxApp
     //=== Controllers ===//
     HomeFrameController* homeFrameController;
     InstrumentController* instrumentController;
+    MlaController* mlaController;
+    ImageController* imageController;
 
     //== Views ===//
     HomeFrame* homeFrame;
@@ -23,4 +26,5 @@ class MyApp : public wxApp
 
 public:
     virtual bool OnInit();
+    virtual int OnExit();
 };

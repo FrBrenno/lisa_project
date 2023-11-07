@@ -63,6 +63,10 @@ HomeFrame::HomeFrame()
     Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
+
+    //=== Image Control Initialization ===//
+    this->imageControl = new wxStaticBitmap(this, wxID_ANY, wxBitmap());
+
 }
 
 void HomeFrame::setListener(HomeFrameController* controller)
@@ -88,4 +92,10 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
 {
     wxMessageBox("This is a master's project directed LISA, Laboratory of Image Synthesis and Analysis, by the code PROJH402. This projects aims to obtain image using Thorlabs WaveFront Sensor API from a plenoptic camera.",
         "About LISA Plenoptic Camera Visualizer", wxOK | wxICON_INFORMATION);
+}
+
+void HomeFrame::updateImage(const wxImage& newImage) {
+    wxBitmap* bitmap = new wxBitmap(newImage);
+    imageControl->SetBitmap(*bitmap);
+    imageControl->Refresh();
 }

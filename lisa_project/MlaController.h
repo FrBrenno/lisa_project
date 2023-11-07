@@ -1,4 +1,5 @@
 #pragma once
+#include "wx/wx.h"
 #include "Mla.h"
 #include "WFS.h"
 #include "Event.h"
@@ -14,8 +15,7 @@ public:
 
 	void populateMlaList(wxListBox* list);
 	void onMlaSelected(int selectedIndex);
-	void OnOK();
-	void OnClose();
+	void onClose();
 
 	void handleError(int code, std::string message);
 };

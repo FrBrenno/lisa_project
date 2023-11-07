@@ -10,5 +10,6 @@ public:
 	HomeFrameController();
 
 	void onInstrumentSelection(wxWindow* parent);
+	void onClose();
 
 };

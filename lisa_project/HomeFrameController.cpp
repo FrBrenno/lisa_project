@@ -22,3 +22,4 @@ void HomeFrameController::handleInstrumentSelected(const Event& event)
 {
 	// TODO: Handle the return value of the dialog
 }
+

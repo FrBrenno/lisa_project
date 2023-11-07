@@ -7,6 +7,9 @@ class HomeFrame : public wxFrame
     HomeFrameController* listener;
     std::string instrument_name;
 
+    //=== GUI Elements ===//
+    wxStaticBitmap* imageControl;
+
     void OnInstrumentSelection(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
@@ -16,4 +19,5 @@ public:
     HomeFrame();
     void setListener(HomeFrameController* controller);
     void setInstrumentName(std::string instrument_name);
+    void updateImage(const wxImage& newImage);
 };

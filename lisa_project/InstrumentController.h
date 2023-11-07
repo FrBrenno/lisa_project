@@ -15,6 +15,7 @@ public:
 	InstrumentController();
 
 	std::string getInstrumentName();
+	Instrument* getInstrument();
 
 	void populateInstrumentList(wxListBox* list);
 	void onInstrumentSelected(int selectedIndex);
@@ -23,6 +24,7 @@ public:
 	void cameraConfiguration();
 	void mlaConfiguration();
 	void onClose();	
+	void closeInstrument();
 
 	void handleError(int code, std::string message);
 };
