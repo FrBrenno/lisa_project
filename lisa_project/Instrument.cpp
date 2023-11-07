@@ -30,10 +30,26 @@ void Instrument::setInitialized(bool is_initialized) {
 	this->is_initialized = is_initialized;
 }
 
+void Instrument::setMla(Mla* mla) {
+	this->mla = mla;
+}
+
 bool Instrument::isInitialized() {
 	return this->is_initialized;
 }
 
 std::string Instrument::getInstrumentName(){
 	return this->instrument_name;
+}
+
+int Instrument::getDeviceId(){
+	return this->device_id;
+}
+
+ViInt32* Instrument::getSpotsX() {
+	return &this->spots_x;
+}
+
+ViInt32* Instrument::getSpotsY() {
+	return &this->spots_y;
 }

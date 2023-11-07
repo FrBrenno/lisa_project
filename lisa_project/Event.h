@@ -3,5 +3,5 @@
 
 struct Event {
     std::string name;
-    std::string data = "";
+    void* data;
 };

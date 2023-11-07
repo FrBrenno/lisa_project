@@ -17,6 +17,13 @@
 #define  SAMPLE_CAMERA_RESOL_WFS20     CAM_RES_WFS20_512    // 512x512 pixels
 #define  SAMPLE_REF_PLANE              WFS_REF_INTERNAL
 
+// Pupil Settings
+#define  SAMPLE_PUPIL_CENTROID_X       (0.0) // in mm
+#define  SAMPLE_PUPIL_CENTROID_Y       (0.0)
+#define  SAMPLE_PUPIL_DIAMETER_X       (2.0) // in mm, needs to fit to selected camera resolution
+#define  SAMPLE_PUPIL_DIAMETER_Y       (2.0)
+
+
 // Miscellaneous settings
 #define  SAMPLE_IMAGE_READINGS         (10) // trials to read a exposed spotfield image
 

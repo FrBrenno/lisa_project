@@ -63,6 +63,18 @@
     <ClCompile Include="EventDispatcher.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Mla.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="MlaController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Mla.cpp">
+      <Filter>Fichiers sources\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="MlaSelectionDialog.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
@@ -75,12 +87,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Instrument.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraSettings.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
     </ClInclude>
     <ClInclude Include="InstrumentSelectionDialog.h">
@@ -97,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MlaController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="MlaSelectionDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -132,7 +132,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\brenn\source\repos\lisa_project\lisa_project\thorlabs_api</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\brenn\source\repos\lib\wxWidgets-3.2.3\lib\vc_x64_dll;C:\Users\brenn\source\repos\lisa_project\lisa_project\thorlabs_api</AdditionalLibraryDirectories>
       <AdditionalDependencies>C:\Users\brenn\source\repos\lisa_project\lisa_project\thorlabs_api\WFS_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -150,18 +150,22 @@
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="InstrumentController.cpp" />
     <ClCompile Include="InstrumentSelectionDialog.cpp" />
+    <ClCompile Include="Mla.cpp" />
+    <ClCompile Include="Mla.h" />
+    <ClCompile Include="MlaController.cpp" />
+    <ClCompile Include="MlaSelectionDialog.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CameraSettings.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="InstrumentController.h" />
     <ClInclude Include="InstrumentSelectionDialog.h" />
-    <ClInclude Include="Image.h" />
     <ClInclude Include="Instrument.h" />
+    <ClInclude Include="MlaController.h" />
+    <ClInclude Include="MlaSelectionDialog.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="MenuID.h" />

@@ -1,6 +1,7 @@
 #include "InstrumentController.h"
 #include "EventDispatcher.h"
 #include "InstrumentSelectionDialog.h"
+#include "Settings.h"
 
 InstrumentController::InstrumentController()
 {
@@ -21,6 +22,21 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 {
 	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
 	instrumentSelectionDialog->ShowModal();
+}
+
+void InstrumentController::HandleMlaSelected(const Event& event)
+{
+	Mla* selectedMla = (Mla*)event.data;
+	this->selectedInstrument->setMla(selectedMla);
+}
+
+void InstrumentController::mlaConfiguration() {
+	Event mlaSelectionEvent;
+	mlaSelectionEvent.name = "MlaSelection";
+	mlaSelectionEvent.data = (void*)this->selectedInstrument->getHandle();
+
+	EventDispatcher::Instance().PublishEvent(mlaSelectionEvent);
+	return;
 }
 
 //=== WFS API Functions ===//
@@ -46,7 +62,8 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 	if (instrumentCount == 0)
 	{
 		// No instrument found
-		wxMessageBox("No instrument found.", "INFO", wxOK | wxICON_INFORMATION);
+		wxMessageBox("No instrument found.", "PCV - INFO", wxOK | wxICON_INFORMATION);
+		return;
 	}
 	else
 	{
@@ -77,7 +94,13 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Initialize instrument
 		this->initInstrument(resourceName);
 		// Driver Revision
-		this->reviseDrive(this->selectedInstrument);
+		this->reviseDrive();
+		// MLA Selection
+		// TODO: Event MlaSelection -> open MLASelectionDialog
+		// By now, we are going to setup default mla
+		this->mlaConfiguration();
+		// Camera Configuration
+		this->cameraConfiguration();
 	}
 }
 
@@ -92,13 +115,12 @@ void InstrumentController::onClose() {
 	wxMessageBox("No instrument is selected.\nTo select a instrument, go to FILE -> \"Select Instrument\"", "INFO", wxOK | wxICON_INFORMATION);
 }
 
-void InstrumentController::reviseDrive(Instrument* instrument) {
+void InstrumentController::reviseDrive() {
 	ViChar version_wfs_driver[256];
 	ViChar version_cam_driver[256];
 
 	if (err = WFS_revision_query(NULL, version_wfs_driver, version_cam_driver)) {
-		printf("%d\n", err);
-		wxMessageBox(wxString::Format("Error %d: %s", err, (err)), "Error", wxOK | wxICON_ERROR);
+		this->handleError(err, "Not able to get driver revision");
 		return;
 	}
 	else {
@@ -107,8 +129,8 @@ void InstrumentController::reviseDrive(Instrument* instrument) {
 			"Driver Revision", wxOK | wxICON_INFORMATION
 		);
 
-		instrument->setWfsDriverVersion(static_cast<std::string> (version_wfs_driver));
-		instrument->setCamDriverVersion(static_cast<std::string> (version_cam_driver));
+		this->selectedInstrument->setWfsDriverVersion(static_cast<std::string> (version_wfs_driver));
+		this->selectedInstrument->setCamDriverVersion(static_cast<std::string> (version_cam_driver));
 	}
 }
 
@@ -121,11 +143,13 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, handle))
 	{
 		this->handleError(err, "Not able to initialize instrument");
+		return;
 	}
 	else{
 		if (err = WFS_GetInstrumentInfo(*handle, manufacturer_name, instrument_name, serial_number_wfs, serial_number_cam))
 		{
 			this->handleError(err, "Not able to get instrument's information");
+			return;
 		}
 		else {
 			this->selectedInstrument->setInstrumentInfo(static_cast<std::string> (manufacturer_name),
@@ -136,13 +160,51 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 		}
 	}
 	this->selectedInstrument->setInitialized(true);
-
 }
+
+
+void InstrumentController::cameraConfiguration()
+{
+	ViSession handle = *this->selectedInstrument->getHandle();
+	int device_id = this->selectedInstrument->getDeviceId();
+	// If device is a WFS20
+	if (device_id & DEVICE_OFFSET_WFS20) {
+		ViInt32* spotsX = this->selectedInstrument->getSpotsX();
+		ViInt32* spotsY = this->selectedInstrument->getSpotsY();
+		if (err = WFS_ConfigureCam(handle,
+			SAMPLE_PIXEL_FORMAT,
+			SAMPLE_CAMERA_RESOL_WFS20,
+			spotsX,
+			spotsY))
+		{
+			this->handleError(err, "Not able to configure camera");
+			return;
+		}
+	}
+	else {
+		// Other devices are not compatible with this software for now
+		this->handleError(-1, "The device selected is not a WFS20. Others devices are not compatible.");
+	}
+
+	// WFS Internal Reference Plane Setup
+	if (err = WFS_SetReferencePlane(handle, SAMPLE_REF_PLANE)) {
+		this->handleError(err, "Not able to set reference plane");
+		return;
+	}
+	// WFS Pupil Setup
+	if (err = WFS_SetPupil(handle, SAMPLE_PUPIL_CENTROID_X, SAMPLE_PUPIL_CENTROID_Y, SAMPLE_PUPIL_DIAMETER_X, SAMPLE_PUPIL_DIAMETER_Y)) {
+		this->handleError(err, "Not able to set pupil");
+		return;
+	}
+}
+
 
 //=== Utility Functions ===//
 std::string InstrumentController::getInstrumentName() {
 	return this->selectedInstrument->getInstrumentName();
 }
+
+
 
 void InstrumentController::handleError(int code, std::string message)
 {
@@ -151,8 +213,15 @@ void InstrumentController::handleError(int code, std::string message)
 	if (!code) return;
 
 	// Get error string
-	WFS_error_message(VI_NULL, code, description);
+	if (err != -1)
+	{
+		WFS_error_message(VI_NULL, code, description);
+	}
+	else
+	{
+		strcpy(description, "");
+	}
+	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 
-	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "Error", wxOK | wxICON_ERROR);
 }
 
