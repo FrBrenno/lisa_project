@@ -7,12 +7,6 @@
  * @brief This controller manages HomeFrame view responsible for the main window of the software.
  */
 class HomeFrameController{
-	/**
-	 * Set the instrument name into the header and footnote of the software.
-	 * 
-	 * @param event InstrumentSelectedEvent
-	 */
-	void handleInstrumentSelected(const Event& event);
 
 public:
 	HomeFrameController();

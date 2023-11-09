@@ -1,5 +1,6 @@
 #pragma once
 #include <wx/wx.h>
+#include <string>
 #include "HomeFrameController.h"
 
 /**
@@ -13,17 +14,16 @@ class HomeFrame : public wxFrame
      * View Controller that manages it.
      */
     HomeFrameController* listener;
-    /**
-     * The name of the selected instrument.
-     */
-    std::string instrument_name;
 
     //=== GUI Elements ===//
     /**
      * This image control element that displays the camera image.
      */
     wxStaticBitmap* imageControl;
-
+    /**
+     * Name of the instrument in use.
+     */
+    std::string instrumentName;
     /**
      * Handles the event: OnInstrumentSelection, where the user can select a instrument within a list on a dialog box.
      * 
@@ -53,13 +53,14 @@ public:
      * @param controller HomeFrameController that manages this view.
      */
     void setListener(HomeFrameController* controller);
+
     /**
-     * Sets the instrument name.
-     * This instrument name will figure in the header and bottom of the software main window.
+     * Sets the instrument in use name.
      * 
-     * @param instrument_name Name of the selected instrument.
+     * @param instrumentName Instrument in use.
      */
-    void setInstrumentName(std::string instrument_name);
+    void setInstrumentName(std::string instrumentName);
+
     /**
      * Generate a Bitmap and display it on the image control.
      * @note This function is called by the ImageController that is the controller responsible to manage image acquisition.

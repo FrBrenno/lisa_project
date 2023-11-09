@@ -18,6 +18,7 @@
  */
 class MyApp : public wxApp
 {
+
     //=== Controllers ===//
 
     HomeFrameController* homeFrameController;

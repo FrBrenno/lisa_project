@@ -103,6 +103,9 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Camera Configuration
 		this->cameraConfiguration();
 	}
+
+	// Publish InstrumentSelectedEvent
+
 }
 
 void InstrumentController::onClose() {

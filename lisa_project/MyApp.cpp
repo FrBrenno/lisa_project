@@ -16,12 +16,13 @@ bool MyApp::OnInit()
 
     homeFrame = new HomeFrame();
     homeFrame->setListener(this->homeFrameController);
+    homeFrame->Show(true);
     // Before Showing the software, do instrument selection
     InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(homeFrame, instrumentController);
     instrumentSelectionDialog->ShowModal();
 
     homeFrame->setInstrumentName(instrumentController->getInstrumentName());
-    homeFrame->Show(true);
+    
 
     // this->imageController->takeImage();
     // homeFrame->updateImage(this->imageController->getImage());

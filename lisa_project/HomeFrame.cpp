@@ -6,7 +6,7 @@
 HomeFrame::HomeFrame()
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
-    //=== Attribute Initialization == =//
+    //=== Attribute Initialization ===//
     this->listener = nullptr;
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, wxBitmap());
 
@@ -66,7 +66,7 @@ HomeFrame::HomeFrame()
     SetMenuBar(menuBar);
 
     CreateStatusBar();
-    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrument_name));
+    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer!"));
 
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items
@@ -84,7 +84,8 @@ void HomeFrame::setListener(HomeFrameController* controller)
 
 void HomeFrame::setInstrumentName(std::string instrument_name)
 {
-    this->instrument_name = instrument_name;
+    this->instrumentName = instrument_name;
+    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
 }
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
