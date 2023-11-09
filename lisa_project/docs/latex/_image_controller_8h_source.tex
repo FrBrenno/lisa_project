@@ -1,0 +1,27 @@
+\doxysection{Image\+Controller.\+h}
+\hypertarget{_image_controller_8h_source}{}\label{_image_controller_8h_source}\index{lisa\_project/ImageController.h@{lisa\_project/ImageController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}CameraConfig.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Instrument.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_image_controller}{ImageController}}\{}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_camera_config}{CameraConfig}}*\ cameraConfig;}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_instrument}{Instrument}}*\ instrument;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ err;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ imageBuffer;}
+\DoxyCodeLine{00015\ \ \ \ \ ViInt32\ rows,\ cols;}
+\DoxyCodeLine{00016\ \ \ \ \ wxImage*\ image;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_image_controller}{ImageController}}(\mbox{\hyperlink{class_instrument}{Instrument}}*\ instrument);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_controller_aebeea3e309732706710be62a0ad5b49b}{takeImage}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_image_controller_a4a90044112da43addaaa2f8122d63b79}{handleError}}(\textcolor{keywordtype}{int}\ code,\ std::string\ message);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ wxImage*\ \mbox{\hyperlink{class_image_controller_a44b84682e0506b76e030d24df4368632}{getImage}}();}
+\DoxyCodeLine{00040\ \};}
+
+\end{DoxyCode}

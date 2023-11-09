@@ -1,0 +1,84 @@
+\doxysection{Mla\+Selection\+Dialog Class Reference}
+\hypertarget{class_mla_selection_dialog}{}\label{class_mla_selection_dialog}\index{MlaSelectionDialog@{MlaSelectionDialog}}
+
+
+This view is a dialog box that allows the user to select a MLA.  
+
+
+
+
+{\ttfamily \#include $<$Mla\+Selection\+Dialog.\+h$>$}
+
+Inheritance diagram for Mla\+Selection\+Dialog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mla_selection_dialog}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mla_selection_dialog_a744338f1415599bb69ece38492928651}{Mla\+Selection\+Dialog}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{class_mla_controller}{Mla\+Controller}} \texorpdfstring{$\ast$}{*}listener)
+\item 
+void \mbox{\hyperlink{class_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42}{On\+OK}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf}{On\+Close}} (wx\+Close\+Event \&event)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This view is a dialog box that allows the user to select a MLA. 
+
+This view is managed by its respective controller, \doxylink{class_mla_controller}{Mla\+Controller}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mla_selection_dialog_a744338f1415599bb69ece38492928651}\label{class_mla_selection_dialog_a744338f1415599bb69ece38492928651} 
+\index{MlaSelectionDialog@{MlaSelectionDialog}!MlaSelectionDialog@{MlaSelectionDialog}}
+\index{MlaSelectionDialog@{MlaSelectionDialog}!MlaSelectionDialog@{MlaSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{MlaSelectionDialog()}{MlaSelectionDialog()}}
+{\footnotesize\ttfamily Mla\+Selection\+Dialog\+::\+Mla\+Selection\+Dialog (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent,  }\item[{\mbox{\hyperlink{class_mla_controller}{Mla\+Controller}} \texorpdfstring{$\ast$}{*}}]{listener }\end{DoxyParamCaption})}
+
+Constructor of \doxylink{class_mla_selection_dialog}{Mla\+Selection\+Dialog}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The view that generates the dialog box. It could be nullptr. \\
+\hline
+{\em listener} & The controller that manages the view. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf}\label{class_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf} 
+\index{MlaSelectionDialog@{MlaSelectionDialog}!OnClose@{OnClose}}
+\index{OnClose@{OnClose}!MlaSelectionDialog@{MlaSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{OnClose()}{OnClose()}}
+{\footnotesize\ttfamily void Mla\+Selection\+Dialog\+::\+On\+Close (\begin{DoxyParamCaption}\item[{wx\+Close\+Event \&}]{event }\end{DoxyParamCaption})}
+
+Handles when the user closes the dialog box.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & On\+Close default wx\+Widgets event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42}\label{class_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42} 
+\index{MlaSelectionDialog@{MlaSelectionDialog}!OnOK@{OnOK}}
+\index{OnOK@{OnOK}!MlaSelectionDialog@{MlaSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{OnOK()}{OnOK()}}
+{\footnotesize\ttfamily void Mla\+Selection\+Dialog\+::\+On\+OK (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event }\end{DoxyParamCaption})}
+
+Handles when the user clicks in the button OK.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & On\+OK default wx\+Widgets event. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Mla\+Selection\+Dialog.\+h\item 
+lisa\+\_\+project/Mla\+Selection\+Dialog.\+cpp\end{DoxyCompactItemize}

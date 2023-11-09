@@ -159,7 +159,6 @@
     <ClCompile Include="MlaSelectionDialog.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
-    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />

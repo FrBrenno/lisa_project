@@ -12,15 +12,21 @@
 #include <wx/wx.h>
 #endif
 
+/** 
+    @class MyApp
+    @brief This class is the main class of the application responsible to manage all the application controllers and views.
+ */
 class MyApp : public wxApp
 {
     //=== Controllers ===//
+
     HomeFrameController* homeFrameController;
     InstrumentController* instrumentController;
     MlaController* mlaController;
     ImageController* imageController;
 
     //== Views ===//
+
     HomeFrame* homeFrame;
 
 

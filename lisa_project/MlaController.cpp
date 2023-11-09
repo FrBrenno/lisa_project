@@ -7,6 +7,7 @@ MlaController::MlaController() {
 	this->selectMla = new Mla();
 	this->err = 0;
 	
+	// This class should be aware whenever the user wants to select an MLA.
 	EventDispatcher::Instance().SubscribeToEvent("MlaSelection",
 		[this](const Event& event) {
 			HandleMlaSelection(event);
@@ -14,13 +15,16 @@ MlaController::MlaController() {
 }
 
 //=== Event Handler ===//
+
 void MlaController::HandleMlaSelection(const Event& event) {
+	// Generate the view and handle Mla Selection
 	this->selectMla->setHandle(*(ViSession*)event.data);
 	MlaSelectionDialog* mlaSelectionDialog = new MlaSelectionDialog(nullptr, this);
 	mlaSelectionDialog->ShowModal();
 }
 
 void MlaController::HandleMlaSelected(const Event& event) {
+	// Publish the selected MLA to whatever controller that needs it.
 	Event mlaSelectedEvent;
 	mlaSelectedEvent.name = "MlaSelected";
 	mlaSelectedEvent.data = (void*)this->selectMla;
@@ -28,14 +32,17 @@ void MlaController::HandleMlaSelected(const Event& event) {
 }
 
 //=== WFS API Functions ===//
+
 void MlaController::populateMlaList(wxListBox* list) {
 	ViSession handle = this->selectMla->getHandle();
 	ViInt32* mla_count = this->selectMla->getMlaCount();
 
+	// Get the number of MLAs
 	if (err = WFS_GetMlaCount(handle, mla_count)) {
 		this->handleError(err, "Not able to get the count of MLAs");
 	}
 
+	// If there is no MLA, then show error message
 	if (*mla_count == 0) {
 		wxMessageBox("No MLA found", "PCV - Error", wxOK | wxICON_ERROR);
 		return;
@@ -65,12 +72,14 @@ void MlaController::populateMlaList(wxListBox* list) {
 }
 
 void MlaController::onMlaSelected(int selectedIndex) {
+	// Setup the selected MLA
 	ViStatus handle = this->selectMla->getHandle();
 	if (err = WFS_SelectMla(handle, selectedIndex))
 	{
 		this->handleError(err, "Not able to select MLA");
 	}
-
+	
+	// Get MLA data
 	ViChar mla_name[WFS_BUFFER_SIZE];
 	ViReal64 cam_pitchm, lenslet_pitchm, spot_offset_x,
 		spot_offset_y, lenslet_fm, grd_corr_0, grd_corr_45;
@@ -102,6 +111,8 @@ void MlaController::onMlaSelected(int selectedIndex) {
 
 
 void MlaController::onClose() {
+	// When the user closes the view, check if the MLA is selected.
+	// Users should be able to close the view without selecting an MLA.
 	if (this->selectMla->isInitialized()) {
 		return;
 	}
@@ -110,6 +121,7 @@ void MlaController::onClose() {
 }
 
 //=== Utility Function ===//
+
 void MlaController::handleError(int code, std::string message)
 {
 	char description[WFS_ERR_DESCR_BUFFER_SIZE];
@@ -119,10 +131,12 @@ void MlaController::handleError(int code, std::string message)
 	// Get error string
 	if (code != -1)
 	{
+		// If error code is not -1, then get the error message
 		WFS_error_message(VI_NULL, code, description);
 	}
 	else
 	{
+		// If error code is -1, then it is not a Thorslab API error
 		strcpy(description, "");
 	}
 	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "PCV - Error", wxOK | wxICON_ERROR);

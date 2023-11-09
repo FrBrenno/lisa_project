@@ -4,6 +4,10 @@
 #include <string>
 #include "WFS.h"
 
+/**
+ * @class Mla.
+ * @brief This model class is used to store the information of the MLA.
+ */
 class Mla{
 	ViSession handle;
 	bool is_initialized;

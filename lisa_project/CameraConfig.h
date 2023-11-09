@@ -1,5 +1,9 @@
 #include "WFS.h"
 
+/**
+ * @class CameraConfig.
+ * @brief This model class contains all the information about the camera configuration.
+ */
 class CameraConfig{
 	int cameraResolution;
 	ViReal64 exposureTime;

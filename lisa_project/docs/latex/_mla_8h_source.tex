@@ -1,0 +1,40 @@
+\doxysection{Mla.\+h}
+\hypertarget{_mla_8h_source}{}\label{_mla_8h_source}\index{lisa\_project/Mla.h@{lisa\_project/Mla.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MLA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MLA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}WFS.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mla}{Mla}}\{}
+\DoxyCodeLine{00012\ \ \ \ \ ViSession\ handle;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_initialized;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ ViInt32\ mla\_count;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ mla\_selected;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ selected\_mla\_idx;}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ mla\_name;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ cam\_pitch\_um;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ lenslet\_pitch\_um;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ center\_spot\_offset\_x;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ center\_spot\_offset\_y;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{double}\ lenslet\_f\_um;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ grd\_corr\_0;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{double}\ grd\_corr\_45;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_mla}{Mla}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ ViInt32*\ getMlaCount();}
+\DoxyCodeLine{00030\ \ \ \ \ ViSession\ getHandle();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInitialized();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setInitialized(\textcolor{keywordtype}{bool}\ is\_initialized);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setHandle(ViSession\ handle);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setMlaInfo(ViChar*\ mla\_name,\ ViReal64\ cam\_pitchm,\ ViReal64\ lenslet\_pitchm,\ ViReal64\ spot\_offset\_x,\ ViReal64\ spot\_offset\_y,\ ViReal64\ lenslet\_fm,\ ViReal64\ grd\_corr\_0,\ ViReal64\ grd\_corr\_45);}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

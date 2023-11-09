@@ -1,0 +1,58 @@
+.TH "Instrument" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Instrument \- This model class contains all the information about the instrument\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Instrument\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetDeviceId\fP (int device_id)"
+.br
+.ti -1c
+.RI "void \fBsetWfsDriverVersion\fP (std::string version_wfs_driver)"
+.br
+.ti -1c
+.RI "void \fBsetCamDriverVersion\fP (std::string version_cam_driver)"
+.br
+.ti -1c
+.RI "void \fBsetInstrumentInfo\fP (std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam)"
+.br
+.ti -1c
+.RI "void \fBsetInitialized\fP (bool is_initialized)"
+.br
+.ti -1c
+.RI "void \fBsetMla\fP (\fBMla\fP *mla)"
+.br
+.ti -1c
+.RI "bool \fBisInitialized\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetInstrumentName\fP ()"
+.br
+.ti -1c
+.RI "ViSession * \fBgetHandle\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetDeviceId\fP ()"
+.br
+.ti -1c
+.RI "ViInt32 * \fBgetSpotsX\fP ()"
+.br
+.ti -1c
+.RI "ViInt32 * \fBgetSpotsY\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This model class contains all the information about the instrument\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

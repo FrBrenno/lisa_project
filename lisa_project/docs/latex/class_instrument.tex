@@ -1,0 +1,59 @@
+\doxysection{Instrument Class Reference}
+\hypertarget{class_instrument}{}\label{class_instrument}\index{Instrument@{Instrument}}
+
+
+This model class contains all the information about the instrument.  
+
+
+
+
+{\ttfamily \#include $<$Instrument.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_instrument_a4423a277f37a47529fc51c7b67ab0d83}\label{class_instrument_a4423a277f37a47529fc51c7b67ab0d83} 
+void {\bfseries set\+Device\+Id} (int device\+\_\+id)
+\item 
+\Hypertarget{class_instrument_a8098336e1392699c3965aa6bcfbda7d0}\label{class_instrument_a8098336e1392699c3965aa6bcfbda7d0} 
+void {\bfseries set\+Wfs\+Driver\+Version} (std\+::string version\+\_\+wfs\+\_\+driver)
+\item 
+\Hypertarget{class_instrument_a5a307e43580ec17e866572fbee73a0f7}\label{class_instrument_a5a307e43580ec17e866572fbee73a0f7} 
+void {\bfseries set\+Cam\+Driver\+Version} (std\+::string version\+\_\+cam\+\_\+driver)
+\item 
+\Hypertarget{class_instrument_acb7f982bd796fc7e0d2c0652e03a07db}\label{class_instrument_acb7f982bd796fc7e0d2c0652e03a07db} 
+void {\bfseries set\+Instrument\+Info} (std\+::string manufacturer\+\_\+name, std\+::string instrument\+\_\+name, std\+::string serial\+\_\+number\+\_\+wfs, std\+::string serial\+\_\+number\+\_\+cam)
+\item 
+\Hypertarget{class_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624}\label{class_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624} 
+void {\bfseries set\+Initialized} (bool is\+\_\+initialized)
+\item 
+\Hypertarget{class_instrument_a9b877e2719794597774c0860318dabad}\label{class_instrument_a9b877e2719794597774c0860318dabad} 
+void {\bfseries set\+Mla} (\mbox{\hyperlink{class_mla}{Mla}} \texorpdfstring{$\ast$}{*}mla)
+\item 
+\Hypertarget{class_instrument_a924662347b252917b5ec2ebd81874f07}\label{class_instrument_a924662347b252917b5ec2ebd81874f07} 
+bool {\bfseries is\+Initialized} ()
+\item 
+\Hypertarget{class_instrument_a302c9c9f4fbd16702cb5e4631998538f}\label{class_instrument_a302c9c9f4fbd16702cb5e4631998538f} 
+std\+::string {\bfseries get\+Instrument\+Name} ()
+\item 
+\Hypertarget{class_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25}\label{class_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25} 
+Vi\+Session \texorpdfstring{$\ast$}{*} {\bfseries get\+Handle} ()
+\item 
+\Hypertarget{class_instrument_ae99158cd820abcae887fb587ec71aa76}\label{class_instrument_ae99158cd820abcae887fb587ec71aa76} 
+int {\bfseries get\+Device\+Id} ()
+\item 
+\Hypertarget{class_instrument_a5b4fce3e53e195ccc10c70223cc52604}\label{class_instrument_a5b4fce3e53e195ccc10c70223cc52604} 
+Vi\+Int32 \texorpdfstring{$\ast$}{*} {\bfseries get\+SpotsX} ()
+\item 
+\Hypertarget{class_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd}\label{class_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd} 
+Vi\+Int32 \texorpdfstring{$\ast$}{*} {\bfseries get\+SpotsY} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This model class contains all the information about the instrument. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Instrument.\+h\item 
+lisa\+\_\+project/Instrument.\+cpp\end{DoxyCompactItemize}

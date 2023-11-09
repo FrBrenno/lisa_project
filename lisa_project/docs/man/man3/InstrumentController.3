@@ -1,0 +1,105 @@
+.TH "InstrumentController" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InstrumentController \- This controller class is responsible for managing Instruments and their associated views\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <InstrumentController\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBgetInstrumentName\fP ()"
+.br
+.ti -1c
+.RI "\fBInstrument\fP * \fBgetInstrument\fP ()"
+.br
+.ti -1c
+.RI "void \fBpopulateInstrumentList\fP (wxListBox *list)"
+.br
+.ti -1c
+.RI "void \fBonInstrumentSelected\fP (int selectedIndex)"
+.br
+.ti -1c
+.RI "void \fBinitInstrument\fP (ViRsrc resourceName)"
+.br
+.ti -1c
+.RI "void \fBreviseDrive\fP ()"
+.br
+.ti -1c
+.RI "void \fBcameraConfiguration\fP ()"
+.br
+.ti -1c
+.RI "void \fBmlaConfiguration\fP ()"
+.br
+.ti -1c
+.RI "void \fBonClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBcloseInstrument\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleError\fP (int code, std::string message)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This controller class is responsible for managing Instruments and their associated views\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void InstrumentController::cameraConfiguration ()"
+Uses Thorslab API to configure the camera\&. 
+.SS "void InstrumentController::closeInstrument ()"
+Closes instrument API session\&. 
+.SS "void InstrumentController::handleError (int code, std::string message)"
+Handles error messages\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcode\fP Error code 
+.br
+\fImessage\fP Developer error message 
+.RE
+.PP
+
+.SS "void InstrumentController::initInstrument (ViRsrc resourceName)"
+Initialize instrument attributes by extracting information from Thorslab API\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIresourceName\fP Resource name of the instrument\&. 
+.RE
+.PP
+
+.SS "void InstrumentController::mlaConfiguration ()"
+Publishes an MlaSelectionEvent\&. 
+.SS "void InstrumentController::onClose ()"
+Handles when the user closes the \fBInstrumentSelectionDialog\fP\&. 
+.SS "void InstrumentController::onInstrumentSelected (int selectedIndex)"
+Handles when a instrument is selected\&. Normally, the view should call this function\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIselectedIndex\fP 
+.RE
+.PP
+
+.SS "void InstrumentController::populateInstrumentList (wxListBox * list)"
+Inserts the list of instruments into the listbox\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIlist\fP Listbox to populate 
+.RE
+.PP
+
+.SS "void InstrumentController::reviseDrive ()"
+Make a driver revision in order to verify driver version\&. Used to check API connexion\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

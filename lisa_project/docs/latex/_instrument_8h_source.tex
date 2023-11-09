@@ -1,0 +1,51 @@
+\doxysection{Instrument.\+h}
+\hypertarget{_instrument_8h_source}{}\label{_instrument_8h_source}\index{lisa\_project/Instrument.h@{lisa\_project/Instrument.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Message.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}WFS.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Mla.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_instrument}{Instrument}}\{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Instrument\ Parameters}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ device\_id;}
+\DoxyCodeLine{00015\ \ \ \ \ ViSession\ handle;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ status;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_initialized;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ WFS\ Parameters}}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ version\_wfs\_driver;}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ version\_cam\_driver;}
+\DoxyCodeLine{00022\ \ \ \ \ std::string\ manufacturer\_name;}
+\DoxyCodeLine{00023\ \ \ \ \ std::string\ instrument\_name;}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ serial\_number\_wfs;}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ serial\_number\_cam;\ \ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ MLA\ Parameters}}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_mla}{Mla}}*\ mla;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Camera\ Parameters}}
+\DoxyCodeLine{00031\ \ \ \ \ ViInt32\ spots\_x;}
+\DoxyCodeLine{00032\ \ \ \ \ ViInt32\ spots\_y;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setDeviceId(\textcolor{keywordtype}{int}\ device\_id);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ setWfsDriverVersion(std::string\ version\_wfs\_driver);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ setCamDriverVersion(std::string\ version\_cam\_driver);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ setInstrumentInfo(std::string\ manufacturer\_name,\ std::string\ instrument\_name,\ std::string\ serial\_number\_wfs,\ std::string\ serial\_number\_cam);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setInitialized(\textcolor{keywordtype}{bool}\ is\_initialized);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ setMla(\mbox{\hyperlink{class_mla}{Mla}}*\ mla);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInitialized();}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ getInstrumentName();}
+\DoxyCodeLine{00044\ \ \ \ \ ViSession*\ getHandle();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ getDeviceId();}
+\DoxyCodeLine{00046\ \ \ \ \ ViInt32*\ getSpotsX();}
+\DoxyCodeLine{00047\ \ \ \ \ ViInt32*\ getSpotsY();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}

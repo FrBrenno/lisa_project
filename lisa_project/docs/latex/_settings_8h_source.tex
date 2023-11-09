@@ -1,0 +1,41 @@
+\doxysection{Settings.\+h}
+\hypertarget{_settings_8h_source}{}\label{_settings_8h_source}\index{lisa\_project/Settings.h@{lisa\_project/Settings.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}WFS.h"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Device\ IDs}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ \ DEVICE\_OFFSET\_WFS10\ \ \ \ \ \ \ \ \ \ \ (0x00100)\ }\textcolor{comment}{//\ device\ IDs\ of\ WFS10\ instruments\ start\ at\ 256\ decimal}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ \ DEVICE\_OFFSET\_WFS20\ \ \ \ \ \ \ \ \ \ \ (0x00200)\ }\textcolor{comment}{//\ device\ IDs\ of\ WFS20\ instruments\ start\ at\ 512\ decimal}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \ DEVICE\_OFFSET\_WFS30\ \ \ \ \ \ \ \ \ \ \ (0x00400)\ }\textcolor{comment}{//\ device\ IDs\ of\ WFS30\ instruments\ start\ at\ 1024\ decimal}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ \ DEVICE\_OFFSET\_WFS40\ \ \ \ \ \ \ \ \ \ \ (0x00800)\ }\textcolor{comment}{//\ device\ IDs\ of\ WFS40\ instruments\ start\ at\ 2048\ decimal}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \ DEVICE\_OFFSET\_WFS31\ \ \ \ \ \ \ \ \ \ \ (0x01000)\ }\textcolor{comment}{//\ device\ IDs\ of\ WFS31\ instruments\ start\ at\ 4096\ decimal}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Options\ macros}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ \ OPTION\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ \ OPTION\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Camera\ settings}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PIXEL\_FORMAT\ \ \ \ \ \ \ \ \ \ \ PIXEL\_FORMAT\_MONO8\ \ \ }\textcolor{comment}{//\ only\ 8\ bit\ format\ is\ supported}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_CAMERA\_RESOL\_WFS20\ \ \ \ \ CAM\_RES\_WFS20\_512\ \ \ \ }\textcolor{comment}{//\ 512x512\ pixels}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_REF\_PLANE\ \ \ \ \ \ \ \ \ \ \ \ \ \ WFS\_REF\_INTERNAL}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ SAMPLE\_IMAGE\_READINGS\ \ \ \ \ \ \ \ \ \ (10)\ }\textcolor{comment}{//\ trials\ to\ read\ a\ exposed\ spotfield\ image}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Pupil\ Settings}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PUPIL\_CENTROID\_X\ \ \ \ \ \ \ (0.0)\ }\textcolor{comment}{//\ in\ mm}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PUPIL\_CENTROID\_Y\ \ \ \ \ \ \ (0.0)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PUPIL\_DIAMETER\_X\ \ \ \ \ \ \ (2.0)\ }\textcolor{comment}{//\ in\ mm,\ needs\ to\ fit\ to\ selected\ camera\ resolution}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PUPIL\_DIAMETER\_Y\ \ \ \ \ \ \ (2.0)}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ Miscellaneous\ settings}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_IMAGE\_READINGS\ \ \ \ \ \ \ \ \ (10)\ }\textcolor{comment}{//\ trials\ to\ read\ a\ exposed\ spotfield\ image}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_WAVEFRONT\_TYPE\ \ \ \ \ \ \ \ \ WAVEFRONT\_MEAS\ }\textcolor{comment}{//\ calculate\ measured\ wavefront}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_PRINTOUT\_SPOTS\ \ \ \ \ \ \ \ \ (5)\ \ }\textcolor{comment}{//\ printout\ results\ for\ first\ 5\ x\ 5\ spots\ only}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ \ SAMPLE\_OUTPUT\_FILE\_NAME\ \ \ \ \ \ \ "{}WFS\_sample\_output.txt"{}}}
+
+\end{DoxyCode}

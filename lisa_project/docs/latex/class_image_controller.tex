@@ -1,0 +1,67 @@
+\doxysection{Image\+Controller Class Reference}
+\hypertarget{class_image_controller}{}\label{class_image_controller}\index{ImageController@{ImageController}}
+
+
+This controller handles image acquisition.  
+
+
+
+
+{\ttfamily \#include $<$Image\+Controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_image_controller_a9c85e8b62f738c7923066fbdb3dd695c}\label{class_image_controller_a9c85e8b62f738c7923066fbdb3dd695c} 
+{\bfseries Image\+Controller} (\mbox{\hyperlink{class_instrument}{Instrument}} \texorpdfstring{$\ast$}{*}instrument)
+\item 
+void \mbox{\hyperlink{class_image_controller_aebeea3e309732706710be62a0ad5b49b}{take\+Image}} ()
+\item 
+void \mbox{\hyperlink{class_image_controller_a4a90044112da43addaaa2f8122d63b79}{handle\+Error}} (int code, std\+::string message)
+\item 
+wx\+Image \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_image_controller_a44b84682e0506b76e030d24df4368632}{get\+Image}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller handles image acquisition. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_image_controller_a44b84682e0506b76e030d24df4368632}\label{class_image_controller_a44b84682e0506b76e030d24df4368632} 
+\index{ImageController@{ImageController}!getImage@{getImage}}
+\index{getImage@{getImage}!ImageController@{ImageController}}
+\doxysubsubsection{\texorpdfstring{getImage()}{getImage()}}
+{\footnotesize\ttfamily wx\+Image \texorpdfstring{$\ast$}{*} Image\+Controller\+::get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a pointer to the wx\+Image created from the image buffer given by the API.
+
+\begin{DoxyReturn}{Returns}
+wx\+Image\texorpdfstring{$\ast$}{*} Reference to image object 
+\end{DoxyReturn}
+\Hypertarget{class_image_controller_a4a90044112da43addaaa2f8122d63b79}\label{class_image_controller_a4a90044112da43addaaa2f8122d63b79} 
+\index{ImageController@{ImageController}!handleError@{handleError}}
+\index{handleError@{handleError}!ImageController@{ImageController}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void Image\+Controller\+::handle\+Error (\begin{DoxyParamCaption}\item[{int}]{code,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Handles error messages.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Error code \\
+\hline
+{\em message} & Developer error message \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_image_controller_aebeea3e309732706710be62a0ad5b49b}\label{class_image_controller_aebeea3e309732706710be62a0ad5b49b} 
+\index{ImageController@{ImageController}!takeImage@{takeImage}}
+\index{takeImage@{takeImage}!ImageController@{ImageController}}
+\doxysubsubsection{\texorpdfstring{takeImage()}{takeImage()}}
+{\footnotesize\ttfamily void Image\+Controller\+::take\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a pointer the image buffer. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Image\+Controller.\+h\item 
+lisa\+\_\+project/Image\+Controller.\+cpp\end{DoxyCompactItemize}

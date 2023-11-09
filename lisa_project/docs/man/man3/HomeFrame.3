@@ -1,0 +1,69 @@
+.TH "HomeFrame" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HomeFrame \- This view is responsible to display the main windows of the software\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <HomeFrame\&.h>\fP
+.PP
+Inherits wxFrame\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetListener\fP (\fBHomeFrameController\fP *controller)"
+.br
+.ti -1c
+.RI "void \fBsetInstrumentName\fP (std::string instrument_name)"
+.br
+.ti -1c
+.RI "void \fBupdateImage\fP (const wxImage &newImage)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This view is responsible to display the main windows of the software\&. 
+
+It is manage by its respective controller, \fBHomeFrameController\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void HomeFrame::setInstrumentName (std::string instrument_name)"
+Sets the instrument name\&. This instrument name will figure in the header and bottom of the software main window\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIinstrument_name\fP Name of the selected instrument\&. 
+.RE
+.PP
+
+.SS "void HomeFrame::setListener (\fBHomeFrameController\fP * controller)"
+Sets the view listener, aka Controller\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcontroller\fP \fBHomeFrameController\fP that manages this view\&. 
+.RE
+.PP
+
+.SS "void HomeFrame::updateImage (const wxImage & newImage)"
+Generate a Bitmap and display it on the image control\&. 
+.PP
+\fBNote\fP
+.RS 4
+This function is called by the \fBImageController\fP that is the controller responsible to manage image acquisition\&.
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fInewImage\fP Reference to the new image to be displayed\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

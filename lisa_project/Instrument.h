@@ -5,6 +5,10 @@
 #include "WFS.h"
 #include "Mla.h"
 
+/**
+ * @class Instrument.
+ * @brief This model class contains all the information about the instrument.
+ */
 class Instrument{
 	// Instrument Parameters
 	int device_id;

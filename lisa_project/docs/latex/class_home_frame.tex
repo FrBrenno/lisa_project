@@ -1,0 +1,80 @@
+\doxysection{Home\+Frame Class Reference}
+\hypertarget{class_home_frame}{}\label{class_home_frame}\index{HomeFrame@{HomeFrame}}
+
+
+This view is responsible to display the main windows of the software.  
+
+
+
+
+{\ttfamily \#include $<$Home\+Frame.\+h$>$}
+
+Inheritance diagram for Home\+Frame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_home_frame}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_home_frame_a618cd7ae0ff819ce2144a42349b929ce}{set\+Listener}} (\mbox{\hyperlink{class_home_frame_controller}{Home\+Frame\+Controller}} \texorpdfstring{$\ast$}{*}controller)
+\item 
+void \mbox{\hyperlink{class_home_frame_a3fd8ad71945b9d0784623df176681d54}{set\+Instrument\+Name}} (std\+::string instrument\+\_\+name)
+\item 
+void \mbox{\hyperlink{class_home_frame_aa1d5c860cd6045887b7244e831fe022a}{update\+Image}} (const wx\+Image \&new\+Image)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This view is responsible to display the main windows of the software. 
+
+It is manage by its respective controller, \doxylink{class_home_frame_controller}{Home\+Frame\+Controller}. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_home_frame_a3fd8ad71945b9d0784623df176681d54}\label{class_home_frame_a3fd8ad71945b9d0784623df176681d54} 
+\index{HomeFrame@{HomeFrame}!setInstrumentName@{setInstrumentName}}
+\index{setInstrumentName@{setInstrumentName}!HomeFrame@{HomeFrame}}
+\doxysubsubsection{\texorpdfstring{setInstrumentName()}{setInstrumentName()}}
+{\footnotesize\ttfamily void Home\+Frame\+::set\+Instrument\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{instrument\+\_\+name }\end{DoxyParamCaption})}
+
+Sets the instrument name. This instrument name will figure in the header and bottom of the software main window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em instrument\+\_\+name} & Name of the selected instrument. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_home_frame_a618cd7ae0ff819ce2144a42349b929ce}\label{class_home_frame_a618cd7ae0ff819ce2144a42349b929ce} 
+\index{HomeFrame@{HomeFrame}!setListener@{setListener}}
+\index{setListener@{setListener}!HomeFrame@{HomeFrame}}
+\doxysubsubsection{\texorpdfstring{setListener()}{setListener()}}
+{\footnotesize\ttfamily void Home\+Frame\+::set\+Listener (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_home_frame_controller}{Home\+Frame\+Controller}} \texorpdfstring{$\ast$}{*}}]{controller }\end{DoxyParamCaption})}
+
+Sets the view listener, aka Controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em controller} & \doxylink{class_home_frame_controller}{Home\+Frame\+Controller} that manages this view. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_home_frame_aa1d5c860cd6045887b7244e831fe022a}\label{class_home_frame_aa1d5c860cd6045887b7244e831fe022a} 
+\index{HomeFrame@{HomeFrame}!updateImage@{updateImage}}
+\index{updateImage@{updateImage}!HomeFrame@{HomeFrame}}
+\doxysubsubsection{\texorpdfstring{updateImage()}{updateImage()}}
+{\footnotesize\ttfamily void Home\+Frame\+::update\+Image (\begin{DoxyParamCaption}\item[{const wx\+Image \&}]{new\+Image }\end{DoxyParamCaption})}
+
+Generate a Bitmap and display it on the image control. \begin{DoxyNote}{Note}
+This function is called by the \doxylink{class_image_controller}{Image\+Controller} that is the controller responsible to manage image acquisition.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Image} & Reference to the new image to be displayed. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Home\+Frame.\+h\item 
+lisa\+\_\+project/Home\+Frame.\+cpp\end{DoxyCompactItemize}

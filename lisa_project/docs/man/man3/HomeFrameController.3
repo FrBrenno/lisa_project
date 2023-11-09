@@ -1,0 +1,41 @@
+.TH "HomeFrameController" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HomeFrameController \- This controller manages \fBHomeFrame\fP view responsible for the main window of the software\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <HomeFrameController\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBonInstrumentSelection\fP (wxWindow *parent)"
+.br
+.ti -1c
+.RI "void \fBonClose\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This controller manages \fBHomeFrame\fP view responsible for the main window of the software\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void HomeFrameController::onClose ()"
+Handles when the user closes the window\&. 
+.SS "void HomeFrameController::onInstrumentSelection (wxWindow * parent)"
+Publishes an InstrumentSelectionEvent\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

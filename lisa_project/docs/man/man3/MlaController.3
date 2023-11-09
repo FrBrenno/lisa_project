@@ -1,0 +1,67 @@
+.TH "MlaController" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MlaController \- This controller manages the \fBMlaSelectionDialog\fP view and generate \fBMla\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <MlaController\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBpopulateMlaList\fP (wxListBox *list)"
+.br
+.ti -1c
+.RI "void \fBonMlaSelected\fP (int selectedIndex)"
+.br
+.ti -1c
+.RI "void \fBonClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleError\fP (int code, std::string message)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This controller manages the \fBMlaSelectionDialog\fP view and generate \fBMla\fP objects\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void MlaController::handleError (int code, std::string message)"
+Handles error messages\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcode\fP Error code\&. 
+.br
+\fImessage\fP Developer error message\&. 
+.RE
+.PP
+
+.SS "void MlaController::onClose ()"
+Handles when the user closes the view\&. 
+.SS "void MlaController::onMlaSelected (int selectedIndex)"
+Handles when the user seleced an MLA\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIselectedIndex\fP Index of the selected MLA\&. 
+.RE
+.PP
+
+.SS "void MlaController::populateMlaList (wxListBox * list)"
+Inserts all the MLAs given by Thorlabs API in the list\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIlist\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

@@ -1,0 +1,134 @@
+\doxysection{Instrument\+Controller Class Reference}
+\hypertarget{class_instrument_controller}{}\label{class_instrument_controller}\index{InstrumentController@{InstrumentController}}
+
+
+This controller class is responsible for managing Instruments and their associated views.  
+
+
+
+
+{\ttfamily \#include $<$Instrument\+Controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_instrument_controller_a23fe0b7b3946c9ca2bb2afd75c47d983}\label{class_instrument_controller_a23fe0b7b3946c9ca2bb2afd75c47d983} 
+std\+::string {\bfseries get\+Instrument\+Name} ()
+\item 
+\Hypertarget{class_instrument_controller_ae176955921f654701c9cbe298335d05e}\label{class_instrument_controller_ae176955921f654701c9cbe298335d05e} 
+\mbox{\hyperlink{class_instrument}{Instrument}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Instrument} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a914bf819ab5a12ab591b0e4570043337}{populate\+Instrument\+List}} (wx\+List\+Box \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a8284a2e71aae1b460644cd067aeee24c}{on\+Instrument\+Selected}} (int selected\+Index)
+\item 
+void \mbox{\hyperlink{class_instrument_controller_aa39d3f2b1620d04c4e6081315eaca5d7}{init\+Instrument}} (Vi\+Rsrc resource\+Name)
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a6ce24bda2cd3ab9919b1e15ac1d28d2f}{revise\+Drive}} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_aa42774bc0375cbf19984da3f607251ac}{camera\+Configuration}} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a3595712aab55e5a8a441cbb496a7e506}{mla\+Configuration}} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a9ab934b6c87e8a34ea1173729eba7652}{on\+Close}} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_a0fab52a1bb19d92e0a28cb995a659896}{close\+Instrument}} ()
+\item 
+void \mbox{\hyperlink{class_instrument_controller_ae0d02d9bf208a9ca365bf7d9cb1da833}{handle\+Error}} (int code, std\+::string message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class is responsible for managing Instruments and their associated views. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_instrument_controller_aa42774bc0375cbf19984da3f607251ac}\label{class_instrument_controller_aa42774bc0375cbf19984da3f607251ac} 
+\index{InstrumentController@{InstrumentController}!cameraConfiguration@{cameraConfiguration}}
+\index{cameraConfiguration@{cameraConfiguration}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{cameraConfiguration()}{cameraConfiguration()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::camera\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Uses Thorslab API to configure the camera. \Hypertarget{class_instrument_controller_a0fab52a1bb19d92e0a28cb995a659896}\label{class_instrument_controller_a0fab52a1bb19d92e0a28cb995a659896} 
+\index{InstrumentController@{InstrumentController}!closeInstrument@{closeInstrument}}
+\index{closeInstrument@{closeInstrument}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{closeInstrument()}{closeInstrument()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::close\+Instrument (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Closes instrument API session. \Hypertarget{class_instrument_controller_ae0d02d9bf208a9ca365bf7d9cb1da833}\label{class_instrument_controller_ae0d02d9bf208a9ca365bf7d9cb1da833} 
+\index{InstrumentController@{InstrumentController}!handleError@{handleError}}
+\index{handleError@{handleError}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::handle\+Error (\begin{DoxyParamCaption}\item[{int}]{code,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Handles error messages.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Error code \\
+\hline
+{\em message} & Developer error message \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_instrument_controller_aa39d3f2b1620d04c4e6081315eaca5d7}\label{class_instrument_controller_aa39d3f2b1620d04c4e6081315eaca5d7} 
+\index{InstrumentController@{InstrumentController}!initInstrument@{initInstrument}}
+\index{initInstrument@{initInstrument}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{initInstrument()}{initInstrument()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::init\+Instrument (\begin{DoxyParamCaption}\item[{Vi\+Rsrc}]{resource\+Name }\end{DoxyParamCaption})}
+
+Initialize instrument attributes by extracting information from Thorslab API.
+
+
+\begin{DoxyParams}{Parameters}
+{\em resource\+Name} & Resource name of the instrument. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_instrument_controller_a3595712aab55e5a8a441cbb496a7e506}\label{class_instrument_controller_a3595712aab55e5a8a441cbb496a7e506} 
+\index{InstrumentController@{InstrumentController}!mlaConfiguration@{mlaConfiguration}}
+\index{mlaConfiguration@{mlaConfiguration}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{mlaConfiguration()}{mlaConfiguration()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::mla\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Publishes an Mla\+Selection\+Event. \Hypertarget{class_instrument_controller_a9ab934b6c87e8a34ea1173729eba7652}\label{class_instrument_controller_a9ab934b6c87e8a34ea1173729eba7652} 
+\index{InstrumentController@{InstrumentController}!onClose@{onClose}}
+\index{onClose@{onClose}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{onClose()}{onClose()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::on\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles when the user closes the \doxylink{class_instrument_selection_dialog}{Instrument\+Selection\+Dialog}. \Hypertarget{class_instrument_controller_a8284a2e71aae1b460644cd067aeee24c}\label{class_instrument_controller_a8284a2e71aae1b460644cd067aeee24c} 
+\index{InstrumentController@{InstrumentController}!onInstrumentSelected@{onInstrumentSelected}}
+\index{onInstrumentSelected@{onInstrumentSelected}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{onInstrumentSelected()}{onInstrumentSelected()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::on\+Instrument\+Selected (\begin{DoxyParamCaption}\item[{int}]{selected\+Index }\end{DoxyParamCaption})}
+
+Handles when a instrument is selected. Normally, the view should call this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+Index} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_instrument_controller_a914bf819ab5a12ab591b0e4570043337}\label{class_instrument_controller_a914bf819ab5a12ab591b0e4570043337} 
+\index{InstrumentController@{InstrumentController}!populateInstrumentList@{populateInstrumentList}}
+\index{populateInstrumentList@{populateInstrumentList}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{populateInstrumentList()}{populateInstrumentList()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::populate\+Instrument\+List (\begin{DoxyParamCaption}\item[{wx\+List\+Box \texorpdfstring{$\ast$}{*}}]{list }\end{DoxyParamCaption})}
+
+Inserts the list of instruments into the listbox.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Listbox to populate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_instrument_controller_a6ce24bda2cd3ab9919b1e15ac1d28d2f}\label{class_instrument_controller_a6ce24bda2cd3ab9919b1e15ac1d28d2f} 
+\index{InstrumentController@{InstrumentController}!reviseDrive@{reviseDrive}}
+\index{reviseDrive@{reviseDrive}!InstrumentController@{InstrumentController}}
+\doxysubsubsection{\texorpdfstring{reviseDrive()}{reviseDrive()}}
+{\footnotesize\ttfamily void Instrument\+Controller\+::revise\+Drive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Make a driver revision in order to verify driver version. Used to check API connexion. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Instrument\+Controller.\+h\item 
+lisa\+\_\+project/Instrument\+Controller.\+cpp\end{DoxyCompactItemize}

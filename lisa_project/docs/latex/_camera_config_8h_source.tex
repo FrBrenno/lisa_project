@@ -1,0 +1,30 @@
+\doxysection{Camera\+Config.\+h}
+\hypertarget{_camera_config_8h_source}{}\label{_camera_config_8h_source}\index{lisa\_project/CameraConfig.h@{lisa\_project/CameraConfig.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}WFS.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_config}{CameraConfig}}\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{int}\ cameraResolution;}
+\DoxyCodeLine{00009\ \ \ \ \ ViReal64\ exposureTime;}
+\DoxyCodeLine{00010\ \ \ \ \ ViReal64\ gain;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ noiseCutLevel;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ blackLevel;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ nbImageReadings;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_camera_config}{CameraConfig}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_camera_config}{CameraConfig}}(\textcolor{keywordtype}{int}\ cameraResolution,\ \textcolor{keywordtype}{int}\ exposureTime,\ \textcolor{keywordtype}{int}\ gain,\ \textcolor{keywordtype}{int}\ noiseCutLevel,\ \textcolor{keywordtype}{int}\ blackLevel,\ \textcolor{keywordtype}{int}\ nbImageReadings);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ getCameraResolution();}
+\DoxyCodeLine{00020\ \ \ \ \ ViReal64*\ getExposureTime();}
+\DoxyCodeLine{00021\ \ \ \ \ ViReal64*\ getGain();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ getNoiseCutLevel();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ getBlackLevel();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ getNbImageReadings();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ setCameraConfig(\textcolor{keywordtype}{int}\ cameraResolution,\ \textcolor{keywordtype}{int}\ exposureTime,\ \textcolor{keywordtype}{int}\ gain,\ \textcolor{keywordtype}{int}\ noiseCutLevel,\ \textcolor{keywordtype}{int}\ blackLevel,\ \textcolor{keywordtype}{int}\ nbImageReadings);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \};}
+
+\end{DoxyCode}

@@ -2,21 +2,22 @@
 
 InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, InstrumentController* listener): wxDialog(parent, wxID_ANY, "LISA - PCV: Select Instrument")
 {
+    // Attributes setting
     this->parent = parent;
     this->listener = listener;
 
+    //=== View Construction ===//
+
     wxPanel* panel = new wxPanel(this, wxID_ANY);
     wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
-
-    // Instrument List
     wxListBox* instrumentList = new wxListBox(panel, wxID_ANY, wxDefaultPosition, wxSize(300, -1), 0, NULL, wxLB_SINGLE);
     panelSizer->Add(instrumentList, 1, wxEXPAND | wxALL, 5);
 
     // Populate Instrument List
     listener->populateInstrumentList(instrumentList);
 
-    // Show popup if one or more instruments are available
-    if (instrumentList->GetCount() > 0)
+    // Show popup if more than one instruments is available
+    if (instrumentList->GetCount() > 1)
 	{
         // Ok Button
         wxButton* okButton = new wxButton(panel, wxID_ANY, "OK");
@@ -25,7 +26,6 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
 
         // Close Button
         Bind(wxEVT_CLOSE_WINDOW, &InstrumentSelectionDialog::OnClose, this);
-    
 
         panel->SetSizerAndFit(panelSizer);
 
@@ -42,6 +42,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
 
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)
 {
+    // FIXME: The selectedIndex is not the index of the element selected in the list.
     int selectedIndex = event.GetSelection();
     listener->onInstrumentSelected(selectedIndex);
     this->Destroy();

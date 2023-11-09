@@ -1,0 +1,68 @@
+.TH "MlaSelectionDialog" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MlaSelectionDialog \- This view is a dialog box that allows the user to select a MLA\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <MlaSelectionDialog\&.h>\fP
+.PP
+Inherits wxDialog\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMlaSelectionDialog\fP (wxWindow *parent, \fBMlaController\fP *listener)"
+.br
+.ti -1c
+.RI "void \fBOnOK\fP (wxCommandEvent &event)"
+.br
+.ti -1c
+.RI "void \fBOnClose\fP (wxCloseEvent &event)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This view is a dialog box that allows the user to select a MLA\&. 
+
+This view is managed by its respective controller, \fBMlaController\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MlaSelectionDialog::MlaSelectionDialog (wxWindow * parent, \fBMlaController\fP * listener)"
+Constructor of \fBMlaSelectionDialog\fP\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP The view that generates the dialog box\&. It could be nullptr\&. 
+.br
+\fIlistener\fP The controller that manages the view\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void MlaSelectionDialog::OnClose (wxCloseEvent & event)"
+Handles when the user closes the dialog box\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP OnClose default wxWidgets event\&. 
+.RE
+.PP
+
+.SS "void MlaSelectionDialog::OnOK (wxCommandEvent & event)"
+Handles when the user clicks in the button OK\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP OnOK default wxWidgets event\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

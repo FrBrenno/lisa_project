@@ -13,9 +13,12 @@ ImageController::ImageController(Instrument* instrument)
 }
 
 void ImageController::takeImage(){
+	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
+
 		ViReal64* exposureTime = cameraConfig->getExposureTime();
 		ViReal64* gain = cameraConfig->getGain();
+
 		// Take a camera image with auto exposure
 		for (int i = 0; i < cameraConfig->getNbImageReadings(); i++)
 		{

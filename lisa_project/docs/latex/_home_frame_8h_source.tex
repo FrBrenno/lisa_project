@@ -1,0 +1,30 @@
+\doxysection{Home\+Frame.\+h}
+\hypertarget{_home_frame_8h_source}{}\label{_home_frame_8h_source}\index{lisa\_project/HomeFrame.h@{lisa\_project/HomeFrame.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <wx/wx.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}HomeFrameController.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_home_frame}{HomeFrame}}\ :\ \textcolor{keyword}{public}\ wxFrame}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_home_frame_controller}{HomeFrameController}}*\ listener;}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ instrument\_name;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//===\ GUI\ Elements\ ===//}}
+\DoxyCodeLine{00025\ \ \ \ \ wxStaticBitmap*\ imageControl;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ OnInstrumentSelection(wxCommandEvent\&\ event);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ OnExit(wxCommandEvent\&\ event);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ OnAbout(wxCommandEvent\&\ event);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//TODO:\ Add\ methods\ to\ all\ available\ menu\ items}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_home_frame}{HomeFrame}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_home_frame_a618cd7ae0ff819ce2144a42349b929ce}{setListener}}(\mbox{\hyperlink{class_home_frame_controller}{HomeFrameController}}*\ controller);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_home_frame_a3fd8ad71945b9d0784623df176681d54}{setInstrumentName}}(std::string\ instrument\_name);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_home_frame_aa1d5c860cd6045887b7244e831fe022a}{updateImage}}(\textcolor{keyword}{const}\ wxImage\&\ newImage);}
+\DoxyCodeLine{00070\ \};}
+
+\end{DoxyCode}

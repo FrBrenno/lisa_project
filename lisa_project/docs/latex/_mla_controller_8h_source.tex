@@ -1,0 +1,27 @@
+\doxysection{Mla\+Controller.\+h}
+\hypertarget{_mla_controller_8h_source}{}\label{_mla_controller_8h_source}\index{lisa\_project/MlaController.h@{lisa\_project/MlaController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Mla.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}WFS.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Event.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mla_controller}{MlaController}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_mla}{Mla}}*\ selectMla;}
+\DoxyCodeLine{00013\ \ \ \ \ ViInt32\ err;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleMlaSelection(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&\ event);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleMlaSelected(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&\ event);}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_mla_controller}{MlaController}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mla_controller_af455d597ed4f1de477a0f195daee4c73}{populateMlaList}}(wxListBox*\ list);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mla_controller_adf3f0a99f2861176592001646c9e4406}{onMlaSelected}}(\textcolor{keywordtype}{int}\ selectedIndex);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mla_controller_a2ecc275cfd819e5a346655380bd585f6}{onClose}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mla_controller_a8b96eb97adac072fde4e4f4ead8057da}{handleError}}(\textcolor{keywordtype}{int}\ code,\ std::string\ message);}
+\DoxyCodeLine{00055\ \};}
+
+\end{DoxyCode}

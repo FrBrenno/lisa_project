@@ -1,0 +1,59 @@
+.TH "EventDispatcher" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EventDispatcher \- This class is a singleton that handles the publishing and subscribing to events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <EventDispatcher\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBPublishEvent\fP (const \fBEvent\fP &event)"
+.br
+.ti -1c
+.RI "void \fBSubscribeToEvent\fP (const std::string &eventName, std::function< void(const \fBEvent\fP &)> callback)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBEventDispatcher\fP & \fBInstance\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is a singleton that handles the publishing and subscribing to events\&. 
+
+Useful to manage intercontroller communication\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void EventDispatcher::PublishEvent (const \fBEvent\fP & event)"
+Publishes an event\&. This will call all the callbacks of the subscribers to this event\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP \fBEvent\fP to publish 
+.RE
+.PP
+
+.SS "void EventDispatcher::SubscribeToEvent (const std::string & eventName, std::function< void(const \fBEvent\fP &)> callback)"
+Allow an object to subscribe to an event\&. Whenever this event is published, the callback will be called\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIeventName\fP \fBEvent\fP to subscribe to 
+.br
+\fIcallback\fP Callback to be called when the event is published 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

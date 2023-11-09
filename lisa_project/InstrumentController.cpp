@@ -5,32 +5,35 @@
 
 InstrumentController::InstrumentController()
 {
-	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
-		[this](const Event& event) {
-			HandleInstrumentSelection(event);
-		});
-
 	this->err = VI_SUCCESS;
 	this->instrumentCount = 0;
 	this->selectedInstrument = new Instrument();
 
+	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
+		[this](const Event& event) {
+			HandleInstrumentSelection(event);
+		});
 }
 
 //=== Event Handlers ===//
 
 void InstrumentController::HandleInstrumentSelection(const Event& event)
 {
+	// Launch InstrumentSelectionDialog view
 	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
 	instrumentSelectionDialog->ShowModal();
 }
 
 void InstrumentController::HandleMlaSelected(const Event& event)
 {
+	// Get the reference to the selected MLA and set it into instrument attributes
 	Mla* selectedMla = (Mla*)event.data;
 	this->selectedInstrument->setMla(selectedMla);
 }
 
 void InstrumentController::mlaConfiguration() {
+	// Publish MlaSelectionEvent in order to allow the user to select an MLA
+	// Normally, MlaController should handle this event.
 	Event mlaSelectionEvent;
 	mlaSelectionEvent.name = "MlaSelection";
 	mlaSelectionEvent.data = (void*)this->selectedInstrument->getHandle();
@@ -96,8 +99,6 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Driver Revision
 		this->reviseDrive();
 		// MLA Selection
-		// TODO: Event MlaSelection -> open MLASelectionDialog
-		// By now, we are going to setup default mla
 		this->mlaConfiguration();
 		// Camera Configuration
 		this->cameraConfiguration();
@@ -116,6 +117,7 @@ void InstrumentController::onClose() {
 }
 
 void InstrumentController::reviseDrive() {
+
 	ViChar version_wfs_driver[256];
 	ViChar version_cam_driver[256];
 
@@ -136,16 +138,19 @@ void InstrumentController::reviseDrive() {
 
 void InstrumentController::initInstrument(ViRsrc resourceName) 
 {
+	// Variable initialization
 	ViSession* handle = this->selectedInstrument->getHandle();
 	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE],
 		serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
 
+	// API call to initiate a instrument session (handle)
 	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, handle))
 	{
 		this->handleError(err, "Not able to initialize instrument");
 		return;
 	}
 	else{
+		// Get instrument information
 		if (err = WFS_GetInstrumentInfo(*handle, manufacturer_name, instrument_name, serial_number_wfs, serial_number_cam))
 		{
 			this->handleError(err, "Not able to get instrument's information");
@@ -167,6 +172,7 @@ void InstrumentController::cameraConfiguration()
 {
 	ViSession handle = *this->selectedInstrument->getHandle();
 	int device_id = this->selectedInstrument->getDeviceId();
+
 	// If device is a WFS20
 	if (device_id & DEVICE_OFFSET_WFS20) {
 		ViInt32* spotsX = this->selectedInstrument->getSpotsX();
@@ -210,6 +216,7 @@ void InstrumentController::closeInstrument() {
 
 
 //=== Utility Functions ===//
+
 std::string InstrumentController::getInstrumentName() {
 	return this->selectedInstrument->getInstrumentName();
 }

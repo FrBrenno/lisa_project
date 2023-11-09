@@ -1,0 +1,25 @@
+\doxysection{Event\+Dispatcher.\+h}
+\hypertarget{_event_dispatcher_8h_source}{}\label{_event_dispatcher_8h_source}\index{lisa\_project/EventDispatcher.h@{lisa\_project/EventDispatcher.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Event.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_event_dispatcher}{EventDispatcher}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_event_dispatcher}{EventDispatcher}}()\ \{\}\ \ \textcolor{comment}{//\ Private\ constructor}}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<std::pair<std::string,\ std::function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&)>>>\ subscribers;\ \textcolor{comment}{//\ List\ of\ subscribers\ and\ their\ callbacks}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_event_dispatcher}{EventDispatcher}}\&\ Instance()\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_event_dispatcher}{EventDispatcher}}\ instance;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_dispatcher_a7df8ad4b21ddef37f601dd752075fb7c}{PublishEvent}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&\ event);\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_event_dispatcher_a3205450e67cc6079c8f6f23522de5e5b}{SubscribeToEvent}}(\textcolor{keyword}{const}\ std::string\&\ eventName,\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&)>\ callback);}
+\DoxyCodeLine{00034\ \};}
+
+\end{DoxyCode}

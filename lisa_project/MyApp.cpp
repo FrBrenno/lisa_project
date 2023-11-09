@@ -6,12 +6,14 @@ wxIMPLEMENT_APP(MyApp);
 bool MyApp::OnInit()
 {
     //=== Controller initialization ===//
+
     this->homeFrameController = new HomeFrameController();
     this->instrumentController = new InstrumentController();
     this->mlaController = new MlaController();
     this->imageController = new ImageController(this->instrumentController->getInstrument());
 
     //=== View initialization ===//
+
     homeFrame = new HomeFrame();
     homeFrame->setListener(this->homeFrameController);
     // Before Showing the software, do instrument selection

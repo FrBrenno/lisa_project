@@ -1,0 +1,81 @@
+\doxysection{Mla\+Controller Class Reference}
+\hypertarget{class_mla_controller}{}\label{class_mla_controller}\index{MlaController@{MlaController}}
+
+
+This controller manages the \doxylink{class_mla_selection_dialog}{Mla\+Selection\+Dialog} view and generate \doxylink{class_mla}{Mla} objects.  
+
+
+
+
+{\ttfamily \#include $<$Mla\+Controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mla_controller_af455d597ed4f1de477a0f195daee4c73}{populate\+Mla\+List}} (wx\+List\+Box \texorpdfstring{$\ast$}{*}list)
+\item 
+void \mbox{\hyperlink{class_mla_controller_adf3f0a99f2861176592001646c9e4406}{on\+Mla\+Selected}} (int selected\+Index)
+\item 
+void \mbox{\hyperlink{class_mla_controller_a2ecc275cfd819e5a346655380bd585f6}{on\+Close}} ()
+\item 
+void \mbox{\hyperlink{class_mla_controller_a8b96eb97adac072fde4e4f4ead8057da}{handle\+Error}} (int code, std\+::string message)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller manages the \doxylink{class_mla_selection_dialog}{Mla\+Selection\+Dialog} view and generate \doxylink{class_mla}{Mla} objects. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mla_controller_a8b96eb97adac072fde4e4f4ead8057da}\label{class_mla_controller_a8b96eb97adac072fde4e4f4ead8057da} 
+\index{MlaController@{MlaController}!handleError@{handleError}}
+\index{handleError@{handleError}!MlaController@{MlaController}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void Mla\+Controller\+::handle\+Error (\begin{DoxyParamCaption}\item[{int}]{code,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+Handles error messages.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Error code. \\
+\hline
+{\em message} & Developer error message. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mla_controller_a2ecc275cfd819e5a346655380bd585f6}\label{class_mla_controller_a2ecc275cfd819e5a346655380bd585f6} 
+\index{MlaController@{MlaController}!onClose@{onClose}}
+\index{onClose@{onClose}!MlaController@{MlaController}}
+\doxysubsubsection{\texorpdfstring{onClose()}{onClose()}}
+{\footnotesize\ttfamily void Mla\+Controller\+::on\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Handles when the user closes the view. \Hypertarget{class_mla_controller_adf3f0a99f2861176592001646c9e4406}\label{class_mla_controller_adf3f0a99f2861176592001646c9e4406} 
+\index{MlaController@{MlaController}!onMlaSelected@{onMlaSelected}}
+\index{onMlaSelected@{onMlaSelected}!MlaController@{MlaController}}
+\doxysubsubsection{\texorpdfstring{onMlaSelected()}{onMlaSelected()}}
+{\footnotesize\ttfamily void Mla\+Controller\+::on\+Mla\+Selected (\begin{DoxyParamCaption}\item[{int}]{selected\+Index }\end{DoxyParamCaption})}
+
+Handles when the user seleced an MLA.
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+Index} & Index of the selected MLA. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mla_controller_af455d597ed4f1de477a0f195daee4c73}\label{class_mla_controller_af455d597ed4f1de477a0f195daee4c73} 
+\index{MlaController@{MlaController}!populateMlaList@{populateMlaList}}
+\index{populateMlaList@{populateMlaList}!MlaController@{MlaController}}
+\doxysubsubsection{\texorpdfstring{populateMlaList()}{populateMlaList()}}
+{\footnotesize\ttfamily void Mla\+Controller\+::populate\+Mla\+List (\begin{DoxyParamCaption}\item[{wx\+List\+Box \texorpdfstring{$\ast$}{*}}]{list }\end{DoxyParamCaption})}
+
+Inserts all the MLAs given by Thorlabs API in the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Mla\+Controller.\+h\item 
+lisa\+\_\+project/Mla\+Controller.\+cpp\end{DoxyCompactItemize}

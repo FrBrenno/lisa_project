@@ -1,0 +1,20 @@
+\doxysection{Instrument\+Selection\+Dialog.\+h}
+\hypertarget{_instrument_selection_dialog_8h_source}{}\label{_instrument_selection_dialog_8h_source}\index{lisa\_project/InstrumentSelectionDialog.h@{lisa\_project/InstrumentSelectionDialog.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <wx/wx.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}InstrumentController.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_instrument_selection_dialog}{InstrumentSelectionDialog}}:\ \textcolor{keyword}{public}\ wxDialog\{}
+\DoxyCodeLine{00011\ \ \ \ \ wxWindow*\ parent;}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_instrument_controller}{InstrumentController}}*\ listener;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_instrument_selection_dialog}{InstrumentSelectionDialog}}(wxWindow*\ parent,\ \mbox{\hyperlink{class_instrument_controller}{InstrumentController}}*\ listener);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930}{OnOK}}(wxCommandEvent\&\ event);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066}{OnClose}}(wxCloseEvent\&\ event);}
+\DoxyCodeLine{00035\ \};}
+
+\end{DoxyCode}

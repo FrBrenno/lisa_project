@@ -1,0 +1,36 @@
+\doxysection{Instrument\+Controller.\+h}
+\hypertarget{_instrument_controller_8h_source}{}\label{_instrument_controller_8h_source}\index{lisa\_project/InstrumentController.h@{lisa\_project/InstrumentController.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}wx/wx.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Instrument.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Event.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_instrument_controller}{InstrumentController}}\{}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_instrument}{Instrument}}*\ selectedInstrument;}
+\DoxyCodeLine{00012\ \ \ \ \ ViInt32\ instrumentCount;}
+\DoxyCodeLine{00013\ \ \ \ \ ViInt32\ err;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleInstrumentSelection(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&\ event);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleMlaSelected(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_event}{Event}}\&\ event);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_instrument_controller}{InstrumentController}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::string\ getInstrumentName();}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_instrument}{Instrument}}*\ getInstrument();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a914bf819ab5a12ab591b0e4570043337}{populateInstrumentList}}(wxListBox*\ list);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a8284a2e71aae1b460644cd067aeee24c}{onInstrumentSelected}}(\textcolor{keywordtype}{int}\ selectedIndex);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_aa39d3f2b1620d04c4e6081315eaca5d7}{initInstrument}}(ViRsrc\ resourceName);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a6ce24bda2cd3ab9919b1e15ac1d28d2f}{reviseDrive}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_aa42774bc0375cbf19984da3f607251ac}{cameraConfiguration}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a3595712aab55e5a8a441cbb496a7e506}{mlaConfiguration}}();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a9ab934b6c87e8a34ea1173729eba7652}{onClose}}();\ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_a0fab52a1bb19d92e0a28cb995a659896}{closeInstrument}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instrument_controller_ae0d02d9bf208a9ca365bf7d9cb1da833}{handleError}}(\textcolor{keywordtype}{int}\ code,\ std::string\ message);}
+\DoxyCodeLine{00084\ \};}
+
+\end{DoxyCode}

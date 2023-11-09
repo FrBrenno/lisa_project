@@ -1,0 +1,64 @@
+\doxysection{Event\+Dispatcher Class Reference}
+\hypertarget{class_event_dispatcher}{}\label{class_event_dispatcher}\index{EventDispatcher@{EventDispatcher}}
+
+
+This class is a singleton that handles the publishing and subscribing to events.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Dispatcher.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_event_dispatcher_a7df8ad4b21ddef37f601dd752075fb7c}{Publish\+Event}} (const \mbox{\hyperlink{struct_event}{Event}} \&event)
+\item 
+void \mbox{\hyperlink{class_event_dispatcher_a3205450e67cc6079c8f6f23522de5e5b}{Subscribe\+To\+Event}} (const std\+::string \&event\+Name, std\+::function$<$ void(const \mbox{\hyperlink{struct_event}{Event}} \&)$>$ callback)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_event_dispatcher_a1cb1500328547db1dcd7a40cde4ca24e}\label{class_event_dispatcher_a1cb1500328547db1dcd7a40cde4ca24e} 
+static \mbox{\hyperlink{class_event_dispatcher}{Event\+Dispatcher}} \& {\bfseries Instance} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is a singleton that handles the publishing and subscribing to events. 
+
+Useful to manage intercontroller communication. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_dispatcher_a7df8ad4b21ddef37f601dd752075fb7c}\label{class_event_dispatcher_a7df8ad4b21ddef37f601dd752075fb7c} 
+\index{EventDispatcher@{EventDispatcher}!PublishEvent@{PublishEvent}}
+\index{PublishEvent@{PublishEvent}!EventDispatcher@{EventDispatcher}}
+\doxysubsubsection{\texorpdfstring{PublishEvent()}{PublishEvent()}}
+{\footnotesize\ttfamily void Event\+Dispatcher\+::\+Publish\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{event }\end{DoxyParamCaption})}
+
+Publishes an event. This will call all the callbacks of the subscribers to this event. 
+\begin{DoxyParams}{Parameters}
+{\em event} & \doxylink{struct_event}{Event} to publish \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_event_dispatcher_a3205450e67cc6079c8f6f23522de5e5b}\label{class_event_dispatcher_a3205450e67cc6079c8f6f23522de5e5b} 
+\index{EventDispatcher@{EventDispatcher}!SubscribeToEvent@{SubscribeToEvent}}
+\index{SubscribeToEvent@{SubscribeToEvent}!EventDispatcher@{EventDispatcher}}
+\doxysubsubsection{\texorpdfstring{SubscribeToEvent()}{SubscribeToEvent()}}
+{\footnotesize\ttfamily void Event\+Dispatcher\+::\+Subscribe\+To\+Event (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{event\+Name,  }\item[{std\+::function$<$ void(const \mbox{\hyperlink{struct_event}{Event}} \&)$>$}]{callback }\end{DoxyParamCaption})}
+
+Allow an object to subscribe to an event. Whenever this event is published, the callback will be called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Name} & \doxylink{struct_event}{Event} to subscribe to \\
+\hline
+{\em callback} & Callback to be called when the event is published \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Event\+Dispatcher.\+h\item 
+lisa\+\_\+project/Event\+Dispatcher.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,19 @@
+\doxysection{Message.\+h}
+\hypertarget{_message_8h_source}{}\label{_message_8h_source}\index{lisa\_project/Message.h@{lisa\_project/Message.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_message}{Message}}\{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{int}\ code;\ \textcolor{comment}{//\ 0\ for\ success,\ >1\ for\ errors}}
+\DoxyCodeLine{00007\ \ \ \ \ std::string\ message;}
+\DoxyCodeLine{00008\ \ \ \ \ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_message}{Message}}(\textcolor{keywordtype}{int}\ code,\ std::string\ message);}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ getCode();}
+\DoxyCodeLine{00012\ \ \ \ \ std::string\ getMessage();}
+\DoxyCodeLine{00013\ \};}
+
+\end{DoxyCode}

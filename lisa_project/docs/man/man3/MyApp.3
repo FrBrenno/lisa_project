@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-MyApp
+MyApp \- This class is the main class of the application responsible to manage all the application controllers and views\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <MyApp\&.h>\fP
 .PP
 Inherits wxApp\&.
 .SS "Public Member Functions"
@@ -14,7 +17,13 @@ Inherits wxApp\&.
 .ti -1c
 .RI "virtual bool \fBOnInit\fP ()"
 .br
+.ti -1c
+.RI "virtual int \fBOnExit\fP ()"
+.br
 .in -1c
+.SH "Detailed Description"
+.PP 
+This class is the main class of the application responsible to manage all the application controllers and views\&. 
 
 .SH "Author"
 .PP 

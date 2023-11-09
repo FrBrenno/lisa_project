@@ -1,0 +1,84 @@
+\doxysection{Instrument\+Selection\+Dialog Class Reference}
+\hypertarget{class_instrument_selection_dialog}{}\label{class_instrument_selection_dialog}\index{InstrumentSelectionDialog@{InstrumentSelectionDialog}}
+
+
+This view is used to select an instrument from a list of available instruments.  
+
+
+
+
+{\ttfamily \#include $<$Instrument\+Selection\+Dialog.\+h$>$}
+
+Inheritance diagram for Instrument\+Selection\+Dialog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_instrument_selection_dialog}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_instrument_selection_dialog_af1d1f2240c4406d933d92d65a5d3d57f}{Instrument\+Selection\+Dialog}} (wx\+Window \texorpdfstring{$\ast$}{*}parent, \mbox{\hyperlink{class_instrument_controller}{Instrument\+Controller}} \texorpdfstring{$\ast$}{*}listener)
+\item 
+void \mbox{\hyperlink{class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930}{On\+OK}} (wx\+Command\+Event \&event)
+\item 
+void \mbox{\hyperlink{class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066}{On\+Close}} (wx\+Close\+Event \&event)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This view is used to select an instrument from a list of available instruments. 
+
+This view is managed by its respective controller, \doxylink{class_instrument_controller}{Instrument\+Controller}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_instrument_selection_dialog_af1d1f2240c4406d933d92d65a5d3d57f}\label{class_instrument_selection_dialog_af1d1f2240c4406d933d92d65a5d3d57f} 
+\index{InstrumentSelectionDialog@{InstrumentSelectionDialog}!InstrumentSelectionDialog@{InstrumentSelectionDialog}}
+\index{InstrumentSelectionDialog@{InstrumentSelectionDialog}!InstrumentSelectionDialog@{InstrumentSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{InstrumentSelectionDialog()}{InstrumentSelectionDialog()}}
+{\footnotesize\ttfamily Instrument\+Selection\+Dialog\+::\+Instrument\+Selection\+Dialog (\begin{DoxyParamCaption}\item[{wx\+Window \texorpdfstring{$\ast$}{*}}]{parent,  }\item[{\mbox{\hyperlink{class_instrument_controller}{Instrument\+Controller}} \texorpdfstring{$\ast$}{*}}]{listener }\end{DoxyParamCaption})}
+
+\doxylink{class_instrument_selection_dialog}{Instrument\+Selection\+Dialog} Constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The window that generated this dialog. This could be a nullptr. \\
+\hline
+{\em listener} & The controller that manages this view. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066}\label{class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066} 
+\index{InstrumentSelectionDialog@{InstrumentSelectionDialog}!OnClose@{OnClose}}
+\index{OnClose@{OnClose}!InstrumentSelectionDialog@{InstrumentSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{OnClose()}{OnClose()}}
+{\footnotesize\ttfamily void Instrument\+Selection\+Dialog\+::\+On\+Close (\begin{DoxyParamCaption}\item[{wx\+Close\+Event \&}]{event }\end{DoxyParamCaption})}
+
+Handles when the user closes the dialog.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & On\+Close default wx\+Widgets \doxylink{struct_event}{Event}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930}\label{class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930} 
+\index{InstrumentSelectionDialog@{InstrumentSelectionDialog}!OnOK@{OnOK}}
+\index{OnOK@{OnOK}!InstrumentSelectionDialog@{InstrumentSelectionDialog}}
+\doxysubsubsection{\texorpdfstring{OnOK()}{OnOK()}}
+{\footnotesize\ttfamily void Instrument\+Selection\+Dialog\+::\+On\+OK (\begin{DoxyParamCaption}\item[{wx\+Command\+Event \&}]{event }\end{DoxyParamCaption})}
+
+Handles when the user clicks the OK button.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & On\+Ok default wx\+Widgets \doxylink{struct_event}{Event}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lisa\+\_\+project/Instrument\+Selection\+Dialog.\+h\item 
+lisa\+\_\+project/Instrument\+Selection\+Dialog.\+cpp\end{DoxyCompactItemize}

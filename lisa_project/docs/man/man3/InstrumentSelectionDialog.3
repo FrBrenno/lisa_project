@@ -1,0 +1,68 @@
+.TH "InstrumentSelectionDialog" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+InstrumentSelectionDialog \- This view is used to select an instrument from a list of available instruments\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <InstrumentSelectionDialog\&.h>\fP
+.PP
+Inherits wxDialog\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInstrumentSelectionDialog\fP (wxWindow *parent, \fBInstrumentController\fP *listener)"
+.br
+.ti -1c
+.RI "void \fBOnOK\fP (wxCommandEvent &event)"
+.br
+.ti -1c
+.RI "void \fBOnClose\fP (wxCloseEvent &event)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This view is used to select an instrument from a list of available instruments\&. 
+
+This view is managed by its respective controller, \fBInstrumentController\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InstrumentSelectionDialog::InstrumentSelectionDialog (wxWindow * parent, \fBInstrumentController\fP * listener)"
+\fBInstrumentSelectionDialog\fP Constructor\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP The window that generated this dialog\&. This could be a nullptr\&. 
+.br
+\fIlistener\fP The controller that manages this view\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void InstrumentSelectionDialog::OnClose (wxCloseEvent & event)"
+Handles when the user closes the dialog\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP OnClose default wxWidgets \fBEvent\fP\&. 
+.RE
+.PP
+
+.SS "void InstrumentSelectionDialog::OnOK (wxCommandEvent & event)"
+Handles when the user clicks the OK button\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP OnOk default wxWidgets \fBEvent\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

@@ -1,0 +1,58 @@
+.TH "ImageController" 3 "PROJH402 - Image Acquisition with Plenoptic Camera" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ImageController \- This controller handles image acquisition\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ImageController\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBImageController\fP (\fBInstrument\fP *instrument)"
+.br
+.ti -1c
+.RI "void \fBtakeImage\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleError\fP (int code, std::string message)"
+.br
+.ti -1c
+.RI "wxImage * \fBgetImage\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This controller handles image acquisition\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "wxImage * ImageController::getImage ()"
+Returns a pointer to the wxImage created from the image buffer given by the API\&.
+.PP
+\fBReturns\fP
+.RS 4
+wxImage* Reference to image object 
+.RE
+.PP
+
+.SS "void ImageController::handleError (int code, std::string message)"
+Handles error messages\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcode\fP Error code 
+.br
+\fImessage\fP Developer error message 
+.RE
+.PP
+
+.SS "void ImageController::takeImage ()"
+Returns a pointer the image buffer\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for PROJH402 - Image Acquisition with Plenoptic Camera from the source code\&.

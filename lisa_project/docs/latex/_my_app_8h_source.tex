@@ -1,0 +1,38 @@
+\doxysection{My\+App.\+h}
+\hypertarget{_my_app_8h_source}{}\label{_my_app_8h_source}\index{lisa\_project/MyApp.h@{lisa\_project/MyApp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ For\ compilers\ that\ support\ precompilation,\ includes\ "{}wx/wx.h"{}.}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <wx/wxprec.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}HomeFrame.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}HomeFrameController.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}InstrumentController.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}MlaController.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ImageController.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ WX\_PRECOMP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <wx/wx.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_my_app}{MyApp}}\ :\ \textcolor{keyword}{public}\ wxApp}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//===\ Controllers\ ===//}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_home_frame_controller}{HomeFrameController}}*\ homeFrameController;}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_instrument_controller}{InstrumentController}}*\ instrumentController;}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_mla_controller}{MlaController}}*\ mlaController;}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_image_controller}{ImageController}}*\ imageController;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//==\ Views\ ===//}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_home_frame}{HomeFrame}}*\ homeFrame;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ OnInit();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ OnExit();}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}
