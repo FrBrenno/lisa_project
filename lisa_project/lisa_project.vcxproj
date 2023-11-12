@@ -147,8 +147,6 @@
     <ClCompile Include="BaseController.cpp" />
     <ClCompile Include="CameraConfig.cpp" />
     <ClCompile Include="CameraConfig.h" />
-    <ClCompile Include="CameraSettingsController.cpp" />
-    <ClCompile Include="CameraSettingsDialog.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="HomeFrameController.cpp" />
     <ClCompile Include="HomeFrameController.h" />
@@ -165,8 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseController.h" />
-    <ClInclude Include="CameraSettingsController.h" />
-    <ClInclude Include="CameraSettingsDialog.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="ImageController.h" />

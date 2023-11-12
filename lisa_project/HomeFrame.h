@@ -47,14 +47,7 @@ class HomeFrame : public wxFrame
 
     //TODO: Add methods to all available menu items
 public:
-    HomeFrame();
-
-    /**
-     * Sets the view listener, aka Controller.
-     * 
-     * @param controller HomeFrameController that manages this view.
-     */
-    void setListener(HomeFrameController* controller);
+    HomeFrame(HomeFrameController* controller);
 
     /**
      * Sets the instrument in use name.

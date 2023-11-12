@@ -3,11 +3,11 @@
 #include "MenuID.h"
 #include "InstrumentSelectionDialog.h"
 
-HomeFrame::HomeFrame()
+HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
     //=== Attribute Initialization ===//
-    this->listener = nullptr;
+    this->listener = controller;
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, wxBitmap());
 
     //=== Menu Initialization ===//
@@ -111,11 +111,6 @@ void HomeFrame::updateImage(const wxImage& newImage) {
 
 
 //=== UTILITY FUNCTIONS ===//
-
-void HomeFrame::setListener(HomeFrameController* controller)
-{
-    this->listener = controller;
-}
 
 void HomeFrame::setInstrumentName(std::string instrument_name)
 {

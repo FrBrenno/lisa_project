@@ -13,12 +13,10 @@ bool MyApp::OnInit()
     this->instrumentController = new InstrumentController(this->is_wfs_connected);
     this->mlaController = new MlaController(this->is_wfs_connected);
     this->imageController = new ImageController(this->is_wfs_connected, this->instrumentController->getInstrument());
-    this->cameraSettingsController = new CameraSettingsController(this->is_wfs_connected);
 
     //=== View initialization ===//
 
-    homeFrame = new HomeFrame();
-    homeFrame->setListener(this->homeFrameController);
+    homeFrame = new HomeFrame(this->homeFrameController);
     homeFrame->Show(true);
     // Before Showing the software, do instrument selection
     if (this->is_wfs_connected) {
