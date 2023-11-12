@@ -247,7 +247,7 @@ void InstrumentController::cameraConfiguration()
 void InstrumentController::closeInstrument()
 {
 	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
+		// this->handleError(-1, "WFS is not connected");
 		return;
 	}
 

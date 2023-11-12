@@ -3,7 +3,11 @@
 #include "EventDispatcher.h"
 
 HomeFrameController::HomeFrameController(bool is_wfs_connected) : BaseController(is_wfs_connected)
-{}
+{
+	if (!is_wfs_connected) {
+		this->handleError(-1, "No WFS connected");
+	}
+}
 
 void HomeFrameController::onInstrumentSelection(wxWindow* parent) 
 {
@@ -12,4 +16,5 @@ void HomeFrameController::onInstrumentSelection(wxWindow* parent)
 
 	EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
 }
+
 
