@@ -7,7 +7,6 @@
 #include "InstrumentController.h"
 #include "MlaController.h"
 #include "ImageController.h"
-#include "CameraSettingsController.h"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -27,7 +26,6 @@ class MyApp : public wxApp
     InstrumentController* instrumentController;
     MlaController* mlaController;
     ImageController* imageController;
-    CameraSettingsController* cameraSettingsController;
 
     //== Views ===//
 
