@@ -26,7 +26,7 @@ class InstrumentController: public BaseController{
 	void HandleMlaSelected(const Event& event);
 
 public:
-	InstrumentController();
+	InstrumentController(bool is_wfs_connected);
 
 	std::string getInstrumentName();
 	Instrument* getInstrument();

@@ -3,7 +3,7 @@
 #include "EventDispatcher.h"
 #include "wx/wx.h"
 
-MlaController::MlaController() {
+MlaController::MlaController(bool is_wfs_connected) : BaseController(is_wfs_connected) {
 	this->selectMla = new Mla();
 	this->err = 0;
 	
@@ -16,7 +16,13 @@ MlaController::MlaController() {
 
 //=== Event Handler ===//
 
-void MlaController::HandleMlaSelection(const Event& event) {
+void MlaController::HandleMlaSelection(const Event& event) 
+{
+	if (!this->is_wfs_connected) {
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
+
 	// Generate the view and handle Mla Selection
 	this->selectMla->setHandle(*(ViSession*)event.data);
 	MlaSelectionDialog* mlaSelectionDialog = new MlaSelectionDialog(nullptr, this);
@@ -33,7 +39,13 @@ void MlaController::HandleMlaSelected(const Event& event) {
 
 //=== WFS API Functions ===//
 
-void MlaController::populateMlaList(wxListBox* list) {
+void MlaController::populateMlaList(wxListBox* list) 
+{
+	if (!this->is_wfs_connected) {
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
+
 	ViSession handle = this->selectMla->getHandle();
 	ViInt32* mla_count = this->selectMla->getMlaCount();
 
@@ -71,7 +83,13 @@ void MlaController::populateMlaList(wxListBox* list) {
 	}
 }
 
-void MlaController::onMlaSelected(int selectedIndex) {
+void MlaController::onMlaSelected(int selectedIndex) 
+{
+	if (!this->is_wfs_connected) {
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
+
 	// Setup the selected MLA
 	ViStatus handle = this->selectMla->getHandle();
 	if (err = WFS_SelectMla(handle, selectedIndex))

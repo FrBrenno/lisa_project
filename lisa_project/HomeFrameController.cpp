@@ -2,7 +2,7 @@
 #include "InstrumentSelectionDialog.h"
 #include "EventDispatcher.h"
 
-HomeFrameController::HomeFrameController()
+HomeFrameController::HomeFrameController(bool is_wfs_connected) : BaseController(is_wfs_connected)
 {}
 
 void HomeFrameController::onInstrumentSelection(wxWindow* parent) 

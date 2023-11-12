@@ -1,6 +1,9 @@
 #include "BaseController.h"
 #include "WFS.h"
 
+BaseController::BaseController(bool is_wfs_connected) {
+	this->is_wfs_connected = is_wfs_connected;
+}
 
 void BaseController::handleError(int code, std::string message){
 	char description[WFS_ERR_DESCR_BUFFER_SIZE];
@@ -16,5 +19,5 @@ void BaseController::handleError(int code, std::string message){
 	{
 		strcpy(description, "");
 	}
-	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
+	wxMessageBox(wxString::Format("%s\n\t%s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 }

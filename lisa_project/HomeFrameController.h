@@ -10,7 +10,7 @@
 class HomeFrameController: public BaseController{
 
 public:
-	HomeFrameController();
+	HomeFrameController(bool is_wfs_connected);
 
 	/**
 	 * Publishes an InstrumentSelectionEvent.

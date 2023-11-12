@@ -4,8 +4,10 @@
 #include <string>
 
 class BaseController{
-
+protected:
+	bool is_wfs_connected;
 public:
+	BaseController(bool is_wfs_connected);
 	/**
 	 * Handles when the user closes the view.
 	 *

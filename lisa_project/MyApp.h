@@ -18,6 +18,7 @@
  */
 class MyApp : public wxApp
 {
+    bool is_wfs_connected = false; // Test API connectivity
 
     //=== Controllers ===//
 
@@ -33,5 +34,6 @@ class MyApp : public wxApp
 
 public:
     virtual bool OnInit();
+    void check_api_connection();
     virtual int OnExit();
 };

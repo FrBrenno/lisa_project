@@ -1,7 +1,7 @@
 #include "ImageController.h"
 #include "WFS.h"
 
-ImageController::ImageController(Instrument* instrument)
+ImageController::ImageController(bool is_wfs_connected, Instrument* instrument): BaseController(is_wfs_connected)
 {
 	this->instrument = instrument;
 	this->err = 0;
@@ -13,6 +13,12 @@ ImageController::ImageController(Instrument* instrument)
 }
 
 void ImageController::takeImage(){
+	//Verifies if the api is connected before taking an image, if not, it will return
+	if (!this->is_wfs_connected) {
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
+
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
 

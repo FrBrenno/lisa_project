@@ -17,7 +17,7 @@ class ImageController: public BaseController{
 	wxImage* image;
 
 public:
-	ImageController(Instrument* instrument);
+	ImageController(bool is_wfs_connected, Instrument* instrument);
 
 	/**
 	 * Returns a pointer the image buffer.
