@@ -30,6 +30,8 @@ class HomeFrame : public wxFrame
      * @param event OnInstrumentSelection event.
      */
     void OnInstrumentSelection(wxCommandEvent& event);
+
+    void OnCameraSettings(wxCommandEvent& event);
     /**
      * Handles when the user clicks on the exit menu item or closes the window.
      * 

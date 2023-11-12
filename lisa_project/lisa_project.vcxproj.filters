@@ -84,6 +84,12 @@
     <ClCompile Include="BaseController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="CameraSettingsDialog.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSettingsController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
@@ -123,6 +129,12 @@
       <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
     <ClInclude Include="BaseController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSettingsDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSettingsController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
   </ItemGroup>

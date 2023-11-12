@@ -17,4 +17,7 @@ void HomeFrameController::onInstrumentSelection(wxWindow* parent)
 	EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
 }
 
-
+void HomeFrameController::onCameraSettings(wxWindow* parent)
+{
+	return; //FIXME
+}
