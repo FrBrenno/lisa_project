@@ -122,23 +122,4 @@ void MlaController::onClose() {
 
 //=== Utility Function ===//
 
-void MlaController::handleError(int code, std::string message)
-{
-	char description[WFS_ERR_DESCR_BUFFER_SIZE];
 
-	if (!code) return;
-
-	// Get error string
-	if (code != -1)
-	{
-		// If error code is not -1, then get the error message
-		WFS_error_message(VI_NULL, code, description);
-	}
-	else
-	{
-		// If error code is -1, then it is not a Thorslab API error
-		strcpy(description, "");
-	}
-	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
-
-}

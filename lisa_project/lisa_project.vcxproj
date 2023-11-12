@@ -144,6 +144,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseController.cpp" />
     <ClCompile Include="CameraConfig.cpp" />
     <ClCompile Include="CameraConfig.h" />
     <ClCompile Include="EventDispatcher.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="HomeFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseController.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="ImageController.h" />

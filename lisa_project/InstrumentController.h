@@ -2,12 +2,12 @@
 #include "wx/wx.h"
 #include "Instrument.h"
 #include "Event.h"
-
+#include "BaseController.h"
 /**
  * @class InstrumentController.
  * @brief This controller class is responsible for managing Instruments and their associated views.
  */
-class InstrumentController{
+class InstrumentController: public BaseController{
 	Instrument* selectedInstrument;
 	ViInt32 instrumentCount;
 	ViInt32 err;
@@ -64,21 +64,12 @@ public:
 	 * 
 	 */
 	void mlaConfiguration();
-	/**
-	 * Handles when the user closes the InstrumentSelectionDialog.
-	 */
-	void onClose();	
+	
 	/**
 	 * Closes instrument API session.
 	 * 
 	 */
 	void closeInstrument();
 
-	/**
-	 * Handles error messages.
-	 * 
-	 * @param code Error code
-	 * @param message Developer error message
-	 */
-	void handleError(int code, std::string message);
+	void onClose() override;
 };

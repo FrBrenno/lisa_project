@@ -108,7 +108,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 
 }
 
-void InstrumentController::onClose() {
+void InstrumentController::onClose(){
 	// If instrument is initialized, just close it
 	if (this->selectedInstrument->isInitialized()) 
 	{
@@ -228,22 +228,4 @@ Instrument* InstrumentController::getInstrument() {
 	return this->selectedInstrument;
 }
 
-void InstrumentController::handleError(int code, std::string message)
-{
-	char description[WFS_ERR_DESCR_BUFFER_SIZE];
-
-	if (!code) return;
-
-	// Get error string
-	if (code != -1)
-	{
-		WFS_error_message(VI_NULL, code, description);
-	}
-	else
-	{
-		strcpy(description, "");
-	}
-	wxMessageBox(wxString::Format("%s:\n =>\t %s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
-
-}
 

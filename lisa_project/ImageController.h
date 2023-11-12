@@ -2,12 +2,13 @@
 #include "wx/wx.h"
 #include "CameraConfig.h"
 #include "Instrument.h"
+#include "BaseController.h"
 
 /**
  * @class ImageController.
  * @brief This controller handles image acquisition. 
  */
-class ImageController{
+class ImageController: public BaseController{
 	CameraConfig* cameraConfig;
 	Instrument* instrument;
 	int err;
@@ -23,13 +24,6 @@ public:
 	 * 
 	 */
 	void takeImage();
-	/**
-	 * Handles error messages.
-	 * 
-	 * @param code Error code
-	 * @param message Developer error message
-	 */
-	void handleError(int code, std::string message);
 
 	/**
 	 * Returns a pointer to the wxImage created from the image buffer given by the API.

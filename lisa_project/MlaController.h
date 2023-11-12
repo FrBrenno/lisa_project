@@ -3,12 +3,13 @@
 #include "Mla.h"
 #include "WFS.h"
 #include "Event.h"
+#include "BaseController.h"
 
 /**
  * @class MlaController.
  * @brief This controller manages the MlaSelectionDialog view and generate Mla objects.
  */
-class MlaController {
+class MlaController: public BaseController {
 	Mla* selectMla;
 	ViInt32 err;
 
@@ -39,17 +40,6 @@ public:
 	 * @param selectedIndex Index of the selected MLA.
 	 */
 	void onMlaSelected(int selectedIndex);
-	/**
-	 * Handles when the user closes the view.
-	 * 
-	 */
-	void onClose();
-
-	/**
-	 * Handles error messages.
-	 * 
-	 * @param code Error code.
-	 * @param message Developer error message.
-	 */
-	void handleError(int code, std::string message);
+	
+	void onClose() override;
 };
