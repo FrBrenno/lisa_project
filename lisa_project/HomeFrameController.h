@@ -18,4 +18,6 @@ public:
 	 * @param parent 
 	 */
 	void onInstrumentSelection(wxWindow* parent);
+
+	void onCameraSettings(wxWindow* parent);
 };

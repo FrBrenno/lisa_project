@@ -72,26 +72,24 @@ HomeFrame::HomeFrame()
     // TODO: Bind events to menu items
 
     Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
+    Bind(wxEVT_MENU, &HomeFrame::OnCameraSettings, this, ID_SETUP_CAMERA_SETTINGS);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
 
 }
 
-void HomeFrame::setListener(HomeFrameController* controller)
-{
-	this->listener = controller;
-}
-
-void HomeFrame::setInstrumentName(std::string instrument_name)
-{
-    this->instrumentName = instrument_name;
-    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
-}
+//=== MENU EVENTS FUNCTIONS===//
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
     this->listener->onInstrumentSelection(this);
 }
+
+void HomeFrame::OnCameraSettings(wxCommandEvent& event)
+{
+	this->listener->onCameraSettings(this);
+}
+
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
     Close(true);
@@ -103,8 +101,24 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
         "About LISA Plenoptic Camera Visualizer", wxOK | wxICON_INFORMATION);
 }
 
+//=== VIEW FUNCTIONS ===//
+
 void HomeFrame::updateImage(const wxImage& newImage) {
     wxBitmap* bitmap = new wxBitmap(newImage);
     imageControl->SetBitmap(*bitmap);
     imageControl->Refresh();
+}
+
+
+//=== UTILITY FUNCTIONS ===//
+
+void HomeFrame::setListener(HomeFrameController* controller)
+{
+    this->listener = controller;
+}
+
+void HomeFrame::setInstrumentName(std::string instrument_name)
+{
+    this->instrumentName = instrument_name;
+    SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
 }
