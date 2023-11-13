@@ -33,8 +33,8 @@ bool MyApp::OnInit()
 		check_api_connection();
 	}
 
-    // this->imageController->takeImage();
-    // homeFrame->updateImage(this->imageController->getImage());
+    this->imageController->takeImage();
+    homeFrame->updateImage(this->imageController->getBitmap());
     return true;
 }
 

@@ -12,7 +12,7 @@ class Instrument{
 	// Instrument Parameters
 	int device_id;
 	ViSession handle;
-	int status;
+	ViInt32 status;
 	bool is_initialized;
 
 	// WFS Parameters
@@ -37,6 +37,7 @@ public:
 	void setInstrumentInfo(std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam);
 	void setInitialized(bool is_initialized);
 	void setMla(Mla* mla);
+	void setStatus(ViInt32 status);
 
 	bool isInitialized();
 	std::string getInstrumentName();
@@ -44,5 +45,7 @@ public:
 	int getDeviceId();
 	ViInt32* getSpotsX();
 	ViInt32* getSpotsY();
+	ViInt32 getStatus();
+
 
 };

@@ -36,6 +36,7 @@ MlaSelectionDialog::MlaSelectionDialog(wxWindow* parent, MlaController* listener
 	{
 		this->Destroy();
 	}
+	CenterOnScreen();
 }
 
 void MlaSelectionDialog::OnOK(wxCommandEvent& event)

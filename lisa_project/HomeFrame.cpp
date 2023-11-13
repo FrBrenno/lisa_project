@@ -5,9 +5,7 @@
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
-    //=== Attribute Initialization ===//
     this->listener = controller;
-    this->imageControl = new wxStaticBitmap(this, wxID_ANY, wxBitmap());
 
     //=== Menu Initialization ===//
     // File Menu
@@ -67,6 +65,15 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     CreateStatusBar();
     SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer!"));
 
+    //=== Main Initialization ===//
+    wxImage::AddHandler(new wxPNGHandler);
+    wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
+    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap);
+
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
+    SetSizerAndFit(mainSizer);
+
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items
 
@@ -74,6 +81,9 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     Bind(wxEVT_MENU, &HomeFrame::OnCameraSettings, this, ID_SETUP_CAMERA_SETTINGS);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
+
+    SetSize(800, 600);
+    CenterOnScreen();
 
 }
 
@@ -102,9 +112,8 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
 
 //=== VIEW FUNCTIONS ===//
 
-void HomeFrame::updateImage(const wxImage& newImage) {
-    wxBitmap* bitmap = new wxBitmap(newImage);
-    imageControl->SetBitmap(*bitmap);
+void HomeFrame::updateImage(const wxBitmap* newBitmap) {
+    imageControl->SetBitmap(*newBitmap);
     imageControl->Refresh();
 }
 

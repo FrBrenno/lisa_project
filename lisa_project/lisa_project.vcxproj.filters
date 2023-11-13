@@ -138,4 +138,9 @@
       <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\lisa_logo.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

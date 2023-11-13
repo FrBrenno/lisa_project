@@ -125,6 +125,12 @@ void MlaController::onMlaSelected(int selectedIndex)
 		grd_corr_0,
 		grd_corr_45
 	);
+
+	Event mlaSelectedEvent;
+	mlaSelectedEvent.name = "MlaSelected";
+	mlaSelectedEvent.data = (void*)this->selectMla;
+
+	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
 }
 
 

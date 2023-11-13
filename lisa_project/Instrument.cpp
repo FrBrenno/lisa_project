@@ -34,6 +34,10 @@ void Instrument::setMla(Mla* mla) {
 	this->mla = mla;
 }
 
+void Instrument::setStatus(ViInt32 status) {
+	this->status = status;
+}
+
 bool Instrument::isInitialized() {
 	return this->is_initialized;
 }
@@ -52,4 +56,8 @@ ViInt32* Instrument::getSpotsX() {
 
 ViInt32* Instrument::getSpotsY() {
 	return &this->spots_y;
+}
+
+ViInt32 Instrument::getStatus() {
+	return this->status;
 }

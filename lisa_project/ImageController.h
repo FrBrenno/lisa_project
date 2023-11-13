@@ -12,10 +12,11 @@ class ImageController: public BaseController{
 	CameraConfig* cameraConfig;
 	Instrument* instrument;
 	int err;
-	unsigned char* imageBuffer;
+	ViAUInt8 imageBuffer, rgbBuffer;
 	ViInt32 rows, cols;
 	wxImage* image;
 
+	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
 	ImageController(bool is_wfs_connected, Instrument* instrument);
 
@@ -30,5 +31,5 @@ public:
 	 * 
 	 * @return wxImage* Reference to image object
 	 */
-	wxImage* getImage();
+	wxBitmap* getBitmap();
 };

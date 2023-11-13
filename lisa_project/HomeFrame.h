@@ -62,5 +62,5 @@ public:
      * 
      * @param newImage Reference to the new image to be displayed.
      */
-    void updateImage(const wxImage& newImage);
+    void updateImage(const wxBitmap* newBitmap);
 };

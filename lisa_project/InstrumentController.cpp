@@ -119,7 +119,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Initialize instrument
 		this->initInstrument(resourceName);
 		// Driver Revision
-		this->reviseDrive();
+		// this->reviseDrive();
 		// MLA Selection
 		this->mlaConfiguration();
 		// Camera Configuration

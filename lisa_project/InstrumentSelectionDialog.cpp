@@ -38,6 +38,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
 	{
 		this->Destroy();
 	}
+    CenterOnScreen();
 }
 
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)

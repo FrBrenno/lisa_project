@@ -180,6 +180,9 @@
     <ClInclude Include="CameraSettingsController.h" />
     <ClInclude Include="CameraSettingsDialog.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\lisa_logo.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
