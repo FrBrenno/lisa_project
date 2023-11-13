@@ -1,7 +1,6 @@
 #include "HomeFrame.h"
 #include "HomeFrameController.h"
 #include "MenuID.h"
-#include "InstrumentSelectionDialog.h"
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
@@ -92,7 +91,7 @@ void HomeFrame::OnCameraSettings(wxCommandEvent& event)
 
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
-    Close(true);
+    exit(0);
 }
 
 void HomeFrame::OnAbout(wxCommandEvent& event)

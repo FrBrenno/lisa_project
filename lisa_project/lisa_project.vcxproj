@@ -160,6 +160,8 @@
     <ClCompile Include="MlaSelectionDialog.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="HomeFrame.cpp" />
+    <ClCompile Include="CameraSettingsController.cpp" />
+    <ClCompile Include="CameraSettingsDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseController.h" />
@@ -175,6 +177,8 @@
     <ClInclude Include="Settings.h" />
     <ClInclude Include="MenuID.h" />
     <ClInclude Include="HomeFrame.h" />
+    <ClInclude Include="CameraSettingsController.h" />
+    <ClInclude Include="CameraSettingsDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
