@@ -1,10 +1,12 @@
 #include "MyApp.h"
 #include "InstrumentSelectionDialog.h"
+#include "wx/busyinfo.h"
 
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
 {
+    
     check_api_connection();
 
     //=== Controller initialization ===//
@@ -27,7 +29,9 @@ bool MyApp::OnInit()
         homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     }
     
-    
+    if (!this->is_wfs_connected) {
+		check_api_connection();
+	}
 
     // this->imageController->takeImage();
     // homeFrame->updateImage(this->imageController->getImage());
@@ -36,12 +40,27 @@ bool MyApp::OnInit()
 
 void MyApp::check_api_connection()
 {
-    ViPInt32 status = VI_NULL;
-    if (int err = WFS_GetStatus(VI_NULL, status)) {
-        this->is_wfs_connected = false;
-        return;
-    }
-    this->is_wfs_connected = true;
+    const int maxTries = 5;
+    const int timeoutMillis = 1000;
+
+    for (int tryCount = 1; tryCount <= maxTries; ++tryCount)
+    {
+        ViInt32 instr_count = VI_NULL;
+        if (int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count) )
+        {
+            this->is_wfs_connected = false;
+        }
+        else
+        {
+            this->is_wfs_connected = true;
+            return;
+        }
+        wxBusyInfo busyInfo(wxString::Format("Connecting to API... Attempt %d of %d", tryCount, maxTries));
+        wxMilliSleep(timeoutMillis);
+    }   
+    this->is_wfs_connected = false;
+    wxMessageBox("Could not connect to API. Please check connection and try again.", "Error", wxOK | wxICON_ERROR);
+    return;
 }
 
 /*

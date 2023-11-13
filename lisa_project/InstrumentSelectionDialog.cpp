@@ -17,7 +17,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
     listener->populateInstrumentList(instrumentList);
 
     // Show popup if more than one instruments is available
-    if (instrumentList->GetCount() > 1)
+    if (instrumentList->GetCount() > 0)
 	{
         // Ok Button
         wxButton* okButton = new wxButton(panel, wxID_ANY, "OK");
