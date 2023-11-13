@@ -11,7 +11,8 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
     wxTextCtrl* nbImageReadingCtrl = new wxTextCtrl(this, wxID_ANY);
     wxTextCtrl* exposureTimeCtrl = new wxTextCtrl(this, wxID_ANY);
     wxTextCtrl* noiseCutLevelCtrl = new wxTextCtrl(this, wxID_ANY);
-    wxStaticText* gainCtrl = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%.2f"), 1.00));
+    wxTextCtrl* gainCtrl = new wxTextCtrl(this, wxID_ANY, wxString::Format(wxT("%.2f"), 1.00));
+    gainCtrl->Enable(false);
     wxTextCtrl* blackLevelCtrl = new wxTextCtrl(this, wxID_ANY);
     
     wxCheckBox* autoExposureButton = new wxCheckBox(this, wxID_ANY, wxT("Auto"));
