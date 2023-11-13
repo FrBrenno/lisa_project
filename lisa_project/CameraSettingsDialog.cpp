@@ -52,6 +52,10 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
     buttonSizer->Add(cancelButton, 0, wxALIGN_RIGHT | wxRIGHT, 10);
     buttonSizer->Add(okButton, 0, wxALIGN_RIGHT);
 
+    //Bind buttons to functions
+    Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnOK, this, okButton->GetId());
+    Bind(wxEVT_CLOSE_WINDOW, &CameraSettingsDialog::OnClose, this);
+
     // Set the main sizer
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     mainSizer->Add(settingsSizer, 1, wxEXPAND | wxALL, 10);
