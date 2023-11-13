@@ -37,5 +37,5 @@ class MyApp : public wxApp
 public:
     virtual bool OnInit();
     void check_api_connection();
-    virtual int OnExit();
+    //virtual int OnExit();
 };

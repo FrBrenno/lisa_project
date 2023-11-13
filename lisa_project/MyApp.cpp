@@ -44,7 +44,7 @@ void MyApp::check_api_connection()
     this->is_wfs_connected = true;
 }
 
-
+/*
 int MyApp::OnExit()
 {
     instrumentController->closeInstrument();
@@ -55,3 +55,4 @@ int MyApp::OnExit()
     delete cameraSettingsController;
 	return 0;
 }
+*/
