@@ -7,6 +7,13 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 {
     this->listener = controller;
 
+    //=== Icon Initialization ===//
+
+    wxBitmap iconBitmap("./img/polytech_logo.png", wxBITMAP_TYPE_PNG);
+    wxIcon icon;
+    icon.CopyFromBitmap(iconBitmap);
+    SetIcon(icon);
+
     //=== Menu Initialization ===//
     // File Menu
 

@@ -6,7 +6,11 @@ wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
 {
-    
+    //=== WxWidgets initialization ===//
+    wxImage::AddHandler(new wxPNGHandler);
+
+    //=== WFS API initialization ===//
+
     check_api_connection();
 
     //=== Controller initialization ===//
@@ -33,8 +37,6 @@ bool MyApp::OnInit()
 		check_api_connection();
 	}
 
-    this->imageController->takeImage();
-    homeFrame->updateImage(this->imageController->getBitmap());
     return true;
 }
 
