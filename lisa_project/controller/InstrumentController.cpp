@@ -1,9 +1,9 @@
 #include "InstrumentController.h"
-#include "EventDispatcher.h"
-#include "InstrumentSelectionDialog.h"
-#include "Settings.h"
+#include "../EventDispatcher.h"
+#include "../view/InstrumentSelectionDialog.h"
+#include "../model/Settings.h"
 
-InstrumentController::InstrumentController(bool is_wfs_connected) : BaseController(is_wfs_connected)
+InstrumentController::InstrumentController(MyApp* app, bool is_wfs_connected) : BaseController(app, is_wfs_connected)
 {
 	this->err = VI_SUCCESS;
 	this->instrumentCount = 0;

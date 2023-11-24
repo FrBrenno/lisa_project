@@ -1,8 +1,8 @@
 #pragma once
 #include "wx/wx.h"
-#include "Mla.h"
+#include "../model/Mla.h"
 #include "WFS.h"
-#include "Event.h"
+#include "../Event.h"
 #include "BaseController.h"
 
 /**
@@ -26,7 +26,7 @@ class MlaController: public BaseController {
 	 */
 	void HandleMlaSelected(const Event& event);
 public:
-	MlaController(bool is_wfs_connected);
+	MlaController(MyApp* app, bool is_wfs_connected);
 
 	/**
 	 * Inserts all the MLAs given by Thorlabs API in the list.

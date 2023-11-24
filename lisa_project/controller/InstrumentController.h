@@ -1,7 +1,7 @@
 #pragma once
 #include "wx/wx.h"
-#include "Instrument.h"
-#include "Event.h"
+#include "../model/Instrument.h"
+#include "../Event.h"
 #include "BaseController.h"
 /**
  * @class InstrumentController.
@@ -26,7 +26,7 @@ class InstrumentController: public BaseController{
 	void HandleMlaSelected(const Event& event);
 
 public:
-	InstrumentController(bool is_wfs_connected);
+	InstrumentController(MyApp* app, bool is_wfs_connected);
 
 	std::string getInstrumentName();
 	Instrument* getInstrument();

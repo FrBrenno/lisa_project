@@ -1,7 +1,7 @@
 #pragma once
 #include <wx/wx.h>
 #include <string>
-#include "HomeFrameController.h"
+#include "../controller/HomeFrameController.h"
 
 /**
  * @class HomeFrame.

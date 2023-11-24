@@ -1,6 +1,6 @@
 #pragma once
 #include <wx/wx.h>
-#include "InstrumentController.h"
+#include "../controller/InstrumentController.h"
 
 /**
  * @class InstrumentSelectionDialog.

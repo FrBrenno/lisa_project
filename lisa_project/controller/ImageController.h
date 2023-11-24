@@ -1,7 +1,7 @@
 #pragma once
 #include "wx/wx.h"
-#include "CameraConfig.h"
-#include "Instrument.h"
+#include "../model/CameraConfig.h"
+#include "../model/Instrument.h"
 #include "BaseController.h"
 
 /**
@@ -18,7 +18,7 @@ class ImageController: public BaseController{
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
-	ImageController(bool is_wfs_connected, Instrument* instrument);
+	ImageController(MyApp* app, bool is_wfs_connected, Instrument* instrument);
 
 	/**
 	 * Returns a pointer the image buffer.

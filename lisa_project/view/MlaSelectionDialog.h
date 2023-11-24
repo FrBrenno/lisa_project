@@ -1,6 +1,6 @@
 #pragma once
 #include <wx/wx.h>
-#include "MlaController.h"
+#include "../controller/MlaController.h"
 
 /**
  * @class MlaSelectionDialog.

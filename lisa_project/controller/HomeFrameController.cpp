@@ -1,8 +1,8 @@
 #include "HomeFrameController.h"
-#include "InstrumentSelectionDialog.h"
-#include "EventDispatcher.h"
+#include "../view/InstrumentSelectionDialog.h"
+#include "../EventDispatcher.h"
 
-HomeFrameController::HomeFrameController(bool is_wfs_connected) : BaseController(is_wfs_connected)
+HomeFrameController::HomeFrameController(MyApp* app, bool is_wfs_connected) : BaseController(app, is_wfs_connected)
 {
 	if (!is_wfs_connected) {
 		this->handleError(-1, "No WFS connected");

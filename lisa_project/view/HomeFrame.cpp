@@ -1,6 +1,6 @@
 #include "HomeFrame.h"
-#include "HomeFrameController.h"
-#include "MenuID.h"
+#include "../controller/HomeFrameController.h"
+#include "../MenuID.h"
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")

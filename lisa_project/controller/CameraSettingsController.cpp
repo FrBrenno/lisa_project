@@ -1,8 +1,8 @@
 #include "CameraSettingsController.h"
-#include "EventDispatcher.h"
-#include "CameraSettingsDialog.h"
+#include "../EventDispatcher.h"
+#include "../view/CameraSettingsDialog.h"
 
-CameraSettingsController::CameraSettingsController(bool is_wfs_connected):  BaseController(is_wfs_connected)
+CameraSettingsController::CameraSettingsController(MyApp* app, bool is_wfs_connected) :  BaseController(app, is_wfs_connected)
 {
 	EventDispatcher::Instance().SubscribeToEvent("SettingsSelection",
 		[this](const Event& event) {

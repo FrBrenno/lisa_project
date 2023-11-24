@@ -1,6 +1,6 @@
 #pragma once
 #include "wx/wx.h"
-#include "Event.h"
+#include "../Event.h"
 #include "BaseController.h"
 
 /**
@@ -10,7 +10,7 @@
 class HomeFrameController: public BaseController{
 
 public:
-	HomeFrameController(bool is_wfs_connected);
+	HomeFrameController(MyApp* app, bool is_wfs_connected);
 
 	/**
 	 * Publishes an InstrumentSelectionEvent.

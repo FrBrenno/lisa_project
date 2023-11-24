@@ -1,6 +1,6 @@
 #pragma once
 #include "wx/wx.h"
-#include "CameraSettingsController.h"
+#include "../controller/CameraSettingsController.h"
 
 class CameraSettingsDialog : public wxDialog
 {

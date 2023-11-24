@@ -1,9 +1,9 @@
 #include "MlaController.h"
-#include "MlaSelectionDialog.h"
-#include "EventDispatcher.h"
+#include "../view/MlaSelectionDialog.h"
+#include "../EventDispatcher.h"
 #include "wx/wx.h"
 
-MlaController::MlaController(bool is_wfs_connected) : BaseController(is_wfs_connected) {
+MlaController::MlaController(MyApp* app, bool is_wfs_connected) : BaseController(app, is_wfs_connected) {
 	this->selectMla = new Mla();
 	this->err = 0;
 	
