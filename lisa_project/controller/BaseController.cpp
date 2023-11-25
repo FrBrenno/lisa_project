@@ -23,11 +23,3 @@ void BaseController::handleError(int code, std::string message){
 	wxMessageBox(wxString::Format("%s\n\t%s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 }
 
-void BaseController::isApiConnected()
-{
-	if(!is_wfs_connected){
-		// Call to main so it can try to connect to API
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
-};

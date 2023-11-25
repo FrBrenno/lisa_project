@@ -4,21 +4,23 @@
 
 HomeFrameController::HomeFrameController(MyApp* app, bool is_wfs_connected) : BaseController(app, is_wfs_connected)
 {
-	isApiConnected();
+	if (!is_wfs_connected) {
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
 }
 
 void HomeFrameController::onInstrumentSelection(wxWindow* parent) 
 {
-	Event instrumentSelectionEvent;
-	instrumentSelectionEvent.name = "InstrumentSelection";
+	Event instrumentSelectionEvent("InstrumentSelection");
 
 	EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
 }
 
 void HomeFrameController::onCameraSettings(wxWindow* parent)
 {
-	Event cameraSettingsSelectionEvent;
-	cameraSettingsSelectionEvent.name = "CameraSettingsSelection";
+	Event cameraSettingsSelectionEvent("CameraSettingsSelection");
 
 	EventDispatcher::Instance().PublishEvent(cameraSettingsSelectionEvent);
 }

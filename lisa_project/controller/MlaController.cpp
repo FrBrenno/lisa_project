@@ -18,19 +18,21 @@ MlaController::MlaController(MyApp* app, bool is_wfs_connected) : BaseController
 
 void MlaController::HandleMlaSelection(const Event& event) 
 {
-	isApiConnected();
+	if (!is_wfs_connected) {
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
 
 	// Generate the view and handle Mla Selection
-	this->selectMla->setHandle(*(ViSession*)event.data);
+	this->selectMla->setHandle(*(ViSession*)event.getData());
 	MlaSelectionDialog* mlaSelectionDialog = new MlaSelectionDialog(nullptr, this);
 	mlaSelectionDialog->ShowModal();
 }
 
 void MlaController::HandleMlaSelected() {
 	// Publish the selected MLA to whatever controller that needs it.
-	Event mlaSelectedEvent;
-	mlaSelectedEvent.name = "MlaSelected";
-	mlaSelectedEvent.data = (void*)this->selectMla;
+	Event mlaSelectedEvent("MlaSelected", (void*)this->selectMla);
 
 	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
 }
@@ -39,7 +41,11 @@ void MlaController::HandleMlaSelected() {
 
 void MlaController::populateMlaList(wxListBox* list) 
 {
-	isApiConnected();
+	if (!is_wfs_connected) {
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
 
 	ViSession handle = this->selectMla->getHandle();
 	ViInt32* mla_count = this->selectMla->getMlaCount();
@@ -80,7 +86,11 @@ void MlaController::populateMlaList(wxListBox* list)
 
 void MlaController::onMlaSelected(int selectedIndex) 
 {
-	isApiConnected();
+	if (!is_wfs_connected) {
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
 
 	// Setup the selected MLA
 	ViStatus handle = this->selectMla->getHandle();

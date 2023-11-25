@@ -1,5 +1,6 @@
 #include "MyApp.h"
-#include "../view/InstrumentSelectionDialog.h"
+#include "Event.h"
+#include "EventDispatcher.h"
 #include "wx/busyinfo.h"
 
 wxIMPLEMENT_APP(MyApp);
@@ -31,7 +32,7 @@ bool MyApp::OnInit()
 		check_api_connection();
 	}
     else {
-        // instrumentController->onInstrumentSelection(homeFrame);
+        EventDispatcher::Instance().PublishEvent(Event("InstrumentSelection"));
         homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     }
     return true;

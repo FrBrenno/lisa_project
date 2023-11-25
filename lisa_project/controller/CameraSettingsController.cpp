@@ -15,7 +15,11 @@ CameraSettingsController::CameraSettingsController(MyApp* app, bool is_wfs_conne
 void CameraSettingsController::HandleSettingsSelection(const Event& event)
 {
 	/*
-	isApiConnected();
+	if(!is_wfs_connected){
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
 	*/
 	CameraSettingsDialog* cameraSettingsDialog = new CameraSettingsDialog(nullptr, this);
 	cameraSettingsDialog->ShowModal();

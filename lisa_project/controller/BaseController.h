@@ -9,9 +9,6 @@ class BaseController{
 protected:
 	MyApp* app;
 	bool is_wfs_connected;
-
-	void isApiConnected();
-
 	/**
 		 * Handles error messages.
 		 *

@@ -5,7 +5,7 @@ void EventDispatcher::PublishEvent(const Event& event)
 	for (auto& subscriber : subscribers)
 	{
 		// If the subscriber is subscribed to the event, call the callback
-		if (subscriber.first == event.name) {
+		if (subscriber.first == event.getName()) {
 			subscriber.second(event);
 		}
 	}
