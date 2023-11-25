@@ -26,17 +26,14 @@ bool MyApp::OnInit()
     homeFrame = new HomeFrame(this->homeFrameController);
     homeFrame->Show(true);
     // Before Showing the software, do instrument selection
-    if (this->is_wfs_connected) {
-        InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(homeFrame, instrumentController);
-        instrumentSelectionDialog->ShowModal();
-
-        homeFrame->setInstrumentName(instrumentController->getInstrumentName());
-    }
     
     if (!this->is_wfs_connected) {
 		check_api_connection();
 	}
-
+    else {
+        // instrumentController->onInstrumentSelection(homeFrame);
+        homeFrame->setInstrumentName(instrumentController->getInstrumentName());
+    }
     return true;
 }
 
@@ -65,15 +62,3 @@ void MyApp::check_api_connection()
     return;
 }
 
-/*
-int MyApp::OnExit()
-{
-    instrumentController->closeInstrument();
-	delete homeFrameController;
-	delete instrumentController;
-	delete mlaController;
-    delete imageController;
-    delete cameraSettingsController;
-	return 0;
-}
-*/

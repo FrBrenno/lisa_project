@@ -31,84 +31,57 @@
     <Filter Include="Fichiers d%27en-tête\View">
       <UniqueIdentifier>{03c8f006-77fa-4681-bce6-a96b442ce289}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Test">
-      <UniqueIdentifier>{136d2b05-815b-4a1e-a662-26e0d9109f28}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyApp.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="HomeFrame.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="HomeFrameController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="HomeFrameController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="Instrument.cpp">
-      <Filter>Fichiers sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="InstrumentSelectionDialog.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="InstrumentController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="EventDispatcher.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Mla.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="MlaController.cpp">
+    <ClCompile Include="controller\BaseController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="Mla.cpp">
+    <ClCompile Include="model\CameraConfig.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="MlaSelectionDialog.cpp">
+    <ClCompile Include="controller\CameraSettingsController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="view\CameraSettingsDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="CameraConfig.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
+    <ClCompile Include="view\HomeFrame.cpp">
+      <Filter>Fichiers sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="CameraConfig.cpp">
+    <ClCompile Include="controller\HomeFrameController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\ImageController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Instrument.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="ImageController.cpp">
+    <ClCompile Include="controller\InstrumentController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="BaseController.cpp">
+    <ClCompile Include="view\InstrumentSelectionDialog.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Mla.cpp">
+      <Filter>Fichiers sources\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\MlaController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="CameraSettingsController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraSettingsDialog.cpp">
+    <ClCompile Include="view\MlaSelectionDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuID.h">
       <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeFrame.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="Settings.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Instrument.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="InstrumentSelectionDialog.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="InstrumentController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
     <ClInclude Include="MyApp.h">
       <Filter>Fichiers d%27en-tête</Filter>
@@ -119,27 +92,54 @@
     <ClInclude Include="Event.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="MlaController.h">
+    <ClInclude Include="controller\BaseController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
-    <ClInclude Include="MlaSelectionDialog.h">
+    <ClInclude Include="model\CameraConfig.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\CameraSettingsController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="view\CameraSettingsDialog.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
-    <ClInclude Include="ImageController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraSettingsController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraSettingsDialog.h">
+    <ClInclude Include="view\HomeFrame.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\HomeFrameController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\ImageController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Instrument.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\InstrumentController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="view\InstrumentSelectionDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Mla.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\MlaController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="view\MlaSelectionDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Settings.h">
+      <Filter>Fichiers d%27en-tête\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="img\polytech_logo.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>
