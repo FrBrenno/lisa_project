@@ -20,4 +20,6 @@ public:
 	void onInstrumentSelection(wxWindow* parent);
 
 	void onCameraSettings(wxWindow* parent);
+
+	void onCapture(wxWindow* parent);
 };

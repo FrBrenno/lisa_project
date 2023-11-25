@@ -5,7 +5,7 @@
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
-    this->listener = controller;
+    this->controller = controller;
 
     //=== Icon Initialization ===//
 
@@ -19,8 +19,12 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap);
 
+    this->captureButton = new wxButton(this, wxID_ANY, "Capture");
+    Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, wxID_ANY);
+
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
+    mainSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
     SetSizerAndFit(mainSizer);
 
     //=== Menu Initialization ===//
@@ -98,12 +102,17 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
-    this->listener->onInstrumentSelection(this);
+    this->controller->onInstrumentSelection(this);
 }
 
 void HomeFrame::OnCameraSettings(wxCommandEvent& event)
 {
-	this->listener->onCameraSettings(this);
+	this->controller->onCameraSettings(this);
+}
+
+void HomeFrame::OnCapture(wxCommandEvent& event)
+{
+	this->controller->onCapture(this);
 }
 
 void HomeFrame::OnExit(wxCommandEvent& event)

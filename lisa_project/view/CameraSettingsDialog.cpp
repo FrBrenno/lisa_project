@@ -4,7 +4,7 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
 	: wxDialog(parent, wxID_ANY, "Settings")
 {
 	this->parent = parent;
-	this->listener = controller;
+	this->controller = controller;
 
 	//=== View Construction ===//
     wxListBox* resolutionListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayString(), wxLB_SINGLE);
@@ -64,17 +64,17 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
 
     SetSizerAndFit(mainSizer);
 
-    //listener->loadCurrentCameraSettings();
+    //controller->loadCurrentCameraSettings();
 }
 
 void CameraSettingsDialog::OnOK(wxCommandEvent& event)
 {
-	listener->onOK();
+	controller->onOK();
 	this->Destroy();
 }
 
 void CameraSettingsDialog::OnClose(wxCloseEvent& event)
 {
-	listener->onClose();
+	controller->onClose();
 	this->Destroy();
 }

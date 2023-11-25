@@ -9,16 +9,16 @@
  */
 class InstrumentSelectionDialog: public wxDialog{
 	wxWindow* parent;
-	InstrumentController* listener;
+	InstrumentController* controller;
 
 public:	
 	/**
 	 * InstrumentSelectionDialog Constructor.
 	 * 
 	 * @param parent The window that generated this dialog. This could be a nullptr.
-	 * @param listener The controller that manages this view.
+	 * @param controller The controller that manages this view.
 	 */
-	InstrumentSelectionDialog(wxWindow* parent, InstrumentController* listener);
+	InstrumentSelectionDialog(wxWindow* parent, InstrumentController* controller);
 
 	/**
 	 * Handles when the user clicks the OK button.

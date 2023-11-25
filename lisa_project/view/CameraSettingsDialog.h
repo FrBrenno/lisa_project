@@ -5,7 +5,7 @@
 class CameraSettingsDialog : public wxDialog
 {
 	wxWindow* parent;
-	CameraSettingsController* listener;
+	CameraSettingsController* controller;
 public:
 	CameraSettingsDialog(wxWindow* parent, CameraSettingsController* controller);
 	void OnOK(wxCommandEvent& event);

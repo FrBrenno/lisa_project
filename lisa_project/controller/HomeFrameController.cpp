@@ -25,3 +25,7 @@ void HomeFrameController::onCameraSettings(wxWindow* parent)
 	EventDispatcher::Instance().PublishEvent(cameraSettingsSelectionEvent);
 }
 
+void HomeFrameController::onCapture(wxWindow* parent)
+{
+	// Save the last image of the camera
+}

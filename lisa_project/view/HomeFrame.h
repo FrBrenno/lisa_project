@@ -13,13 +13,16 @@ class HomeFrame : public wxFrame
     /**
      * View Controller that manages it.
      */
-    HomeFrameController* listener;
+    HomeFrameController* controller;
 
     //=== GUI Elements ===//
     /**
      * This image control element that displays the camera image.
      */
     wxStaticBitmap* imageControl;
+
+    wxButton* captureButton;
+    wxTimer* previewTimer;
     /**
      * Name of the instrument in use.
      */
@@ -32,6 +35,8 @@ class HomeFrame : public wxFrame
     void OnInstrumentSelection(wxCommandEvent& event);
 
     void OnCameraSettings(wxCommandEvent& event);
+
+    void OnCapture(wxCommandEvent& event);
     /**
      * Handles when the user clicks on the exit menu item or closes the window.
      * 

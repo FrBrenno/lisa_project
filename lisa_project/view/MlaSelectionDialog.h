@@ -9,15 +9,15 @@
  */
 class MlaSelectionDialog : public wxDialog {
 	wxWindow* parent;
-	MlaController* listener;
+	MlaController* controller;
 public:
 	/**
 	 * Constructor of MlaSelectionDialog.
 	 * 
 	 * @param parent The view that generates the dialog box. It could be nullptr.
-	 * @param listener The controller that manages the view.
+	 * @param controller The controller that manages the view.
 	 */
-	MlaSelectionDialog(wxWindow* parent, MlaController* listener);
+	MlaSelectionDialog(wxWindow* parent, MlaController* controller);
 
 	/**
 	 * Handles when the user clicks in the button OK.
