@@ -25,6 +25,7 @@ bool MyApp::OnInit()
     //=== View initialization ===//
 
     homeFrame = new HomeFrame(this->homeFrameController);
+    homeFrame->addListener(this->imageController);
     homeFrame->Show(true);
     // Before Showing the software, do instrument selection
     

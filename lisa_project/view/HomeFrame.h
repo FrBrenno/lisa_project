@@ -15,6 +15,7 @@ class HomeFrame : public wxFrame
      */
     HomeFrameController* controller;
 
+    std::vector<BaseController*> listeners;
     //=== GUI Elements ===//
     /**
      * This image control element that displays the camera image.
@@ -67,5 +68,12 @@ public:
      * 
      * @param newImage Reference to the new image to be displayed.
      */
-    void updateImage(const wxBitmap* newBitmap);
+    void updateImage(wxTimerEvent& event);
+
+    /**
+    * Adds a listener to the list of listeners.
+    ** 
+    ** @param listener Listener to be added.
+    **/
+    void addListener(BaseController* listener);
 };

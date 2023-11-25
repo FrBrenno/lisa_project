@@ -25,7 +25,23 @@ void HomeFrameController::onCameraSettings(wxWindow* parent)
 	EventDispatcher::Instance().PublishEvent(cameraSettingsSelectionEvent);
 }
 
-void HomeFrameController::onCapture(wxWindow* parent)
+void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 {
-	// Save the last image of the camera
+	wxFileDialog saveFileDialog(parent, "Save Image", "", "", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+	if (saveFileDialog.ShowModal() == wxID_CANCEL) {
+		// User canceled the operation
+		return;
+	}
+
+	wxString filePath = saveFileDialog.GetPath();
+
+	// Ensure a valid file path
+	if (filePath.empty()) {
+		wxMessageBox("Invalid file path.", "Error", wxOK | wxICON_ERROR);
+		return;
+	}
+
+	// Save the image
+	lastBitmap.SaveFile(filePath, wxBITMAP_TYPE_PNG);
 }

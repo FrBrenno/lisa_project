@@ -1,11 +1,13 @@
 #include "HomeFrame.h"
 #include "../controller/HomeFrameController.h"
+#include "../controller/ImageController.h"
 #include "../MenuID.h"
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
     this->controller = controller;
+    this->listeners = std::vector<BaseController*>();
 
     //=== Icon Initialization ===//
 
@@ -21,6 +23,10 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
     this->captureButton = new wxButton(this, wxID_ANY, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, wxID_ANY);
+
+    this->previewTimer = new wxTimer(this);
+    Bind(wxEVT_TIMER, &HomeFrame::updateImage, this, wxID_ANY);
+    this->previewTimer->Start(1000 / 30);
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
@@ -112,7 +118,7 @@ void HomeFrame::OnCameraSettings(wxCommandEvent& event)
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
-	this->controller->onCapture(this);
+    this->controller->onCapture(this, this->imageControl->GetBitmap());
 }
 
 void HomeFrame::OnExit(wxCommandEvent& event)
@@ -128,8 +134,17 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
 
 //=== VIEW FUNCTIONS ===//
 
-void HomeFrame::updateImage(const wxBitmap* newBitmap) {
-    imageControl->SetBitmap(*newBitmap);
+void HomeFrame::updateImage(wxTimerEvent& event) {
+    wxBitmap* bitmap = new wxBitmap();
+    for (BaseController* listener : this->listeners)
+    {
+        if (ImageController* imgController = dynamic_cast<ImageController*>(listener))
+        {
+            imgController->takeImage();
+            bitmap = imgController->getBitmap();
+        }
+    }
+    imageControl->SetBitmap(*bitmap);
     imageControl->Refresh();
 }
 
@@ -140,4 +155,9 @@ void HomeFrame::setInstrumentName(std::string instrument_name)
 {
     this->instrumentName = instrument_name;
     SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
+}
+
+void HomeFrame::addListener(BaseController* listener)
+{
+	this->listeners.push_back(listener);
 }

@@ -26,5 +26,5 @@ public:
 	 */
 	virtual void onClose() {
 		return;
-	};
+	}
 };

@@ -98,5 +98,9 @@ wxBitmap* ImageController::getBitmap()
 		wxBitmap* capturedImg = new wxBitmap(*this->image);
 		return capturedImg;
 	}
+	else {
+		this->handleError(-1, "Image is not ok");
+		return nullptr;
+	}
 }
 

@@ -21,5 +21,5 @@ public:
 
 	void onCameraSettings(wxWindow* parent);
 
-	void onCapture(wxWindow* parent);
+	void onCapture(wxWindow* parent, wxBitmap lastBitmap);
 };

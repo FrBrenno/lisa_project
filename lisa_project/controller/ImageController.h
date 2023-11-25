@@ -29,7 +29,7 @@ public:
 	/**
 	 * Returns a pointer to the wxImage created from the image buffer given by the API.
 	 * 
-	 * @return wxImage* Reference to image object
+	 * @return wxBitmap* Reference to the wxBitmap created from the image buffer.
 	 */
 	wxBitmap* getBitmap();
 };
