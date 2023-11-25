@@ -25,4 +25,6 @@ public:
 		 * @param message Developer error message
 		 */
 	void handleError(int code, std::string message);
+
+	void check_api_connection();
 };
