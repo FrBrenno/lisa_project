@@ -17,9 +17,9 @@ void HomeFrameController::onInstrumentSelection(wxWindow* parent)
 
 void HomeFrameController::onCameraSettings(wxWindow* parent)
 {
-	Event settingsSelectionEvent;
-	settingsSelectionEvent.name = "SettingsSelection";
+	Event cameraSettingsSelectionEvent;
+	cameraSettingsSelectionEvent.name = "CameraSettingsSelection";
 
-	EventDispatcher::Instance().PublishEvent(settingsSelectionEvent);
+	EventDispatcher::Instance().PublishEvent(cameraSettingsSelectionEvent);
 }
 

@@ -14,6 +14,15 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     icon.CopyFromBitmap(iconBitmap);
     SetIcon(icon);
 
+    //=== Main Initialization ===//
+    wxImage::AddHandler(new wxPNGHandler);
+    wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
+    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap);
+
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
+    SetSizerAndFit(mainSizer);
+
     //=== Menu Initialization ===//
     // File Menu
 
@@ -71,15 +80,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
     CreateStatusBar();
     SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer!"));
-
-    //=== Main Initialization ===//
-    wxImage::AddHandler(new wxPNGHandler);
-    wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
-    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap);
-
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
-    mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
-    SetSizerAndFit(mainSizer);
 
     //=== Menu Events Binding ===//
     // TODO: Bind events to menu items

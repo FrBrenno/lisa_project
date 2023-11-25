@@ -4,7 +4,7 @@
 
 CameraSettingsController::CameraSettingsController(MyApp* app, bool is_wfs_connected) :  BaseController(app, is_wfs_connected)
 {
-	EventDispatcher::Instance().SubscribeToEvent("SettingsSelection",
+	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
 		[this](const Event& event) {
 			HandleSettingsSelection(event);
 		});
