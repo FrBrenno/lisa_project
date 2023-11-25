@@ -24,7 +24,7 @@ class MlaController: public BaseController {
 	 * 
 	 * @param event MlaSelectedEvent
 	 */
-	void HandleMlaSelected(const Event& event);
+	void HandleMlaSelected();
 public:
 	MlaController(MyApp* app, bool is_wfs_connected);
 

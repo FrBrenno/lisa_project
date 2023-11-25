@@ -26,12 +26,13 @@ void MlaController::HandleMlaSelection(const Event& event)
 	mlaSelectionDialog->ShowModal();
 }
 
-void MlaController::HandleMlaSelected(const Event& event) {
+void MlaController::HandleMlaSelected() {
 	// Publish the selected MLA to whatever controller that needs it.
 	Event mlaSelectedEvent;
 	mlaSelectedEvent.name = "MlaSelected";
 	mlaSelectedEvent.data = (void*)this->selectMla;
 
+	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
 }
 
 //=== WFS API Functions ===//
@@ -117,11 +118,7 @@ void MlaController::onMlaSelected(int selectedIndex)
 		grd_corr_45
 	);
 
-	Event mlaSelectedEvent;
-	mlaSelectedEvent.name = "MlaSelected";
-	mlaSelectedEvent.data = (void*)this->selectMla;
-
-	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
+	HandleMlaSelected();
 }
 
 

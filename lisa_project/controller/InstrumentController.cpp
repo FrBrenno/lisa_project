@@ -13,6 +13,10 @@ InstrumentController::InstrumentController(MyApp* app, bool is_wfs_connected) : 
 		[this](const Event& event) {
 			HandleInstrumentSelection(event);
 		});
+	EventDispatcher::Instance().SubscribeToEvent("MlaSelected",
+		[this](const Event& event) {
+			HandleMlaSelected(event);
+		});
 }
 
 //=== Event Handlers ===//
@@ -113,8 +117,6 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Camera Configuration
 		this->cameraConfiguration();
 	}
-
-	// Publish InstrumentSelectedEvent
 
 }
 
