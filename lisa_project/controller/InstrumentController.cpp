@@ -19,10 +19,8 @@ InstrumentController::InstrumentController(MyApp* app, bool is_wfs_connected) : 
 
 void InstrumentController::HandleInstrumentSelection(const Event& event)
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
+
 	// Launch InstrumentSelectionDialog view
 	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
 	instrumentSelectionDialog->ShowModal();
@@ -30,20 +28,16 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 
 void InstrumentController::HandleMlaSelected(const Event& event)
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
+
 	// Get the reference to the selected MLA and set it into instrument attributes
 	Mla* selectedMla = (Mla*)event.data;
 	this->selectedInstrument->setMla(selectedMla);
 }
 
 void InstrumentController::mlaConfiguration() {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
+
 	// Publish MlaSelectionEvent in order to allow the user to select an MLA
 	// Normally, MlaController should handle this event.
 	Event mlaSelectionEvent;
@@ -58,10 +52,7 @@ void InstrumentController::mlaConfiguration() {
 
 void InstrumentController::populateInstrumentList(wxListBox* list)
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	// Clear list
 	list->Clear();
@@ -100,10 +91,7 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 
 void InstrumentController::onInstrumentSelected(int selectedIndex)
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	ViInt32 device_id;
 	ViChar resourceName[WFS_BUFFER_SIZE];
@@ -143,10 +131,7 @@ void InstrumentController::onClose(){
 
 void InstrumentController::reviseDrive() 
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	ViChar version_wfs_driver[256];
 	ViChar version_cam_driver[256];
@@ -168,10 +153,7 @@ void InstrumentController::reviseDrive()
 
 void InstrumentController::initInstrument(ViRsrc resourceName) 
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	// Variable initialization
 	ViSession* handle = this->selectedInstrument->getHandle();
@@ -205,10 +187,7 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 
 void InstrumentController::cameraConfiguration()
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	ViSession handle = *this->selectedInstrument->getHandle();
 	int device_id = this->selectedInstrument->getDeviceId();
@@ -246,10 +225,7 @@ void InstrumentController::cameraConfiguration()
 
 void InstrumentController::closeInstrument()
 {
-	if (!this->is_wfs_connected) {
-		// this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	if (err = WFS_close(*this->selectedInstrument->getHandle())) {
 		this->handleError(err, "Not able to close instrument");

@@ -27,7 +27,7 @@ bool MyApp::OnInit()
     homeFrame->Show(true);
     // Before Showing the software, do instrument selection
     
-    if (!this->is_wfs_connected) {
+    isApiConnected();
 		check_api_connection();
 	}
     else {

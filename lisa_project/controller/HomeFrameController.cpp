@@ -4,9 +4,7 @@
 
 HomeFrameController::HomeFrameController(MyApp* app, bool is_wfs_connected) : BaseController(app, is_wfs_connected)
 {
-	if (!is_wfs_connected) {
-		this->handleError(-1, "No WFS connected");
-	}
+	isApiConnected();
 }
 
 void HomeFrameController::onInstrumentSelection(wxWindow* parent) 

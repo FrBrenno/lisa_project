@@ -15,10 +15,7 @@ ImageController::ImageController(MyApp* app, bool is_wfs_connected, Instrument* 
 
 void ImageController::takeImage(){
 	//Verifies if the api is connected before taking an image, if not, it will return
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {

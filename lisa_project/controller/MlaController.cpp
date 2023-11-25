@@ -18,10 +18,7 @@ MlaController::MlaController(MyApp* app, bool is_wfs_connected) : BaseController
 
 void MlaController::HandleMlaSelection(const Event& event) 
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	// Generate the view and handle Mla Selection
 	this->selectMla->setHandle(*(ViSession*)event.data);
@@ -41,10 +38,7 @@ void MlaController::HandleMlaSelected(const Event& event) {
 
 void MlaController::populateMlaList(wxListBox* list) 
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	ViSession handle = this->selectMla->getHandle();
 	ViInt32* mla_count = this->selectMla->getMlaCount();
@@ -85,10 +79,7 @@ void MlaController::populateMlaList(wxListBox* list)
 
 void MlaController::onMlaSelected(int selectedIndex) 
 {
-	if (!this->is_wfs_connected) {
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
+	isApiConnected();
 
 	// Setup the selected MLA
 	ViStatus handle = this->selectMla->getHandle();

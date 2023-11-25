@@ -9,15 +9,9 @@ class BaseController{
 protected:
 	MyApp* app;
 	bool is_wfs_connected;
-public:
-	BaseController(MyApp* app, bool is_wfs_connected);
-	/**
-	 * Handles when the user closes the view.
-	 *
-	 */
-	virtual void onClose() {
-		return;
-	};
+
+	void isApiConnected();
+
 	/**
 		 * Handles error messages.
 		 *
@@ -26,5 +20,14 @@ public:
 		 */
 	void handleError(int code, std::string message);
 
-	void check_api_connection();
+public:
+
+	BaseController(MyApp* app, bool is_wfs_connected);
+	/**
+	 * Handles when the user closes the view.
+	 *
+	 */
+	virtual void onClose() {
+		return;
+	};
 };
