@@ -2,7 +2,7 @@
 #include "../EventDispatcher.h"
 #include "../view/CameraSettingsDialog.h"
 
-CameraSettingsController::CameraSettingsController(MyApp* app, bool is_wfs_connected) :  BaseController(app, is_wfs_connected)
+CameraSettingsController::CameraSettingsController(bool is_wfs_connected) :  BaseController(is_wfs_connected)
 {
 	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
 		[this](const Event& event) {
@@ -32,10 +32,6 @@ void CameraSettingsController::onOK()
 	return;
 }
 
-void CameraSettingsController::onClose()
-{
-	return;
-}
 
 //=== WFS API Functions ===//
 

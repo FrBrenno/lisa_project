@@ -35,6 +35,8 @@ class HomeFrame : public wxFrame
      */
     void OnInstrumentSelection(wxCommandEvent& event);
 
+    void OnConnectAPI(wxCommandEvent& event);
+
     void OnCameraSettings(wxCommandEvent& event);
 
     void OnCapture(wxCommandEvent& event);

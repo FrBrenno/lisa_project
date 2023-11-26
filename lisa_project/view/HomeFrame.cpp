@@ -44,6 +44,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     menuFile->Append(ID_FILE_CENTROID_DATA, "&Save Centroid Data", "Save centroid data to file...");
     menuFile->Append(ID_FILE_POWER_DISTRIBUTION_DATA, "&Save Power Distribution Data", "Save power distribution data to file...");
     menuFile->AppendSeparator();
+    menuFile->Append(ID_FILE_CONNECT_API, "&Connect to API", "Connect to API...");
     menuFile->Append(wxID_EXIT);
 
     // Setup Menu
@@ -95,6 +96,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     // TODO: Bind events to menu items
 
     Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
+    Bind(wxEVT_MENU, &HomeFrame::OnConnectAPI, this, ID_FILE_CONNECT_API);
     Bind(wxEVT_MENU, &HomeFrame::OnCameraSettings, this, ID_SETUP_CAMERA_SETTINGS);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
@@ -110,6 +112,11 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
     this->controller->onInstrumentSelection(this);
+}
+
+void HomeFrame::OnConnectAPI(wxCommandEvent& event)
+{
+	this->controller->onConnectAPI(this);
 }
 
 void HomeFrame::OnCameraSettings(wxCommandEvent& event)

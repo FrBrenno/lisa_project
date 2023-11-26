@@ -1,8 +1,7 @@
 #include "BaseController.h"
 #include "WFS.h"
 
-BaseController::BaseController(MyApp* app, bool is_wfs_connected) {
-	this->app = app;
+BaseController::BaseController(bool is_wfs_connected) {
 	this->is_wfs_connected = is_wfs_connected;
 }
 
@@ -23,6 +22,6 @@ void BaseController::handleError(int code, std::string message){
 	wxMessageBox(wxString::Format("%s\n\t%s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 }
 
-bool BaseController::isWfsConnected() {
-	return is_wfs_connected;
+bool BaseController::isWfsConnected() const {
+	return this->is_wfs_connected;
 }

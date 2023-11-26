@@ -16,11 +16,11 @@ bool MyApp::OnInit()
 
     //=== Controller initialization ===//
 
-    this->homeFrameController = new HomeFrameController(this, this->is_wfs_connected);
-    this->instrumentController = new InstrumentController(this, this->is_wfs_connected);
-    this->mlaController = new MlaController(this, this->is_wfs_connected);
-    this->imageController = new ImageController(this, this->is_wfs_connected, this->instrumentController->getInstrument());
-    this->cameraSettingsController = new CameraSettingsController(this, this->is_wfs_connected);
+    this->homeFrameController = new HomeFrameController(this->is_wfs_connected);
+    this->instrumentController = new InstrumentController(this->is_wfs_connected);
+    this->mlaController = new MlaController(this->is_wfs_connected);
+    this->imageController = new ImageController(this->is_wfs_connected, this->instrumentController->getInstrument());
+    this->cameraSettingsController = new CameraSettingsController(this->is_wfs_connected);
 
     //=== View initialization ===//
 

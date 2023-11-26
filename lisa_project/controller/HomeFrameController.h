@@ -10,7 +10,7 @@
 class HomeFrameController: public BaseController{
 
 public:
-	HomeFrameController(MyApp* app, bool is_wfs_connected);
+	HomeFrameController(bool is_wfs_connected);
 
 	/**
 	 * Publishes an InstrumentSelectionEvent.
@@ -18,6 +18,8 @@ public:
 	 * @param parent 
 	 */
 	void onInstrumentSelection(wxWindow* parent);
+
+	void onConnectAPI(wxWindow* parent);
 
 	void onCameraSettings(wxWindow* parent);
 

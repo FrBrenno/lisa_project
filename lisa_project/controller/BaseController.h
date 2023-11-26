@@ -3,11 +3,9 @@
 #include "wx/wx.h"
 #include <string>
 
-class MyApp;
 
 class BaseController{
 protected:
-	MyApp* app;
 	bool is_wfs_connected;
 	/**
 		 * Handles error messages.
@@ -19,14 +17,7 @@ protected:
 
 public:
 
-	BaseController(MyApp* app, bool is_wfs_connected);
-	/**
-	 * Handles when the user closes the view.
-	 *
-	 */
-	virtual void onClose() {
-		return;
-	}
-
-	bool isWfsConnected();
+	BaseController(bool is_wfs_connected);
+	
+	bool isWfsConnected() const;
 };

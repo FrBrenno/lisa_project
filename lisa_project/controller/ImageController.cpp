@@ -1,7 +1,7 @@
 #include "ImageController.h"
 #include "WFS.h"
 
-ImageController::ImageController(MyApp* app, bool is_wfs_connected, Instrument* instrument) : BaseController(app, is_wfs_connected)
+ImageController::ImageController(bool is_wfs_connected, Instrument* instrument) : BaseController(is_wfs_connected)
 {
 	this->instrument = instrument;
 	this->err = 0;
