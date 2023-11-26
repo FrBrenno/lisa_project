@@ -45,6 +45,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     menuFile->Append(ID_FILE_POWER_DISTRIBUTION_DATA, "&Save Power Distribution Data", "Save power distribution data to file...");
     menuFile->AppendSeparator();
     menuFile->Append(ID_FILE_CONNECT_API, "&Connect to API", "Connect to API...");
+    menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
 
     // Setup Menu
