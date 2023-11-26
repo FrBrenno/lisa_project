@@ -134,6 +134,9 @@
     <ClInclude Include="model\Settings.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
     </ClInclude>
+    <ClInclude Include="MyAppInterface.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png">

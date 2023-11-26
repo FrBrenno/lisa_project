@@ -1,7 +1,9 @@
 #include "BaseController.h"
 #include "WFS.h"
+#include "../MyApp.h"
 
-BaseController::BaseController(bool is_wfs_connected) {
+BaseController::BaseController(MyAppInterface* main, bool is_wfs_connected) {
+	this->app = main;
 	this->is_wfs_connected = is_wfs_connected;
 }
 

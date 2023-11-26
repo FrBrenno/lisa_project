@@ -2,7 +2,7 @@
 #include "../view/InstrumentSelectionDialog.h"
 #include "../EventDispatcher.h"
 
-HomeFrameController::HomeFrameController(bool is_wfs_connected) : BaseController(is_wfs_connected)
+HomeFrameController::HomeFrameController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected)
 {
 	if (!is_wfs_connected) {
 		// Call to main so it can try to connect to API
@@ -20,7 +20,7 @@ void HomeFrameController::onInstrumentSelection(wxWindow* parent)
 
 void HomeFrameController::onConnectAPI(wxWindow* parent)
 {
-	
+	this->app->check_api_connection();
 }
 
 void HomeFrameController::onCameraSettings(wxWindow* parent)

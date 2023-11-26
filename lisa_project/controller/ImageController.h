@@ -18,7 +18,7 @@ class ImageController: public BaseController{
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
-	ImageController(bool is_wfs_connected, Instrument* instrument);
+	ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument);
 
 	/**
 	 * Returns a pointer the image buffer.

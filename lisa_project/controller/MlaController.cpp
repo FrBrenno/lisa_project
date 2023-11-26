@@ -3,7 +3,7 @@
 #include "../EventDispatcher.h"
 #include "wx/wx.h"
 
-MlaController::MlaController(bool is_wfs_connected) : BaseController(is_wfs_connected) {
+MlaController::MlaController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected) {
 	this->selectMla = new Mla();
 	this->err = 0;
 	

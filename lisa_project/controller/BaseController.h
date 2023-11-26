@@ -1,11 +1,13 @@
 #pragma once
 
 #include "wx/wx.h"
+#include "../MyAppInterface.h"
 #include <string>
 
 
 class BaseController{
 protected:
+	MyAppInterface* app;
 	bool is_wfs_connected;
 	/**
 		 * Handles error messages.
@@ -17,7 +19,7 @@ protected:
 
 public:
 
-	BaseController(bool is_wfs_connected);
+	BaseController(MyAppInterface* main, bool is_wfs_connected);
 	
 	virtual void onOK();
 	virtual void onClose();

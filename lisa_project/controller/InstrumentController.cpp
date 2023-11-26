@@ -3,7 +3,7 @@
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Settings.h"
 
-InstrumentController::InstrumentController(bool is_wfs_connected) : BaseController(is_wfs_connected)
+InstrumentController::InstrumentController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected)
 {
 	this->err = VI_SUCCESS;
 	this->instrumentCount = 0;

@@ -175,6 +175,7 @@
     <ClInclude Include="model\Settings.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="MenuID.h" />
+    <ClInclude Include="MyAppInterface.h" />
     <ClInclude Include="view\CameraSettingsDialog.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />

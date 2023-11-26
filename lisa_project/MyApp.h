@@ -17,7 +17,7 @@
     @class MyApp
     @brief This class is the main class of the application responsible to manage all the application controllers and views.
  */
-class MyApp : public wxApp
+class MyApp : public wxApp, MyAppInterface
 {
     bool is_wfs_connected = false; // Test API connectivity
 
@@ -36,6 +36,5 @@ class MyApp : public wxApp
 
 public:
     virtual bool OnInit();
-    void check_api_connection();
-    //virtual int OnExit();
+    void check_api_connection() override;
 };
