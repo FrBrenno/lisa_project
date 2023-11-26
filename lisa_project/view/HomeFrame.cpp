@@ -19,7 +19,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     //=== Main Initialization ===//
     wxImage::AddHandler(new wxPNGHandler);
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
-    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap);
+    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512,512));
 
     this->captureButton = new wxButton(this, wxID_ANY, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, wxID_ANY);
@@ -27,6 +27,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     this->previewTimer = new wxTimer(this);
     Bind(wxEVT_TIMER, &HomeFrame::updateImage, this, wxID_ANY);
     this->previewTimer->Start(1000 / 30);
+    bool isPreviewOn = true;
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
@@ -39,10 +40,8 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     wxMenu* menuFile = new wxMenu;
     menuFile->Append(ID_FILE_INSTRUMENT_SELECTION,
         "&Select Instrument", "Detect and Select instrument in use...");
-    menuFile->Append(ID_FILE_SPOTFIELD_IMAGE, "&Save/Load Spotfield Image", "Save and Load spotfield bitmap file...");
-    menuFile->Append(ID_FILE_MEASUREMENT_DATA, "&Save Measurement Data", "Save measurement data to file...");
-    menuFile->Append(ID_FILE_CENTROID_DATA, "&Save Centroid Data", "Save centroid data to file...");
-    menuFile->Append(ID_FILE_POWER_DISTRIBUTION_DATA, "&Save Power Distribution Data", "Save power distribution data to file...");
+    menuFile->Append(ID_FILE_SAVE_SPOTFIELD_IMAGE, "&Save Spotfield Image", "Save spotfield bitmap file...");
+    menuFile->Append(ID_FILE_LOAD_SPOTFIELD_IMAGE, "&Load Spotfield Image", "Load spotfield PNG file...");
     menuFile->AppendSeparator();
     menuFile->Append(ID_FILE_CONNECT_API, "&Connect to API", "Connect to API...");
     menuFile->AppendSeparator();
@@ -55,24 +54,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     menuSetup->Append(ID_SETUP_MLA_SETTINGS, "&MLA Settings", "Microlens Array settings...");
     menuSetup->Append(ID_SETUP_MISCELLANEOUS_SETTINGS, "&Miscellaneous Settings", "Miscellaneous settings...");
 
-    //Measurement Menu
-
-    wxMenu* menuMeasurement = new wxMenu;
-    menuMeasurement->Append(ID_MEASUREMENT_START, "&Start Measurement", "Start measurement...");
-    menuMeasurement->Append(ID_MEASUREMENT_STOP, "&Stop Measurement", "Stop measurement...");
-    menuMeasurement->Append(ID_MEASUREMENT_PREFERENCES, "&File Preferences", "File preferences...");
-    menuMeasurement->Append(ID_MEASUREMENT_DATA, "&Save Measurement Data", "Save Measurement Data...");
-
-    // Calibration Menu
-
-    wxMenu* menuCalibration = new wxMenu;
-    menuCalibration->Append(ID_CALIBRATION_CALIBRATE_CAMERA, "&Calibrate Camera", "Calibrate camera...");
-
-    // Display Menu
-
-    wxMenu* menuDisplay = new wxMenu;
-    menuDisplay->Append(ID_DISPLAY_SETTINGS, "&Display Settings", "GUI Settings...");
-
     // Help Menu
 
     wxMenu* menuHelp = new wxMenu;
@@ -83,9 +64,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     wxMenuBar* menuBar = new wxMenuBar;
     menuBar->Append(menuFile, "&File");
     menuBar->Append(menuSetup, "&Setup");
-	menuBar->Append(menuMeasurement, "&Measurement");
-    menuBar->Append(menuCalibration, "&Calibration");
-	menuBar->Append(menuDisplay, "&Display");
     menuBar->Append(menuHelp, "&Help");
 
     SetMenuBar(menuBar);
@@ -97,15 +75,16 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     // TODO: Bind events to menu items
 
     Bind(wxEVT_MENU, &HomeFrame::OnInstrumentSelection, this, ID_FILE_INSTRUMENT_SELECTION);
+    Bind(wxEVT_MENU, &HomeFrame::OnCapture, this, ID_FILE_SAVE_SPOTFIELD_IMAGE);
+    Bind(wxEVT_MENU, &HomeFrame::OnLoadImage, this, ID_FILE_LOAD_SPOTFIELD_IMAGE);
     Bind(wxEVT_MENU, &HomeFrame::OnConnectAPI, this, ID_FILE_CONNECT_API);
     Bind(wxEVT_MENU, &HomeFrame::OnCameraSettings, this, ID_SETUP_CAMERA_SETTINGS);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
 
-    SetSize(800, 600);
+    Fit();
     SetBackgroundColour(wxColour(255, 255, 255));
     CenterOnScreen();
-
 }
 
 //=== MENU EVENTS FUNCTIONS===//
@@ -113,6 +92,16 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
     this->controller->onInstrumentSelection(this);
+}
+
+void HomeFrame::OnLoadImage(wxCommandEvent& event)
+{
+    this->isPreviewOn = false;
+    wxImage img = this->controller->onLoadImage(this);
+    // if empty image, do not change
+    if (!img.IsOk()) 
+        return;
+    this->setImage(&img);
 }
 
 void HomeFrame::OnConnectAPI(wxCommandEvent& event)
@@ -146,10 +135,11 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
 void HomeFrame::updateImage(wxTimerEvent& event) {
     if (!controller->isWfsConnected()) {
         this->previewTimer->Stop();
+        this->isPreviewOn = false;
 		return;
 	}
 
-    wxBitmap* bitmap = new wxBitmap();
+    wxImage* image = new wxImage();
     for (BaseController* listener : this->listeners)
     {
         if (ImageController* imgController = dynamic_cast<ImageController*>(listener))
@@ -159,16 +149,37 @@ void HomeFrame::updateImage(wxTimerEvent& event) {
             if (imgController->hasError() != 0)
             {
                 this->previewTimer->Stop();
+                this->isPreviewOn = false;
                 return;
             }
-            bitmap = imgController->getBitmap();
+            image = imgController->getImage();
         }
     }
-    imageControl->SetBitmap(*bitmap);
-    imageControl->Refresh();
+    this->setImage(image);
 }
 
+void HomeFrame::setImage(wxImage* image)
+{
+    resizeImage(image);
+    wxBitmap* bitmap = new wxBitmap(*image);
+    imageControl->SetBitmap(*bitmap);
+	imageControl->Refresh();
+}
 
+void HomeFrame::resizeImage(wxImage* image)
+{
+    int width = image->GetWidth();
+    int height = image->GetHeight();
+    int newWidth = imageControl->GetSize().GetWidth();
+    int newHeight = imageControl->GetSize().GetHeight();
+    if (width > height) {
+		newHeight = (int)(newWidth * ((float)height / (float)width));
+	}
+    else {
+		newWidth = (int)(newHeight * ((float)width / (float)height));
+	}
+    *image = image->Rescale(newWidth, newHeight);
+}
 //=== UTILITY FUNCTIONS ===//
 
 void HomeFrame::setInstrumentName(std::string instrument_name)

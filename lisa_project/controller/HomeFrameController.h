@@ -8,7 +8,6 @@
  * @brief This controller manages HomeFrame view responsible for the main window of the software.
  */
 class HomeFrameController: public BaseController{
-	
 public:
 	HomeFrameController(MyAppInterface* main, bool is_wfs_connected);
 
@@ -18,6 +17,8 @@ public:
 	 * @param parent 
 	 */
 	void onInstrumentSelection(wxWindow* parent);
+
+	wxImage onLoadImage(wxWindow* parent);
 
 	void onConnectAPI(wxWindow* parent);
 

@@ -28,7 +28,7 @@ bool MyApp::OnInit()
     // Before Showing the software, do instrument selection
     
     if(!is_wfs_connected){
-		check_api_connection();
+		//check_api_connection();
 	}
     else {
         EventDispatcher::Instance().PublishEvent(Event("InstrumentSelection"));

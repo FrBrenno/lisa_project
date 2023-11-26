@@ -24,6 +24,7 @@ class HomeFrame : public wxFrame
 
     wxButton* captureButton;
     wxTimer* previewTimer;
+    bool isPreviewOn;
     /**
      * Name of the instrument in use.
      */
@@ -34,6 +35,8 @@ class HomeFrame : public wxFrame
      * @param event OnInstrumentSelection event.
      */
     void OnInstrumentSelection(wxCommandEvent& event);
+
+    void OnLoadImage(wxCommandEvent& event);
 
     void OnConnectAPI(wxCommandEvent& event);
 
@@ -72,6 +75,9 @@ public:
      */
     void updateImage(wxTimerEvent& event);
 
+    void setImage(wxImage* image);
+
+    void resizeImage(wxImage* image);
     /**
     * Adds a listener to the list of listeners.
     ** 

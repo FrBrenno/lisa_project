@@ -31,7 +31,7 @@ public:
 	 * 
 	 * @return wxBitmap* Reference to the wxBitmap created from the image buffer.
 	 */
-	wxBitmap* getBitmap();
+	wxImage* getImage();
 
 	int hasError();
 };

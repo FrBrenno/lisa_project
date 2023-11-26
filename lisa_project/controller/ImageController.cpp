@@ -94,11 +94,10 @@ void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer
 }
 
 
-wxBitmap* ImageController::getBitmap()
+wxImage* ImageController::getImage()
 {
 	if (this->image && this->image->IsOk()) {
-		wxBitmap* capturedImg = new wxBitmap(*this->image);
-		return capturedImg;
+		return this->image;
 	}
 	else {
 		err = -1;
