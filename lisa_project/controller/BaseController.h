@@ -19,5 +19,8 @@ public:
 
 	BaseController(bool is_wfs_connected);
 	
+	virtual void onOK();
+	virtual void onClose();
+
 	bool isWfsConnected() const;
 };

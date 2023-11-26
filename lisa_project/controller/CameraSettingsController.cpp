@@ -32,7 +32,10 @@ void CameraSettingsController::onOK()
 	return;
 }
 
-
+void CameraSettingsController::onClose()
+{
+	return;
+}
 //=== WFS API Functions ===//
 
 

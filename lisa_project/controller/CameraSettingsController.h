@@ -10,5 +10,6 @@ class CameraSettingsController : public BaseController
 public:
 	CameraSettingsController(bool is_wfs_connected);
 
-	void onOK();
+	void onOK() override;
+	void onClose() override;
 };

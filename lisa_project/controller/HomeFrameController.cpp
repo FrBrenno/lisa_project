@@ -20,7 +20,7 @@ void HomeFrameController::onInstrumentSelection(wxWindow* parent)
 
 void HomeFrameController::onConnectAPI(wxWindow* parent)
 {
-	// TODO
+	
 }
 
 void HomeFrameController::onCameraSettings(wxWindow* parent)

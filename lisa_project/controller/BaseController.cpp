@@ -25,3 +25,11 @@ void BaseController::handleError(int code, std::string message){
 bool BaseController::isWfsConnected() const {
 	return this->is_wfs_connected;
 }
+
+void BaseController::onOK() {
+	return;
+}
+
+void BaseController::onClose() {
+	return;
+}

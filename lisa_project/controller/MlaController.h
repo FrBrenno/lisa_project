@@ -40,6 +40,6 @@ public:
 	 * @param selectedIndex Index of the selected MLA.
 	 */
 	void onMlaSelected(int selectedIndex);
-	
+
 	void onClose() override;
 };
