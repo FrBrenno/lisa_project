@@ -23,3 +23,6 @@ void BaseController::handleError(int code, std::string message){
 	wxMessageBox(wxString::Format("%s\n\t%s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 }
 
+bool BaseController::isWfsConnected() {
+	return is_wfs_connected;
+}

@@ -17,6 +17,7 @@ void ImageController::takeImage(){
 	//Verifies if the api is connected before taking an image, if not, it will return
 	if (!is_wfs_connected) {
 		// Call to main so it can try to connect to API
+		err = -1;
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
@@ -68,6 +69,7 @@ void ImageController::takeImage(){
 
         // Check if the image creation was successful
         if (!this->image->IsOk()) {
+			err = -1;
             this->handleError(-1, "Failed to create wxImage");
             return;
         }
@@ -99,8 +101,14 @@ wxBitmap* ImageController::getBitmap()
 		return capturedImg;
 	}
 	else {
+		err = -1;
 		this->handleError(-1, "Image is not ok");
 		return nullptr;
 	}
+}
+
+int ImageController::hasError()
+{
+	return this->err;
 }
 

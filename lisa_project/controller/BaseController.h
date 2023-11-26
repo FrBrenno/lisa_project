@@ -27,4 +27,6 @@ public:
 	virtual void onClose() {
 		return;
 	}
+
+	bool isWfsConnected();
 };

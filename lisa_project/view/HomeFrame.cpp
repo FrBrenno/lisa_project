@@ -100,6 +100,7 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
 
     SetSize(800, 600);
+    SetBackgroundColour(wxColour(255, 255, 255));
     CenterOnScreen();
 
 }
@@ -135,12 +136,23 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
 //=== VIEW FUNCTIONS ===//
 
 void HomeFrame::updateImage(wxTimerEvent& event) {
+    if (!controller->isWfsConnected()) {
+        this->previewTimer->Stop();
+		return;
+	}
+
     wxBitmap* bitmap = new wxBitmap();
     for (BaseController* listener : this->listeners)
     {
         if (ImageController* imgController = dynamic_cast<ImageController*>(listener))
         {
             imgController->takeImage();
+
+            if (imgController->hasError() != 0)
+            {
+                this->previewTimer->Stop();
+                return;
+            }
             bitmap = imgController->getBitmap();
         }
     }
