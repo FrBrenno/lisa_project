@@ -23,6 +23,7 @@ class HomeFrame : public wxFrame
     wxStaticBitmap* imageControl;
 
     wxButton* captureButton;
+    wxButton* previewButton;
     wxTimer* previewTimer;
     bool isPreviewOn;
     /**
@@ -56,7 +57,10 @@ class HomeFrame : public wxFrame
      */
     void OnAbout(wxCommandEvent& event);
 
-    //TODO: Add methods to all available menu items
+    void updatePreviewButton();
+    void stopPreview();
+    void startPreview();
+    void OnPreviewButton(wxCommandEvent& event);
 public:
     HomeFrame(HomeFrameController* controller);
 

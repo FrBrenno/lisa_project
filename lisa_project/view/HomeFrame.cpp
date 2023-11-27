@@ -3,6 +3,8 @@
 #include "../controller/ImageController.h"
 #include "../MenuID.h"
 
+#define PREVIEW_IMAGE_RATE 1000/30
+
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
@@ -24,14 +26,19 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     this->captureButton = new wxButton(this, wxID_ANY, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, wxID_ANY);
 
+    this->previewButton = new wxButton(this, wxID_ANY, "Stop Preview");
+    Bind(wxEVT_BUTTON, &HomeFrame::OnPreviewButton, this, wxID_ANY);
+
     this->previewTimer = new wxTimer(this);
     Bind(wxEVT_TIMER, &HomeFrame::updateImage, this, wxID_ANY);
-    this->previewTimer->Start(1000 / 30);
-    bool isPreviewOn = true;
+    this->isPreviewOn = false;
 
+    wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+    buttonSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
+    buttonSizer->Add(this->previewButton, 0, wxALIGN_CENTER | wxALL, 5);
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
-    mainSizer->Add(this->imageControl, 1, wxALIGN_CENTER | wxALL, 5);
-    mainSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
+    mainSizer->Add(this->imageControl, 0, wxALIGN_CENTER | wxALL, 5);
+    mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxALL, 5);
     SetSizerAndFit(mainSizer);
 
     //=== Menu Initialization ===//
@@ -96,7 +103,7 @@ void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 
 void HomeFrame::OnLoadImage(wxCommandEvent& event)
 {
-    this->isPreviewOn = false;
+    this->stopPreview();
     wxImage img = this->controller->onLoadImage(this);
     // if empty image, do not change
     if (!img.IsOk()) 
@@ -130,12 +137,23 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
         "About LISA Plenoptic Camera Visualizer", wxOK | wxICON_INFORMATION);
 }
 
+void HomeFrame::OnPreviewButton(wxCommandEvent& event)
+{
+    if (this->isPreviewOn)
+    {
+		this->stopPreview();
+	}
+    else
+    {
+		this->startPreview();
+	}
+}
+
 //=== VIEW FUNCTIONS ===//
 
 void HomeFrame::updateImage(wxTimerEvent& event) {
     if (!controller->isWfsConnected()) {
-        this->previewTimer->Stop();
-        this->isPreviewOn = false;
+        this->stopPreview();
 		return;
 	}
 
@@ -148,8 +166,7 @@ void HomeFrame::updateImage(wxTimerEvent& event) {
 
             if (imgController->hasError() != 0)
             {
-                this->previewTimer->Stop();
-                this->isPreviewOn = false;
+                this->stopPreview();
                 return;
             }
             image = imgController->getImage();
@@ -179,6 +196,39 @@ void HomeFrame::resizeImage(wxImage* image)
 		newWidth = (int)(newHeight * ((float)width / (float)height));
 	}
     *image = image->Rescale(newWidth, newHeight);
+}
+
+void HomeFrame::updatePreviewButton()
+{
+    if (this->isPreviewOn)
+    {
+        if (this->controller->isWfsConnected())
+        {
+            this->previewButton->SetLabel("Stop Preview");
+        }
+        else
+        {
+            wxMessageBox("Cannot start preview: WFS is not connected.", "Error", wxOK | wxICON_ERROR);
+        }
+	}
+    else
+    {
+		this->previewButton->SetLabel("Start Preview");
+	}
+}
+
+void HomeFrame::stopPreview()
+{
+	this->previewTimer->Stop();
+	this->isPreviewOn = false;
+	this->updatePreviewButton();
+}
+
+void HomeFrame::startPreview()
+{
+	this->previewTimer->Start(PREVIEW_IMAGE_RATE);
+	this->isPreviewOn = true;
+	this->updatePreviewButton();
 }
 //=== UTILITY FUNCTIONS ===//
 
