@@ -60,7 +60,7 @@ void HomeFrameController::onCameraSettings(wxWindow* parent)
 
 void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 {
-	wxFileDialog saveFileDialog(parent, "Save Image", "", "", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog saveFileDialog(parent, "Save Image", "", "pcv_image.png", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
 	if (saveFileDialog.ShowModal() == wxID_CANCEL) {
 		// User canceled the operation

@@ -2,6 +2,7 @@
 #include "../controller/HomeFrameController.h"
 #include "../controller/ImageController.h"
 #include "../MenuID.h"
+#include "../ButtonID.h"
 
 #define PREVIEW_IMAGE_RATE 1000/30
 
@@ -23,11 +24,11 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512,512));
 
-    this->captureButton = new wxButton(this, wxID_ANY, "Capture");
-    Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, wxID_ANY);
+    this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
+    Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, ID_CAPTURE);
 
-    this->previewButton = new wxButton(this, wxID_ANY, "Stop Preview");
-    Bind(wxEVT_BUTTON, &HomeFrame::OnPreviewButton, this, wxID_ANY);
+    this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
+    Bind(wxEVT_BUTTON, &HomeFrame::OnPreviewButton, this, ID_PREVIEW);
 
     this->previewTimer = new wxTimer(this);
     Bind(wxEVT_TIMER, &HomeFrame::updateImage, this, wxID_ANY);

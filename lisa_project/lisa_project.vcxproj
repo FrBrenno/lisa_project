@@ -161,6 +161,7 @@
     <ClCompile Include="view\MlaSelectionDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonID.h" />
     <ClInclude Include="controller\BaseController.h" />
     <ClInclude Include="controller\CameraSettingsController.h" />
     <ClInclude Include="controller\HomeFrameController.h" />
