@@ -17,6 +17,10 @@ InstrumentController::InstrumentController(MyAppInterface* main, bool is_wfs_con
 		[this](const Event& event) {
 			HandleMlaSelected(event);
 		});
+	EventDispatcher::Instance().SubscribeToEvent("Exit",
+		[this](const Event& event) {
+			onExit();
+		});
 }
 
 //=== Event Handlers ===//
@@ -272,6 +276,16 @@ void InstrumentController::closeInstrument()
 	}
 }
 
+void InstrumentController::onExit()
+{
+		// If instrument is initialized, just close it
+	if (this->selectedInstrument->isInitialized())
+	{
+		this->closeInstrument();
+		return;
+	}
+	return;
+}
 
 //=== Utility Functions ===//
 

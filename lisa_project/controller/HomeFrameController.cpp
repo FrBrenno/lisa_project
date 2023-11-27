@@ -80,3 +80,12 @@ void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 }
 
 
+void HomeFrameController::onExit()
+{
+	// Publish ExitEvent
+	Event exitEvent("Exit");
+	EventDispatcher::Instance().PublishEvent(exitEvent);
+
+	return;
+}
+

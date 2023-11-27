@@ -4,7 +4,8 @@
 #include "../id/MenuID.h"
 #include "../id/ButtonID.h"
 
-#define PREVIEW_IMAGE_RATE 1000/2
+
+#define PREVIEW_IMAGE_RATE 1000/24
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
@@ -128,6 +129,7 @@ void HomeFrame::OnCapture(wxCommandEvent& event)
 
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
+    this->controller->onExit();
     exit(0);
 }
 
@@ -181,11 +183,15 @@ void HomeFrame::setImage(wxImage* image)
     resizeImage(image);
     wxBitmap* bitmap = new wxBitmap(*image);
     imageControl->SetBitmap(*bitmap);
-	imageControl->Refresh();
+    imageControl->Refresh();
 }
 
 void HomeFrame::resizeImage(wxImage* image)
 {
+    // if the image is already in the right size, do not resize
+    if (image->GetWidth() == imageControl->GetSize().GetWidth() && image->GetHeight() == imageControl->GetSize().GetHeight())
+		return;
+
     int width = image->GetWidth();
     int height = image->GetHeight();
     int newWidth = imageControl->GetSize().GetWidth();
@@ -197,6 +203,7 @@ void HomeFrame::resizeImage(wxImage* image)
 		newWidth = (int)(newHeight * ((float)width / (float)height));
 	}
     *image = image->Rescale(newWidth, newHeight);
+    return;
 }
 
 void HomeFrame::updatePreviewButton()

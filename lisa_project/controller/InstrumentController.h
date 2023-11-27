@@ -72,4 +72,6 @@ public:
 	void closeInstrument();
 
 	void onClose() override;
+
+	void onExit();
 };

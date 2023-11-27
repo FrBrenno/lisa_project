@@ -28,7 +28,6 @@ void CameraSettingsController::HandleSettingsSelection(const Event& event)
 	cameraSettingsDialog->loadCameraSettings(cameraConfig);
 	cameraSettingsDialog->ShowModal();
 
-
 	return;
 }
 
