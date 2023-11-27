@@ -16,7 +16,7 @@
 #define  SAMPLE_PIXEL_FORMAT           PIXEL_FORMAT_MONO8   // only 8 bit format is supported
 #define  SAMPLE_CAMERA_RESOL_WFS20     CAM_RES_WFS20_512    // 512x512 pixels
 #define  SAMPLE_REF_PLANE              WFS_REF_INTERNAL
-#define SAMPLE_IMAGE_READINGS          (10) // trials to read a exposed spotfield image
+#define  SAMPLE_IMAGE_READINGS          (10) // trials to read a exposed spotfield image
 
 // Pupil Settings
 #define  SAMPLE_PUPIL_CENTROID_X       (0.0) // in mm
@@ -26,8 +26,6 @@
 
 
 // Miscellaneous settings
-#define  SAMPLE_IMAGE_READINGS         (10) // trials to read a exposed spotfield image
-
 #define  SAMPLE_WAVEFRONT_TYPE         WAVEFRONT_MEAS // calculate measured wavefront
 
 #define  SAMPLE_PRINTOUT_SPOTS         (5)  // printout results for first 5 x 5 spots only

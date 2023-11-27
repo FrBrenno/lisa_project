@@ -19,6 +19,7 @@ class ImageController: public BaseController{
 	wxImage* image;
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
+	void rotate180Image(unsigned char* rgbBuffer, int width, int height);	
 public:
 	ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument);
 

@@ -70,8 +70,10 @@ void ImageController::takeImage(){
         }
 
         // Convert image buffer to wxImage
+		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer);
+		this->rotate180Image(rgbBuffer, this->cols, this->rows);
 
         this->image = new wxImage(cols, rows, rgbBuffer, true);
 
@@ -99,6 +101,24 @@ void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer
 		rgbBuffer[3 * i + 1] = grayValue; // Green channel
 		rgbBuffer[3 * i + 2] = grayValue; // Blue channel
 	}
+}
+
+void ImageController::rotate180Image(unsigned char* rgbBuffer, int width, int height)
+{
+	unsigned char* temp = new unsigned char[3 * width * height];
+	for (int i = 0; i < width * height; i++)
+	{
+		temp[3 * i] = rgbBuffer[3 * (width * height - i - 1)];
+		temp[3 * i + 1] = rgbBuffer[3 * (width * height - i - 1) + 1];
+		temp[3 * i + 2] = rgbBuffer[3 * (width * height - i - 1) + 2];
+	}
+	for (int i = 0; i < width * height; i++)
+	{
+		rgbBuffer[3 * i] = temp[3 * i];
+		rgbBuffer[3 * i + 1] = temp[3 * i + 1];
+		rgbBuffer[3 * i + 2] = temp[3 * i + 2];
+	}
+	delete[] temp;
 }
 
 

@@ -4,7 +4,7 @@
 #include "../id/MenuID.h"
 #include "../id/ButtonID.h"
 
-#define PREVIEW_IMAGE_RATE 1000/30
+#define PREVIEW_IMAGE_RATE 1000/2
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
@@ -176,6 +176,7 @@ void HomeFrame::updateImage(wxTimerEvent& event) {
 
 void HomeFrame::setImage(wxImage* image)
 {
+    this->imageControl->SetBitmap(wxNullBitmap);
     resizeImage(image);
     wxBitmap* bitmap = new wxBitmap(*image);
     imageControl->SetBitmap(*bitmap);
