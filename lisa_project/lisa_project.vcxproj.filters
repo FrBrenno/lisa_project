@@ -31,6 +31,9 @@
     <Filter Include="Fichiers d%27en-tête\View">
       <UniqueIdentifier>{03c8f006-77fa-4681-bce6-a96b442ce289}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\id">
+      <UniqueIdentifier>{043226fd-0189-4021-977d-21fcaa420759}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyApp.cpp">
@@ -80,9 +83,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MenuID.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MyApp.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -137,8 +137,11 @@
     <ClInclude Include="MyAppInterface.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonID.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="id\ButtonID.h">
+      <Filter>Fichiers d%27en-tête\id</Filter>
+    </ClInclude>
+    <ClInclude Include="id\MenuID.h">
+      <Filter>Fichiers d%27en-tête\id</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

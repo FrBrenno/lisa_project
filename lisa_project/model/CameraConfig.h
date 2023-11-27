@@ -1,3 +1,6 @@
+#ifndef CAMERA_CONFIG_H
+#define CAMERA_CONFIG_H
+
 #include "WFS.h"
 
 /**
@@ -12,9 +15,13 @@ class CameraConfig{
 	int blackLevel;
 	int nbImageReadings;
 
+	bool autoExposure;
+	bool autoGain;
+	bool autoNoiseCutLevel;
+	bool autoBlackLevel;
+
 public:
 	CameraConfig();
-	CameraConfig(int cameraResolution, int exposureTime, int gain, int noiseCutLevel, int blackLevel, int nbImageReadings);
 
 	int getCameraResolution();
 	ViReal64* getExposureTime();
@@ -22,7 +29,24 @@ public:
 	int getNoiseCutLevel();
 	int getBlackLevel();
 	int getNbImageReadings();
+	bool isAutoExposure();
+	bool isAutoGain();
+	bool isAutoNoiseCutLevel();
+	bool isAutoBlackLevel();
 
-	void setCameraConfig(int cameraResolution, int exposureTime, int gain, int noiseCutLevel, int blackLevel, int nbImageReadings);
 
+	void setCameraConfig(int cameraResolution, 
+		int exposureTime, 
+		int gain, 
+		int noiseCutLevel, 
+		int blackLevel, 
+		int nbImageReadings,
+		bool autoExposure,
+		bool autoGain,
+		bool autoNoiseCutLevel,
+		bool autoBlackLevel);
+
+	void setDefault();
 };
+
+#endif

@@ -1,0 +1,11 @@
+#pragma once
+
+enum ButtonID
+{
+	ID_CAPTURE = 1000,
+	ID_PREVIEW,
+	ID_AUTO_EXPOSURE,
+	ID_AUTO_NOISE_CUT,
+	ID_AUTO_BLACK_LEVEL,
+	ID_SET_DEFAULT,
+};

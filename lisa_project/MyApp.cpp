@@ -18,7 +18,6 @@ bool MyApp::OnInit()
     this->instrumentController = new InstrumentController(this, this->is_wfs_connected);
     this->mlaController = new MlaController(this, this->is_wfs_connected);
     this->imageController = new ImageController(this, this->is_wfs_connected, this->instrumentController->getInstrument());
-    this->cameraSettingsController = new CameraSettingsController(this, this->is_wfs_connected);
 
     //=== View initialization ===//
 

@@ -2,6 +2,7 @@
 #include "wx/wx.h"
 #include "../model/CameraConfig.h"
 #include "../model/Instrument.h"
+#include "../controller/CameraSettingsController.h"
 #include "BaseController.h"
 
 /**
@@ -9,6 +10,7 @@
  * @brief This controller handles image acquisition. 
  */
 class ImageController: public BaseController{
+	CameraSettingsController* cameraSettingsController;
 	CameraConfig* cameraConfig;
 	Instrument* instrument;
 	int err;

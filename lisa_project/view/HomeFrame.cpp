@@ -1,8 +1,8 @@
 #include "HomeFrame.h"
 #include "../controller/HomeFrameController.h"
 #include "../controller/ImageController.h"
-#include "../MenuID.h"
-#include "../ButtonID.h"
+#include "../id/MenuID.h"
+#include "../id/ButtonID.h"
 
 #define PREVIEW_IMAGE_RATE 1000/30
 
@@ -59,8 +59,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
     wxMenu* menuSetup = new wxMenu;
     menuSetup->Append(ID_SETUP_CAMERA_SETTINGS, "&Camera Settings", "Camera settings...");
-    menuSetup->Append(ID_SETUP_MLA_SETTINGS, "&MLA Settings", "Microlens Array settings...");
-    menuSetup->Append(ID_SETUP_MISCELLANEOUS_SETTINGS, "&Miscellaneous Settings", "Miscellaneous settings...");
 
     // Help Menu
 

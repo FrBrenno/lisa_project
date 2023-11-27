@@ -27,7 +27,6 @@ class MyApp : public wxApp, MyAppInterface
     InstrumentController* instrumentController;
     MlaController* mlaController;
     ImageController* imageController;
-    CameraSettingsController* cameraSettingsController;
 
     //== Views ===//
 

@@ -1,9 +1,12 @@
 #include "CameraSettingsController.h"
 #include "../EventDispatcher.h"
 #include "../view/CameraSettingsDialog.h"
+#include "WFS.h"
 
-CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected) :  BaseController(main, is_wfs_connected)
+CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected, CameraConfig* cameraConfig) :  BaseController(main, is_wfs_connected)
 {
+	this->cameraConfig = cameraConfig;
+
 	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
 		[this](const Event& event) {
 			HandleSettingsSelection(event);
@@ -22,13 +25,25 @@ void CameraSettingsController::HandleSettingsSelection(const Event& event)
 	}
 	*/
 	CameraSettingsDialog* cameraSettingsDialog = new CameraSettingsDialog(nullptr, this);
+	cameraSettingsDialog->loadCameraSettings(cameraConfig);
 	cameraSettingsDialog->ShowModal();
+
 
 	return;
 }
 
-void CameraSettingsController::onOK()
+void CameraSettingsController::onSetDefault()
 {
+	// Set default camera settings
+	cameraConfig->setDefault();
+	return;
+}
+
+void CameraSettingsController::onOK(CameraConfig* newCamConfig)
+{
+	// Set new camera settings
+	delete cameraConfig;
+	cameraConfig = newCamConfig;
 	return;
 }
 

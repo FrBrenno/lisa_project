@@ -1,6 +1,8 @@
 #include "ImageController.h"
 #include "WFS.h"
 
+// TODO: When camera settings change the CameraSettingsController should be notify this class, but it does not.
+
 ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument) : BaseController(main, is_wfs_connected)
 {
 	this->instrument = instrument;
@@ -11,6 +13,7 @@ ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, In
 	this->rgbBuffer = VI_NULL;
 	this->cameraConfig = new CameraConfig();
 	this->image = new wxImage();
+	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected, this->cameraConfig);
 }
 
 void ImageController::takeImage(){
@@ -51,7 +54,12 @@ void ImageController::takeImage(){
 					*gain, 
 					cameraConfig->getNoiseCutLevel(), 
 					cameraConfig->getBlackLevel(), 
-					cameraConfig->getNbImageReadings());
+					cameraConfig->getNbImageReadings(),
+					cameraConfig->isAutoExposure(),
+					cameraConfig->isAutoGain(),
+					cameraConfig->isAutoNoiseCutLevel(),
+					cameraConfig->isAutoBlackLevel()
+				);
 			}
 		}
 
