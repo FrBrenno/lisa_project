@@ -122,6 +122,7 @@ void HomeFrame::OnCameraSettings(wxCommandEvent& event)
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
+    this->stopPreview();
     this->controller->onCapture(this, this->imageControl->GetBitmap());
 }
 

@@ -75,6 +75,7 @@ void ImageController::takeImage(){
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer);
 		this->rotate180Image(rgbBuffer, this->cols, this->rows);
 
+		this->image->Destroy();
         this->image = new wxImage(cols, rows, rgbBuffer, true);
 
         // Check if the image creation was successful
