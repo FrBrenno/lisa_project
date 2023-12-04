@@ -20,10 +20,6 @@ bool MyApp::OnInit()
 
     //=== WFS API initialization ===//
     check_api_connection();
-    EventDispatcher::Instance().SubscribeToEvent("ApiStatusChanged", [this](Event event) {
-		this->change_api_status(*(bool*)event.getData()); // Attention: Fuite de memoire possible
-        delete event.getData();
-	});
 
     //=== Controller initialization ===//
 
@@ -60,7 +56,7 @@ void MyApp::check_api_connection()
         if (err == VI_SUCCESS)
         {
             this->is_wfs_connected = true;
-            change_api_status(true);
+            change_api_status();
             wxBusyInfo busyInfo(wxString::Format("Connected to API"));
             wxMilliSleep(timeoutMillis / 2);
             return;
@@ -74,9 +70,7 @@ void MyApp::check_api_connection()
     wxMessageBox("Could not connect to API. Please check connection and try again.", "Error", wxOK | wxICON_ERROR);
 }
 
-void MyApp::change_api_status(bool status)
+void MyApp::change_api_status()
 {
-	this->is_wfs_connected = status;
-	EventDispatcher::Instance().PublishEvent(Event("ApiStatusChanged", (void*)this->is_wfs_connected));
-
+	EventDispatcher::Instance().PublishEvent(Event("ApiStatusChanged", (void*)&this->is_wfs_connected));
 }
