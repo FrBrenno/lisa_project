@@ -20,7 +20,7 @@ class HomeFrame : public wxFrame
     /**
      * This image control element that displays the camera image.
      */
-    wxBitmapButton* imageControl;
+    wxStaticBitmap* imageControl;
 
     wxButton* captureButton;
     wxButton* previewButton;
@@ -44,6 +44,8 @@ class HomeFrame : public wxFrame
     void OnCameraSettings(wxCommandEvent& event);
 
     void OnCapture(wxCommandEvent& event);
+
+    void OnEraseBackground(wxEraseEvent& event);
     /**
      * Handles when the user clicks on the exit menu item or closes the window.
      * 

@@ -23,9 +23,8 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     //=== Main Initialization ===//
     wxImage::AddHandler(new wxPNGHandler);
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
-    this->imageControl = new wxBitmapButton(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
-    this->imageControl->SetWindowStyleFlag(wxNO_BORDER);
-    this->imageControl->SetBackgroundColour(wxColour(255, 255, 255));
+    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
+    this->imageControl->SetDoubleBuffered(true);
 
     this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, ID_CAPTURE);
@@ -156,6 +155,7 @@ void HomeFrame::OnPreviewButton(wxCommandEvent& event)
 //=== VIEW FUNCTIONS ===//
 
 void HomeFrame::updateImage(wxTimerEvent& event) {
+    this->imageControl->Freeze();
     if (!controller->isWfsConnected()) {
         this->stopPreview();
 		return;
@@ -177,6 +177,7 @@ void HomeFrame::updateImage(wxTimerEvent& event) {
         }
     }
     this->setImage(image);
+    this->imageControl->Thaw();
 }
 
 void HomeFrame::setImage(wxImage* image)
