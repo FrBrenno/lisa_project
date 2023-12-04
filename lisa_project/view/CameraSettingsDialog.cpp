@@ -10,15 +10,11 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
 	//=== View Construction ===//
     resolutionListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayString(), wxLB_SINGLE);
     nbImageReadingCtrl = new wxTextCtrl(this, wxID_ANY);
-    Bind(wxEVT_TEXT, & CameraSettingsDialog::OnTextCtrl, this, nbImageReadingCtrl->GetId());
     exposureTimeCtrl = new wxTextCtrl(this, wxID_ANY);
-    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, exposureTimeCtrl->GetId());
     noiseCutLevelCtrl = new wxTextCtrl(this, wxID_ANY);
-    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, noiseCutLevelCtrl->GetId());
     gainCtrl = new wxTextCtrl(this, wxID_ANY, wxString::Format(wxT("%.2f"), 1.00));
     gainCtrl->Enable(false);
     blackLevelCtrl = new wxTextCtrl(this, wxID_ANY);
-    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, blackLevelCtrl->GetId());
     
     autoExposureButton = new wxCheckBox(this, ID_AUTO_EXPOSURE, wxT("Auto"));
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoExposure, this, ID_AUTO_EXPOSURE);
@@ -98,13 +94,6 @@ void CameraSettingsDialog::loadCameraSettings(CameraConfig* cameraConfig)
 }
 
 //=== Event Handlers ===//
-
-void CameraSettingsDialog::OnTextCtrl(wxEvent& event)
-{
-	wxTextCtrl* textCtrl = (wxTextCtrl*)event.GetEventObject();
-	textCtrl->SetSelection(-1, -1);
-    event.Skip();
-}
 
 void CameraSettingsDialog::OnAutoExposure(wxCommandEvent& event)
 {
