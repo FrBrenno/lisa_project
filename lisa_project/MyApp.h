@@ -37,4 +37,5 @@ public:
 
     virtual bool OnInit();    
     void check_api_connection() override;
+    void change_api_status(bool status);
 };
