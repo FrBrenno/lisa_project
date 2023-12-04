@@ -145,7 +145,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Driver Revision
 		// this->reviseDrive();
 		// MLA Selection
-		this->mlaConfiguration();
+		//this->mlaConfiguration();
 		// Camera Configuration
 		this->cameraConfiguration();
 	}
