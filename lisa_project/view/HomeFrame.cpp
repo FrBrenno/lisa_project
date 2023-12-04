@@ -23,7 +23,9 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     //=== Main Initialization ===//
     wxImage::AddHandler(new wxPNGHandler);
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
-    this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512,512));
+    this->imageControl = new wxBitmapButton(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
+    this->imageControl->SetWindowStyleFlag(wxNO_BORDER);
+    this->imageControl->SetBackgroundColour(wxColour(255, 255, 255));
 
     this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, ID_CAPTURE);

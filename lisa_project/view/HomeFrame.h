@@ -20,7 +20,7 @@ class HomeFrame : public wxFrame
     /**
      * This image control element that displays the camera image.
      */
-    wxStaticBitmap* imageControl;
+    wxBitmapButton* imageControl;
 
     wxButton* captureButton;
     wxButton* previewButton;
