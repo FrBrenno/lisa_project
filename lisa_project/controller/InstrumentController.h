@@ -27,6 +27,7 @@ class InstrumentController: public BaseController{
 
 public:
 	InstrumentController(MyAppInterface* main, bool is_wfs_connected);
+	~InstrumentController();
 
 	std::string getInstrumentName();
 	Instrument* getInstrument();

@@ -27,6 +27,7 @@ class MlaController: public BaseController {
 	void HandleMlaSelected();
 public:
 	MlaController(MyAppInterface* main, bool is_wfs_connected);
+	~MlaController();
 
 	/**
 	 * Inserts all the MLAs given by Thorlabs API in the list.

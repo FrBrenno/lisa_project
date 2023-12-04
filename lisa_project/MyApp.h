@@ -32,8 +32,9 @@ class MyApp : public wxApp, MyAppInterface
 
     HomeFrame* homeFrame;
 
-
 public:
-    virtual bool OnInit();
+    ~MyApp();
+
+    virtual bool OnInit();    
     void check_api_connection() override;
 };

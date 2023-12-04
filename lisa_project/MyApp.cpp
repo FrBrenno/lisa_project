@@ -5,6 +5,14 @@
 
 wxIMPLEMENT_APP(MyApp);
 
+MyApp::~MyApp()
+{
+	delete homeFrameController;
+	delete instrumentController;
+	delete mlaController;
+	delete imageController;
+}
+
 bool MyApp::OnInit()
 {
     //=== WxWidgets initialization ===//

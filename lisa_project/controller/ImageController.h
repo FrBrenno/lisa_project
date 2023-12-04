@@ -22,7 +22,7 @@ class ImageController: public BaseController{
 	void rotate180Image(unsigned char* rgbBuffer, int width, int height);	
 public:
 	ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument);
-
+	~ImageController();
 	/**
 	 * Returns a pointer the image buffer.
 	 * 
@@ -36,5 +36,5 @@ public:
 	 */
 	wxImage* getImage();
 
-	int hasError();
+	int hasError() const;
 };

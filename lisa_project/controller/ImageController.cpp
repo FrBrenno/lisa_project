@@ -16,6 +16,15 @@ ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, In
 	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected, this->cameraConfig);
 }
 
+ImageController::~ImageController()
+{
+	delete[] rgbBuffer;
+	delete[] imageBuffer;
+	delete cameraConfig;
+	delete image;
+	delete cameraSettingsController;
+}
+
 void ImageController::takeImage(){
 	//Verifies if the api is connected before taking an image, if not, it will return
 	if (!is_wfs_connected) {
@@ -24,7 +33,6 @@ void ImageController::takeImage(){
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
-
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
 
@@ -62,7 +70,6 @@ void ImageController::takeImage(){
 				);
 			}
 		}
-
 		// Get last image
         if (err = WFS_GetSpotfieldImage(*instrument->getHandle(), &imageBuffer, &rows, &cols)) {
             this->handleError(err, "Error while getting spotfield image");
@@ -73,19 +80,17 @@ void ImageController::takeImage(){
 		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer);
-		this->rotate180Image(rgbBuffer, this->cols, this->rows);
 
 		this->image->Destroy();
         this->image = new wxImage(cols, rows, rgbBuffer, true);
-
         // Check if the image creation was successful
         if (!this->image->IsOk()) {
 			err = -1;
             this->handleError(-1, "Failed to create wxImage");
             return;
         }
-		   
 	}
+
 }
 
 //=== Utility functions ===//
@@ -104,24 +109,6 @@ void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer
 	}
 }
 
-void ImageController::rotate180Image(unsigned char* rgbBuffer, int width, int height)
-{
-	unsigned char* temp = new unsigned char[3 * width * height];
-	for (int i = 0; i < width * height; i++)
-	{
-		temp[3 * i] = rgbBuffer[3 * (width * height - i - 1)];
-		temp[3 * i + 1] = rgbBuffer[3 * (width * height - i - 1) + 1];
-		temp[3 * i + 2] = rgbBuffer[3 * (width * height - i - 1) + 2];
-	}
-	for (int i = 0; i < width * height; i++)
-	{
-		rgbBuffer[3 * i] = temp[3 * i];
-		rgbBuffer[3 * i + 1] = temp[3 * i + 1];
-		rgbBuffer[3 * i + 2] = temp[3 * i + 2];
-	}
-	delete[] temp;
-}
-
 
 wxImage* ImageController::getImage()
 {
@@ -135,7 +122,7 @@ wxImage* ImageController::getImage()
 	}
 }
 
-int ImageController::hasError()
+int ImageController::hasError() const
 {
 	return this->err;
 }

@@ -23,6 +23,11 @@ InstrumentController::InstrumentController(MyAppInterface* main, bool is_wfs_con
 		});
 }
 
+InstrumentController::~InstrumentController()
+{
+	delete selectedInstrument;
+}
+
 //=== Event Handlers ===//
 
 void InstrumentController::HandleInstrumentSelection(const Event& event)
@@ -268,6 +273,7 @@ void InstrumentController::closeInstrument()
 	}
 
 	if (err = WFS_close(*this->selectedInstrument->getHandle())) {
+		delete this->selectedInstrument;
 		this->handleError(err, "Not able to close instrument");
 		return;
 	}

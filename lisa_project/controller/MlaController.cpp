@@ -14,6 +14,10 @@ MlaController::MlaController(MyAppInterface* main, bool is_wfs_connected) : Base
 		});
 }
 
+MlaController::~MlaController() {
+	delete this->selectMla;
+}
+
 //=== Event Handler ===//
 
 void MlaController::HandleMlaSelection(const Event& event) 
