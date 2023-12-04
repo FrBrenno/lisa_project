@@ -25,5 +25,5 @@ public:
 	virtual void onClose();
 
 	bool isWfsConnected() const;
-	void setWfsConnected(bool isWfsConnected);
+	void setWfsConnected(bool* isWfsConnected);
 };

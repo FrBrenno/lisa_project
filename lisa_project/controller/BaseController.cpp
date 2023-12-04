@@ -7,8 +7,8 @@ BaseController::BaseController(MyAppInterface* main, bool is_wfs_connected) {
 	this->app = main;
 	this->is_wfs_connected = is_wfs_connected;
 
-	EventDispatcher::Instance().SubscribeToEvent("ApiStatusChange", [this](Event event) {
-		this->setWfsConnected(*(bool*)event.getData());
+	EventDispatcher::Instance().SubscribeToEvent("ApiStatusChanged", [this](Event event) {
+		this->setWfsConnected((bool*)event.getData());
 	});
 }
 
@@ -37,7 +37,7 @@ bool BaseController::isWfsConnected() const {
 	return this->is_wfs_connected;
 }
 
-void BaseController::setWfsConnected(bool isWfsConnected) {
+void BaseController::setWfsConnected(bool* isWfsConnected) {
 	this->is_wfs_connected = isWfsConnected;
 }
 

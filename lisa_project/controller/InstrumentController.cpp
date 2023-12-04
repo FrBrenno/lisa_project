@@ -13,10 +13,6 @@ InstrumentController::InstrumentController(MyAppInterface* main, bool is_wfs_con
 		[this](const Event& event) {
 			HandleInstrumentSelection(event);
 		});
-	EventDispatcher::Instance().SubscribeToEvent("MlaSelected",
-		[this](const Event& event) {
-			HandleMlaSelected(event);
-		});
 	EventDispatcher::Instance().SubscribeToEvent("Exit",
 		[this](const Event& event) {
 			onExit();
