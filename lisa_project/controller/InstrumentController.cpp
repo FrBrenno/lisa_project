@@ -113,6 +113,11 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 			}
 			list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use) ? "" : "(inUse)"));
 		}
+		if (instrumentCount == 1)
+		{
+			// Only one instrument found
+			this->onInstrumentSelected(0);
+		}
 	}
 }
 
