@@ -25,7 +25,6 @@ class CameraSettingsDialog : public wxDialog
 	wxString resolutionList[1] = { "512x512"};
 
 	//=== Event Handlers ===//
-	void OnTextCtrl(wxEvent& event);
 	void OnAutoExposure(wxCommandEvent& event);
 	void OnAutoNoiseCut(wxCommandEvent& event);
 	void OnAutoBlackLevel(wxCommandEvent& event);
