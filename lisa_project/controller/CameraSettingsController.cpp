@@ -3,19 +3,15 @@
 #include "../view/CameraSettingsDialog.h"
 #include "WFS.h"
 
-CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected, CameraConfig* cameraConfig) :  BaseController(main, is_wfs_connected)
+CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected) :  BaseController(main, is_wfs_connected)
 {
-	this->cameraConfig = cameraConfig;
-
-	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
-		[this](const Event& event) {
-			HandleSettingsSelection(event);
-		});
+	this->cameraConfig = new CameraConfig();
+	this->cameraConfig->setDefault();
 }
 
 //=== Event Handlers ===//
 
-void CameraSettingsController::HandleSettingsSelection(const Event& event)
+void CameraSettingsController::handleSettingsSelection(const Event& event)
 {
 	/*
 	if(!is_wfs_connected){
@@ -52,4 +48,10 @@ void CameraSettingsController::onClose()
 }
 //=== WFS API Functions ===//
 
+//=== Getters ===//
+
+CameraConfig* CameraSettingsController::getCameraConfig()
+{
+	return cameraConfig;
+}
 

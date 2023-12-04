@@ -7,11 +7,13 @@
 class CameraSettingsController : public BaseController
 {
 	CameraConfig* cameraConfig;
-	void HandleSettingsSelection(const Event& event);
 
 public:
-	CameraSettingsController(MyAppInterface* main, bool is_wfs_connected, CameraConfig* cameraConfig);
+	CameraSettingsController(MyAppInterface* main, bool is_wfs_connected);
 
+	void handleSettingsSelection(const Event& event);
+
+	CameraConfig* getCameraConfig();
 	void onSetDefault();
 	void onOK(CameraConfig* newCamConfig);
 	void onClose() override;

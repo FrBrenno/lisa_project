@@ -9,12 +9,16 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
 
 	//=== View Construction ===//
     resolutionListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayString(), wxLB_SINGLE);
-     nbImageReadingCtrl = new wxTextCtrl(this, wxID_ANY);
+    nbImageReadingCtrl = new wxTextCtrl(this, wxID_ANY);
+    Bind(wxEVT_TEXT, & CameraSettingsDialog::OnTextCtrl, this, nbImageReadingCtrl->GetId());
     exposureTimeCtrl = new wxTextCtrl(this, wxID_ANY);
+    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, exposureTimeCtrl->GetId());
     noiseCutLevelCtrl = new wxTextCtrl(this, wxID_ANY);
+    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, noiseCutLevelCtrl->GetId());
     gainCtrl = new wxTextCtrl(this, wxID_ANY, wxString::Format(wxT("%.2f"), 1.00));
     gainCtrl->Enable(false);
     blackLevelCtrl = new wxTextCtrl(this, wxID_ANY);
+    Bind(wxEVT_TEXT, &CameraSettingsDialog::OnTextCtrl, this, blackLevelCtrl->GetId());
     
     autoExposureButton = new wxCheckBox(this, ID_AUTO_EXPOSURE, wxT("Auto"));
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoExposure, this, ID_AUTO_EXPOSURE);
@@ -24,7 +28,7 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoBlackLevel, this, ID_AUTO_BLACK_LEVEL);
 
    setDefaultButton = new wxButton(this, wxID_ANY, wxT("Set Default"));
-   Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnOK, this, setDefaultButton->GetId());
+   Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnSetDefault, this, setDefaultButton->GetId());
    cancelButton = new wxButton(this, wxID_ANY, wxT("Cancel"));
    Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnOK, this, cancelButton->GetId());
    okButton = new wxButton(this, wxID_ANY, wxT("OK"));
@@ -84,16 +88,23 @@ void CameraSettingsDialog::loadCameraSettings(CameraConfig* cameraConfig)
     this->gainCtrl->SetValue(wxString::Format(wxT("%.2f"), cameraConfig->getGain()));
     this->blackLevelCtrl->SetValue(wxString::Format(wxT("%d"), cameraConfig->getBlackLevel()));
 
-    this->autoExposureButton->SetValue(true);
-    this->autoNoiseCutButton->SetValue(true);
-    this->autoBlackLevelButton->SetValue(true);
+    this->autoExposureButton->SetValue(cameraConfig->isAutoExposure());
+    this->autoNoiseCutButton->SetValue(cameraConfig->isAutoNoiseCutLevel());
+    this->autoBlackLevelButton->SetValue(cameraConfig->isAutoBlackLevel());
 
-    exposureTimeCtrl->Enable(false);
-    noiseCutLevelCtrl->Enable(false);
-    blackLevelCtrl->Enable(false);
+    exposureTimeCtrl->Enable(!cameraConfig->isAutoExposure());
+    noiseCutLevelCtrl->Enable(!cameraConfig->isAutoNoiseCutLevel());
+    blackLevelCtrl->Enable(!cameraConfig->isAutoBlackLevel());
 }
 
 //=== Event Handlers ===//
+
+void CameraSettingsDialog::OnTextCtrl(wxEvent& event)
+{
+	wxTextCtrl* textCtrl = (wxTextCtrl*)event.GetEventObject();
+	textCtrl->SetSelection(-1, -1);
+    event.Skip();
+}
 
 void CameraSettingsDialog::OnAutoExposure(wxCommandEvent& event)
 {
@@ -122,6 +133,7 @@ void CameraSettingsDialog::OnAutoBlackLevel(wxCommandEvent& event)
 void CameraSettingsDialog::OnSetDefault(wxCommandEvent& event)
 {
 	controller->onSetDefault();
+    this->Destroy();
 }
 
 void CameraSettingsDialog::OnOK(wxCommandEvent& event)

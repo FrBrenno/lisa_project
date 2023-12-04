@@ -1,5 +1,6 @@
 #include "ImageController.h"
 #include "WFS.h"
+#include "../EventDispatcher.h"
 
 // TODO: When camera settings change the CameraSettingsController should be notify this class, but it does not.
 
@@ -11,9 +12,15 @@ ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, In
 	this->cols = 0;
 	this->imageBuffer = VI_NULL;
 	this->rgbBuffer = VI_NULL;
-	this->cameraConfig = new CameraConfig();
 	this->image = new wxImage();
-	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected, this->cameraConfig);
+	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected);
+	this->cameraConfig = cameraSettingsController->getCameraConfig();
+
+	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
+		[this](const Event& event) {
+			this->cameraSettingsController->handleSettingsSelection(event);
+			this->cameraConfig = cameraSettingsController->getCameraConfig();
+		});
 }
 
 ImageController::~ImageController()
