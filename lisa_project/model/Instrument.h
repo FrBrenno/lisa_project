@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 #include "Mla.h"
 
 /**

@@ -1,7 +1,7 @@
 #ifndef CAMERA_CONFIG_H
 #define CAMERA_CONFIG_H
 
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 
 /**
  * @class CameraConfig.

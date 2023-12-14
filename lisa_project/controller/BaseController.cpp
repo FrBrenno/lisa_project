@@ -1,5 +1,5 @@
 #include "BaseController.h"
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 #include "../MyApp.h"
 #include "../EventDispatcher.h"
 

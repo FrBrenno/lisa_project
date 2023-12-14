@@ -1,8 +1,8 @@
 #pragma once
 #include "wx/wx.h"
-#include "../model/CameraConfig.h"
-#include "../model/Instrument.h"
-#include "../controller/CameraSettingsController.h"
+#include "model/CameraConfig.h"
+#include "model/Instrument.h"
+#include "controller/CameraSettingsController.h"
 #include "BaseController.h"
 
 /**

@@ -1,5 +1,5 @@
 #pragma once
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 
 // Device IDs
 #define  DEVICE_OFFSET_WFS10           (0x00100) // device IDs of WFS10 instruments start at 256 decimal

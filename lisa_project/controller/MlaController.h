@@ -1,7 +1,7 @@
 #pragma once
 #include "wx/wx.h"
 #include "../model/Mla.h"
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 #include "../Event.h"
 #include "BaseController.h"
 

@@ -2,12 +2,12 @@
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include <wx/wxprec.h>
-#include "../view/HomeFrame.h"
-#include "../controller/HomeFrameController.h"
-#include "../controller/InstrumentController.h"
-#include "../controller/MlaController.h"
-#include "../controller/ImageController.h"
-#include "../controller/CameraSettingsController.h"
+#include "view/HomeFrame.h"
+#include "controller/HomeFrameController.h"
+#include "controller/InstrumentController.h"
+#include "controller/MlaController.h"
+#include "controller/ImageController.h"
+#include "controller/CameraSettingsController.h"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>

@@ -1,5 +1,5 @@
 #include "ImageController.h"
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 #include "../EventDispatcher.h"
 
 // TODO: When camera settings change the CameraSettingsController should be notify this class, but it does not.

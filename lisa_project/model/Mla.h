@@ -2,7 +2,7 @@
 #define MLA_H
 
 #include <string>
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 
 /**
  * @class Mla.

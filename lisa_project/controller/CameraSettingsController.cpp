@@ -1,7 +1,7 @@
 #include "CameraSettingsController.h"
 #include "../EventDispatcher.h"
 #include "../view/CameraSettingsDialog.h"
-#include "WFS.h"
+#include "lib/thorlabs_api/WFS.h"
 
 CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected) :  BaseController(main, is_wfs_connected)
 {
