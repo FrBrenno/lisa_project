@@ -125,15 +125,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\thorlabs_api</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\thorlabs_api\WFS_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\OpenCV\opencv\build\x64\vc16\lib;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\thorlabs_api</AdditionalLibraryDirectories>
+      <AdditionalDependencies>WFS_64.lib;opencv_world480.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if "$(ConfigurationName)" == "Debug" (
@@ -148,6 +148,7 @@
     <ClCompile Include="controller\CameraSettingsController.cpp" />
     <ClCompile Include="controller\HomeFrameController.cpp" />
     <ClCompile Include="controller\ImageController.cpp" />
+    <ClCompile Include="controller\ImageProcessingController.cpp" />
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\MlaController.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="controller\CameraSettingsController.h" />
     <ClInclude Include="controller\HomeFrameController.h" />
     <ClInclude Include="controller\ImageController.h" />
+    <ClInclude Include="controller\ImageProcessingController.h" />
     <ClInclude Include="controller\InstrumentController.h" />
     <ClInclude Include="controller\MlaController.h" />
     <ClInclude Include="Event.h" />

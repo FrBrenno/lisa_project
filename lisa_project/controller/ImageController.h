@@ -3,6 +3,7 @@
 #include "model/CameraConfig.h"
 #include "model/Instrument.h"
 #include "controller/CameraSettingsController.h"
+#include "controller/ImageProcessingController.h"
 #include "BaseController.h"
 
 /**
@@ -11,6 +12,7 @@
  */
 class ImageController: public BaseController{
 	CameraSettingsController* cameraSettingsController;
+	ImageProcessingController* imageProcessingController;
 	CameraConfig* cameraConfig;
 	Instrument* instrument;
 	int err;
@@ -19,10 +21,11 @@ class ImageController: public BaseController{
 	wxImage* image;
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
-	void rotate180Image(unsigned char* rgbBuffer, int width, int height);	
 public:
 	ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument);
 	~ImageController();
+
+	void processImage();
 	/**
 	 * Returns a pointer the image buffer.
 	 * 

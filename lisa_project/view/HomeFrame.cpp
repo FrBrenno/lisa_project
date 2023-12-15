@@ -110,6 +110,7 @@ void HomeFrame::OnLoadImage(wxCommandEvent& event)
     if (!img.IsOk()) 
         return;
     this->setImage(&img);
+
 }
 
 void HomeFrame::OnConnectAPI(wxCommandEvent& event)
