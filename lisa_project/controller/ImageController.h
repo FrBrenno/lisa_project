@@ -13,19 +13,21 @@
 class ImageController: public BaseController{
 	CameraSettingsController* cameraSettingsController;
 	ImageProcessingController* imageProcessingController;
+
 	CameraConfig* cameraConfig;
 	Instrument* instrument;
+
 	int err;
 	ViAUInt8 imageBuffer, rgbBuffer;
 	ViInt32 rows, cols;
 	wxImage* image;
 
+	bool imageProcessingEnabled;
+
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
 	ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument);
 	~ImageController();
-
-	void processImage();
 	/**
 	 * Returns a pointer the image buffer.
 	 * 

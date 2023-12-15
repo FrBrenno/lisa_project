@@ -14,7 +14,8 @@ ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, In
 	this->rgbBuffer = VI_NULL;
 	this->image = new wxImage();
 	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected);
-	this->imageProcessingController = new ImageProcessingController(this->app, this->is_wfs_connected, this->imageBuffer, this->rows, this->cols);
+	this->imageProcessingController = new ImageProcessingController(this->app, this->is_wfs_connected);
+	this->imageProcessingEnabled = true;
 	this->cameraConfig = cameraSettingsController->getCameraConfig();
 
 	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
@@ -85,14 +86,16 @@ void ImageController::takeImage(){
             return;
         }
 
-        // Convert image buffer to wxImage
+		if (this->imageProcessingEnabled)
+			this->imageBuffer = this->imageProcessingController->processImage(this->imageBuffer, this->rows, this->cols);
+
+		// Convert black and white image buffer to RGB image buffer
 		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer);
 
 		this->image->Destroy();
         this->image = new wxImage(cols, rows, rgbBuffer, true);
-		this->processImage();
         // Check if the image creation was successful
         if (!this->image->IsOk()) {
 			err = -1;
@@ -103,10 +106,6 @@ void ImageController::takeImage(){
 
 }
 
-void ImageController::processImage()
-{
-	this->imageProcessingController->processImage(this->rgbBuffer, this->rows, this->cols);
-}
 
 //=== Utility functions ===//
 

@@ -5,11 +5,9 @@
 
 class ImageProcessingController: public BaseController
 {
-	cv::Mat image;
-
-	void edgeDetection();
+	void edgeDetection(cv::Mat image);
 public:
-	ImageProcessingController(MyAppInterface* main, bool is_wfs_connected, unsigned char* image_buffer, int row, int col);
+	ImageProcessingController(MyAppInterface* main, bool is_wfs_connected);
 
-	void processImage(unsigned char* image_buffer, int rows, int cols);
+	unsigned char* processImage(unsigned char* image_buffer, int rows, int cols);
 };
