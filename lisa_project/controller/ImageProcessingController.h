@@ -5,7 +5,6 @@
 
 class ImageProcessingController: public BaseController
 {
-	void edgeDetection(cv::Mat image);
 public:
 	ImageProcessingController(MyAppInterface* main, bool is_wfs_connected);
 
