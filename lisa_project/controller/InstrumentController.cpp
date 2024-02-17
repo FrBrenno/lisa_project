@@ -2,6 +2,7 @@
 #include "../EventDispatcher.h"
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Settings.h"
+#include <InstrumentDto.h>
 
 InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
@@ -35,7 +36,7 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 	}
 
 	// Launch InstrumentSelectionDialog view
-	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
+	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this); // Make this a attribute of the class to avoid creating a new one every time
 	instrumentSelectionDialog->ShowModal();
 }
 
@@ -81,18 +82,10 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 	// Clear list
 	list->Clear();
 
-	// Variable Initialization
-	ViInt32 device_id;
-	ViInt32 in_use;
-	ViChar instr_name[WFS_BUFFER_SIZE];
-	ViChar serNr[WFS_BUFFER_SIZE];
-	ViChar resourceName[WFS_BUFFER_SIZE];
-	
-	// Get instrument count 
-	if (err = WFS_GetInstrumentListLen(VI_NULL, &instrumentCount))
-	{
-		this->handleError(err, "Not able to get the count of instruments connected");
-	}
+	// New instrument list
+	std::vector<InstrumentDto> instruments;
+	this->wfsApiService->getInstrumentsList(&instruments);
+	int instrumentCount = instruments.size();
 
 	if (instrumentCount == 0)
 	{
@@ -102,13 +95,13 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 	}
 	else
 	{
-		for (int i = 0; i < instrumentCount; i++)
+		for (const auto& instr: instruments)
 		{
-			if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
-			{
-				this->handleError(err, "Not able to get instrument's information");
-			}
-			list->Append(wxString::Format("%4d %s %s %s\n", device_id, instr_name, serNr, (!in_use) ? "" : "(inUse)"));
+			list->Append(wxString::Format("%4d %s %s %s\n", 
+				instr.getDeviceId(),
+				instr.getInstrName(),
+				instr.getSerNr(),
+				(!instr.getInUse()) ? "" : "(in use)"));
 		}
 	}
 }
@@ -134,8 +127,6 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 
 		// Initialize instrument
 		this->initInstrument(resourceName);
-		// Driver Revision
-		// this->reviseDrive();
 		// MLA Selection
 		//this->mlaConfiguration();
 		// Camera Configuration
@@ -155,31 +146,6 @@ void InstrumentController::onClose(){
 	wxMessageBox("No instrument is selected.\nTo select a instrument, go to FILE -> \"Select Instrument\"", "INFO", wxOK | wxICON_INFORMATION);
 }
 
-void InstrumentController::reviseDrive() 
-{
-	if (!this->isWfsConnected()) {
-		// Call to main so it can try to connect to API
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
-
-	ViChar version_wfs_driver[256];
-	ViChar version_cam_driver[256];
-
-	if (err = WFS_revision_query(NULL, version_wfs_driver, version_cam_driver)) {
-		this->handleError(err, "Not able to get driver revision");
-		return;
-	}
-	else {
-		wxMessageBox(
-			wxString::Format("WFS Driver Version: %s\nCam Driver Version: %s", version_wfs_driver, version_cam_driver),
-			"Driver Revision", wxOK | wxICON_INFORMATION
-		);
-
-		this->selectedInstrument->setWfsDriverVersion(static_cast<std::string> (version_wfs_driver));
-		this->selectedInstrument->setCamDriverVersion(static_cast<std::string> (version_cam_driver));
-	}
-}
 
 void InstrumentController::initInstrument(ViRsrc resourceName) 
 {

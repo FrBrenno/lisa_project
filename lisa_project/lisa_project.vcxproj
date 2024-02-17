@@ -152,6 +152,7 @@
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\MlaController.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
+    <ClCompile Include="InstrumentDto.cpp" />
     <ClCompile Include="model\CameraConfig.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
@@ -160,7 +161,7 @@
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
     <ClCompile Include="view\MlaSelectionDialog.cpp" />
-    <ClCompile Include="wfsApiService.cpp" />
+    <ClCompile Include="WfsApiService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\BaseController.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
+    <ClInclude Include="InstrumentDto.h" />
     <ClInclude Include="model\CameraConfig.h" />
     <ClInclude Include="model\Instrument.h" />
     <ClInclude Include="model\Mla.h" />
@@ -184,7 +186,7 @@
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
     <ClInclude Include="view\MlaSelectionDialog.h" />
-    <ClInclude Include="wfsApiService.h" />
+    <ClInclude Include="WfsApiService.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png" />
