@@ -92,7 +92,7 @@ void ImageController::takeImage(){
 		// Convert black and white image buffer to RGB image buffer
 		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
-		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer);
+		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer); //use OpenCV to convert to RGB
 
 		this->image->Destroy();
         this->image = new wxImage(cols, rows, rgbBuffer, true);

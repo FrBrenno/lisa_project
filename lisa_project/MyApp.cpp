@@ -11,6 +11,7 @@ MyApp::~MyApp()
 	delete instrumentController;
 	delete mlaController;
 	delete imageController;
+    delete homeFrame;
 }
 
 bool MyApp::OnInit()

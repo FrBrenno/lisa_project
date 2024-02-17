@@ -41,6 +41,7 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 
 void InstrumentController::HandleMlaSelected(const Event& event)
 {
+	// REFACTOR IT
 	if (!is_wfs_connected) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");

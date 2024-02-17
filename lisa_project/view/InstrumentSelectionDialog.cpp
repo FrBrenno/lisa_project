@@ -16,6 +16,11 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
     // Populate Instrument List
     controller->populateInstrumentList(instrumentList);
 
+    if (instrumentList->GetCount() == 1)
+    {
+        controller->onInstrumentSelected(0);
+        this->Destroy();
+    }
     // Show popup if more than one instruments is available
     if (instrumentList->GetCount() > 0)
 	{
@@ -34,16 +39,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, Instrumen
         mainSizer->Add(panel, 1, wxALIGN_CENTER | wxALL, 10);
         SetSizerAndFit(mainSizer);
     }
-	else
-	{
-		this->Destroy();
-	}
 
-    if (instrumentList->GetCount() == 1)
-    {
-        controller->onInstrumentSelected(0);
-        this->Destroy();
-    }
     CenterOnScreen();
 }
 
