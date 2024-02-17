@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,56,79,83"/>
+<area shape="rect" id="Node000001" href="$class_camera_settings_dialog.html" title=" " alt="" coords="138,5,288,32"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="93,52,126,41,164,30,166,35,127,47,94,57"/>
+<area shape="rect" id="Node000002" href="$class_instrument_selection_dialog.html" title="This view is used to select an instrument from a list of available instruments." alt="" coords="127,56,299,83"/>
+<area shape="poly" id="edge10_Node000000_Node000002" title=" " alt="" coords="94,67,126,67,126,72,94,72"/>
+<area shape="rect" id="Node000003" href="$class_mla_selection_dialog.html" title="This view is a dialog box that allows the user to select a MLA." alt="" coords="147,107,279,133"/>
+<area shape="poly" id="edge11_Node000000_Node000003" title=" " alt="" coords="94,82,127,92,166,104,164,109,126,97,93,87"/>
+</map>

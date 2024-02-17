@@ -1,0 +1,36 @@
+<map id="lisa_project/controller/MlaController.cpp" name="lisa_project/controller/MlaController.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,5,268,48"/>
+<area shape="rect" id="Node000002" href="$_mla_controller_8h.html" title=" " alt="" coords="207,171,315,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,47,238,95,257,155,252,157,233,97,207,49"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="12,320,80,347"/>
+<area shape="poly" id="edge21_Node000001_Node000003" title=" " alt="" coords="124,41,97,49,71,61,48,77,30,98,17,123,10,150,8,178,10,207,21,262,37,305,32,307,16,263,5,208,3,178,5,149,12,121,25,94,45,73,69,56,95,44,122,36"/>
+<area shape="rect" id="Node000010" href="$_mla_selection_dialog_8h.html" title=" " alt="" coords="40,96,223,123"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="181,50,153,85,149,82,177,47"/>
+<area shape="rect" id="Node000011" href="$_event_dispatcher_8h.html" title=" " alt="" coords="489,171,627,197"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="245,46,516,162,514,167,243,51"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,200,162,219,113,247,84,277,62,308,58,305,80,273,110,243,160,214,210,195"/>
+<area shape="rect" id="Node000004" href="$_mla_8h.html" title=" " alt="" coords="315,245,420,272"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="281,196,338,234,335,238,278,200"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="275,320,428,347"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="268,196,284,231,306,271,333,307,328,310,301,273,279,233,263,199"/>
+<area shape="rect" id="Node000007" href="$_event_8h.html" title=" " alt="" coords="444,245,520,272"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="300,195,430,238,428,243,298,200"/>
+<area shape="rect" id="Node000008" href="$_base_controller_8h.html" title=" " alt="" coords="123,245,241,272"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="249,200,209,237,205,233,245,196"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="454,320,507,347"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="389,270,450,309,447,314,386,275"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="367,273,360,305,355,304,362,272"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="485,273,484,304,479,304,479,272"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="160,275,84,315,82,310,157,270"/>
+<area shape="poly" id="edge12_Node000008_Node000005" title=" " alt="" coords="242,270,440,317,438,322,240,275"/>
+<area shape="rect" id="Node000009" href="$_my_app_interface_8h.html" title=" " alt="" coords="115,320,249,347"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="185,273,185,304,179,304,179,273"/>
+<area shape="poly" id="edge15_Node000010_Node000002" title=" " alt="" coords="155,121,226,160,224,165,153,126"/>
+<area shape="poly" id="edge14_Node000010_Node000003" title=" " alt="" coords="129,124,59,306,54,305,124,122"/>
+<area shape="poly" id="edge17_Node000011_Node000005" title=" " alt="" coords="559,198,551,233,535,273,507,310,503,307,530,271,546,231,554,197"/>
+<area shape="poly" id="edge20_Node000011_Node000007" title=" " alt="" coords="547,200,508,237,504,233,543,196"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="596,245,672,272"/>
+<area shape="poly" id="edge18_Node000011_Node000012" title=" " alt="" coords="573,196,612,233,608,237,569,200"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="696,245,751,272"/>
+<area shape="poly" id="edge19_Node000011_Node000013" title=" " alt="" coords="588,195,683,237,681,242,586,200"/>
+</map>

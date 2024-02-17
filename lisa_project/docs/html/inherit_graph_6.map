@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_my_app_interface.html" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="Node000001" href="$class_my_app.html" title="This class is the main class of the application responsible to manage all the application controllers..." alt="" coords="165,31,227,57"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="133,29,165,36,164,41,132,35"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,56,91,83"/>
+<area shape="poly" id="edge8_Node000002_Node000001" title=" " alt="" coords="106,58,164,47,165,52,107,64"/>
+</map>

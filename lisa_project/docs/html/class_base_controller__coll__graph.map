@@ -1,0 +1,5 @@
+<map id="BaseController" name="BaseController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="8,96,114,123"/>
+<area shape="rect" id="Node000002" href="$class_my_app_interface.html" title=" " alt="" coords="5,5,117,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,48,64,95,58,95,58,48"/>
+</map>

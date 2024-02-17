@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['cameraconfig_0',['CameraConfig',['../class_camera_config.html',1,'']]],
-  ['cameraconfiguration_1',['cameraConfiguration',['../class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac',1,'InstrumentController']]],
-  ['closeinstrument_2',['closeInstrument',['../class_instrument_controller.html#a0fab52a1bb19d92e0a28cb995a659896',1,'InstrumentController']]]
+  ['addlistener_0',['addListener',['../class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6',1,'HomeFrame']]],
+  ['app_1',['app',['../class_base_controller.html#addf129ce12fa9d0a22e84e90c81de561',1,'BaseController']]]
 ];

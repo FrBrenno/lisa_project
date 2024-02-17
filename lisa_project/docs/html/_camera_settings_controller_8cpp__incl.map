@@ -1,0 +1,33 @@
+<map id="lisa_project/controller/CameraSettingsController.cpp" name="lisa_project/controller/CameraSettingsController.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="383,5,581,48"/>
+<area shape="rect" id="Node000002" href="$_camera_settings_controller_8h.html" title=" " alt="" coords="191,171,371,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,50,436,87,394,125,360,148,325,166,323,161,357,143,391,121,432,83,464,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="506,320,659,347"/>
+<area shape="poly" id="edge18_Node000001_Node000009" title=" " alt="" coords="526,46,579,77,641,121,699,177,723,209,743,244,747,258,746,271,732,292,706,307,675,319,673,314,704,303,728,288,741,269,742,259,738,246,719,212,695,180,637,125,577,82,523,51"/>
+<area shape="rect" id="Node000010" href="$_event_dispatcher_8h.html" title=" " alt="" coords="466,171,605,197"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="492,47,529,155,524,156,487,49"/>
+<area shape="rect" id="Node000013" href="$_camera_settings_dialog_8h.html" title=" " alt="" coords="180,96,382,123"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="431,51,327,92,325,87,429,46"/>
+<area shape="rect" id="Node000003" href="$_base_controller_8h.html" title=" " alt="" coords="92,245,209,272"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="259,200,188,240,185,235,257,196"/>
+<area shape="rect" id="Node000007" href="$_event_8h.html" title=" " alt="" coords="233,245,310,272"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="282,198,278,230,272,230,277,198"/>
+<area shape="rect" id="Node000008" href="$_camera_config_8h.html" title=" " alt="" coords="333,245,498,272"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="306,196,380,235,377,240,303,200"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,320,74,347"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="132,275,73,314,70,309,129,270"/>
+<area shape="rect" id="Node000005" href="$_my_app_interface_8h.html" title=" " alt="" coords="98,320,232,347"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="155,272,162,304,157,305,150,273"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="256,320,309,347"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="174,270,247,310,245,315,172,275"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="276,272,281,304,275,305,271,273"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="446,270,540,311,538,316,443,275"/>
+<area shape="poly" id="edge11_Node000010_Node000006" title=" " alt="" coords="538,198,533,235,525,256,512,274,491,291,468,304,418,323,368,332,325,335,325,330,368,327,417,317,466,299,488,286,508,270,520,253,528,234,533,198"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="490,200,325,245,324,240,489,195"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="652,245,728,272"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="564,195,651,236,648,241,561,200"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="573,245,629,272"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="549,196,582,232,578,236,545,200"/>
+<area shape="poly" id="edge17_Node000013_Node000002" title=" " alt="" coords="284,123,284,155,278,155,278,123"/>
+<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="253,126,214,145,169,172,122,206,82,247,63,277,50,307,45,305,58,274,77,244,119,202,166,167,212,140,250,121"/>
+</map>

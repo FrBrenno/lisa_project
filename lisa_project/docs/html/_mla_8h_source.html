@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PROJH402 - Image Acquisition with Plenoptic Camera: lisa_project/Mla.h Source File</title>
+<title>PROJH402 - Image Acquisition with Plenoptic Camera: lisa_project/model/Mla.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -52,6 +57,23 @@ $(function() {
 $(document).ready(function() { init_codefold(0); });
 /* @license-end */
 </script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_mla_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,20 +95,15 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_316af240ea1798aca4cbe0b104f1eee7.html">lisa_project</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Mla.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MLA_H</span></div>
+<a href="_mla_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MLA_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MLA_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;WFS.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;lib/thorlabs_api/WFS.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_mla.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_mla.html">Mla</a>{</div>
@@ -105,24 +122,35 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">double</span> grd_corr_0;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">double</span> grd_corr_45;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="class_mla.html">Mla</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="class_mla.html#a41f38c7bf8cad3938b3a665a1895be30">Mla</a>();</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ViInt32* getMlaCount();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    ViSession getHandle();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> isInitialized();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ViInt32* <a class="code hl_function" href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a">getMlaCount</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    ViSession <a class="code hl_function" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789">getHandle</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_mla.html#aba6397ee94aed794c46975696a5a661d">isInitialized</a>();</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> setInitialized(<span class="keywordtype">bool</span> is_initialized);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> setHandle(ViSession handle);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> setMlaInfo(ViChar* mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_mla.html#a41fb7af242a3ba8d026b79596d690b39">setInitialized</a>(<span class="keywordtype">bool</span> is_initialized);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_mla.html#a347103b03641965fc85758d42f18547c">setHandle</a>(ViSession handle);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4">setMlaInfo</a>(ViChar* mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_mla_html"><div class="ttname"><a href="class_mla.html">Mla</a></div><div class="ttdoc">This model class is used to store the information of the MLA.</div><div class="ttdef"><b>Definition</b> Mla.h:11</div></div>
+<div class="ttc" id="aclass_mla_html"><div class="ttname"><a href="class_mla.html">Mla</a></div><div class="ttdoc">This model class is used to store the information of the MLA.</div><div class="ttdef"><b>Definition</b> <a href="_mla_8h_source.html#l00011">Mla.h:11</a></div></div>
+<div class="ttc" id="aclass_mla_html_a10ca5d4c6c26fed8a4022d45d6d4d90a"><div class="ttname"><a href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a">Mla::getMlaCount</a></div><div class="ttdeci">ViInt32 * getMlaCount()</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00017">Mla.cpp:17</a></div></div>
+<div class="ttc" id="aclass_mla_html_a347103b03641965fc85758d42f18547c"><div class="ttname"><a href="class_mla.html#a347103b03641965fc85758d42f18547c">Mla::setHandle</a></div><div class="ttdeci">void setHandle(ViSession handle)</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00021">Mla.cpp:21</a></div></div>
+<div class="ttc" id="aclass_mla_html_a41f38c7bf8cad3938b3a665a1895be30"><div class="ttname"><a href="class_mla.html#a41f38c7bf8cad3938b3a665a1895be30">Mla::Mla</a></div><div class="ttdeci">Mla()</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00003">Mla.cpp:3</a></div></div>
+<div class="ttc" id="aclass_mla_html_a41fb7af242a3ba8d026b79596d690b39"><div class="ttname"><a href="class_mla.html#a41fb7af242a3ba8d026b79596d690b39">Mla::setInitialized</a></div><div class="ttdeci">void setInitialized(bool is_initialized)</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00044">Mla.cpp:44</a></div></div>
+<div class="ttc" id="aclass_mla_html_a4c7d07a61c4be66e64533cf4d1d12789"><div class="ttname"><a href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789">Mla::getHandle</a></div><div class="ttdeci">ViSession getHandle()</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00025">Mla.cpp:25</a></div></div>
+<div class="ttc" id="aclass_mla_html_aba6397ee94aed794c46975696a5a661d"><div class="ttname"><a href="class_mla.html#aba6397ee94aed794c46975696a5a661d">Mla::isInitialized</a></div><div class="ttdeci">bool isInitialized()</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00040">Mla.cpp:40</a></div></div>
+<div class="ttc" id="aclass_mla_html_ae3b64eaf309223f11d9aeb4be72e6ee4"><div class="ttname"><a href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4">Mla::setMlaInfo</a></div><div class="ttdeci">void setMlaInfo(ViChar *mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45)</div><div class="ttdef"><b>Definition</b> <a href="_mla_8cpp_source.html#l00029">Mla.cpp:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_316af240ea1798aca4cbe0b104f1eee7.html">lisa_project</a></li><li class="navelem"><a class="el" href="dir_ea0bce19f5d9e23268edb5b618f81a53.html">model</a></li><li class="navelem"><a class="el" href="_mla_8h.html">Mla.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

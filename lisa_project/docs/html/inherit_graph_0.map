@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_base_controller.html" title=" " alt="" coords="5,132,112,159"/>
+<area shape="rect" id="Node000001" href="$class_camera_settings_controller.html" title=" " alt="" coords="163,5,333,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="76,118,112,79,158,42,183,30,185,35,161,46,115,83,80,122"/>
+<area shape="rect" id="Node000002" href="$class_home_frame_controller.html" title="This controller manages HomeFrame view responsible for the main window of the software." alt="" coords="174,56,322,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="96,122,159,92,192,81,194,86,161,97,98,127"/>
+<area shape="rect" id="Node000003" href="$class_image_controller.html" title="This controller handles image acquisition." alt="" coords="192,107,304,133"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="127,134,191,125,192,130,128,139"/>
+<area shape="rect" id="Node000004" href="$class_image_processing_controller.html" title=" " alt="" coords="160,157,336,184"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="128,152,159,156,159,161,127,157"/>
+<area shape="rect" id="Node000005" href="$class_instrument_controller.html" title="This controller class is responsible for managing Instruments and their associated views." alt="" coords="179,208,317,235"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="98,164,161,194,194,205,192,210,159,198,96,169"/>
+<area shape="rect" id="Node000006" href="$class_mla_controller.html" title="This controller manages the MlaSelectionDialog view and generate Mla objects." alt="" coords="199,259,297,285"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="80,169,115,208,161,244,200,260,198,265,158,249,112,212,76,172"/>
+</map>

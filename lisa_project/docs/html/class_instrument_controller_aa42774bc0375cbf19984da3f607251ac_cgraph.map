@@ -1,0 +1,19 @@
+<map id="InstrumentController::cameraConfiguration" name="InstrumentController::cameraConfiguration">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,153,141"/>
+<area shape="rect" id="Node000002" href="$class_instrument.html#ae99158cd820abcae887fb587ec71aa76" title=" " alt="" coords="213,5,369,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,96,150,68,200,42,216,35,218,40,202,46,153,73,111,100"/>
+<area shape="rect" id="Node000003" href="$class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="217,56,365,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,100,217,84,218,89,154,105"/>
+<area shape="rect" id="Node000004" href="$class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604" title=" " alt="" coords="216,107,366,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,117,201,117,201,123,153,123"/>
+<area shape="rect" id="Node000005" href="$class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd" title=" " alt="" coords="215,157,367,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="154,135,218,151,217,156,152,140"/>
+<area shape="rect" id="Node000006" href="$class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="201,208,381,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="111,140,153,167,202,194,218,200,216,205,200,198,150,172,108,144"/>
+<area shape="rect" id="Node000007" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="429,179,601,205"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="381,207,413,203,414,208,381,212"/>
+<area shape="rect" id="Node000008" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="432,229,598,272"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="381,230,417,235,416,240,381,236"/>
+<area shape="rect" id="Node000009" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="649,237,763,264"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="598,248,634,248,634,253,598,253"/>
+</map>

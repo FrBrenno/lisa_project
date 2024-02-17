@@ -1,0 +1,25 @@
+<map id="lisa_project/view/CameraSettingsDialog.cpp" name="lisa_project/view/CameraSettingsDialog.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,5,278,48"/>
+<area shape="rect" id="Node000002" href="$_camera_settings_dialog_8h.html" title=" " alt="" coords="36,96,198,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,50,142,86,138,83,173,47"/>
+<area shape="rect" id="Node000011" href="$_button_i_d_8h.html" title=" " alt="" coords="221,96,330,123"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="218,47,254,83,251,87,214,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,336,74,363"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,124,51,322,46,320,110,122"/>
+<area shape="rect" id="Node000004" href="$_camera_settings_controller_8h.html" title=" " alt="" coords="135,171,318,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="135,121,188,159,185,164,132,125"/>
+<area shape="rect" id="Node000005" href="$_base_controller_8h.html" title=" " alt="" coords="102,261,220,288"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="211,216,183,251,178,247,207,212"/>
+<area shape="rect" id="Node000008" href="$_event_8h.html" title=" " alt="" coords="244,261,320,288"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="243,212,267,247,263,250,238,215"/>
+<area shape="rect" id="Node000009" href="$_camera_config_8h.html" title=" " alt="" coords="344,261,508,288"/>
+<area shape="poly" id="edge10_Node000004_Node000009" title=" " alt="" coords="279,211,382,253,380,258,277,216"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="141,291,75,330,72,325,138,286"/>
+<area shape="rect" id="Node000006" href="$_my_app_interface_8h.html" title=" " alt="" coords="98,336,232,363"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="164,288,166,320,161,321,159,289"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="256,336,309,363"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="183,286,249,325,246,330,181,291"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="285,289,285,320,280,320,280,289"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="350,336,503,363"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="429,289,429,320,424,320,424,289"/>
+</map>

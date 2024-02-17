@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getimage_0',['getImage',['../class_image_controller.html#a44b84682e0506b76e030d24df4368632',1,'ImageController']]]
+  ['basecontroller_0',['BaseController',['../class_base_controller.html#ad4866c84da6e11450df71deb033b1c1a',1,'BaseController']]]
 ];

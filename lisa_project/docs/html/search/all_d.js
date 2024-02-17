@@ -1,4 +1,30 @@
 var searchData=
 [
-  ['updateimage_0',['updateImage',['../class_home_frame.html#aa1d5c860cd6045887b7244e831fe022a',1,'HomeFrame']]]
+  ['sample_5fcamera_5fresol_5fwfs20_0',['SAMPLE_CAMERA_RESOL_WFS20',['../_settings_8h.html#ace06abdf2f08f51714de485e30ba2750',1,'Settings.h']]],
+  ['sample_5fimage_5freadings_1',['SAMPLE_IMAGE_READINGS',['../_settings_8h.html#ac1d6be64389ecb55e7919738d9ccef38',1,'Settings.h']]],
+  ['sample_5foutput_5ffile_5fname_2',['sample_output_file_name',['../_instrument_controller_8cpp.html#a803d62080e31086a39ebaae643b7d6d4',1,'SAMPLE_OUTPUT_FILE_NAME:&#160;InstrumentController.cpp'],['../_settings_8h.html#a803d62080e31086a39ebaae643b7d6d4',1,'SAMPLE_OUTPUT_FILE_NAME:&#160;Settings.h']]],
+  ['sample_5fpixel_5fformat_3',['SAMPLE_PIXEL_FORMAT',['../_settings_8h.html#a3aa57438693939a9bf31c9108869c1fb',1,'Settings.h']]],
+  ['sample_5fprintout_5fspots_4',['SAMPLE_PRINTOUT_SPOTS',['../_settings_8h.html#a296de00ce8a10a16ba8df8bd5bc0b6f1',1,'Settings.h']]],
+  ['sample_5fpupil_5fcentroid_5fx_5',['SAMPLE_PUPIL_CENTROID_X',['../_settings_8h.html#a788449c436ae8e9a47b68359bf145aad',1,'Settings.h']]],
+  ['sample_5fpupil_5fcentroid_5fy_6',['SAMPLE_PUPIL_CENTROID_Y',['../_settings_8h.html#a5dc34221e4d1f7d0ae07b00c1abed44e',1,'Settings.h']]],
+  ['sample_5fpupil_5fdiameter_5fx_7',['SAMPLE_PUPIL_DIAMETER_X',['../_settings_8h.html#a36d7b2a108f69437a2b63678770f889a',1,'Settings.h']]],
+  ['sample_5fpupil_5fdiameter_5fy_8',['SAMPLE_PUPIL_DIAMETER_Y',['../_settings_8h.html#aab2fb52633d1e14cb4c8c35250b74307',1,'Settings.h']]],
+  ['sample_5fref_5fplane_9',['SAMPLE_REF_PLANE',['../_settings_8h.html#ae4bbfe14c4190804d91a3edc23d16799',1,'Settings.h']]],
+  ['sample_5fwavefront_5ftype_10',['SAMPLE_WAVEFRONT_TYPE',['../_settings_8h.html#a101e427a7fa7e902dfa78f70d16d14a4',1,'Settings.h']]],
+  ['setcamdriverversion_11',['setCamDriverVersion',['../class_instrument.html#a5a307e43580ec17e866572fbee73a0f7',1,'Instrument']]],
+  ['setcameraconfig_12',['setCameraConfig',['../class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89',1,'CameraConfig']]],
+  ['setdefault_13',['setDefault',['../class_camera_config.html#a7e19403a4d754cd060fea2fd339d9a34',1,'CameraConfig']]],
+  ['setdeviceid_14',['setDeviceId',['../class_instrument.html#a4423a277f37a47529fc51c7b67ab0d83',1,'Instrument']]],
+  ['sethandle_15',['setHandle',['../class_mla.html#a347103b03641965fc85758d42f18547c',1,'Mla']]],
+  ['setimage_16',['setImage',['../class_home_frame.html#aa674bf5b1f855e4f45e119802043254c',1,'HomeFrame']]],
+  ['setinitialized_17',['setinitialized',['../class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624',1,'Instrument::setInitialized()'],['../class_mla.html#a41fb7af242a3ba8d026b79596d690b39',1,'Mla::setInitialized()']]],
+  ['setinstrumentinfo_18',['setInstrumentInfo',['../class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db',1,'Instrument']]],
+  ['setinstrumentname_19',['setInstrumentName',['../class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3',1,'HomeFrame']]],
+  ['setmla_20',['setMla',['../class_instrument.html#a9b877e2719794597774c0860318dabad',1,'Instrument']]],
+  ['setmlainfo_21',['setMlaInfo',['../class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4',1,'Mla']]],
+  ['setstatus_22',['setStatus',['../class_instrument.html#a5a3e4442ba862bc4766cbfab75dbcaec',1,'Instrument']]],
+  ['settings_2eh_23',['Settings.h',['../_settings_8h.html',1,'']]],
+  ['setwfsconnected_24',['setWfsConnected',['../class_base_controller.html#a28782ea291589be6038f2e22879a0568',1,'BaseController']]],
+  ['setwfsdriverversion_25',['setWfsDriverVersion',['../class_instrument.html#a8098336e1392699c3965aa6bcfbda7d0',1,'Instrument']]],
+  ['subscribetoevent_26',['SubscribeToEvent',['../class_event_dispatcher.html#a3205450e67cc6079c8f6f23522de5e5b',1,'EventDispatcher']]]
 ];

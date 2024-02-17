@@ -1,0 +1,41 @@
+<map id="ImageController::takeImage" name="ImageController::takeImage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,417,185,444"/>
+<area shape="rect" id="Node000002" href="$class_camera_config.html#a0f503786512172bbc168dfd210843aef" title=" " alt="" coords="255,5,445,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,417,100,349,119,248,136,192,160,137,191,86,231,42,239,36,242,40,234,46,195,89,164,140,141,194,124,249,105,350,99,417"/>
+<area shape="rect" id="Node000003" href="$class_camera_config.html#a07e2122d7c244e4a3cbf888bb33bcdca" title=" " alt="" coords="233,56,467,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,416,103,357,125,269,143,221,166,174,195,130,231,93,236,89,239,93,234,97,199,134,170,177,147,223,130,270,109,358,100,417"/>
+<area shape="rect" id="Node000004" href="$class_camera_config.html#a78305059984828025b58ee10564836c8" title=" " alt="" coords="244,107,456,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,416,107,364,132,290,149,250,172,211,199,174,231,143,237,139,240,143,234,147,203,178,176,214,154,252,137,292,113,366,101,417"/>
+<area shape="rect" id="Node000005" href="$class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52" title=" " alt="" coords="272,157,428,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="98,416,112,372,138,312,178,248,202,219,231,194,256,180,259,185,234,198,206,223,182,251,143,314,117,374,103,418"/>
+<area shape="rect" id="Node000006" href="$class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="276,208,424,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="100,416,117,381,146,334,184,285,206,263,231,244,260,231,262,236,234,249,210,267,188,289,150,337,122,383,105,418"/>
+<area shape="rect" id="Node000007" href="$class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3" title=" " alt="" coords="260,259,440,301"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="107,415,158,365,193,336,231,311,245,304,247,309,234,316,196,340,161,369,110,419"/>
+<area shape="rect" id="Node000008" href="$class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5" title=" " alt="" coords="259,325,441,368"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="130,414,232,377,254,370,256,376,234,383,132,419"/>
+<area shape="rect" id="Node000009" href="$class_instrument.html#a05f230234deb6092f04eae9c10445b9c" title=" " alt="" coords="277,392,423,419"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="185,419,261,411,261,417,186,424"/>
+<area shape="rect" id="Node000010" href="$class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="260,443,440,469"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="186,437,245,443,244,448,185,442"/>
+<area shape="rect" id="Node000014" href="$class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211" title=" " alt="" coords="260,493,440,536"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="132,442,234,479,256,486,254,491,232,484,130,447"/>
+<area shape="rect" id="Node000015" href="$class_camera_config.html#af1fa7592443c1a51044bdb15ad258344" title=" " alt="" coords="249,560,451,587"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="110,442,160,494,195,522,234,546,249,552,247,557,231,550,192,526,157,497,106,446"/>
+<area shape="rect" id="Node000016" href="$class_camera_config.html#a7bf2c0c972ec3bb2effb4969570e5dae" title=" " alt="" coords="263,611,437,637"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="106,443,124,475,152,517,189,560,234,596,250,604,247,609,231,601,186,564,148,521,119,478,101,446"/>
+<area shape="rect" id="Node000017" href="$class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a" title=" " alt="" coords="260,661,440,704"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="103,443,119,484,146,539,185,597,208,624,234,647,247,656,244,660,231,651,204,628,180,601,142,541,114,486,98,445"/>
+<area shape="rect" id="Node000018" href="$class_instrument.html#a924662347b252917b5ec2ebd81874f07" title=" " alt="" coords="273,728,427,755"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="101,444,113,496,137,569,154,609,176,648,203,683,234,714,259,728,257,732,231,718,199,687,172,651,149,611,132,571,107,497,96,445"/>
+<area shape="rect" id="Node000019" href="$class_image_processing_controller.html#a37f35d121139aa4da4443a3fc8d2dad5" title=" " alt="" coords="262,779,438,821"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="100,444,110,503,132,590,149,637,172,683,200,727,234,765,249,775,246,780,231,769,196,730,167,686,144,639,127,591,104,504,95,445"/>
+<area shape="rect" id="Node000020" href="$class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89" title=" " alt="" coords="245,845,455,872"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="99,444,104,514,111,563,122,619,139,676,162,733,194,786,235,831,238,835,235,839,231,835,190,789,158,736,134,678,117,620,105,564,98,514,94,444"/>
+<area shape="rect" id="Node000011" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="515,413,687,440"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="440,443,499,436,500,441,441,448"/>
+<area shape="rect" id="Node000012" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="518,464,684,507"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="441,464,503,471,502,477,440,469"/>
+<area shape="rect" id="Node000013" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="735,472,849,499"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="684,483,720,483,720,488,684,488"/>
+</map>

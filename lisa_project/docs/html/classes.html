@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -48,6 +53,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classes.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,28 +94,34 @@ $(function() {
   <div class="headertitle"><div class="title">Class Index</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_C">C</a>&#160;|&#160;<a class="qindex" href="#letter_E">E</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_I">I</a>&#160;|&#160;<a class="qindex" href="#letter_M">M</a></div>
+<div class="qindex"><a class="qindex" href="#letter_B">B</a>&#160;|&#160;<a class="qindex" href="#letter_C">C</a>&#160;|&#160;<a class="qindex" href="#letter_E">E</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_I">I</a>&#160;|&#160;<a class="qindex" href="#letter_M">M</a></div>
 <div class="classindex">
 <dl class="classindex even">
-<dt class="alphachar"><a id="letter_C" name="letter_C">C</a></dt>
-<dd><a class="el" href="class_camera_config.html">CameraConfig</a></dd></dl>
+<dt class="alphachar"><a id="letter_B" name="letter_B">B</a></dt>
+<dd><a class="el" href="class_base_controller.html">BaseController</a></dd></dl>
 <dl class="classindex odd">
-<dt class="alphachar"><a id="letter_E" name="letter_E">E</a></dt>
-<dd><a class="el" href="struct_event.html">Event</a></dd><dd><a class="el" href="class_event_dispatcher.html">EventDispatcher</a></dd></dl>
+<dt class="alphachar"><a id="letter_C" name="letter_C">C</a></dt>
+<dd><a class="el" href="class_camera_config.html">CameraConfig</a></dd><dd><a class="el" href="class_camera_settings_controller.html">CameraSettingsController</a></dd><dd><a class="el" href="class_camera_settings_dialog.html">CameraSettingsDialog</a></dd></dl>
 <dl class="classindex even">
+<dt class="alphachar"><a id="letter_E" name="letter_E">E</a></dt>
+<dd><a class="el" href="class_event.html">Event</a></dd><dd><a class="el" href="class_event_dispatcher.html">EventDispatcher</a></dd></dl>
+<dl class="classindex odd">
 <dt class="alphachar"><a id="letter_H" name="letter_H">H</a></dt>
 <dd><a class="el" href="class_home_frame.html">HomeFrame</a></dd><dd><a class="el" href="class_home_frame_controller.html">HomeFrameController</a></dd></dl>
-<dl class="classindex odd">
-<dt class="alphachar"><a id="letter_I" name="letter_I">I</a></dt>
-<dd><a class="el" href="class_image_controller.html">ImageController</a></dd><dd><a class="el" href="class_instrument.html">Instrument</a></dd><dd><a class="el" href="class_instrument_controller.html">InstrumentController</a></dd><dd><a class="el" href="class_instrument_selection_dialog.html">InstrumentSelectionDialog</a></dd></dl>
 <dl class="classindex even">
+<dt class="alphachar"><a id="letter_I" name="letter_I">I</a></dt>
+<dd><a class="el" href="class_image_controller.html">ImageController</a></dd><dd><a class="el" href="class_image_processing_controller.html">ImageProcessingController</a></dd><dd><a class="el" href="class_instrument.html">Instrument</a></dd><dd><a class="el" href="class_instrument_controller.html">InstrumentController</a></dd><dd><a class="el" href="class_instrument_selection_dialog.html">InstrumentSelectionDialog</a></dd></dl>
+<dl class="classindex odd">
 <dt class="alphachar"><a id="letter_M" name="letter_M">M</a></dt>
-<dd><a class="el" href="class_mla.html">Mla</a></dd><dd><a class="el" href="class_mla_controller.html">MlaController</a></dd><dd><a class="el" href="class_mla_selection_dialog.html">MlaSelectionDialog</a></dd><dd><a class="el" href="class_my_app.html">MyApp</a></dd></dl>
+<dd><a class="el" href="class_mla.html">Mla</a></dd><dd><a class="el" href="class_mla_controller.html">MlaController</a></dd><dd><a class="el" href="class_mla_selection_dialog.html">MlaSelectionDialog</a></dd><dd><a class="el" href="class_my_app.html">MyApp</a></dd><dd><a class="el" href="class_my_app_interface.html">MyAppInterface</a></dd></dl>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

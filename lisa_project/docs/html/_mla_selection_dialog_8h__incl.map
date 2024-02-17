@@ -1,0 +1,24 @@
+<map id="lisa_project/view/MlaSelectionDialog.h" name="lisa_project/view/MlaSelectionDialog.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,200,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="18,245,86,272"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,49,60,231,55,230,95,48"/>
+<area shape="rect" id="Node000003" href="$_mla_controller_8h.html" title=" " alt="" coords="147,96,325,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,46,203,85,201,90,135,51"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="194,126,149,145,107,173,82,202,65,233,60,230,78,199,103,169,147,140,192,121"/>
+<area shape="rect" id="Node000004" href="$_mla_8h.html" title=" " alt="" coords="360,171,464,197"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="267,121,368,162,366,167,265,126"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="386,245,539,272"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="326,119,417,138,454,152,478,169,485,184,486,201,478,233,473,231,481,200,480,186,474,172,452,157,415,143,325,124"/>
+<area shape="rect" id="Node000007" href="$_event_8h.html" title=" " alt="" coords="259,171,335,197"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="249,121,279,157,275,161,244,125"/>
+<area shape="rect" id="Node000008" href="$_base_controller_8h.html" title=" " alt="" coords="117,171,235,197"/>
+<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="227,125,198,161,194,157,223,122"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="271,245,324,272"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="393,200,332,239,329,234,390,196"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="423,196,447,231,443,234,418,199"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="300,198,300,230,295,230,295,198"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="156,200,88,240,85,235,153,196"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="198,196,264,235,261,239,196,200"/>
+<area shape="rect" id="Node000009" href="$_my_app_interface_8h.html" title=" " alt="" coords="110,245,244,272"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="179,198,179,230,174,230,173,198"/>
+</map>

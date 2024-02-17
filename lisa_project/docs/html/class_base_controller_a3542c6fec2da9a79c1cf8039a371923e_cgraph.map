@@ -1,0 +1,9 @@
+<map id="BaseController::handleError" name="BaseController::handleError">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,186,61"/>
+<area shape="rect" id="Node000002" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="234,5,406,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,34,218,29,218,35,186,39"/>
+<area shape="rect" id="Node000003" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="237,56,403,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,57,221,62,221,67,185,62"/>
+<area shape="rect" id="Node000004" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="454,64,567,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="403,75,438,75,438,80,403,80"/>
+</map>

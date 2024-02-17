@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_image_controller.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -84,19 +105,134 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9c85e8b62f738c7923066fbdb3dd695c" id="r_a9c85e8b62f738c7923066fbdb3dd695c"><td class="memItemLeft" align="right" valign="top"><a id="a9c85e8b62f738c7923066fbdb3dd695c" name="a9c85e8b62f738c7923066fbdb3dd695c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ImageController</b> (<a class="el" href="class_instrument.html">Instrument</a> *instrument)</td></tr>
-<tr class="separator:a9c85e8b62f738c7923066fbdb3dd695c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a9a7f7e0a373cbc3c5afe57625137b" id="r_ad3a9a7f7e0a373cbc3c5afe57625137b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b">ImageController</a> (<a class="el" href="class_my_app_interface.html">MyAppInterface</a> *main, bool <a class="el" href="class_base_controller.html#aa62a38ad545a8ea49d30bb363f4095c3">is_wfs_connected</a>, <a class="el" href="class_instrument.html">Instrument</a> *instrument)</td></tr>
+<tr class="separator:ad3a9a7f7e0a373cbc3c5afe57625137b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54289c2878d09d97e0e58be95951be9c" id="r_a54289c2878d09d97e0e58be95951be9c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#a54289c2878d09d97e0e58be95951be9c">~ImageController</a> ()</td></tr>
+<tr class="separator:a54289c2878d09d97e0e58be95951be9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebeea3e309732706710be62a0ad5b49b" id="r_aebeea3e309732706710be62a0ad5b49b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b">takeImage</a> ()</td></tr>
 <tr class="separator:aebeea3e309732706710be62a0ad5b49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a90044112da43addaaa2f8122d63b79" id="r_a4a90044112da43addaaa2f8122d63b79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#a4a90044112da43addaaa2f8122d63b79">handleError</a> (int code, std::string message)</td></tr>
-<tr class="separator:a4a90044112da43addaaa2f8122d63b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44b84682e0506b76e030d24df4368632" id="r_a44b84682e0506b76e030d24df4368632"><td class="memItemLeft" align="right" valign="top">wxImage *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#a44b84682e0506b76e030d24df4368632">getImage</a> ()</td></tr>
 <tr class="separator:a44b84682e0506b76e030d24df4368632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00ba03746716dab962ab7e03fb8f556" id="r_ac00ba03746716dab962ab7e03fb8f556"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_image_controller.html#ac00ba03746716dab962ab7e03fb8f556">hasError</a> () const</td></tr>
+<tr class="separator:ac00ba03746716dab962ab7e03fb8f556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_base_controller"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_base_controller')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_base_controller.html">BaseController</a></td></tr>
+<tr class="memitem:ad4866c84da6e11450df71deb033b1c1a inherit pub_methods_class_base_controller" id="r_ad4866c84da6e11450df71deb033b1c1a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#ad4866c84da6e11450df71deb033b1c1a">BaseController</a> (<a class="el" href="class_my_app_interface.html">MyAppInterface</a> *main, bool <a class="el" href="class_base_controller.html#aa62a38ad545a8ea49d30bb363f4095c3">is_wfs_connected</a>)</td></tr>
+<tr class="separator:ad4866c84da6e11450df71deb033b1c1a inherit pub_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbf379fb7215666aa8d043fd5a6d2fb inherit pub_methods_class_base_controller" id="r_aefbf379fb7215666aa8d043fd5a6d2fb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#aefbf379fb7215666aa8d043fd5a6d2fb">onOK</a> ()</td></tr>
+<tr class="separator:aefbf379fb7215666aa8d043fd5a6d2fb inherit pub_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b78f5d9c07117466b79e8f99420a7aa inherit pub_methods_class_base_controller" id="r_a7b78f5d9c07117466b79e8f99420a7aa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#a7b78f5d9c07117466b79e8f99420a7aa">onClose</a> ()</td></tr>
+<tr class="separator:a7b78f5d9c07117466b79e8f99420a7aa inherit pub_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68041fa87d07e7ba9afaba6b5afd64de inherit pub_methods_class_base_controller" id="r_a68041fa87d07e7ba9afaba6b5afd64de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de">isWfsConnected</a> () const</td></tr>
+<tr class="separator:a68041fa87d07e7ba9afaba6b5afd64de inherit pub_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28782ea291589be6038f2e22879a0568 inherit pub_methods_class_base_controller" id="r_a28782ea291589be6038f2e22879a0568"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#a28782ea291589be6038f2e22879a0568">setWfsConnected</a> (bool *<a class="el" href="class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de">isWfsConnected</a>)</td></tr>
+<tr class="separator:a28782ea291589be6038f2e22879a0568 inherit pub_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_class_base_controller"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_base_controller')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_base_controller.html">BaseController</a></td></tr>
+<tr class="memitem:a3542c6fec2da9a79c1cf8039a371923e inherit pro_methods_class_base_controller" id="r_a3542c6fec2da9a79c1cf8039a371923e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e">handleError</a> (int code, std::string message)</td></tr>
+<tr class="separator:a3542c6fec2da9a79c1cf8039a371923e inherit pro_methods_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_base_controller"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_base_controller')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_base_controller.html">BaseController</a></td></tr>
+<tr class="memitem:addf129ce12fa9d0a22e84e90c81de561 inherit pro_attribs_class_base_controller" id="r_addf129ce12fa9d0a22e84e90c81de561"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_my_app_interface.html">MyAppInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#addf129ce12fa9d0a22e84e90c81de561">app</a></td></tr>
+<tr class="separator:addf129ce12fa9d0a22e84e90c81de561 inherit pro_attribs_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa62a38ad545a8ea49d30bb363f4095c3 inherit pro_attribs_class_base_controller" id="r_aa62a38ad545a8ea49d30bb363f4095c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_controller.html#aa62a38ad545a8ea49d30bb363f4095c3">is_wfs_connected</a></td></tr>
+<tr class="separator:aa62a38ad545a8ea49d30bb363f4095c3 inherit pro_attribs_class_base_controller"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This controller handles image acquisition. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+
+<p class="definition">Definition at line <a class="el" href="_image_controller_8h_source.html#l00013">13</a> of file <a class="el" href="_image_controller_8h_source.html">ImageController.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad3a9a7f7e0a373cbc3c5afe57625137b" name="ad3a9a7f7e0a373cbc3c5afe57625137b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a9a7f7e0a373cbc3c5afe57625137b">&#9670;&#160;</a></span>ImageController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ImageController::ImageController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_my_app_interface.html">MyAppInterface</a> *&#160;</td>
+          <td class="paramname"><em>main</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_wfs_connected</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_instrument.html">Instrument</a> *&#160;</td>
+          <td class="paramname"><em>instrument</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_image_controller_8cpp_source.html#l00007">7</a> of file <a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_image_controller_ad3a9a7f7e0a373cbc3c5afe57625137b_cgraph.png" border="0" usemap="#aclass_image_controller_ad3a9a7f7e0a373cbc3c5afe57625137b_cgraph" alt=""/></div>
+<map name="aclass_image_controller_ad3a9a7f7e0a373cbc3c5afe57625137b_cgraph" id="aclass_image_controller_ad3a9a7f7e0a373cbc3c5afe57625137b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,228,215,255"/>
+<area shape="rect" href="class_camera_settings_controller.html#a2a428ba39478d1d0237f1d0ddb842df0" title=" " alt="" coords="269,124,438,167"/>
+<area shape="poly" title=" " alt="" coords="143,225,262,176,277,170,279,175,264,181,145,230"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="269,191,438,233"/>
+<area shape="poly" title=" " alt="" coords="215,226,253,221,253,227,215,231"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="267,257,440,284"/>
+<area shape="poly" title=" " alt="" coords="215,251,252,256,251,261,215,257"/>
+<area shape="rect" href="class_event_dispatcher.html#a3205450e67cc6079c8f6f23522de5e5b" title=" " alt="" coords="263,308,444,351"/>
+<area shape="poly" title=" " alt="" coords="150,253,279,300,277,305,149,258"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="492,191,642,233"/>
+<area shape="poly" title=" " alt="" coords="438,209,476,209,476,215,438,215"/>
+<area shape="rect" href="class_camera_config.html#a0f503786512172bbc168dfd210843aef" title=" " alt="" coords="701,5,891,32"/>
+<area shape="poly" title=" " alt="" coords="576,189,593,156,617,116,650,76,689,42,697,37,700,41,692,46,654,79,622,119,597,159,580,191"/>
+<area shape="rect" href="class_camera_config.html#a78305059984828025b58ee10564836c8" title=" " alt="" coords="690,56,902,83"/>
+<area shape="poly" title=" " alt="" coords="583,188,627,140,657,114,689,92,702,86,704,91,692,97,660,118,631,143,587,192"/>
+<area shape="rect" href="class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52" title=" " alt="" coords="718,107,874,133"/>
+<area shape="poly" title=" " alt="" coords="601,188,642,164,689,143,710,136,712,141,691,148,645,169,604,193"/>
+<area shape="rect" href="class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3" title=" " alt="" coords="706,157,886,200"/>
+<area shape="poly" title=" " alt="" coords="642,198,691,191,691,197,643,204"/>
+<area shape="rect" href="class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5" title=" " alt="" coords="705,224,887,267"/>
+<area shape="poly" title=" " alt="" coords="643,220,691,227,690,233,642,226"/>
+<area shape="rect" href="class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211" title=" " alt="" coords="706,291,886,333"/>
+<area shape="poly" title=" " alt="" coords="605,231,691,276,707,282,705,287,689,281,603,236"/>
+<area shape="rect" href="class_camera_config.html#af1fa7592443c1a51044bdb15ad258344" title=" " alt="" coords="695,357,897,384"/>
+<area shape="poly" title=" " alt="" coords="584,232,628,288,658,318,692,343,702,349,700,353,689,348,654,322,624,292,580,235"/>
+<area shape="rect" href="class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a" title=" " alt="" coords="706,408,886,451"/>
+<area shape="poly" title=" " alt="" coords="579,233,596,268,620,311,652,356,692,394,697,398,694,402,689,398,648,359,616,314,591,270,575,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a54289c2878d09d97e0e58be95951be9c" name="a54289c2878d09d97e0e58be95951be9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54289c2878d09d97e0e58be95951be9c">&#9670;&#160;</a></span>~ImageController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ImageController::~ImageController </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_image_controller_8cpp_source.html#l00028">28</a> of file <a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a44b84682e0506b76e030d24df4368632" name="a44b84682e0506b76e030d24df4368632"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44b84682e0506b76e030d24df4368632">&#9670;&#160;</a></span>getImage()</h2>
 
@@ -112,43 +248,44 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Returns a pointer to the wxImage created from the image buffer given by the API.</p>
-<dl class="section return"><dt>Returns</dt><dd>wxImage* Reference to image object </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>wxBitmap* Reference to the wxBitmap created from the image buffer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_image_controller_8cpp_source.html#l00127">127</a> of file <a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_image_controller_a44b84682e0506b76e030d24df4368632_cgraph.png" border="0" usemap="#aclass_image_controller_a44b84682e0506b76e030d24df4368632_cgraph" alt=""/></div>
+<map name="aclass_image_controller_a44b84682e0506b76e030d24df4368632_cgraph" id="aclass_image_controller_a44b84682e0506b76e030d24df4368632_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,178,61"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="226,35,406,61"/>
+<area shape="poly" title=" " alt="" coords="178,45,210,45,210,51,178,51"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="454,5,626,32"/>
+<area shape="poly" title=" " alt="" coords="406,34,438,29,439,35,406,39"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="457,56,623,99"/>
+<area shape="poly" title=" " alt="" coords="406,57,442,62,441,67,406,62"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="674,64,788,91"/>
+<area shape="poly" title=" " alt="" coords="623,75,659,75,659,80,623,80"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="a4a90044112da43addaaa2f8122d63b79" name="a4a90044112da43addaaa2f8122d63b79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a90044112da43addaaa2f8122d63b79">&#9670;&#160;</a></span>handleError()</h2>
+<a id="ac00ba03746716dab962ab7e03fb8f556" name="ac00ba03746716dab962ab7e03fb8f556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac00ba03746716dab962ab7e03fb8f556">&#9670;&#160;</a></span>hasError()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ImageController::handleError </td>
+          <td class="memname">int ImageController::hasError </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>code</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Handles error messages.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">code</td><td>Error code </td></tr>
-    <tr><td class="paramname">message</td><td>Developer error message </td></tr>
-  </table>
-  </dd>
-</dl>
+
+<p class="definition">Definition at line <a class="el" href="_image_controller_8cpp_source.html#l00139">139</a> of file <a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a>.</p>
 
 </div>
 </div>
@@ -168,16 +305,68 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returns a pointer the image buffer. </p>
 
+<p class="definition">Definition at line <a class="el" href="_image_controller_8cpp_source.html#l00038">38</a> of file <a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_image_controller_aebeea3e309732706710be62a0ad5b49b_cgraph.png" border="0" usemap="#aclass_image_controller_aebeea3e309732706710be62a0ad5b49b_cgraph" alt=""/></div>
+<map name="aclass_image_controller_aebeea3e309732706710be62a0ad5b49b_cgraph" id="aclass_image_controller_aebeea3e309732706710be62a0ad5b49b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,417,185,444"/>
+<area shape="rect" href="class_camera_config.html#a0f503786512172bbc168dfd210843aef" title=" " alt="" coords="255,5,445,32"/>
+<area shape="poly" title=" " alt="" coords="94,417,100,349,119,248,136,192,160,137,191,86,231,42,239,36,242,40,234,46,195,89,164,140,141,194,124,249,105,350,99,417"/>
+<area shape="rect" href="class_camera_config.html#a07e2122d7c244e4a3cbf888bb33bcdca" title=" " alt="" coords="233,56,467,83"/>
+<area shape="poly" title=" " alt="" coords="95,416,103,357,125,269,143,221,166,174,195,130,231,93,236,89,239,93,234,97,199,134,170,177,147,223,130,270,109,358,100,417"/>
+<area shape="rect" href="class_camera_config.html#a78305059984828025b58ee10564836c8" title=" " alt="" coords="244,107,456,133"/>
+<area shape="poly" title=" " alt="" coords="96,416,107,364,132,290,149,250,172,211,199,174,231,143,237,139,240,143,234,147,203,178,176,214,154,252,137,292,113,366,101,417"/>
+<area shape="rect" href="class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52" title=" " alt="" coords="272,157,428,184"/>
+<area shape="poly" title=" " alt="" coords="98,416,112,372,138,312,178,248,202,219,231,194,256,180,259,185,234,198,206,223,182,251,143,314,117,374,103,418"/>
+<area shape="rect" href="class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="276,208,424,235"/>
+<area shape="poly" title=" " alt="" coords="100,416,117,381,146,334,184,285,206,263,231,244,260,231,262,236,234,249,210,267,188,289,150,337,122,383,105,418"/>
+<area shape="rect" href="class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3" title=" " alt="" coords="260,259,440,301"/>
+<area shape="poly" title=" " alt="" coords="107,415,158,365,193,336,231,311,245,304,247,309,234,316,196,340,161,369,110,419"/>
+<area shape="rect" href="class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5" title=" " alt="" coords="259,325,441,368"/>
+<area shape="poly" title=" " alt="" coords="130,414,232,377,254,370,256,376,234,383,132,419"/>
+<area shape="rect" href="class_instrument.html#a05f230234deb6092f04eae9c10445b9c" title=" " alt="" coords="277,392,423,419"/>
+<area shape="poly" title=" " alt="" coords="185,419,261,411,261,417,186,424"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="260,443,440,469"/>
+<area shape="poly" title=" " alt="" coords="186,437,245,443,244,448,185,442"/>
+<area shape="rect" href="class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211" title=" " alt="" coords="260,493,440,536"/>
+<area shape="poly" title=" " alt="" coords="132,442,234,479,256,486,254,491,232,484,130,447"/>
+<area shape="rect" href="class_camera_config.html#af1fa7592443c1a51044bdb15ad258344" title=" " alt="" coords="249,560,451,587"/>
+<area shape="poly" title=" " alt="" coords="110,442,160,494,195,522,234,546,249,552,247,557,231,550,192,526,157,497,106,446"/>
+<area shape="rect" href="class_camera_config.html#a7bf2c0c972ec3bb2effb4969570e5dae" title=" " alt="" coords="263,611,437,637"/>
+<area shape="poly" title=" " alt="" coords="106,443,124,475,152,517,189,560,234,596,250,604,247,609,231,601,186,564,148,521,119,478,101,446"/>
+<area shape="rect" href="class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a" title=" " alt="" coords="260,661,440,704"/>
+<area shape="poly" title=" " alt="" coords="103,443,119,484,146,539,185,597,208,624,234,647,247,656,244,660,231,651,204,628,180,601,142,541,114,486,98,445"/>
+<area shape="rect" href="class_instrument.html#a924662347b252917b5ec2ebd81874f07" title=" " alt="" coords="273,728,427,755"/>
+<area shape="poly" title=" " alt="" coords="101,444,113,496,137,569,154,609,176,648,203,683,234,714,259,728,257,732,231,718,199,687,172,651,149,611,132,571,107,497,96,445"/>
+<area shape="rect" href="class_image_processing_controller.html#a37f35d121139aa4da4443a3fc8d2dad5" title=" " alt="" coords="262,779,438,821"/>
+<area shape="poly" title=" " alt="" coords="100,444,110,503,132,590,149,637,172,683,200,727,234,765,249,775,246,780,231,769,196,730,167,686,144,639,127,591,104,504,95,445"/>
+<area shape="rect" href="class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89" title=" " alt="" coords="245,845,455,872"/>
+<area shape="poly" title=" " alt="" coords="99,444,104,514,111,563,122,619,139,676,162,733,194,786,235,831,238,835,235,839,231,835,190,789,158,736,134,678,117,620,105,564,98,514,94,444"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="515,413,687,440"/>
+<area shape="poly" title=" " alt="" coords="440,443,499,436,500,441,441,448"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="518,464,684,507"/>
+<area shape="poly" title=" " alt="" coords="441,464,503,471,502,477,440,469"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="735,472,849,499"/>
+<area shape="poly" title=" " alt="" coords="684,483,720,483,720,488,684,488"/>
+</map>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_image_controller_8h_source.html">ImageController.h</a></li>
-<li>lisa_project/<b>ImageController.cpp</b></li>
+<li>lisa_project/controller/<a class="el" href="_image_controller_8h_source.html">ImageController.h</a></li>
+<li>lisa_project/controller/<a class="el" href="_image_controller_8cpp_source.html">ImageController.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_image_controller.html">ImageController</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

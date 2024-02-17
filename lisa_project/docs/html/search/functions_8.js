@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['setinstrumentname_0',['setInstrumentName',['../class_home_frame.html#a3fd8ad71945b9d0784623df176681d54',1,'HomeFrame']]],
-  ['setlistener_1',['setListener',['../class_home_frame.html#a618cd7ae0ff819ce2144a42349b929ce',1,'HomeFrame']]],
-  ['subscribetoevent_2',['SubscribeToEvent',['../class_event_dispatcher.html#a3205450e67cc6079c8f6f23522de5e5b',1,'EventDispatcher']]]
+  ['mla_0',['Mla',['../class_mla.html#a41f38c7bf8cad3938b3a665a1895be30',1,'Mla']]],
+  ['mlaconfiguration_1',['mlaConfiguration',['../class_instrument_controller.html#a3595712aab55e5a8a441cbb496a7e506',1,'InstrumentController']]],
+  ['mlacontroller_2',['MlaController',['../class_mla_controller.html#af2e7fea7bd254e020322c200fef245f5',1,'MlaController']]],
+  ['mlaselectiondialog_3',['MlaSelectionDialog',['../class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f',1,'MlaSelectionDialog']]]
 ];

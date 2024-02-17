@@ -1,0 +1,9 @@
+<map id="CameraConfig::setCameraConfig" name="CameraConfig::setCameraConfig">
+<area shape="rect" id="Node000001" title=" " alt="" coords="439,43,648,69"/>
+<area shape="rect" id="Node000002" href="$class_camera_settings_dialog.html#ae324ee5d6b4c62ca9b24122f9362e55d" title=" " alt="" coords="226,5,377,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="423,44,377,38,377,33,424,39"/>
+<area shape="rect" id="Node000004" href="$class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="212,72,391,99"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="424,73,392,77,391,72,423,68"/>
+<area shape="rect" id="Node000003" href="$class_camera_settings_dialog.html#a7f6f05277dd86eb48d27b0283baf3d29" title=" " alt="" coords="5,5,164,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,29,164,29,164,24,210,24"/>
+</map>

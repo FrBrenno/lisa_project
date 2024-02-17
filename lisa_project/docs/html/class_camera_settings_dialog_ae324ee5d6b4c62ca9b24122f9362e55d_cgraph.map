@@ -1,0 +1,7 @@
+<map id="CameraSettingsDialog::OnOK" name="CameraSettingsDialog::OnOK">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,156,77"/>
+<area shape="rect" id="Node000002" href="$class_camera_settings_controller.html#ab6fb6a02bc331069f55da93f0cfd2c97" title=" " alt="" coords="224,5,393,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,44,208,37,209,42,157,49"/>
+<area shape="rect" id="Node000003" href="$class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89" title=" " alt="" coords="204,72,413,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,63,189,67,188,73,156,68"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="BaseController::BaseController" name="BaseController::BaseController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,205,108"/>
+<area shape="rect" id="Node000002" href="$class_event.html#a66e3660db6ad05261724596001a15a4a" title="Getter for event data." alt="" coords="308,5,415,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,78,252,41,292,31,294,36,253,47,144,83"/>
+<area shape="rect" id="Node000003" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="275,56,448,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,82,259,77,260,82,205,87"/>
+<area shape="rect" id="Node000004" href="$class_base_controller.html#a28782ea291589be6038f2e22879a0568" title=" " alt="" coords="253,107,470,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,102,237,105,237,110,205,107"/>
+<area shape="rect" id="Node000006" href="$class_event_dispatcher.html#a3205450e67cc6079c8f6f23522de5e5b" title=" " alt="" coords="271,157,452,200"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="146,106,254,143,275,150,273,155,252,148,144,111"/>
+<area shape="rect" id="Node000005" href="$class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de" title=" " alt="" coords="518,107,727,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="470,117,502,117,502,123,470,123"/>
+</map>

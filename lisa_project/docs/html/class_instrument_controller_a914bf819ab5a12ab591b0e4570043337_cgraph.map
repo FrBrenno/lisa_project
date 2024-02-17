@@ -1,0 +1,11 @@
+<map id="InstrumentController::populateInstrumentList" name="InstrumentController::populateInstrumentList">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,27,166,69"/>
+<area shape="rect" id="Node000002" href="$class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="214,35,394,61"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,45,198,45,198,51,166,51"/>
+<area shape="rect" id="Node000003" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="442,5,614,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,34,426,29,427,35,394,39"/>
+<area shape="rect" id="Node000004" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="445,56,611,99"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="394,57,430,62,429,67,394,62"/>
+<area shape="rect" id="Node000005" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="662,64,776,91"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="611,75,647,75,647,80,611,80"/>
+</map>

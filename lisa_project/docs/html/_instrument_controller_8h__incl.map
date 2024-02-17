@@ -1,0 +1,24 @@
+<map id="lisa_project/controller/InstrumentController.h" name="lisa_project/controller/InstrumentController.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="197,5,349,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="277,171,346,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,48,307,155,302,156,275,49"/>
+<area shape="rect" id="Node000003" href="$_instrument_8h.html" title=" " alt="" coords="29,96,173,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,51,142,92,140,87,227,46"/>
+<area shape="rect" id="Node000007" href="$_event_8h.html" title=" " alt="" coords="197,96,274,123"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="265,50,250,83,245,81,261,47"/>
+<area shape="rect" id="Node000008" href="$_base_controller_8h.html" title=" " alt="" coords="349,96,466,123"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="309,46,375,85,372,90,306,51"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="195,245,249,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="116,121,161,169,208,231,203,234,157,172,112,125"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,245,159,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="98,124,85,171,83,230,77,230,79,170,93,123"/>
+<area shape="rect" id="Node000006" href="$_mla_8h.html" title=" " alt="" coords="94,171,147,197"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="107,122,116,155,111,157,102,124"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="140,196,193,234,190,238,137,200"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="116,199,98,233,93,230,112,197"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="237,123,227,230,222,230,232,123"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="392,125,342,163,339,159,389,121"/>
+<area shape="poly" id="edge13_Node000008_Node000004" title=" " alt="" coords="406,124,389,160,376,181,360,199,337,216,313,230,264,249,263,244,310,225,335,212,356,195,372,178,384,158,401,122"/>
+<area shape="rect" id="Node000009" href="$_my_app_interface_8h.html" title=" " alt="" coords="420,171,555,197"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="423,121,464,158,461,162,419,125"/>
+</map>

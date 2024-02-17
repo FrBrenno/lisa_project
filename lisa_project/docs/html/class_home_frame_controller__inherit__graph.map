@@ -1,0 +1,5 @@
+<map id="HomeFrameController" name="HomeFrameController">
+<area shape="rect" id="Node000001" title="This controller manages HomeFrame view responsible for the main window of the software." alt="" coords="5,80,153,107"/>
+<area shape="rect" id="Node000002" href="$class_base_controller.html" title=" " alt="" coords="26,5,132,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,48,82,80,76,80,76,48"/>
+</map>

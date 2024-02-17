@@ -1,0 +1,12 @@
+<map id="Instrument::getSpotsX" name="Instrument::getSpotsX">
+<area shape="rect" id="Node000001" title=" " alt="" coords="853,13,1002,40"/>
+<area shape="rect" id="Node000002" href="$class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="657,5,805,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="837,29,805,29,805,24,837,24"/>
+<area shape="rect" id="Node000003" href="$class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" id="Node000004" href="$class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" id="Node000005" href="$class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_mla.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Mla Member List</div></div>
 </div><!--header-->
@@ -76,17 +97,20 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_mla.html">Mla</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getHandle</b>() (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>getMlaCount</b>() (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>isInitialized</b>() (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Mla</b>() (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setHandle</b>(ViSession handle) (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>setInitialized</b>(bool is_initialized) (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setMlaInfo</b>(ViChar *mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45) (defined in <a class="el" href="class_mla.html">Mla</a>)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789">getHandle</a>()</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a">getMlaCount</a>()</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_mla.html#aba6397ee94aed794c46975696a5a661d">isInitialized</a>()</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_mla.html#a41f38c7bf8cad3938b3a665a1895be30">Mla</a>()</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_mla.html#a347103b03641965fc85758d42f18547c">setHandle</a>(ViSession handle)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_mla.html#a41fb7af242a3ba8d026b79596d690b39">setInitialized</a>(bool is_initialized)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4">setMlaInfo</a>(ViChar *mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45)</td><td class="entry"><a class="el" href="class_mla.html">Mla</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

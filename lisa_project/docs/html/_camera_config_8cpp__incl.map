@@ -1,0 +1,10 @@
+<map id="lisa_project/model/CameraConfig.cpp" name="lisa_project/model/CameraConfig.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="56,5,188,48"/>
+<area shape="rect" id="Node000002" href="$_camera_config_8h.html" title=" " alt="" coords="5,96,119,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,50,83,85,78,82,104,47"/>
+<area shape="rect" id="Node000004" href="$_settings_8h.html" title=" " alt="" coords="143,96,224,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,47,167,82,162,85,136,50"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="45,171,199,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="74,122,104,157,100,161,70,125"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="175,125,144,161,140,157,171,121"/>
+</map>

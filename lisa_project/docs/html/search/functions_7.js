@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['revisedrive_0',['reviseDrive',['../class_instrument_controller.html#a6ce24bda2cd3ab9919b1e15ac1d28d2f',1,'InstrumentController']]]
+  ['loadcamerasettings_0',['loadCameraSettings',['../class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701',1,'CameraSettingsDialog']]]
 ];

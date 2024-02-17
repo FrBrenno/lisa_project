@@ -1,0 +1,21 @@
+<map id="CameraSettingsController::handleSettingsSelection" name="CameraSettingsController::handleSettingsSelection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,191,175,233"/>
+<area shape="rect" id="Node000002" href="$class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="223,191,373,233"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,209,207,209,207,215,175,215"/>
+<area shape="rect" id="Node000003" href="$class_camera_config.html#a0f503786512172bbc168dfd210843aef" title=" " alt="" coords="432,5,622,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,189,323,156,348,116,380,76,419,42,428,37,431,41,423,46,384,79,352,119,328,159,311,191"/>
+<area shape="rect" id="Node000004" href="$class_camera_config.html#a78305059984828025b58ee10564836c8" title=" " alt="" coords="421,56,632,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="314,188,358,140,387,114,420,92,432,86,435,91,422,97,390,118,362,143,318,192"/>
+<area shape="rect" id="Node000005" href="$class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52" title=" " alt="" coords="449,107,604,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="332,188,373,164,420,143,441,136,443,141,422,148,376,169,334,193"/>
+<area shape="rect" id="Node000006" href="$class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3" title=" " alt="" coords="437,157,616,200"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="373,198,421,191,422,197,374,204"/>
+<area shape="rect" id="Node000007" href="$class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5" title=" " alt="" coords="436,224,617,267"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="374,220,421,227,421,233,373,226"/>
+<area shape="rect" id="Node000008" href="$class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211" title=" " alt="" coords="437,291,617,333"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="336,231,422,276,437,282,435,287,420,281,333,236"/>
+<area shape="rect" id="Node000009" href="$class_camera_config.html#af1fa7592443c1a51044bdb15ad258344" title=" " alt="" coords="426,357,628,384"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="315,232,358,288,388,318,422,343,433,349,431,353,420,348,385,322,354,292,311,235"/>
+<area shape="rect" id="Node000010" href="$class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a" title=" " alt="" coords="437,408,617,451"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="310,233,326,268,351,311,383,356,423,394,428,398,425,402,419,398,379,359,346,314,322,270,305,235"/>
+</map>

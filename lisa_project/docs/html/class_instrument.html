@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_instrument.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -84,53 +105,545 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4423a277f37a47529fc51c7b67ab0d83" id="r_a4423a277f37a47529fc51c7b67ab0d83"><td class="memItemLeft" align="right" valign="top"><a id="a4423a277f37a47529fc51c7b67ab0d83" name="a4423a277f37a47529fc51c7b67ab0d83"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDeviceId</b> (int device_id)</td></tr>
+<tr class="memitem:a4423a277f37a47529fc51c7b67ab0d83" id="r_a4423a277f37a47529fc51c7b67ab0d83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a4423a277f37a47529fc51c7b67ab0d83">setDeviceId</a> (int device_id)</td></tr>
 <tr class="separator:a4423a277f37a47529fc51c7b67ab0d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8098336e1392699c3965aa6bcfbda7d0" id="r_a8098336e1392699c3965aa6bcfbda7d0"><td class="memItemLeft" align="right" valign="top"><a id="a8098336e1392699c3965aa6bcfbda7d0" name="a8098336e1392699c3965aa6bcfbda7d0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setWfsDriverVersion</b> (std::string version_wfs_driver)</td></tr>
+<tr class="memitem:a8098336e1392699c3965aa6bcfbda7d0" id="r_a8098336e1392699c3965aa6bcfbda7d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a8098336e1392699c3965aa6bcfbda7d0">setWfsDriverVersion</a> (std::string version_wfs_driver)</td></tr>
 <tr class="separator:a8098336e1392699c3965aa6bcfbda7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a307e43580ec17e866572fbee73a0f7" id="r_a5a307e43580ec17e866572fbee73a0f7"><td class="memItemLeft" align="right" valign="top"><a id="a5a307e43580ec17e866572fbee73a0f7" name="a5a307e43580ec17e866572fbee73a0f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCamDriverVersion</b> (std::string version_cam_driver)</td></tr>
+<tr class="memitem:a5a307e43580ec17e866572fbee73a0f7" id="r_a5a307e43580ec17e866572fbee73a0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a5a307e43580ec17e866572fbee73a0f7">setCamDriverVersion</a> (std::string version_cam_driver)</td></tr>
 <tr class="separator:a5a307e43580ec17e866572fbee73a0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb7f982bd796fc7e0d2c0652e03a07db" id="r_acb7f982bd796fc7e0d2c0652e03a07db"><td class="memItemLeft" align="right" valign="top"><a id="acb7f982bd796fc7e0d2c0652e03a07db" name="acb7f982bd796fc7e0d2c0652e03a07db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setInstrumentInfo</b> (std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam)</td></tr>
+<tr class="memitem:acb7f982bd796fc7e0d2c0652e03a07db" id="r_acb7f982bd796fc7e0d2c0652e03a07db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db">setInstrumentInfo</a> (std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam)</td></tr>
 <tr class="separator:acb7f982bd796fc7e0d2c0652e03a07db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9150b53b9e1bfd62d7c88a2f7b53e624" id="r_a9150b53b9e1bfd62d7c88a2f7b53e624"><td class="memItemLeft" align="right" valign="top"><a id="a9150b53b9e1bfd62d7c88a2f7b53e624" name="a9150b53b9e1bfd62d7c88a2f7b53e624"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setInitialized</b> (bool is_initialized)</td></tr>
+<tr class="memitem:a9150b53b9e1bfd62d7c88a2f7b53e624" id="r_a9150b53b9e1bfd62d7c88a2f7b53e624"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624">setInitialized</a> (bool is_initialized)</td></tr>
 <tr class="separator:a9150b53b9e1bfd62d7c88a2f7b53e624"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b877e2719794597774c0860318dabad" id="r_a9b877e2719794597774c0860318dabad"><td class="memItemLeft" align="right" valign="top"><a id="a9b877e2719794597774c0860318dabad" name="a9b877e2719794597774c0860318dabad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMla</b> (<a class="el" href="class_mla.html">Mla</a> *mla)</td></tr>
+<tr class="memitem:a9b877e2719794597774c0860318dabad" id="r_a9b877e2719794597774c0860318dabad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a9b877e2719794597774c0860318dabad">setMla</a> (<a class="el" href="class_mla.html">Mla</a> *mla)</td></tr>
 <tr class="separator:a9b877e2719794597774c0860318dabad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a924662347b252917b5ec2ebd81874f07" id="r_a924662347b252917b5ec2ebd81874f07"><td class="memItemLeft" align="right" valign="top"><a id="a924662347b252917b5ec2ebd81874f07" name="a924662347b252917b5ec2ebd81874f07"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInitialized</b> ()</td></tr>
+<tr class="memitem:a5a3e4442ba862bc4766cbfab75dbcaec" id="r_a5a3e4442ba862bc4766cbfab75dbcaec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a5a3e4442ba862bc4766cbfab75dbcaec">setStatus</a> (ViInt32 status)</td></tr>
+<tr class="separator:a5a3e4442ba862bc4766cbfab75dbcaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924662347b252917b5ec2ebd81874f07" id="r_a924662347b252917b5ec2ebd81874f07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a924662347b252917b5ec2ebd81874f07">isInitialized</a> ()</td></tr>
 <tr class="separator:a924662347b252917b5ec2ebd81874f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a302c9c9f4fbd16702cb5e4631998538f" id="r_a302c9c9f4fbd16702cb5e4631998538f"><td class="memItemLeft" align="right" valign="top"><a id="a302c9c9f4fbd16702cb5e4631998538f" name="a302c9c9f4fbd16702cb5e4631998538f"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getInstrumentName</b> ()</td></tr>
+<tr class="memitem:a302c9c9f4fbd16702cb5e4631998538f" id="r_a302c9c9f4fbd16702cb5e4631998538f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a302c9c9f4fbd16702cb5e4631998538f">getInstrumentName</a> ()</td></tr>
 <tr class="separator:a302c9c9f4fbd16702cb5e4631998538f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87ef5d34cf15ca32b2f0f8fd90c4ac25" id="r_a87ef5d34cf15ca32b2f0f8fd90c4ac25"><td class="memItemLeft" align="right" valign="top"><a id="a87ef5d34cf15ca32b2f0f8fd90c4ac25" name="a87ef5d34cf15ca32b2f0f8fd90c4ac25"></a>
-ViSession *&#160;</td><td class="memItemRight" valign="bottom"><b>getHandle</b> ()</td></tr>
+<tr class="memitem:a87ef5d34cf15ca32b2f0f8fd90c4ac25" id="r_a87ef5d34cf15ca32b2f0f8fd90c4ac25"><td class="memItemLeft" align="right" valign="top">ViSession *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25">getHandle</a> ()</td></tr>
 <tr class="separator:a87ef5d34cf15ca32b2f0f8fd90c4ac25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae99158cd820abcae887fb587ec71aa76" id="r_ae99158cd820abcae887fb587ec71aa76"><td class="memItemLeft" align="right" valign="top"><a id="ae99158cd820abcae887fb587ec71aa76" name="ae99158cd820abcae887fb587ec71aa76"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getDeviceId</b> ()</td></tr>
+<tr class="memitem:ae99158cd820abcae887fb587ec71aa76" id="r_ae99158cd820abcae887fb587ec71aa76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#ae99158cd820abcae887fb587ec71aa76">getDeviceId</a> ()</td></tr>
 <tr class="separator:ae99158cd820abcae887fb587ec71aa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b4fce3e53e195ccc10c70223cc52604" id="r_a5b4fce3e53e195ccc10c70223cc52604"><td class="memItemLeft" align="right" valign="top"><a id="a5b4fce3e53e195ccc10c70223cc52604" name="a5b4fce3e53e195ccc10c70223cc52604"></a>
-ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><b>getSpotsX</b> ()</td></tr>
+<tr class="memitem:a5b4fce3e53e195ccc10c70223cc52604" id="r_a5b4fce3e53e195ccc10c70223cc52604"><td class="memItemLeft" align="right" valign="top">ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604">getSpotsX</a> ()</td></tr>
 <tr class="separator:a5b4fce3e53e195ccc10c70223cc52604"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fe9666b05fbbcae9b757bdb0ac8acd" id="r_ae9fe9666b05fbbcae9b757bdb0ac8acd"><td class="memItemLeft" align="right" valign="top"><a id="ae9fe9666b05fbbcae9b757bdb0ac8acd" name="ae9fe9666b05fbbcae9b757bdb0ac8acd"></a>
-ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><b>getSpotsY</b> ()</td></tr>
+<tr class="memitem:ae9fe9666b05fbbcae9b757bdb0ac8acd" id="r_ae9fe9666b05fbbcae9b757bdb0ac8acd"><td class="memItemLeft" align="right" valign="top">ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd">getSpotsY</a> ()</td></tr>
 <tr class="separator:ae9fe9666b05fbbcae9b757bdb0ac8acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f230234deb6092f04eae9c10445b9c" id="r_a05f230234deb6092f04eae9c10445b9c"><td class="memItemLeft" align="right" valign="top">ViInt32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument.html#a05f230234deb6092f04eae9c10445b9c">getStatus</a> ()</td></tr>
+<tr class="separator:a05f230234deb6092f04eae9c10445b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This model class contains all the information about the instrument. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_instrument_8h_source.html">Instrument.h</a></li>
-<li>lisa_project/<b>Instrument.cpp</b></li>
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8h_source.html#l00011">11</a> of file <a class="el" href="_instrument_8h_source.html">Instrument.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae99158cd820abcae887fb587ec71aa76" name="ae99158cd820abcae887fb587ec71aa76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae99158cd820abcae887fb587ec71aa76">&#9670;&#160;</a></span>getDeviceId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Instrument::getDeviceId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00049">49</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_ae99158cd820abcae887fb587ec71aa76_icgraph.png" border="0" usemap="#aclass_instrument_ae99158cd820abcae887fb587ec71aa76_icgraph" alt=""/></div>
+<map name="aclass_instrument_ae99158cd820abcae887fb587ec71aa76_icgraph" id="aclass_instrument_ae99158cd820abcae887fb587ec71aa76_icgraph">
+<area shape="rect" title=" " alt="" coords="853,13,1009,40"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="657,5,805,48"/>
+<area shape="poly" title=" " alt="" coords="837,29,805,29,805,24,837,24"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a87ef5d34cf15ca32b2f0f8fd90c4ac25" name="a87ef5d34cf15ca32b2f0f8fd90c4ac25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ef5d34cf15ca32b2f0f8fd90c4ac25">&#9670;&#160;</a></span>getHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViSession * Instrument::getHandle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00018">18</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25_icgraph.png" border="0" usemap="#aclass_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25_icgraph" alt=""/></div>
+<map name="aclass_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25_icgraph" id="aclass_instrument_a87ef5d34cf15ca32b2f0f8fd90c4ac25_icgraph">
+<area shape="rect" title=" " alt="" coords="885,147,1033,173"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="673,5,821,48"/>
+<area shape="poly" title=" " alt="" coords="931,137,888,99,835,62,812,51,815,46,838,58,891,95,935,133"/>
+<area shape="rect" href="class_instrument_controller.html#a0fab52a1bb19d92e0a28cb995a659896" title=" " alt="" coords="678,139,816,181"/>
+<area shape="poly" title=" " alt="" coords="869,163,816,163,816,157,869,157"/>
+<area shape="rect" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="678,72,816,115"/>
+<area shape="poly" title=" " alt="" coords="898,144,815,117,817,112,900,139"/>
+<area shape="rect" href="class_instrument_controller.html#a3595712aab55e5a8a441cbb496a7e506" title=" " alt="" coords="678,205,816,248"/>
+<area shape="poly" title=" " alt="" coords="900,181,817,208,815,203,898,176"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="657,272,837,299"/>
+<area shape="poly" title=" " alt="" coords="936,186,893,225,838,262,811,274,808,269,835,258,889,221,932,183"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,43,609,85"/>
+<area shape="poly" title=" " alt="" coords="658,45,610,53,610,48,658,39"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,28,186,71"/>
+<area shape="poly" title=" " alt="" coords="438,51,406,48,292,44,186,47,186,41,292,39,406,43,439,46"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,57,406,100"/>
+<area shape="poly" title=" " alt="" coords="439,73,407,75,406,70,438,68"/>
+<area shape="poly" title=" " alt="" coords="218,68,186,64,186,59,219,63"/>
+<area shape="rect" href="class_instrument_controller.html#a61204309955b0c3c32c5391d7c182eb0" title=" " alt="" coords="463,139,600,181"/>
+<area shape="poly" title=" " alt="" coords="662,163,601,163,601,157,662,157"/>
+<area shape="rect" href="class_instrument_controller.html#a4dbeb8dd40aad5d740e49ca3461d2302" title=" " alt="" coords="247,139,393,181"/>
+<area shape="poly" title=" " alt="" coords="448,163,393,163,393,157,448,157"/>
+<area shape="poly" title=" " alt="" coords="662,85,609,77,610,72,663,79"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a302c9c9f4fbd16702cb5e4631998538f" name="a302c9c9f4fbd16702cb5e4631998538f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a302c9c9f4fbd16702cb5e4631998538f">&#9670;&#160;</a></span>getInstrumentName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Instrument::getInstrumentName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00045">45</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a302c9c9f4fbd16702cb5e4631998538f_icgraph.png" border="0" usemap="#aclass_instrument_a302c9c9f4fbd16702cb5e4631998538f_icgraph" alt=""/></div>
+<map name="aclass_instrument_a302c9c9f4fbd16702cb5e4631998538f_icgraph" id="aclass_instrument_a302c9c9f4fbd16702cb5e4631998538f_icgraph">
+<area shape="rect" title=" " alt="" coords="348,13,551,40"/>
+<area shape="rect" href="class_instrument_controller.html#a23fe0b7b3946c9ca2bb2afd75c47d983" title=" " alt="" coords="158,5,300,48"/>
+<area shape="poly" title=" " alt="" coords="332,29,301,29,301,24,332,24"/>
+<area shape="rect" href="class_my_app.html#a79fa75d1155f0e85e20f2869538296d6" title=" " alt="" coords="5,13,110,40"/>
+<area shape="poly" title=" " alt="" coords="142,29,110,29,110,24,142,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5b4fce3e53e195ccc10c70223cc52604" name="a5b4fce3e53e195ccc10c70223cc52604"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4fce3e53e195ccc10c70223cc52604">&#9670;&#160;</a></span>getSpotsX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViInt32 * Instrument::getSpotsX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00053">53</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a5b4fce3e53e195ccc10c70223cc52604_icgraph.png" border="0" usemap="#aclass_instrument_a5b4fce3e53e195ccc10c70223cc52604_icgraph" alt=""/></div>
+<map name="aclass_instrument_a5b4fce3e53e195ccc10c70223cc52604_icgraph" id="aclass_instrument_a5b4fce3e53e195ccc10c70223cc52604_icgraph">
+<area shape="rect" title=" " alt="" coords="853,13,1002,40"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="657,5,805,48"/>
+<area shape="poly" title=" " alt="" coords="837,29,805,29,805,24,837,24"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae9fe9666b05fbbcae9b757bdb0ac8acd" name="ae9fe9666b05fbbcae9b757bdb0ac8acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9fe9666b05fbbcae9b757bdb0ac8acd">&#9670;&#160;</a></span>getSpotsY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViInt32 * Instrument::getSpotsY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00057">57</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd_icgraph.png" border="0" usemap="#aclass_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd_icgraph" alt=""/></div>
+<map name="aclass_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd_icgraph" id="aclass_instrument_ae9fe9666b05fbbcae9b757bdb0ac8acd_icgraph">
+<area shape="rect" title=" " alt="" coords="853,13,1004,40"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="657,5,805,48"/>
+<area shape="poly" title=" " alt="" coords="837,29,805,29,805,24,837,24"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a05f230234deb6092f04eae9c10445b9c" name="a05f230234deb6092f04eae9c10445b9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f230234deb6092f04eae9c10445b9c">&#9670;&#160;</a></span>getStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViInt32 Instrument::getStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00061">61</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a05f230234deb6092f04eae9c10445b9c_icgraph.png" border="0" usemap="#aclass_instrument_a05f230234deb6092f04eae9c10445b9c_icgraph" alt=""/></div>
+<map name="aclass_instrument_a05f230234deb6092f04eae9c10445b9c_icgraph" id="aclass_instrument_a05f230234deb6092f04eae9c10445b9c_icgraph">
+<area shape="rect" title=" " alt="" coords="233,5,379,32"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="5,5,185,32"/>
+<area shape="poly" title=" " alt="" coords="217,21,185,21,185,16,217,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a924662347b252917b5ec2ebd81874f07" name="a924662347b252917b5ec2ebd81874f07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a924662347b252917b5ec2ebd81874f07">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Instrument::isInitialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00041">41</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a924662347b252917b5ec2ebd81874f07_icgraph.png" border="0" usemap="#aclass_instrument_a924662347b252917b5ec2ebd81874f07_icgraph" alt=""/></div>
+<map name="aclass_instrument_a924662347b252917b5ec2ebd81874f07_icgraph" id="aclass_instrument_a924662347b252917b5ec2ebd81874f07_icgraph">
+<area shape="rect" title=" " alt="" coords="681,80,836,107"/>
+<area shape="rect" href="class_instrument_controller.html#ad0851aaa91af3e1542710a203503d5b8" title=" " alt="" coords="475,5,612,48"/>
+<area shape="poly" title=" " alt="" coords="697,77,612,51,614,45,699,72"/>
+<area shape="rect" href="class_instrument_controller.html#a61204309955b0c3c32c5391d7c182eb0" title=" " alt="" coords="475,72,612,115"/>
+<area shape="poly" title=" " alt="" coords="666,96,613,96,613,91,666,91"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="454,139,633,165"/>
+<area shape="poly" title=" " alt="" coords="693,114,596,141,595,136,691,109"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#aec2882a8366d77efd2a3ccfc41b3a066" title=" " alt="" coords="234,5,406,48"/>
+<area shape="poly" title=" " alt="" coords="460,29,406,29,406,24,460,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="218,29,186,29,186,24,218,24"/>
+<area shape="rect" href="class_instrument_controller.html#a4dbeb8dd40aad5d740e49ca3461d2302" title=" " alt="" coords="247,72,393,115"/>
+<area shape="poly" title=" " alt="" coords="460,96,393,96,393,91,460,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5a307e43580ec17e866572fbee73a0f7" name="a5a307e43580ec17e866572fbee73a0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a307e43580ec17e866572fbee73a0f7">&#9670;&#160;</a></span>setCamDriverVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setCamDriverVersion </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>version_cam_driver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00013">13</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a5a307e43580ec17e866572fbee73a0f7_icgraph.png" border="0" usemap="#aclass_instrument_a5a307e43580ec17e866572fbee73a0f7_icgraph" alt=""/></div>
+<map name="aclass_instrument_a5a307e43580ec17e866572fbee73a0f7_icgraph" id="aclass_instrument_a5a307e43580ec17e866572fbee73a0f7_icgraph">
+<area shape="rect" title=" " alt="" coords="191,5,358,48"/>
+<area shape="rect" href="class_instrument_controller.html#a6ce24bda2cd3ab9919b1e15ac1d28d2f" title=" " alt="" coords="5,5,143,48"/>
+<area shape="poly" title=" " alt="" coords="175,29,143,29,143,24,175,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4423a277f37a47529fc51c7b67ab0d83" name="a4423a277f37a47529fc51c7b67ab0d83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4423a277f37a47529fc51c7b67ab0d83">&#9670;&#160;</a></span>setDeviceId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setDeviceId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>device_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00003">3</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a4423a277f37a47529fc51c7b67ab0d83_icgraph.png" border="0" usemap="#aclass_instrument_a4423a277f37a47529fc51c7b67ab0d83_icgraph" alt=""/></div>
+<map name="aclass_instrument_a4423a277f37a47529fc51c7b67ab0d83_icgraph" id="aclass_instrument_a4423a277f37a47529fc51c7b67ab0d83_icgraph">
+<area shape="rect" title=" " alt="" coords="657,13,814,40"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9150b53b9e1bfd62d7c88a2f7b53e624" name="a9150b53b9e1bfd62d7c88a2f7b53e624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9150b53b9e1bfd62d7c88a2f7b53e624">&#9670;&#160;</a></span>setInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setInitialized </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_initialized</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00029">29</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624_icgraph.png" border="0" usemap="#aclass_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624_icgraph" alt=""/></div>
+<map name="aclass_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624_icgraph" id="aclass_instrument_a9150b53b9e1bfd62d7c88a2f7b53e624_icgraph">
+<area shape="rect" title=" " alt="" coords="843,47,1005,73"/>
+<area shape="rect" href="class_instrument_controller.html#a0fab52a1bb19d92e0a28cb995a659896" title=" " alt="" coords="657,5,795,48"/>
+<area shape="poly" title=" " alt="" coords="827,46,795,41,795,36,828,41"/>
+<area shape="rect" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="657,72,795,115"/>
+<area shape="poly" title=" " alt="" coords="828,79,795,84,795,79,827,74"/>
+<area shape="rect" href="class_instrument_controller.html#a61204309955b0c3c32c5391d7c182eb0" title=" " alt="" coords="463,5,600,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,601,29,601,24,642,24"/>
+<area shape="rect" href="class_instrument_controller.html#a4dbeb8dd40aad5d740e49ca3461d2302" title=" " alt="" coords="247,5,393,48"/>
+<area shape="poly" title=" " alt="" coords="448,29,393,29,393,24,448,24"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,72,609,115"/>
+<area shape="poly" title=" " alt="" coords="642,96,610,96,610,91,642,91"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,97,186,140"/>
+<area shape="poly" title=" " alt="" coords="439,101,186,116,186,111,439,96"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,127,406,169"/>
+<area shape="poly" title=" " alt="" coords="440,120,406,129,405,123,438,115"/>
+<area shape="poly" title=" " alt="" coords="218,137,186,133,186,128,219,132"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb7f982bd796fc7e0d2c0652e03a07db" name="acb7f982bd796fc7e0d2c0652e03a07db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb7f982bd796fc7e0d2c0652e03a07db">&#9670;&#160;</a></span>setInstrumentInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setInstrumentInfo </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>manufacturer_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>instrument_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>serial_number_wfs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>serial_number_cam</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00022">22</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_acb7f982bd796fc7e0d2c0652e03a07db_icgraph.png" border="0" usemap="#aclass_instrument_acb7f982bd796fc7e0d2c0652e03a07db_icgraph" alt=""/></div>
+<map name="aclass_instrument_acb7f982bd796fc7e0d2c0652e03a07db_icgraph" id="aclass_instrument_acb7f982bd796fc7e0d2c0652e03a07db_icgraph">
+<area shape="rect" title=" " alt="" coords="843,13,1032,40"/>
+<area shape="rect" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="657,5,795,48"/>
+<area shape="poly" title=" " alt="" coords="827,29,795,29,795,24,827,24"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,5,609,48"/>
+<area shape="poly" title=" " alt="" coords="642,29,610,29,610,24,642,24"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="438,26,406,25,234,25,186,26,186,21,234,20,406,20,438,21"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,35,406,77"/>
+<area shape="poly" title=" " alt="" coords="439,42,407,47,406,41,438,37"/>
+<area shape="poly" title=" " alt="" coords="218,45,186,41,186,36,219,40"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9b877e2719794597774c0860318dabad" name="a9b877e2719794597774c0860318dabad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b877e2719794597774c0860318dabad">&#9670;&#160;</a></span>setMla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setMla </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mla.html">Mla</a> *&#160;</td>
+          <td class="paramname"><em>mla</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00033">33</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5a3e4442ba862bc4766cbfab75dbcaec" name="a5a3e4442ba862bc4766cbfab75dbcaec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3e4442ba862bc4766cbfab75dbcaec">&#9670;&#160;</a></span>setStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setStatus </td>
+          <td>(</td>
+          <td class="paramtype">ViInt32&#160;</td>
+          <td class="paramname"><em>status</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00037">37</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8098336e1392699c3965aa6bcfbda7d0" name="a8098336e1392699c3965aa6bcfbda7d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8098336e1392699c3965aa6bcfbda7d0">&#9670;&#160;</a></span>setWfsDriverVersion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Instrument::setWfsDriverVersion </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>version_wfs_driver</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_instrument_8cpp_source.html#l00009">9</a> of file <a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_a8098336e1392699c3965aa6bcfbda7d0_icgraph.png" border="0" usemap="#aclass_instrument_a8098336e1392699c3965aa6bcfbda7d0_icgraph" alt=""/></div>
+<map name="aclass_instrument_a8098336e1392699c3965aa6bcfbda7d0_icgraph" id="aclass_instrument_a8098336e1392699c3965aa6bcfbda7d0_icgraph">
+<area shape="rect" title=" " alt="" coords="191,5,354,48"/>
+<area shape="rect" href="class_instrument_controller.html#a6ce24bda2cd3ab9919b1e15ac1d28d2f" title=" " alt="" coords="5,5,143,48"/>
+<area shape="poly" title=" " alt="" coords="175,29,143,29,143,24,175,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>lisa_project/model/<a class="el" href="_instrument_8h_source.html">Instrument.h</a></li>
+<li>lisa_project/model/<a class="el" href="_instrument_8cpp_source.html">Instrument.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_instrument.html">Instrument</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

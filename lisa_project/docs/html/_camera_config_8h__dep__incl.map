@@ -1,0 +1,28 @@
+<map id="lisa_project/model/CameraConfig.h" name="lisa_project/model/CameraConfig.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="513,5,640,48"/>
+<area shape="rect" id="Node000002" href="$_camera_settings_controller_8h.html" title=" " alt="" coords="355,96,539,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="536,59,479,98,476,93,533,55"/>
+<area shape="rect" id="Node000007" href="$_image_controller_8h.html" title=" " alt="" coords="504,187,649,229"/>
+<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="579,63,579,186,574,186,574,63"/>
+<area shape="rect" id="Node000012" href="$_camera_config_8cpp.html" title=" " alt="" coords="614,96,745,139"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="614,56,657,93,653,97,610,60"/>
+<area shape="rect" id="Node000003" href="$_my_app_8h.html" title=" " alt="" coords="416,285,559,312"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="458,153,487,284,482,286,452,154"/>
+<area shape="rect" id="Node000006" href="$_camera_settings_controller_8cpp.html" title=" " alt="" coords="5,277,204,320"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="341,141,277,160,217,189,188,209,162,233,122,278,118,275,158,229,184,205,214,184,275,155,339,136"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="491,145,548,184,545,188,488,150"/>
+<area shape="rect" id="Node000010" href="$_camera_settings_dialog_8h.html" title=" " alt="" coords="228,187,392,229"/>
+<area shape="poly" id="edge10_Node000002_Node000010" title=" " alt="" coords="404,150,343,188,340,184,401,145"/>
+<area shape="rect" id="Node000004" href="$_my_app_8cpp.html" title=" " alt="" coords="321,376,478,403"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="466,325,414,377,410,374,462,321"/>
+<area shape="rect" id="Node000005" href="$_base_controller_8cpp.html" title=" " alt="" coords="502,368,646,411"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="512,321,556,366,552,369,508,325"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="547,242,502,287,498,283,543,238"/>
+<area shape="rect" id="Node000008" href="$_image_controller_8cpp.html" title=" " alt="" coords="823,277,967,320"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="664,231,823,275,822,280,663,236"/>
+<area shape="rect" id="Node000009" href="$_home_frame_8cpp.html" title=" " alt="" coords="584,285,799,312"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="617,237,677,283,673,287,614,241"/>
+<area shape="poly" id="edge11_Node000010_Node000006" title=" " alt="" coords="249,238,154,279,152,274,247,234"/>
+<area shape="rect" id="Node000011" href="$_camera_settings_dialog_8cpp.html" title=" " alt="" coords="228,277,392,320"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="313,245,313,277,307,277,307,245"/>
+</map>

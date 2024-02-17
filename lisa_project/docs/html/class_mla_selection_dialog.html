@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_mla_selection_dialog.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -81,17 +102,11 @@ $(function() {
  <a href="class_mla_selection_dialog.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_mla_selection_dialog_8h_source.html">MlaSelectionDialog.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for MlaSelectionDialog:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_mla_selection_dialog.png" alt=""/>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a744338f1415599bb69ece38492928651" id="r_a744338f1415599bb69ece38492928651"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla_selection_dialog.html#a744338f1415599bb69ece38492928651">MlaSelectionDialog</a> (wxWindow *parent, <a class="el" href="class_mla_controller.html">MlaController</a> *listener)</td></tr>
-<tr class="separator:a744338f1415599bb69ece38492928651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af0626397fe6b17bbaa2848246b675f" id="r_a7af0626397fe6b17bbaa2848246b675f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f">MlaSelectionDialog</a> (wxWindow *parent, <a class="el" href="class_mla_controller.html">MlaController</a> *controller)</td></tr>
+<tr class="separator:a7af0626397fe6b17bbaa2848246b675f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac622575a3df7ca839e14a558f7c1dd42" id="r_ac622575a3df7ca839e14a558f7c1dd42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42">OnOK</a> (wxCommandEvent &amp;event)</td></tr>
 <tr class="separator:ac622575a3df7ca839e14a558f7c1dd42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee800c2e4f87924e9596fa0c2eb31bcf" id="r_aee800c2e4f87924e9596fa0c2eb31bcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla_selection_dialog.html#aee800c2e4f87924e9596fa0c2eb31bcf">OnClose</a> (wxCloseEvent &amp;event)</td></tr>
@@ -100,9 +115,11 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This view is a dialog box that allows the user to select a MLA. </p>
 <p>This view is managed by its respective controller, <a class="el" href="class_mla_controller.html" title="This controller manages the MlaSelectionDialog view and generate Mla objects.">MlaController</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mla_selection_dialog_8h_source.html#l00010">10</a> of file <a class="el" href="_mla_selection_dialog_8h_source.html">MlaSelectionDialog.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a744338f1415599bb69ece38492928651" name="a744338f1415599bb69ece38492928651"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a744338f1415599bb69ece38492928651">&#9670;&#160;</a></span>MlaSelectionDialog()</h2>
+<a id="a7af0626397fe6b17bbaa2848246b675f" name="a7af0626397fe6b17bbaa2848246b675f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7af0626397fe6b17bbaa2848246b675f">&#9670;&#160;</a></span>MlaSelectionDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +134,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_mla_controller.html">MlaController</a> *&#160;</td>
-          <td class="paramname"><em>listener</em>&#160;</td>
+          <td class="paramname"><em>controller</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,10 +147,48 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">parent</td><td>The view that generates the dialog box. It could be nullptr. </td></tr>
-    <tr><td class="paramname">listener</td><td>The controller that manages the view. </td></tr>
+    <tr><td class="paramname">controller</td><td>The controller that manages the view. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_mla_selection_dialog_8cpp_source.html#l00003">3</a> of file <a class="el" href="_mla_selection_dialog_8cpp_source.html">MlaSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_selection_dialog_a7af0626397fe6b17bbaa2848246b675f_cgraph.png" border="0" usemap="#aclass_mla_selection_dialog_a7af0626397fe6b17bbaa2848246b675f_cgraph" alt=""/></div>
+<map name="aclass_mla_selection_dialog_a7af0626397fe6b17bbaa2848246b675f_cgraph" id="aclass_mla_selection_dialog_a7af0626397fe6b17bbaa2848246b675f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,91,146,133"/>
+<area shape="rect" href="class_mla_selection_dialog.html#aee800c2e4f87924e9596fa0c2eb31bcf" title=" " alt="" coords="194,11,326,53"/>
+<area shape="poly" title=" " alt="" coords="125,88,194,57,196,62,128,93"/>
+<area shape="rect" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42" title=" " alt="" coords="194,91,326,133"/>
+<area shape="poly" title=" " alt="" coords="146,109,178,109,178,115,146,115"/>
+<area shape="rect" href="class_mla_controller.html#af455d597ed4f1de477a0f195daee4c73" title=" " alt="" coords="374,157,570,184"/>
+<area shape="poly" title=" " alt="" coords="146,131,194,143,278,155,359,163,358,168,277,160,193,148,145,136"/>
+<area shape="rect" href="class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c" title=" " alt="" coords="396,12,548,39"/>
+<area shape="poly" title=" " alt="" coords="326,27,380,26,380,31,326,33"/>
+<area shape="rect" href="class_mla.html#aba6397ee94aed794c46975696a5a661d" title=" " alt="" coords="651,5,766,32"/>
+<area shape="poly" title=" " alt="" coords="549,21,636,18,636,23,549,26"/>
+<area shape="rect" href="class_mla_controller.html#adf3f0a99f2861176592001646c9e4406" title=" " alt="" coords="377,103,568,129"/>
+<area shape="poly" title=" " alt="" coords="326,111,361,111,361,117,326,116"/>
+<area shape="rect" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789" title=" " alt="" coords="654,157,763,184"/>
+<area shape="poly" title=" " alt="" coords="534,127,639,152,638,157,532,133"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="618,107,799,133"/>
+<area shape="poly" title=" " alt="" coords="568,115,603,116,603,121,568,120"/>
+<area shape="rect" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4" title=" " alt="" coords="654,56,763,83"/>
+<area shape="poly" title=" " alt="" coords="542,100,638,80,639,86,543,105"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="847,77,1019,104"/>
+<area shape="poly" title=" " alt="" coords="798,106,831,101,831,107,799,111"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="850,128,1016,171"/>
+<area shape="poly" title=" " alt="" coords="799,129,834,134,834,139,798,134"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="1067,136,1180,163"/>
+<area shape="poly" title=" " alt="" coords="1016,147,1051,147,1051,152,1016,152"/>
+<area shape="poly" title=" " alt="" coords="571,168,639,168,639,173,571,173"/>
+<area shape="poly" title=" " alt="" coords="537,154,627,135,629,140,539,159"/>
+<area shape="rect" href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a" title=" " alt="" coords="647,208,770,235"/>
+<area shape="poly" title=" " alt="" coords="539,182,632,202,631,208,537,187"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -161,6 +216,30 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_mla_selection_dialog_8cpp_source.html#l00050">50</a> of file <a class="el" href="_mla_selection_dialog_8cpp_source.html">MlaSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_cgraph.png" border="0" usemap="#aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_cgraph" alt=""/></div>
+<map name="aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_cgraph" id="aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,138,48"/>
+<area shape="rect" href="class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c" title=" " alt="" coords="186,13,338,40"/>
+<area shape="poly" title=" " alt="" coords="138,24,170,24,170,29,138,29"/>
+<area shape="rect" href="class_mla.html#aba6397ee94aed794c46975696a5a661d" title=" " alt="" coords="386,13,500,40"/>
+<area shape="poly" title=" " alt="" coords="338,24,371,24,371,29,338,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_icgraph.png" border="0" usemap="#aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_icgraph" alt=""/></div>
+<map name="aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_icgraph" id="aclass_mla_selection_dialog_aee800c2e4f87924e9596fa0c2eb31bcf_icgraph">
+<area shape="rect" title=" " alt="" coords="194,5,326,48"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,5,146,48"/>
+<area shape="poly" title=" " alt="" coords="178,29,146,29,146,24,178,24"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="ac622575a3df7ca839e14a558f7c1dd42" name="ac622575a3df7ca839e14a558f7c1dd42"></a>
@@ -186,16 +265,54 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_mla_selection_dialog_8cpp_source.html#l00042">42</a> of file <a class="el" href="_mla_selection_dialog_8cpp_source.html">MlaSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_cgraph.png" border="0" usemap="#aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_cgraph" alt=""/></div>
+<map name="aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_cgraph" id="aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_cgraph">
+<area shape="rect" title=" " alt="" coords="5,48,138,91"/>
+<area shape="rect" href="class_mla_controller.html#adf3f0a99f2861176592001646c9e4406" title=" " alt="" coords="186,56,377,83"/>
+<area shape="poly" title=" " alt="" coords="138,67,170,67,170,72,138,72"/>
+<area shape="rect" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789" title=" " alt="" coords="461,5,569,32"/>
+<area shape="poly" title=" " alt="" coords="346,53,445,31,446,36,347,58"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="425,56,605,83"/>
+<area shape="poly" title=" " alt="" coords="377,67,409,67,409,72,377,72"/>
+<area shape="rect" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4" title=" " alt="" coords="461,107,570,133"/>
+<area shape="poly" title=" " alt="" coords="347,81,446,102,445,108,346,86"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="653,27,826,53"/>
+<area shape="poly" title=" " alt="" coords="605,55,637,51,638,56,606,60"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="656,77,823,120"/>
+<area shape="poly" title=" " alt="" coords="606,78,641,83,640,88,605,84"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="874,85,987,112"/>
+<area shape="poly" title=" " alt="" coords="823,96,858,96,858,101,823,101"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_icgraph.png" border="0" usemap="#aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_icgraph" alt=""/></div>
+<map name="aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_icgraph" id="aclass_mla_selection_dialog_ac622575a3df7ca839e14a558f7c1dd42_icgraph">
+<area shape="rect" title=" " alt="" coords="194,5,326,48"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,5,146,48"/>
+<area shape="poly" title=" " alt="" coords="178,29,146,29,146,24,178,24"/>
+</map>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_mla_selection_dialog_8h_source.html">MlaSelectionDialog.h</a></li>
-<li>lisa_project/<b>MlaSelectionDialog.cpp</b></li>
+<li>lisa_project/view/<a class="el" href="_mla_selection_dialog_8h_source.html">MlaSelectionDialog.h</a></li>
+<li>lisa_project/view/<a class="el" href="_mla_selection_dialog_8cpp_source.html">MlaSelectionDialog.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_mla_selection_dialog.html">MlaSelectionDialog</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

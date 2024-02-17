@@ -1,0 +1,10 @@
+<map id="lisa_project/controller" name="lisa_project/controller">
+<area shape="rect" id="node1" href="dir_550bac629b479ad8c4a917d24dca59b7.html" title="view" alt="" coords="27,128,72,155"/>
+<area shape="rect" id="node2" href="dir_ea0bce19f5d9e23268edb5b618f81a53.html" title="model" alt="" coords="96,128,152,155"/>
+<area shape="rect" id="node3" href="dir_b6676e972e3523e3d29acaad06e0ff79.html" title="controller" alt="" coords="52,53,127,80"/>
+<area shape="poly" id="edge1" href="dir_000000_000004.html" alt="" coords="85,82,66,116,61,113,80,79"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000000_000004.html" title="4" alt="" coords="69,108,76,124"/>
+<area shape="poly" id="edge2" href="dir_000000_000003.html" alt="" coords="98,79,114,113,109,115,93,82"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000000_000003.html" title="6" alt="" coords="114,100,121,116"/>
+<area shape="rect" id="clust1" href="dir_316af240ea1798aca4cbe0b104f1eee7.html" title="lisa_project" alt="" coords="16,16,163,165"/>
+</map>

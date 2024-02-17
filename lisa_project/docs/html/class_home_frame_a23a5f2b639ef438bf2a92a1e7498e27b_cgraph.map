@@ -1,0 +1,9 @@
+<map id="HomeFrame::updateImage" name="HomeFrame::updateImage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,180,57"/>
+<area shape="rect" id="Node000002" href="$class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de" title=" " alt="" coords="228,5,437,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,32,212,29,212,34,180,37"/>
+<area shape="rect" id="Node000003" href="$class_home_frame.html#aa674bf5b1f855e4f45e119802043254c" title=" " alt="" coords="256,56,409,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,51,241,57,240,62,180,56"/>
+<area shape="rect" id="Node000004" href="$class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89" title=" " alt="" coords="485,56,655,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="409,67,470,67,470,72,409,72"/>
+</map>

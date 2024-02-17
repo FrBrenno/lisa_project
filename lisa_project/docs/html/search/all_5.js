@@ -1,8 +1,21 @@
 var searchData=
 [
-  ['imagecontroller_0',['ImageController',['../class_image_controller.html',1,'']]],
-  ['initinstrument_1',['initInstrument',['../class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7',1,'InstrumentController']]],
-  ['instrument_2',['Instrument',['../class_instrument.html',1,'']]],
-  ['instrumentcontroller_3',['InstrumentController',['../class_instrument_controller.html',1,'']]],
-  ['instrumentselectiondialog_4',['instrumentselectiondialog',['../class_instrument_selection_dialog.html',1,'InstrumentSelectionDialog'],['../class_instrument_selection_dialog.html#af1d1f2240c4406d933d92d65a5d3d57f',1,'InstrumentSelectionDialog::InstrumentSelectionDialog()']]]
+  ['getblacklevel_0',['getBlackLevel',['../class_camera_config.html#a0f503786512172bbc168dfd210843aef',1,'CameraConfig']]],
+  ['getcameraconfig_1',['getCameraConfig',['../class_camera_settings_controller.html#a2a428ba39478d1d0237f1d0ddb842df0',1,'CameraSettingsController']]],
+  ['getcameraresolution_2',['getCameraResolution',['../class_camera_config.html#a07e2122d7c244e4a3cbf888bb33bcdca',1,'CameraConfig']]],
+  ['getdata_3',['getData',['../class_event.html#a66e3660db6ad05261724596001a15a4a',1,'Event']]],
+  ['getdeviceid_4',['getDeviceId',['../class_instrument.html#ae99158cd820abcae887fb587ec71aa76',1,'Instrument']]],
+  ['getexposuretime_5',['getExposureTime',['../class_camera_config.html#a78305059984828025b58ee10564836c8',1,'CameraConfig']]],
+  ['getgain_6',['getGain',['../class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52',1,'CameraConfig']]],
+  ['gethandle_7',['gethandle',['../class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25',1,'Instrument::getHandle()'],['../class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789',1,'Mla::getHandle()']]],
+  ['getimage_8',['getImage',['../class_image_controller.html#a44b84682e0506b76e030d24df4368632',1,'ImageController']]],
+  ['getinstrument_9',['getInstrument',['../class_instrument_controller.html#ae176955921f654701c9cbe298335d05e',1,'InstrumentController']]],
+  ['getinstrumentname_10',['getinstrumentname',['../class_instrument_controller.html#a23fe0b7b3946c9ca2bb2afd75c47d983',1,'InstrumentController::getInstrumentName()'],['../class_instrument.html#a302c9c9f4fbd16702cb5e4631998538f',1,'Instrument::getInstrumentName()']]],
+  ['getmlacount_11',['getMlaCount',['../class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a',1,'Mla']]],
+  ['getname_12',['getName',['../class_event.html#a36453ab5a21b660a61f2a0369e2689e8',1,'Event']]],
+  ['getnbimagereadings_13',['getNbImageReadings',['../class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3',1,'CameraConfig']]],
+  ['getnoisecutlevel_14',['getNoiseCutLevel',['../class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5',1,'CameraConfig']]],
+  ['getspotsx_15',['getSpotsX',['../class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604',1,'Instrument']]],
+  ['getspotsy_16',['getSpotsY',['../class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd',1,'Instrument']]],
+  ['getstatus_17',['getStatus',['../class_instrument.html#a05f230234deb6092f04eae9c10445b9c',1,'Instrument']]]
 ];

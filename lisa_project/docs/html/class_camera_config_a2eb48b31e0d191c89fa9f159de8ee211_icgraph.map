@@ -1,0 +1,11 @@
+<map id="CameraConfig::isAutoBlackLevel" name="CameraConfig::isAutoBlackLevel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="707,35,888,77"/>
+<area shape="rect" id="Node000002" href="$class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,45,645,39,646,34,692,40"/>
+<area shape="rect" id="Node000005" href="$class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="692,72,660,76,659,71,692,67"/>
+<area shape="rect" id="Node000003" href="$class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" id="Node000004" href="$class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>

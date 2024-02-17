@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['event_0',['Event',['../struct_event.html',1,'']]],
-  ['eventdispatcher_1',['EventDispatcher',['../class_event_dispatcher.html',1,'']]]
+  ['cameraconfig_0',['CameraConfig',['../class_camera_config.html',1,'']]],
+  ['camerasettingscontroller_1',['CameraSettingsController',['../class_camera_settings_controller.html',1,'']]],
+  ['camerasettingsdialog_2',['CameraSettingsDialog',['../class_camera_settings_dialog.html',1,'']]]
 ];

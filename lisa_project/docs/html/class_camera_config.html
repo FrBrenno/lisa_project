@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_camera_config.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -84,41 +105,535 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a16cd8cc34d2d9e6edef16fe47dccbb27" id="r_a16cd8cc34d2d9e6edef16fe47dccbb27"><td class="memItemLeft" align="right" valign="top"><a id="a16cd8cc34d2d9e6edef16fe47dccbb27" name="a16cd8cc34d2d9e6edef16fe47dccbb27"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CameraConfig</b> (int cameraResolution, int exposureTime, int gain, int noiseCutLevel, int blackLevel, int nbImageReadings)</td></tr>
-<tr class="separator:a16cd8cc34d2d9e6edef16fe47dccbb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07e2122d7c244e4a3cbf888bb33bcdca" id="r_a07e2122d7c244e4a3cbf888bb33bcdca"><td class="memItemLeft" align="right" valign="top"><a id="a07e2122d7c244e4a3cbf888bb33bcdca" name="a07e2122d7c244e4a3cbf888bb33bcdca"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCameraResolution</b> ()</td></tr>
+<tr class="memitem:a03e6228afa19acfc757e310781372b6e" id="r_a03e6228afa19acfc757e310781372b6e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a03e6228afa19acfc757e310781372b6e">CameraConfig</a> ()</td></tr>
+<tr class="separator:a03e6228afa19acfc757e310781372b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e2122d7c244e4a3cbf888bb33bcdca" id="r_a07e2122d7c244e4a3cbf888bb33bcdca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a07e2122d7c244e4a3cbf888bb33bcdca">getCameraResolution</a> ()</td></tr>
 <tr class="separator:a07e2122d7c244e4a3cbf888bb33bcdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78305059984828025b58ee10564836c8" id="r_a78305059984828025b58ee10564836c8"><td class="memItemLeft" align="right" valign="top"><a id="a78305059984828025b58ee10564836c8" name="a78305059984828025b58ee10564836c8"></a>
-ViReal64 *&#160;</td><td class="memItemRight" valign="bottom"><b>getExposureTime</b> ()</td></tr>
+<tr class="memitem:a78305059984828025b58ee10564836c8" id="r_a78305059984828025b58ee10564836c8"><td class="memItemLeft" align="right" valign="top">ViReal64 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a78305059984828025b58ee10564836c8">getExposureTime</a> ()</td></tr>
 <tr class="separator:a78305059984828025b58ee10564836c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fbb7c351ffee3a08ecd7497aac9ce52" id="r_a7fbb7c351ffee3a08ecd7497aac9ce52"><td class="memItemLeft" align="right" valign="top"><a id="a7fbb7c351ffee3a08ecd7497aac9ce52" name="a7fbb7c351ffee3a08ecd7497aac9ce52"></a>
-ViReal64 *&#160;</td><td class="memItemRight" valign="bottom"><b>getGain</b> ()</td></tr>
+<tr class="memitem:a7fbb7c351ffee3a08ecd7497aac9ce52" id="r_a7fbb7c351ffee3a08ecd7497aac9ce52"><td class="memItemLeft" align="right" valign="top">ViReal64 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52">getGain</a> ()</td></tr>
 <tr class="separator:a7fbb7c351ffee3a08ecd7497aac9ce52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7038eac3f298ef5060b69506a2c08ec5" id="r_a7038eac3f298ef5060b69506a2c08ec5"><td class="memItemLeft" align="right" valign="top"><a id="a7038eac3f298ef5060b69506a2c08ec5" name="a7038eac3f298ef5060b69506a2c08ec5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNoiseCutLevel</b> ()</td></tr>
+<tr class="memitem:a7038eac3f298ef5060b69506a2c08ec5" id="r_a7038eac3f298ef5060b69506a2c08ec5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5">getNoiseCutLevel</a> ()</td></tr>
 <tr class="separator:a7038eac3f298ef5060b69506a2c08ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f503786512172bbc168dfd210843aef" id="r_a0f503786512172bbc168dfd210843aef"><td class="memItemLeft" align="right" valign="top"><a id="a0f503786512172bbc168dfd210843aef" name="a0f503786512172bbc168dfd210843aef"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getBlackLevel</b> ()</td></tr>
+<tr class="memitem:a0f503786512172bbc168dfd210843aef" id="r_a0f503786512172bbc168dfd210843aef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a0f503786512172bbc168dfd210843aef">getBlackLevel</a> ()</td></tr>
 <tr class="separator:a0f503786512172bbc168dfd210843aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3629d098c062b0bea7acd067418fc4c3" id="r_a3629d098c062b0bea7acd067418fc4c3"><td class="memItemLeft" align="right" valign="top"><a id="a3629d098c062b0bea7acd067418fc4c3" name="a3629d098c062b0bea7acd067418fc4c3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getNbImageReadings</b> ()</td></tr>
+<tr class="memitem:a3629d098c062b0bea7acd067418fc4c3" id="r_a3629d098c062b0bea7acd067418fc4c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3">getNbImageReadings</a> ()</td></tr>
 <tr class="separator:a3629d098c062b0bea7acd067418fc4c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac07c1f80eca7f1f9a886f93fe9d170c0" id="r_ac07c1f80eca7f1f9a886f93fe9d170c0"><td class="memItemLeft" align="right" valign="top"><a id="ac07c1f80eca7f1f9a886f93fe9d170c0" name="ac07c1f80eca7f1f9a886f93fe9d170c0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCameraConfig</b> (int cameraResolution, int exposureTime, int gain, int noiseCutLevel, int blackLevel, int nbImageReadings)</td></tr>
-<tr class="separator:ac07c1f80eca7f1f9a886f93fe9d170c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1fa7592443c1a51044bdb15ad258344" id="r_af1fa7592443c1a51044bdb15ad258344"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#af1fa7592443c1a51044bdb15ad258344">isAutoExposure</a> ()</td></tr>
+<tr class="separator:af1fa7592443c1a51044bdb15ad258344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf2c0c972ec3bb2effb4969570e5dae" id="r_a7bf2c0c972ec3bb2effb4969570e5dae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a7bf2c0c972ec3bb2effb4969570e5dae">isAutoGain</a> ()</td></tr>
+<tr class="separator:a7bf2c0c972ec3bb2effb4969570e5dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a002b5a8f7af827dcb3e6309ba19f421a" id="r_a002b5a8f7af827dcb3e6309ba19f421a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a">isAutoNoiseCutLevel</a> ()</td></tr>
+<tr class="separator:a002b5a8f7af827dcb3e6309ba19f421a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb48b31e0d191c89fa9f159de8ee211" id="r_a2eb48b31e0d191c89fa9f159de8ee211"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211">isAutoBlackLevel</a> ()</td></tr>
+<tr class="separator:a2eb48b31e0d191c89fa9f159de8ee211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dcbeff547ab358cb8c5c48970efa89" id="r_aa6dcbeff547ab358cb8c5c48970efa89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89">setCameraConfig</a> (int cameraResolution, int exposureTime, int gain, int noiseCutLevel, int blackLevel, int nbImageReadings, bool autoExposure, bool autoGain, bool autoNoiseCutLevel, bool autoBlackLevel)</td></tr>
+<tr class="separator:aa6dcbeff547ab358cb8c5c48970efa89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e19403a4d754cd060fea2fd339d9a34" id="r_a7e19403a4d754cd060fea2fd339d9a34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera_config.html#a7e19403a4d754cd060fea2fd339d9a34">setDefault</a> ()</td></tr>
+<tr class="separator:a7e19403a4d754cd060fea2fd339d9a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This model class contains all the information about the camera configuration. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_camera_config_8h_source.html">CameraConfig.h</a></li>
-<li>lisa_project/<b>CameraConfig.cpp</b></li>
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8h_source.html#l00010">10</a> of file <a class="el" href="_camera_config_8h_source.html">CameraConfig.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a03e6228afa19acfc757e310781372b6e" name="a03e6228afa19acfc757e310781372b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e6228afa19acfc757e310781372b6e">&#9670;&#160;</a></span>CameraConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CameraConfig::CameraConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00004">4</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0f503786512172bbc168dfd210843aef" name="a0f503786512172bbc168dfd210843aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f503786512172bbc168dfd210843aef">&#9670;&#160;</a></span>getBlackLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CameraConfig::getBlackLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00036">36</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a0f503786512172bbc168dfd210843aef_icgraph.png" border="0" usemap="#aclass_camera_config_a0f503786512172bbc168dfd210843aef_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a0f503786512172bbc168dfd210843aef_icgraph" id="aclass_camera_config_a0f503786512172bbc168dfd210843aef_icgraph">
+<area shape="rect" title=" " alt="" coords="707,43,898,69"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,45,645,39,646,34,692,39"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,73,660,77,660,71,692,67"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a07e2122d7c244e4a3cbf888bb33bcdca" name="a07e2122d7c244e4a3cbf888bb33bcdca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07e2122d7c244e4a3cbf888bb33bcdca">&#9670;&#160;</a></span>getCameraResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CameraConfig::getCameraResolution </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00020">20</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a07e2122d7c244e4a3cbf888bb33bcdca_icgraph.png" border="0" usemap="#aclass_camera_config_a07e2122d7c244e4a3cbf888bb33bcdca_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a07e2122d7c244e4a3cbf888bb33bcdca_icgraph" id="aclass_camera_config_a07e2122d7c244e4a3cbf888bb33bcdca_icgraph">
+<area shape="rect" title=" " alt="" coords="233,5,467,32"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="5,5,185,32"/>
+<area shape="poly" title=" " alt="" coords="217,21,185,21,185,16,217,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a78305059984828025b58ee10564836c8" name="a78305059984828025b58ee10564836c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78305059984828025b58ee10564836c8">&#9670;&#160;</a></span>getExposureTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViReal64 * CameraConfig::getExposureTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00024">24</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a78305059984828025b58ee10564836c8_icgraph.png" border="0" usemap="#aclass_camera_config_a78305059984828025b58ee10564836c8_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a78305059984828025b58ee10564836c8_icgraph" id="aclass_camera_config_a78305059984828025b58ee10564836c8_icgraph">
+<area shape="rect" title=" " alt="" coords="707,43,919,69"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="691,44,645,38,646,33,692,39"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,73,660,77,659,72,691,68"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7fbb7c351ffee3a08ecd7497aac9ce52" name="a7fbb7c351ffee3a08ecd7497aac9ce52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fbb7c351ffee3a08ecd7497aac9ce52">&#9670;&#160;</a></span>getGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViReal64 * CameraConfig::getGain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00028">28</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a7fbb7c351ffee3a08ecd7497aac9ce52_icgraph.png" border="0" usemap="#aclass_camera_config_a7fbb7c351ffee3a08ecd7497aac9ce52_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a7fbb7c351ffee3a08ecd7497aac9ce52_icgraph" id="aclass_camera_config_a7fbb7c351ffee3a08ecd7497aac9ce52_icgraph">
+<area shape="rect" title=" " alt="" coords="707,43,863,69"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,46,645,40,646,34,692,41"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,71,660,76,660,70,692,66"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3629d098c062b0bea7acd067418fc4c3" name="a3629d098c062b0bea7acd067418fc4c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3629d098c062b0bea7acd067418fc4c3">&#9670;&#160;</a></span>getNbImageReadings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CameraConfig::getNbImageReadings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00040">40</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a3629d098c062b0bea7acd067418fc4c3_icgraph.png" border="0" usemap="#aclass_camera_config_a3629d098c062b0bea7acd067418fc4c3_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a3629d098c062b0bea7acd067418fc4c3_icgraph" id="aclass_camera_config_a3629d098c062b0bea7acd067418fc4c3_icgraph">
+<area shape="rect" title=" " alt="" coords="707,35,887,77"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,45,645,39,646,34,692,40"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,72,660,76,660,71,692,67"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7038eac3f298ef5060b69506a2c08ec5" name="a7038eac3f298ef5060b69506a2c08ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7038eac3f298ef5060b69506a2c08ec5">&#9670;&#160;</a></span>getNoiseCutLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CameraConfig::getNoiseCutLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00032">32</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a7038eac3f298ef5060b69506a2c08ec5_icgraph.png" border="0" usemap="#aclass_camera_config_a7038eac3f298ef5060b69506a2c08ec5_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a7038eac3f298ef5060b69506a2c08ec5_icgraph" id="aclass_camera_config_a7038eac3f298ef5060b69506a2c08ec5_icgraph">
+<area shape="rect" title=" " alt="" coords="707,35,889,77"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,45,645,39,646,34,692,40"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,72,660,76,659,71,691,67"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2eb48b31e0d191c89fa9f159de8ee211" name="a2eb48b31e0d191c89fa9f159de8ee211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb48b31e0d191c89fa9f159de8ee211">&#9670;&#160;</a></span>isAutoBlackLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CameraConfig::isAutoBlackLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00080">80</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a2eb48b31e0d191c89fa9f159de8ee211_icgraph.png" border="0" usemap="#aclass_camera_config_a2eb48b31e0d191c89fa9f159de8ee211_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a2eb48b31e0d191c89fa9f159de8ee211_icgraph" id="aclass_camera_config_a2eb48b31e0d191c89fa9f159de8ee211_icgraph">
+<area shape="rect" title=" " alt="" coords="707,35,888,77"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,45,645,39,646,34,692,40"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,72,660,76,659,71,692,67"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af1fa7592443c1a51044bdb15ad258344" name="af1fa7592443c1a51044bdb15ad258344"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1fa7592443c1a51044bdb15ad258344">&#9670;&#160;</a></span>isAutoExposure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CameraConfig::isAutoExposure </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00068">68</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_af1fa7592443c1a51044bdb15ad258344_icgraph.png" border="0" usemap="#aclass_camera_config_af1fa7592443c1a51044bdb15ad258344_icgraph" alt=""/></div>
+<map name="aclass_camera_config_af1fa7592443c1a51044bdb15ad258344_icgraph" id="aclass_camera_config_af1fa7592443c1a51044bdb15ad258344_icgraph">
+<area shape="rect" title=" " alt="" coords="707,43,910,69"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="691,44,645,39,646,33,692,39"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,73,660,77,660,72,691,68"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7bf2c0c972ec3bb2effb4969570e5dae" name="a7bf2c0c972ec3bb2effb4969570e5dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bf2c0c972ec3bb2effb4969570e5dae">&#9670;&#160;</a></span>isAutoGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CameraConfig::isAutoGain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00072">72</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a7bf2c0c972ec3bb2effb4969570e5dae_icgraph.png" border="0" usemap="#aclass_camera_config_a7bf2c0c972ec3bb2effb4969570e5dae_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a7bf2c0c972ec3bb2effb4969570e5dae_icgraph" id="aclass_camera_config_a7bf2c0c972ec3bb2effb4969570e5dae_icgraph">
+<area shape="rect" title=" " alt="" coords="233,5,407,32"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="5,5,185,32"/>
+<area shape="poly" title=" " alt="" coords="218,21,185,21,185,16,218,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a002b5a8f7af827dcb3e6309ba19f421a" name="a002b5a8f7af827dcb3e6309ba19f421a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a002b5a8f7af827dcb3e6309ba19f421a">&#9670;&#160;</a></span>isAutoNoiseCutLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CameraConfig::isAutoNoiseCutLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00076">76</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a002b5a8f7af827dcb3e6309ba19f421a_icgraph.png" border="0" usemap="#aclass_camera_config_a002b5a8f7af827dcb3e6309ba19f421a_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a002b5a8f7af827dcb3e6309ba19f421a_icgraph" id="aclass_camera_config_a002b5a8f7af827dcb3e6309ba19f421a_icgraph">
+<area shape="rect" title=" " alt="" coords="707,35,888,77"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701" title=" " alt="" coords="495,5,645,48"/>
+<area shape="poly" title=" " alt="" coords="692,45,645,39,646,34,692,40"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="480,72,659,99"/>
+<area shape="poly" title=" " alt="" coords="692,72,660,76,659,71,692,67"/>
+<area shape="rect" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70" title=" " alt="" coords="263,5,432,48"/>
+<area shape="poly" title=" " alt="" coords="479,29,432,29,432,24,479,24"/>
+<area shape="rect" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b" title=" " alt="" coords="5,13,215,40"/>
+<area shape="poly" title=" " alt="" coords="248,29,215,29,215,24,248,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa6dcbeff547ab358cb8c5c48970efa89" name="aa6dcbeff547ab358cb8c5c48970efa89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dcbeff547ab358cb8c5c48970efa89">&#9670;&#160;</a></span>setCameraConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraConfig::setCameraConfig </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cameraResolution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>exposureTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>noiseCutLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>blackLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbImageReadings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>autoExposure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>autoGain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>autoNoiseCutLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>autoBlackLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00044">44</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_aa6dcbeff547ab358cb8c5c48970efa89_icgraph.png" border="0" usemap="#aclass_camera_config_aa6dcbeff547ab358cb8c5c48970efa89_icgraph" alt=""/></div>
+<map name="aclass_camera_config_aa6dcbeff547ab358cb8c5c48970efa89_icgraph" id="aclass_camera_config_aa6dcbeff547ab358cb8c5c48970efa89_icgraph">
+<area shape="rect" title=" " alt="" coords="439,43,648,69"/>
+<area shape="rect" href="class_camera_settings_dialog.html#ae324ee5d6b4c62ca9b24122f9362e55d" title=" " alt="" coords="226,5,377,48"/>
+<area shape="poly" title=" " alt="" coords="423,44,377,38,377,33,424,39"/>
+<area shape="rect" href="class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="212,72,391,99"/>
+<area shape="poly" title=" " alt="" coords="424,73,392,77,391,72,423,68"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a7f6f05277dd86eb48d27b0283baf3d29" title=" " alt="" coords="5,5,164,48"/>
+<area shape="poly" title=" " alt="" coords="210,29,164,29,164,24,210,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7e19403a4d754cd060fea2fd339d9a34" name="a7e19403a4d754cd060fea2fd339d9a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e19403a4d754cd060fea2fd339d9a34">&#9670;&#160;</a></span>setDefault()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraConfig::setDefault </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_camera_config_8cpp_source.html#l00084">84</a> of file <a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_camera_config_a7e19403a4d754cd060fea2fd339d9a34_icgraph.png" border="0" usemap="#aclass_camera_config_a7e19403a4d754cd060fea2fd339d9a34_icgraph" alt=""/></div>
+<map name="aclass_camera_config_a7e19403a4d754cd060fea2fd339d9a34_icgraph" id="aclass_camera_config_a7e19403a4d754cd060fea2fd339d9a34_icgraph">
+<area shape="rect" title=" " alt="" coords="635,47,804,73"/>
+<area shape="rect" href="class_camera_settings_controller.html#ab7c8254d4db7822156af59f1ae5c42b6" title=" " alt="" coords="410,5,587,48"/>
+<area shape="poly" title=" " alt="" coords="620,48,588,43,588,37,620,42"/>
+<area shape="rect" href="class_camera_settings_controller.html#a25b70fb3e6f59aa4045ef9b4d72fd3db" title=" " alt="" coords="414,72,583,115"/>
+<area shape="poly" title=" " alt="" coords="620,78,584,83,584,78,620,72"/>
+<area shape="rect" href="class_camera_settings_dialog.html#ae766c6d8fd60a5e81dee7bd879b1ad56" title=" " alt="" coords="212,72,362,115"/>
+<area shape="poly" title=" " alt="" coords="398,96,363,96,363,91,398,91"/>
+<area shape="rect" href="class_camera_settings_dialog.html#a7f6f05277dd86eb48d27b0283baf3d29" title=" " alt="" coords="5,72,164,115"/>
+<area shape="poly" title=" " alt="" coords="196,96,164,96,164,91,196,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>lisa_project/model/<a class="el" href="_camera_config_8h_source.html">CameraConfig.h</a></li>
+<li>lisa_project/model/<a class="el" href="_camera_config_8cpp_source.html">CameraConfig.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_camera_config.html">CameraConfig</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,0 +1,7 @@
+<map id="MyApp" name="MyApp">
+<area shape="rect" id="Node000001" title="This class is the main class of the application responsible to manage all the application controllers..." alt="" coords="59,80,121,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,66,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,43,83,78,79,81,52,46"/>
+<area shape="rect" id="Node000003" href="$class_my_app_interface.html" title=" " alt="" coords="89,5,201,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,46,102,81,97,78,124,43"/>
+</map>

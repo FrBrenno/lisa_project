@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_home_frame.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -81,28 +102,180 @@ $(function() {
  <a href="class_home_frame.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_home_frame_8h_source.html">HomeFrame.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for HomeFrame:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_home_frame.png" alt=""/>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a618cd7ae0ff819ce2144a42349b929ce" id="r_a618cd7ae0ff819ce2144a42349b929ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a618cd7ae0ff819ce2144a42349b929ce">setListener</a> (<a class="el" href="class_home_frame_controller.html">HomeFrameController</a> *controller)</td></tr>
-<tr class="separator:a618cd7ae0ff819ce2144a42349b929ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fd8ad71945b9d0784623df176681d54" id="r_a3fd8ad71945b9d0784623df176681d54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a3fd8ad71945b9d0784623df176681d54">setInstrumentName</a> (std::string instrument_name)</td></tr>
-<tr class="separator:a3fd8ad71945b9d0784623df176681d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d5c860cd6045887b7244e831fe022a" id="r_aa1d5c860cd6045887b7244e831fe022a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#aa1d5c860cd6045887b7244e831fe022a">updateImage</a> (const wxImage &amp;newImage)</td></tr>
-<tr class="separator:aa1d5c860cd6045887b7244e831fe022a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069183984d7bcea242639987608b1b60" id="r_a069183984d7bcea242639987608b1b60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a069183984d7bcea242639987608b1b60">HomeFrame</a> (<a class="el" href="class_home_frame_controller.html">HomeFrameController</a> *controller)</td></tr>
+<tr class="separator:a069183984d7bcea242639987608b1b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed7f586cde30d7c253b9ff49b11d6f3" id="r_a8ed7f586cde30d7c253b9ff49b11d6f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3">setInstrumentName</a> (std::string instrumentName)</td></tr>
+<tr class="separator:a8ed7f586cde30d7c253b9ff49b11d6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23a5f2b639ef438bf2a92a1e7498e27b" id="r_a23a5f2b639ef438bf2a92a1e7498e27b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b">updateImage</a> (wxTimerEvent &amp;event)</td></tr>
+<tr class="separator:a23a5f2b639ef438bf2a92a1e7498e27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa674bf5b1f855e4f45e119802043254c" id="r_aa674bf5b1f855e4f45e119802043254c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c">setImage</a> (wxImage *image)</td></tr>
+<tr class="separator:aa674bf5b1f855e4f45e119802043254c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e490a2993fa1f9d6e546cdc1685b89" id="r_a01e490a2993fa1f9d6e546cdc1685b89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89">resizeImage</a> (wxImage *image)</td></tr>
+<tr class="separator:a01e490a2993fa1f9d6e546cdc1685b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb9752bd1ae75a89e1c5a1a822b8a5a6" id="r_abb9752bd1ae75a89e1c5a1a822b8a5a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6">addListener</a> (<a class="el" href="class_base_controller.html">BaseController</a> *listener)</td></tr>
+<tr class="separator:abb9752bd1ae75a89e1c5a1a822b8a5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This view is responsible to display the main windows of the software. </p>
 <p>It is manage by its respective controller, <a class="el" href="class_home_frame_controller.html" title="This controller manages HomeFrame view responsible for the main window of the software.">HomeFrameController</a>. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3fd8ad71945b9d0784623df176681d54" name="a3fd8ad71945b9d0784623df176681d54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fd8ad71945b9d0784623df176681d54">&#9670;&#160;</a></span>setInstrumentName()</h2>
+
+<p class="definition">Definition at line <a class="el" href="_home_frame_8h_source.html#l00011">11</a> of file <a class="el" href="_home_frame_8h_source.html">HomeFrame.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a069183984d7bcea242639987608b1b60" name="a069183984d7bcea242639987608b1b60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069183984d7bcea242639987608b1b60">&#9670;&#160;</a></span>HomeFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HomeFrame::HomeFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_home_frame_controller.html">HomeFrameController</a> *&#160;</td>
+          <td class="paramname"><em>controller</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00010">10</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_a069183984d7bcea242639987608b1b60_cgraph.png" border="0" usemap="#aclass_home_frame_a069183984d7bcea242639987608b1b60_cgraph" alt=""/></div>
+<map name="aclass_home_frame_a069183984d7bcea242639987608b1b60_cgraph" id="aclass_home_frame_a069183984d7bcea242639987608b1b60_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,177,57"/>
+<area shape="rect" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b" title=" " alt="" coords="225,31,399,57"/>
+<area shape="poly" title=" " alt="" coords="177,41,209,41,209,47,177,47"/>
+<area shape="rect" href="class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de" title=" " alt="" coords="447,5,656,32"/>
+<area shape="poly" title=" " alt="" coords="399,32,431,29,432,34,400,37"/>
+<area shape="rect" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c" title=" " alt="" coords="475,56,628,83"/>
+<area shape="poly" title=" " alt="" coords="400,51,460,57,460,62,399,56"/>
+<area shape="rect" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89" title=" " alt="" coords="704,56,875,83"/>
+<area shape="poly" title=" " alt="" coords="629,67,689,67,689,72,629,72"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abb9752bd1ae75a89e1c5a1a822b8a5a6" name="abb9752bd1ae75a89e1c5a1a822b8a5a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb9752bd1ae75a89e1c5a1a822b8a5a6">&#9670;&#160;</a></span>addListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HomeFrame::addListener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_base_controller.html">BaseController</a> *&#160;</td>
+          <td class="paramname"><em>listener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a listener to the list of listeners.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>Listener to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00253">253</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_abb9752bd1ae75a89e1c5a1a822b8a5a6_icgraph.png" border="0" usemap="#aclass_home_frame_abb9752bd1ae75a89e1c5a1a822b8a5a6_icgraph" alt=""/></div>
+<map name="aclass_home_frame_abb9752bd1ae75a89e1c5a1a822b8a5a6_icgraph" id="aclass_home_frame_abb9752bd1ae75a89e1c5a1a822b8a5a6_icgraph">
+<area shape="rect" title=" " alt="" coords="158,5,325,32"/>
+<area shape="rect" href="class_my_app.html#a79fa75d1155f0e85e20f2869538296d6" title=" " alt="" coords="5,5,110,32"/>
+<area shape="poly" title=" " alt="" coords="142,21,110,21,110,16,142,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a01e490a2993fa1f9d6e546cdc1685b89" name="a01e490a2993fa1f9d6e546cdc1685b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e490a2993fa1f9d6e546cdc1685b89">&#9670;&#160;</a></span>resizeImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HomeFrame::resizeImage </td>
+          <td>(</td>
+          <td class="paramtype">wxImage *&#160;</td>
+          <td class="paramname"><em>image</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00193">193</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_a01e490a2993fa1f9d6e546cdc1685b89_icgraph.png" border="0" usemap="#aclass_home_frame_a01e490a2993fa1f9d6e546cdc1685b89_icgraph" alt=""/></div>
+<map name="aclass_home_frame_a01e490a2993fa1f9d6e546cdc1685b89_icgraph" id="aclass_home_frame_a01e490a2993fa1f9d6e546cdc1685b89_icgraph">
+<area shape="rect" title=" " alt="" coords="648,5,819,32"/>
+<area shape="rect" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c" title=" " alt="" coords="447,5,600,32"/>
+<area shape="poly" title=" " alt="" coords="633,21,601,21,601,16,633,16"/>
+<area shape="rect" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b" title=" " alt="" coords="225,5,399,32"/>
+<area shape="poly" title=" " alt="" coords="431,21,400,21,400,16,431,16"/>
+<area shape="rect" href="class_home_frame.html#a069183984d7bcea242639987608b1b60" title=" " alt="" coords="5,5,177,32"/>
+<area shape="poly" title=" " alt="" coords="209,21,177,21,177,16,209,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa674bf5b1f855e4f45e119802043254c" name="aa674bf5b1f855e4f45e119802043254c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa674bf5b1f855e4f45e119802043254c">&#9670;&#160;</a></span>setImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HomeFrame::setImage </td>
+          <td>(</td>
+          <td class="paramtype">wxImage *&#160;</td>
+          <td class="paramname"><em>image</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00184">184</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_aa674bf5b1f855e4f45e119802043254c_cgraph.png" border="0" usemap="#aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_cgraph" alt=""/></div>
+<map name="aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_cgraph" id="aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89" title=" " alt="" coords="207,5,377,32"/>
+<area shape="poly" title=" " alt="" coords="159,16,191,16,191,21,159,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_aa674bf5b1f855e4f45e119802043254c_icgraph.png" border="0" usemap="#aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_icgraph" alt=""/></div>
+<map name="aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_icgraph" id="aclass_home_frame_aa674bf5b1f855e4f45e119802043254c_icgraph">
+<area shape="rect" title=" " alt="" coords="447,5,600,32"/>
+<area shape="rect" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b" title=" " alt="" coords="225,5,399,32"/>
+<area shape="poly" title=" " alt="" coords="431,21,400,21,400,16,431,16"/>
+<area shape="rect" href="class_home_frame.html#a069183984d7bcea242639987608b1b60" title=" " alt="" coords="5,5,177,32"/>
+<area shape="poly" title=" " alt="" coords="209,21,177,21,177,16,209,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ed7f586cde30d7c253b9ff49b11d6f3" name="a8ed7f586cde30d7c253b9ff49b11d6f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed7f586cde30d7c253b9ff49b11d6f3">&#9670;&#160;</a></span>setInstrumentName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,48 +284,35 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void HomeFrame::setInstrumentName </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>instrument_name</em></td><td>)</td>
+          <td class="paramname"><em>instrumentName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the instrument name. This instrument name will figure in the header and bottom of the software main window.</p>
+<p>Sets the instrument in use name.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instrument_name</td><td>Name of the selected instrument. </td></tr>
+    <tr><td class="paramname">instrumentName</td><td><a class="el" href="class_instrument.html" title="This model class contains all the information about the instrument.">Instrument</a> in use. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00247">247</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_a8ed7f586cde30d7c253b9ff49b11d6f3_icgraph.png" border="0" usemap="#aclass_home_frame_a8ed7f586cde30d7c253b9ff49b11d6f3_icgraph" alt=""/></div>
+<map name="aclass_home_frame_a8ed7f586cde30d7c253b9ff49b11d6f3_icgraph" id="aclass_home_frame_a8ed7f586cde30d7c253b9ff49b11d6f3_icgraph">
+<area shape="rect" title=" " alt="" coords="158,5,371,32"/>
+<area shape="rect" href="class_my_app.html#a79fa75d1155f0e85e20f2869538296d6" title=" " alt="" coords="5,5,110,32"/>
+<area shape="poly" title=" " alt="" coords="142,21,110,21,110,16,142,16"/>
+</map>
 </div>
-</div>
-<a id="a618cd7ae0ff819ce2144a42349b929ce" name="a618cd7ae0ff819ce2144a42349b929ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a618cd7ae0ff819ce2144a42349b929ce">&#9670;&#160;</a></span>setListener()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HomeFrame::setListener </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_home_frame_controller.html">HomeFrameController</a> *&#160;</td>
-          <td class="paramname"><em>controller</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Sets the view listener, aka Controller.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">controller</td><td><a class="el" href="class_home_frame_controller.html" title="This controller manages HomeFrame view responsible for the main window of the software.">HomeFrameController</a> that manages this view. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="aa1d5c860cd6045887b7244e831fe022a" name="aa1d5c860cd6045887b7244e831fe022a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d5c860cd6045887b7244e831fe022a">&#9670;&#160;</a></span>updateImage()</h2>
+<a id="a23a5f2b639ef438bf2a92a1e7498e27b" name="a23a5f2b639ef438bf2a92a1e7498e27b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a5f2b639ef438bf2a92a1e7498e27b">&#9670;&#160;</a></span>updateImage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,8 +320,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void HomeFrame::updateImage </td>
           <td>(</td>
-          <td class="paramtype">const wxImage &amp;&#160;</td>
-          <td class="paramname"><em>newImage</em></td><td>)</td>
+          <td class="paramtype">wxTimerEvent &amp;&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -174,16 +334,46 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_home_frame_8cpp_source.html#l00158">158</a> of file <a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_cgraph.png" border="0" usemap="#aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_cgraph" alt=""/></div>
+<map name="aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_cgraph" id="aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,180,57"/>
+<area shape="rect" href="class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de" title=" " alt="" coords="228,5,437,32"/>
+<area shape="poly" title=" " alt="" coords="180,32,212,29,212,34,180,37"/>
+<area shape="rect" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c" title=" " alt="" coords="256,56,409,83"/>
+<area shape="poly" title=" " alt="" coords="180,51,241,57,240,62,180,56"/>
+<area shape="rect" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89" title=" " alt="" coords="485,56,655,83"/>
+<area shape="poly" title=" " alt="" coords="409,67,470,67,470,72,409,72"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_icgraph.png" border="0" usemap="#aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_icgraph" alt=""/></div>
+<map name="aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_icgraph" id="aclass_home_frame_a23a5f2b639ef438bf2a92a1e7498e27b_icgraph">
+<area shape="rect" title=" " alt="" coords="225,5,399,32"/>
+<area shape="rect" href="class_home_frame.html#a069183984d7bcea242639987608b1b60" title=" " alt="" coords="5,5,177,32"/>
+<area shape="poly" title=" " alt="" coords="209,21,177,21,177,16,209,16"/>
+</map>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_home_frame_8h_source.html">HomeFrame.h</a></li>
-<li>lisa_project/<b>HomeFrame.cpp</b></li>
+<li>lisa_project/view/<a class="el" href="_home_frame_8h_source.html">HomeFrame.h</a></li>
+<li>lisa_project/view/<a class="el" href="_home_frame_8cpp_source.html">HomeFrame.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_home_frame.html">HomeFrame</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

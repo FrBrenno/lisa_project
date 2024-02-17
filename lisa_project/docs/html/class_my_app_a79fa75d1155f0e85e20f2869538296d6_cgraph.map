@@ -1,0 +1,25 @@
+<map id="MyApp::OnInit" name="MyApp::OnInit">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,110,184"/>
+<area shape="rect" id="Node000002" href="$class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6" title=" " alt="" coords="181,5,348,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,155,99,104,125,74,156,48,180,36,183,40,159,53,129,78,103,107,69,158"/>
+<area shape="rect" id="Node000003" href="$class_my_app.html#aca801d84b711cbf88533bce476c81716" title=" " alt="" coords="165,107,364,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,155,192,135,193,140,110,161"/>
+<area shape="rect" id="Node000005" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="670,67,843,93"/>
+<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="69,155,106,122,130,105,157,92,221,73,288,60,356,52,424,49,550,51,656,61,655,67,550,57,424,54,357,58,289,65,223,78,159,97,133,109,109,126,73,159"/>
+<area shape="rect" id="Node000006" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="673,128,840,171"/>
+<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="110,166,658,150,658,155,110,172"/>
+<area shape="rect" id="Node000008" href="$class_instrument_controller.html#ae176955921f654701c9cbe298335d05e" title=" " alt="" coords="196,208,333,251"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="108,182,182,203,180,208,106,187"/>
+<area shape="rect" id="Node000009" href="$class_instrument_controller.html#a23fe0b7b3946c9ca2bb2afd75c47d983" title=" " alt="" coords="193,275,336,317"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="72,183,108,221,133,242,159,260,180,271,177,275,156,265,129,246,105,225,68,186"/>
+<area shape="rect" id="Node000011" href="$class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3" title=" " alt="" coords="158,341,371,368"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="66,183,78,213,97,253,124,293,159,327,167,332,164,336,156,331,120,297,92,255,73,216,61,185"/>
+<area shape="rect" id="Node000004" href="$class_my_app.html#a294c2e2f951842a57aef70512277140b" title=" " alt="" coords="431,107,610,133"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="364,117,415,117,415,123,364,123"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="603,103,659,94,660,99,604,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="611,129,658,134,658,140,610,134"/>
+<area shape="rect" id="Node000007" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="891,136,1004,163"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="840,147,875,147,875,152,840,152"/>
+<area shape="rect" id="Node000010" href="$class_instrument.html#a302c9c9f4fbd16702cb5e4631998538f" title=" " alt="" coords="419,283,622,309"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="336,293,403,293,403,299,336,299"/>
+</map>

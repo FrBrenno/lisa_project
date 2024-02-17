@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PROJH402 - Image Acquisition with Plenoptic Camera: lisa_project/HomeFrame.h Source File</title>
+<title>PROJH402 - Image Acquisition with Plenoptic Camera: lisa_project/view/HomeFrame.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -52,6 +57,23 @@ $(function() {
 $(document).ready(function() { init_codefold(0); });
 /* @license-end */
 </script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_home_frame_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,50 +95,76 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_316af240ea1798aca4cbe0b104f1eee7.html">lisa_project</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">HomeFrame.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="_home_frame_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;wx/wx.h&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;HomeFrameController.h&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_home_frame.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_home_frame.html">HomeFrame</a> : <span class="keyword">public</span> wxFrame</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_home_frame_controller.html">HomeFrameController</a>* listener;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string instrument_name;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//=== GUI Elements ===//</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    wxStaticBitmap* imageControl;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> OnInstrumentSelection(wxCommandEvent&amp; event);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> OnExit(wxCommandEvent&amp; event);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> OnAbout(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../controller/HomeFrameController.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_home_frame.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_home_frame.html">HomeFrame</a> : <span class="keyword">public</span> wxFrame</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_home_frame_controller.html">HomeFrameController</a>* controller;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::vector&lt;BaseController*&gt; listeners;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">//=== GUI Elements ===//</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    wxStaticBitmap* imageControl;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    wxButton* captureButton;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    wxButton* previewButton;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    wxTimer* previewTimer;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">bool</span> isPreviewOn;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::string instrumentName;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> OnInstrumentSelection(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> OnLoadImage(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> OnConnectAPI(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> OnCameraSettings(wxCommandEvent&amp; event);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">//TODO: Add methods to all available menu items</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="class_home_frame.html">HomeFrame</a>();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#a618cd7ae0ff819ce2144a42349b929ce">setListener</a>(<a class="code hl_class" href="class_home_frame_controller.html">HomeFrameController</a>* controller);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#a3fd8ad71945b9d0784623df176681d54">setInstrumentName</a>(std::string instrument_name);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#aa1d5c860cd6045887b7244e831fe022a">updateImage</a>(<span class="keyword">const</span> wxImage&amp; newImage);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> OnCapture(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> OnEraseBackground(wxEraseEvent&amp; event);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> OnExit(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnAbout(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> updatePreviewButton();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> stopPreview();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> startPreview();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> OnPreviewButton(wxCommandEvent&amp; event);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_class" href="class_home_frame.html">HomeFrame</a>(<a class="code hl_class" href="class_home_frame_controller.html">HomeFrameController</a>* controller);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3">setInstrumentName</a>(std::string instrumentName);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b">updateImage</a>(wxTimerEvent&amp; event);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c">setImage</a>(wxImage* image);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89">resizeImage</a>(wxImage* image);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6">addListener</a>(<a class="code hl_class" href="class_base_controller.html">BaseController</a>* listener);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
 </div>
-<div class="ttc" id="aclass_home_frame_controller_html"><div class="ttname"><a href="class_home_frame_controller.html">HomeFrameController</a></div><div class="ttdoc">This controller manages HomeFrame view responsible for the main window of the software.</div><div class="ttdef"><b>Definition</b> HomeFrameController.h:9</div></div>
-<div class="ttc" id="aclass_home_frame_html"><div class="ttname"><a href="class_home_frame.html">HomeFrame</a></div><div class="ttdoc">This view is responsible to display the main windows of the software.</div><div class="ttdef"><b>Definition</b> HomeFrame.h:11</div></div>
-<div class="ttc" id="aclass_home_frame_html_a3fd8ad71945b9d0784623df176681d54"><div class="ttname"><a href="class_home_frame.html#a3fd8ad71945b9d0784623df176681d54">HomeFrame::setInstrumentName</a></div><div class="ttdeci">void setInstrumentName(std::string instrument_name)</div><div class="ttdef"><b>Definition</b> HomeFrame.cpp:85</div></div>
-<div class="ttc" id="aclass_home_frame_html_a618cd7ae0ff819ce2144a42349b929ce"><div class="ttname"><a href="class_home_frame.html#a618cd7ae0ff819ce2144a42349b929ce">HomeFrame::setListener</a></div><div class="ttdeci">void setListener(HomeFrameController *controller)</div><div class="ttdef"><b>Definition</b> HomeFrame.cpp:80</div></div>
-<div class="ttc" id="aclass_home_frame_html_aa1d5c860cd6045887b7244e831fe022a"><div class="ttname"><a href="class_home_frame.html#aa1d5c860cd6045887b7244e831fe022a">HomeFrame::updateImage</a></div><div class="ttdeci">void updateImage(const wxImage &amp;newImage)</div><div class="ttdef"><b>Definition</b> HomeFrame.cpp:105</div></div>
+<div class="ttc" id="aclass_base_controller_html"><div class="ttname"><a href="class_base_controller.html">BaseController</a></div><div class="ttdef"><b>Definition</b> <a href="_base_controller_8h_source.html#l00008">BaseController.h:8</a></div></div>
+<div class="ttc" id="aclass_home_frame_controller_html"><div class="ttname"><a href="class_home_frame_controller.html">HomeFrameController</a></div><div class="ttdoc">This controller manages HomeFrame view responsible for the main window of the software.</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_controller_8h_source.html#l00010">HomeFrameController.h:10</a></div></div>
+<div class="ttc" id="aclass_home_frame_html"><div class="ttname"><a href="class_home_frame.html">HomeFrame</a></div><div class="ttdoc">This view is responsible to display the main windows of the software.</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8h_source.html#l00011">HomeFrame.h:12</a></div></div>
+<div class="ttc" id="aclass_home_frame_html_a01e490a2993fa1f9d6e546cdc1685b89"><div class="ttname"><a href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89">HomeFrame::resizeImage</a></div><div class="ttdeci">void resizeImage(wxImage *image)</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8cpp_source.html#l00193">HomeFrame.cpp:193</a></div></div>
+<div class="ttc" id="aclass_home_frame_html_a23a5f2b639ef438bf2a92a1e7498e27b"><div class="ttname"><a href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b">HomeFrame::updateImage</a></div><div class="ttdeci">void updateImage(wxTimerEvent &amp;event)</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8cpp_source.html#l00158">HomeFrame.cpp:158</a></div></div>
+<div class="ttc" id="aclass_home_frame_html_a8ed7f586cde30d7c253b9ff49b11d6f3"><div class="ttname"><a href="class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3">HomeFrame::setInstrumentName</a></div><div class="ttdeci">void setInstrumentName(std::string instrumentName)</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8cpp_source.html#l00247">HomeFrame.cpp:247</a></div></div>
+<div class="ttc" id="aclass_home_frame_html_aa674bf5b1f855e4f45e119802043254c"><div class="ttname"><a href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c">HomeFrame::setImage</a></div><div class="ttdeci">void setImage(wxImage *image)</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8cpp_source.html#l00184">HomeFrame.cpp:184</a></div></div>
+<div class="ttc" id="aclass_home_frame_html_abb9752bd1ae75a89e1c5a1a822b8a5a6"><div class="ttname"><a href="class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6">HomeFrame::addListener</a></div><div class="ttdeci">void addListener(BaseController *listener)</div><div class="ttdef"><b>Definition</b> <a href="_home_frame_8cpp_source.html#l00253">HomeFrame.cpp:253</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_316af240ea1798aca4cbe0b104f1eee7.html">lisa_project</a></li><li class="navelem"><a class="el" href="dir_550bac629b479ad8c4a917d24dca59b7.html">view</a></li><li class="navelem"><a class="el" href="_home_frame_8h.html">HomeFrame.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

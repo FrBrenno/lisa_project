@@ -1,0 +1,31 @@
+<map id="MlaSelectionDialog::MlaSelectionDialog" name="MlaSelectionDialog::MlaSelectionDialog">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,91,146,133"/>
+<area shape="rect" id="Node000002" href="$class_mla_selection_dialog.html#aee800c2e4f87924e9596fa0c2eb31bcf" title=" " alt="" coords="194,11,326,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,88,194,57,196,62,128,93"/>
+<area shape="rect" id="Node000005" href="$class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42" title=" " alt="" coords="194,91,326,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="146,109,178,109,178,115,146,115"/>
+<area shape="rect" id="Node000013" href="$class_mla_controller.html#af455d597ed4f1de477a0f195daee4c73" title=" " alt="" coords="374,157,570,184"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="146,131,194,143,278,155,359,163,358,168,277,160,193,148,145,136"/>
+<area shape="rect" id="Node000003" href="$class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c" title=" " alt="" coords="396,12,548,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,27,380,26,380,31,326,33"/>
+<area shape="rect" id="Node000004" href="$class_mla.html#aba6397ee94aed794c46975696a5a661d" title=" " alt="" coords="651,5,766,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="549,21,636,18,636,23,549,26"/>
+<area shape="rect" id="Node000006" href="$class_mla_controller.html#adf3f0a99f2861176592001646c9e4406" title=" " alt="" coords="377,103,568,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="326,111,361,111,361,117,326,116"/>
+<area shape="rect" id="Node000007" href="$class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789" title=" " alt="" coords="654,157,763,184"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="534,127,639,152,638,157,532,133"/>
+<area shape="rect" id="Node000008" href="$class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="618,107,799,133"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="568,115,603,116,603,121,568,120"/>
+<area shape="rect" id="Node000012" href="$class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4" title=" " alt="" coords="654,56,763,83"/>
+<area shape="poly" id="edge11_Node000006_Node000012" title=" " alt="" coords="542,100,638,80,639,86,543,105"/>
+<area shape="rect" id="Node000009" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="847,77,1019,104"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="798,106,831,101,831,107,799,111"/>
+<area shape="rect" id="Node000010" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="850,128,1016,171"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="799,129,834,134,834,139,798,134"/>
+<area shape="rect" id="Node000011" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="1067,136,1180,163"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1016,147,1051,147,1051,152,1016,152"/>
+<area shape="poly" id="edge13_Node000013_Node000007" title=" " alt="" coords="571,168,639,168,639,173,571,173"/>
+<area shape="poly" id="edge15_Node000013_Node000008" title=" " alt="" coords="537,154,627,135,629,140,539,159"/>
+<area shape="rect" id="Node000014" href="$class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a" title=" " alt="" coords="647,208,770,235"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="539,182,632,202,631,208,537,187"/>
+</map>

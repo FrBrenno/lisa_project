@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['name',['../struct_event.html#ae116bf76fb01a92e000579a5a0d6f35c',1,'Event']]]
+  ['is_5fwfs_5fconnected_0',['is_wfs_connected',['../class_base_controller.html#aa62a38ad545a8ea49d30bb363f4095c3',1,'BaseController']]]
 ];

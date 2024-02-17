@@ -1,0 +1,9 @@
+<map id="lisa_project/view/InstrumentSelectionDialog.h" name="lisa_project/view/InstrumentSelectionDialog.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,5,380,48"/>
+<area shape="rect" id="Node000002" href="$_home_frame_controller_8cpp.html" title=" " alt="" coords="5,96,182,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,57,141,98,138,93,229,52"/>
+<area shape="rect" id="Node000003" href="$_instrument_controller_8cpp.html" title=" " alt="" coords="206,96,373,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="292,64,292,96,287,96,287,64"/>
+<area shape="rect" id="Node000004" href="$_instrument_selection_dialog_8cpp.html" title=" " alt="" coords="397,96,577,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="351,52,442,93,439,98,349,57"/>
+</map>

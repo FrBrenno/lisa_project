@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_instrument_selection_dialog.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -81,17 +102,11 @@ $(function() {
  <a href="class_instrument_selection_dialog.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_instrument_selection_dialog_8h_source.html">InstrumentSelectionDialog.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for InstrumentSelectionDialog:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_instrument_selection_dialog.png" alt=""/>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af1d1f2240c4406d933d92d65a5d3d57f" id="r_af1d1f2240c4406d933d92d65a5d3d57f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument_selection_dialog.html#af1d1f2240c4406d933d92d65a5d3d57f">InstrumentSelectionDialog</a> (wxWindow *parent, <a class="el" href="class_instrument_controller.html">InstrumentController</a> *listener)</td></tr>
-<tr class="separator:af1d1f2240c4406d933d92d65a5d3d57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54fba2df3c5b2e5677eabbd1ccbb34d1" id="r_a54fba2df3c5b2e5677eabbd1ccbb34d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1">InstrumentSelectionDialog</a> (wxWindow *parent, <a class="el" href="class_instrument_controller.html">InstrumentController</a> *controller)</td></tr>
+<tr class="separator:a54fba2df3c5b2e5677eabbd1ccbb34d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afba806d17a56c2105cba8c1bd8234930" id="r_afba806d17a56c2105cba8c1bd8234930"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930">OnOK</a> (wxCommandEvent &amp;event)</td></tr>
 <tr class="separator:afba806d17a56c2105cba8c1bd8234930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec2882a8366d77efd2a3ccfc41b3a066" id="r_aec2882a8366d77efd2a3ccfc41b3a066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_instrument_selection_dialog.html#aec2882a8366d77efd2a3ccfc41b3a066">OnClose</a> (wxCloseEvent &amp;event)</td></tr>
@@ -100,9 +115,11 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This view is used to select an instrument from a list of available instruments. </p>
 <p>This view is managed by its respective controller, <a class="el" href="class_instrument_controller.html" title="This controller class is responsible for managing Instruments and their associated views.">InstrumentController</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_instrument_selection_dialog_8h_source.html#l00010">10</a> of file <a class="el" href="_instrument_selection_dialog_8h_source.html">InstrumentSelectionDialog.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af1d1f2240c4406d933d92d65a5d3d57f" name="af1d1f2240c4406d933d92d65a5d3d57f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1d1f2240c4406d933d92d65a5d3d57f">&#9670;&#160;</a></span>InstrumentSelectionDialog()</h2>
+<a id="a54fba2df3c5b2e5677eabbd1ccbb34d1" name="a54fba2df3c5b2e5677eabbd1ccbb34d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54fba2df3c5b2e5677eabbd1ccbb34d1">&#9670;&#160;</a></span>InstrumentSelectionDialog()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +134,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_instrument_controller.html">InstrumentController</a> *&#160;</td>
-          <td class="paramname"><em>listener</em>&#160;</td>
+          <td class="paramname"><em>controller</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,10 +147,63 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">parent</td><td>The window that generated this dialog. This could be a nullptr. </td></tr>
-    <tr><td class="paramname">listener</td><td>The controller that manages this view. </td></tr>
+    <tr><td class="paramname">controller</td><td>The controller that manages this view. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_instrument_selection_dialog_8cpp_source.html#l00003">3</a> of file <a class="el" href="_instrument_selection_dialog_8cpp_source.html">InstrumentSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_selection_dialog_a54fba2df3c5b2e5677eabbd1ccbb34d1_cgraph.png" border="0" usemap="#aclass_instrument_selection_dialog_a54fba2df3c5b2e5677eabbd1ccbb34d1_cgraph" alt=""/></div>
+<map name="aclass_instrument_selection_dialog_a54fba2df3c5b2e5677eabbd1ccbb34d1_cgraph" id="aclass_instrument_selection_dialog_a54fba2df3c5b2e5677eabbd1ccbb34d1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,113,186,156"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#aec2882a8366d77efd2a3ccfc41b3a066" title=" " alt="" coords="234,9,406,52"/>
+<area shape="poly" title=" " alt="" coords="142,110,257,57,259,62,144,115"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="457,136,612,179"/>
+<area shape="poly" title=" " alt="" coords="186,137,441,150,441,155,186,142"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,84,406,127"/>
+<area shape="poly" title=" " alt="" coords="185,120,218,116,218,121,186,126"/>
+<area shape="rect" href="class_instrument_controller.html#a914bf819ab5a12ab591b0e4570043337" title=" " alt="" coords="454,212,614,255"/>
+<area shape="poly" title=" " alt="" coords="187,152,440,209,438,215,186,157"/>
+<area shape="rect" href="class_instrument_controller.html#ad0851aaa91af3e1542710a203503d5b8" title=" " alt="" coords="466,5,603,48"/>
+<area shape="poly" title=" " alt="" coords="407,26,450,26,450,31,407,32"/>
+<area shape="rect" href="class_instrument.html#a924662347b252917b5ec2ebd81874f07" title=" " alt="" coords="663,9,818,36"/>
+<area shape="poly" title=" " alt="" coords="603,23,647,22,648,27,603,28"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="667,60,814,103"/>
+<area shape="poly" title=" " alt="" coords="593,133,665,106,667,111,595,138"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="871,225,1052,252"/>
+<area shape="poly" title=" " alt="" coords="613,169,873,219,872,224,612,175"/>
+<area shape="rect" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="672,279,809,321"/>
+<area shape="poly" title=" " alt="" coords="581,177,616,198,705,267,702,271,613,202,578,182"/>
+<area shape="rect" href="class_instrument.html#a4423a277f37a47529fc51c7b67ab0d83" title=" " alt="" coords="662,127,819,153"/>
+<area shape="poly" title=" " alt="" coords="612,148,647,145,647,151,613,153"/>
+<area shape="rect" href="class_instrument.html#ae99158cd820abcae887fb587ec71aa76" title=" " alt="" coords="883,17,1040,44"/>
+<area shape="poly" title=" " alt="" coords="814,62,885,45,886,51,815,67"/>
+<area shape="rect" href="class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="887,171,1036,197"/>
+<area shape="poly" title=" " alt="" coords="799,101,820,113,844,135,854,145,868,155,884,163,882,167,865,160,850,149,840,138,817,117,797,105"/>
+<area shape="rect" href="class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604" title=" " alt="" coords="887,68,1036,95"/>
+<area shape="poly" title=" " alt="" coords="814,79,871,79,871,84,814,84"/>
+<area shape="rect" href="class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd" title=" " alt="" coords="886,119,1037,145"/>
+<area shape="poly" title=" " alt="" coords="815,96,886,112,885,117,814,101"/>
+<area shape="poly" title=" " alt="" coords="805,101,821,113,838,138,845,162,851,185,869,207,881,216,878,220,865,211,846,187,839,163,833,140,817,117,802,105"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="1104,196,1276,223"/>
+<area shape="poly" title=" " alt="" coords="1052,224,1088,220,1089,225,1052,230"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="1107,247,1273,289"/>
+<area shape="poly" title=" " alt="" coords="1052,248,1092,253,1091,258,1052,253"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="1324,255,1438,281"/>
+<area shape="poly" title=" " alt="" coords="1273,265,1309,265,1309,271,1273,271"/>
+<area shape="poly" title=" " alt="" coords="767,276,811,243,865,211,891,200,893,205,868,216,814,247,770,280"/>
+<area shape="poly" title=" " alt="" coords="809,278,895,254,896,259,810,283"/>
+<area shape="rect" href="class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624" title=" " alt="" coords="880,284,1043,311"/>
+<area shape="poly" title=" " alt="" coords="810,297,864,296,864,301,810,302"/>
+<area shape="rect" href="class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db" title=" " alt="" coords="867,335,1056,361"/>
+<area shape="poly" title=" " alt="" coords="810,312,882,328,881,333,809,318"/>
+<area shape="poly" title=" " alt="" coords="407,124,442,132,440,137,406,129"/>
+<area shape="poly" title=" " alt="" coords="615,232,856,235,856,240,615,237"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -156,10 +226,34 @@ Public Member Functions</h2></td></tr>
 <p>Handles when the user closes the dialog.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>OnClose default wxWidgets <a class="el" href="struct_event.html" title="This class is an instance of an event.">Event</a>. </td></tr>
+    <tr><td class="paramname">event</td><td>OnClose default wxWidgets <a class="el" href="class_event.html" title="This class is an instance of an event.">Event</a>. </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_instrument_selection_dialog_8cpp_source.html#l00058">58</a> of file <a class="el" href="_instrument_selection_dialog_8cpp_source.html">InstrumentSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_cgraph.png" border="0" usemap="#aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_cgraph" alt=""/></div>
+<map name="aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_cgraph" id="aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,178,48"/>
+<area shape="rect" href="class_instrument_controller.html#ad0851aaa91af3e1542710a203503d5b8" title=" " alt="" coords="226,5,363,48"/>
+<area shape="poly" title=" " alt="" coords="178,24,210,24,210,29,178,29"/>
+<area shape="rect" href="class_instrument.html#a924662347b252917b5ec2ebd81874f07" title=" " alt="" coords="411,13,565,40"/>
+<area shape="poly" title=" " alt="" coords="364,24,396,24,396,29,364,29"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_icgraph.png" border="0" usemap="#aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_icgraph" alt=""/></div>
+<map name="aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_icgraph" id="aclass_instrument_selection_dialog_aec2882a8366d77efd2a3ccfc41b3a066_icgraph">
+<area shape="rect" title=" " alt="" coords="234,5,406,48"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="218,29,186,29,186,24,218,24"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -181,21 +275,76 @@ Public Member Functions</h2></td></tr>
 <p>Handles when the user clicks the OK button.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">event</td><td>OnOk default wxWidgets <a class="el" href="struct_event.html" title="This class is an instance of an event.">Event</a>. </td></tr>
+    <tr><td class="paramname">event</td><td>OnOk default wxWidgets <a class="el" href="class_event.html" title="This class is an instance of an event.">Event</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_instrument_selection_dialog_8cpp_source.html#l00050">50</a> of file <a class="el" href="_instrument_selection_dialog_8cpp_source.html">InstrumentSelectionDialog.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_cgraph.png" border="0" usemap="#aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_cgraph" alt=""/></div>
+<map name="aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_cgraph" id="aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_cgraph">
+<area shape="rect" title=" " alt="" coords="5,183,178,225"/>
+<area shape="rect" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="226,183,381,225"/>
+<area shape="poly" title=" " alt="" coords="178,201,210,201,210,207,178,207"/>
+<area shape="rect" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="434,95,581,137"/>
+<area shape="poly" title=" " alt="" coords="354,180,441,141,443,146,356,184"/>
+<area shape="rect" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="638,157,818,184"/>
+<area shape="poly" title=" " alt="" coords="381,195,622,176,623,182,382,201"/>
+<area shape="rect" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="439,212,576,255"/>
+<area shape="poly" title=" " alt="" coords="382,213,424,219,423,224,381,218"/>
+<area shape="rect" href="class_instrument.html#a4423a277f37a47529fc51c7b67ab0d83" title=" " alt="" coords="429,279,585,305"/>
+<area shape="poly" title=" " alt="" coords="345,223,430,264,447,271,445,276,428,269,343,228"/>
+<area shape="rect" href="class_instrument.html#ae99158cd820abcae887fb587ec71aa76" title=" " alt="" coords="650,5,806,32"/>
+<area shape="poly" title=" " alt="" coords="539,92,583,66,632,42,651,35,652,40,634,46,585,71,542,97"/>
+<area shape="rect" href="class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="654,208,802,235"/>
+<area shape="poly" title=" " alt="" coords="538,136,582,165,634,194,652,200,650,205,632,198,580,170,535,140"/>
+<area shape="rect" href="class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604" title=" " alt="" coords="653,56,803,83"/>
+<area shape="poly" title=" " alt="" coords="581,98,646,84,647,89,582,103"/>
+<area shape="rect" href="class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd" title=" " alt="" coords="652,107,804,133"/>
+<area shape="poly" title=" " alt="" coords="581,115,637,116,636,121,581,120"/>
+<area shape="poly" title=" " alt="" coords="582,132,657,150,655,156,580,137"/>
+<area shape="rect" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="871,128,1043,155"/>
+<area shape="poly" title=" " alt="" coords="818,156,855,152,855,157,819,162"/>
+<area shape="rect" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="874,179,1040,221"/>
+<area shape="poly" title=" " alt="" coords="819,180,858,185,858,190,818,185"/>
+<area shape="rect" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="1091,187,1204,213"/>
+<area shape="poly" title=" " alt="" coords="1040,197,1075,197,1075,203,1040,203"/>
+<area shape="poly" title=" " alt="" coords="576,227,638,224,639,229,576,232"/>
+<area shape="poly" title=" " alt="" coords="576,210,633,193,659,186,660,191,634,199,577,215"/>
+<area shape="rect" href="class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624" title=" " alt="" coords="647,309,809,336"/>
+<area shape="poly" title=" " alt="" coords="563,253,587,264,610,280,635,295,652,302,650,307,632,300,608,285,584,269,561,258"/>
+<area shape="rect" href="class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db" title=" " alt="" coords="633,259,823,285"/>
+<area shape="poly" title=" " alt="" coords="577,243,633,253,632,258,576,248"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_icgraph.png" border="0" usemap="#aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_icgraph" alt=""/></div>
+<map name="aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_icgraph" id="aclass_instrument_selection_dialog_afba806d17a56c2105cba8c1bd8234930_icgraph">
+<area shape="rect" title=" " alt="" coords="234,5,406,48"/>
+<area shape="rect" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,5,186,48"/>
+<area shape="poly" title=" " alt="" coords="218,29,186,29,186,24,218,24"/>
+</map>
+</div>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_instrument_selection_dialog_8h_source.html">InstrumentSelectionDialog.h</a></li>
-<li>lisa_project/<b>InstrumentSelectionDialog.cpp</b></li>
+<li>lisa_project/view/<a class="el" href="_instrument_selection_dialog_8h_source.html">InstrumentSelectionDialog.h</a></li>
+<li>lisa_project/view/<a class="el" href="_instrument_selection_dialog_8cpp_source.html">InstrumentSelectionDialog.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_instrument_selection_dialog.html">InstrumentSelectionDialog</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

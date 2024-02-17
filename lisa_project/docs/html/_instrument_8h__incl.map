@@ -1,0 +1,11 @@
+<map id="lisa_project/model/Instrument.h" name="lisa_project/model/Instrument.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="33,5,159,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,171,59,197"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,49,60,97,41,156,36,154,55,95,81,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="83,171,237,197"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,47,137,95,156,154,151,156,132,97,107,49"/>
+<area shape="rect" id="Node000004" href="$_mla_8h.html" title=" " alt="" coords="69,96,123,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="99,49,99,80,93,80,93,49"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="87,125,55,161,51,157,83,121"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="109,121,141,157,137,161,105,125"/>
+</map>

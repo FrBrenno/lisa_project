@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -47,6 +52,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_mla.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +90,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -84,35 +105,278 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a10ca5d4c6c26fed8a4022d45d6d4d90a" id="r_a10ca5d4c6c26fed8a4022d45d6d4d90a"><td class="memItemLeft" align="right" valign="top"><a id="a10ca5d4c6c26fed8a4022d45d6d4d90a" name="a10ca5d4c6c26fed8a4022d45d6d4d90a"></a>
-ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><b>getMlaCount</b> ()</td></tr>
+<tr class="memitem:a41f38c7bf8cad3938b3a665a1895be30" id="r_a41f38c7bf8cad3938b3a665a1895be30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#a41f38c7bf8cad3938b3a665a1895be30">Mla</a> ()</td></tr>
+<tr class="separator:a41f38c7bf8cad3938b3a665a1895be30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ca5d4c6c26fed8a4022d45d6d4d90a" id="r_a10ca5d4c6c26fed8a4022d45d6d4d90a"><td class="memItemLeft" align="right" valign="top">ViInt32 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a">getMlaCount</a> ()</td></tr>
 <tr class="separator:a10ca5d4c6c26fed8a4022d45d6d4d90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c7d07a61c4be66e64533cf4d1d12789" id="r_a4c7d07a61c4be66e64533cf4d1d12789"><td class="memItemLeft" align="right" valign="top"><a id="a4c7d07a61c4be66e64533cf4d1d12789" name="a4c7d07a61c4be66e64533cf4d1d12789"></a>
-ViSession&#160;</td><td class="memItemRight" valign="bottom"><b>getHandle</b> ()</td></tr>
+<tr class="memitem:a4c7d07a61c4be66e64533cf4d1d12789" id="r_a4c7d07a61c4be66e64533cf4d1d12789"><td class="memItemLeft" align="right" valign="top">ViSession&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789">getHandle</a> ()</td></tr>
 <tr class="separator:a4c7d07a61c4be66e64533cf4d1d12789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba6397ee94aed794c46975696a5a661d" id="r_aba6397ee94aed794c46975696a5a661d"><td class="memItemLeft" align="right" valign="top"><a id="aba6397ee94aed794c46975696a5a661d" name="aba6397ee94aed794c46975696a5a661d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isInitialized</b> ()</td></tr>
+<tr class="memitem:aba6397ee94aed794c46975696a5a661d" id="r_aba6397ee94aed794c46975696a5a661d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#aba6397ee94aed794c46975696a5a661d">isInitialized</a> ()</td></tr>
 <tr class="separator:aba6397ee94aed794c46975696a5a661d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41fb7af242a3ba8d026b79596d690b39" id="r_a41fb7af242a3ba8d026b79596d690b39"><td class="memItemLeft" align="right" valign="top"><a id="a41fb7af242a3ba8d026b79596d690b39" name="a41fb7af242a3ba8d026b79596d690b39"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setInitialized</b> (bool is_initialized)</td></tr>
+<tr class="memitem:a41fb7af242a3ba8d026b79596d690b39" id="r_a41fb7af242a3ba8d026b79596d690b39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#a41fb7af242a3ba8d026b79596d690b39">setInitialized</a> (bool is_initialized)</td></tr>
 <tr class="separator:a41fb7af242a3ba8d026b79596d690b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a347103b03641965fc85758d42f18547c" id="r_a347103b03641965fc85758d42f18547c"><td class="memItemLeft" align="right" valign="top"><a id="a347103b03641965fc85758d42f18547c" name="a347103b03641965fc85758d42f18547c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setHandle</b> (ViSession handle)</td></tr>
+<tr class="memitem:a347103b03641965fc85758d42f18547c" id="r_a347103b03641965fc85758d42f18547c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#a347103b03641965fc85758d42f18547c">setHandle</a> (ViSession handle)</td></tr>
 <tr class="separator:a347103b03641965fc85758d42f18547c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3b64eaf309223f11d9aeb4be72e6ee4" id="r_ae3b64eaf309223f11d9aeb4be72e6ee4"><td class="memItemLeft" align="right" valign="top"><a id="ae3b64eaf309223f11d9aeb4be72e6ee4" name="ae3b64eaf309223f11d9aeb4be72e6ee4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setMlaInfo</b> (ViChar *mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45)</td></tr>
+<tr class="memitem:ae3b64eaf309223f11d9aeb4be72e6ee4" id="r_ae3b64eaf309223f11d9aeb4be72e6ee4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4">setMlaInfo</a> (ViChar *mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45)</td></tr>
 <tr class="separator:ae3b64eaf309223f11d9aeb4be72e6ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This model class is used to store the information of the MLA. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>lisa_project/<a class="el" href="_mla_8h_source.html">Mla.h</a></li>
-<li>lisa_project/<b>Mla.cpp</b></li>
+
+<p class="definition">Definition at line <a class="el" href="_mla_8h_source.html#l00011">11</a> of file <a class="el" href="_mla_8h_source.html">Mla.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a41f38c7bf8cad3938b3a665a1895be30" name="a41f38c7bf8cad3938b3a665a1895be30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41f38c7bf8cad3938b3a665a1895be30">&#9670;&#160;</a></span>Mla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mla::Mla </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00003">3</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4c7d07a61c4be66e64533cf4d1d12789" name="a4c7d07a61c4be66e64533cf4d1d12789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7d07a61c4be66e64533cf4d1d12789">&#9670;&#160;</a></span>getHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViSession Mla::getHandle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00025">25</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_a4c7d07a61c4be66e64533cf4d1d12789_icgraph.png" border="0" usemap="#aclass_mla_a4c7d07a61c4be66e64533cf4d1d12789_icgraph" alt=""/></div>
+<map name="aclass_mla_a4c7d07a61c4be66e64533cf4d1d12789_icgraph" id="aclass_mla_a4c7d07a61c4be66e64533cf4d1d12789_icgraph">
+<area shape="rect" title=" " alt="" coords="677,43,786,69"/>
+<area shape="rect" href="class_mla_controller.html#adf3f0a99f2861176592001646c9e4406" title=" " alt="" coords="438,16,629,43"/>
+<area shape="poly" title=" " alt="" coords="661,49,630,45,630,40,662,44"/>
+<area shape="rect" href="class_mla_controller.html#af455d597ed4f1de477a0f195daee4c73" title=" " alt="" coords="194,72,390,99"/>
+<area shape="poly" title=" " alt="" coords="662,63,391,81,390,76,662,58"/>
+<area shape="rect" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42" title=" " alt="" coords="226,5,358,48"/>
+<area shape="poly" title=" " alt="" coords="422,31,358,30,359,25,422,25"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,35,146,77"/>
+<area shape="poly" title=" " alt="" coords="211,40,147,49,146,44,210,35"/>
+<area shape="poly" title=" " alt="" coords="178,73,146,68,146,63,179,67"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a10ca5d4c6c26fed8a4022d45d6d4d90a" name="a10ca5d4c6c26fed8a4022d45d6d4d90a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ca5d4c6c26fed8a4022d45d6d4d90a">&#9670;&#160;</a></span>getMlaCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ViInt32 * Mla::getMlaCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00017">17</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_a10ca5d4c6c26fed8a4022d45d6d4d90a_icgraph.png" border="0" usemap="#aclass_mla_a10ca5d4c6c26fed8a4022d45d6d4d90a_icgraph" alt=""/></div>
+<map name="aclass_mla_a10ca5d4c6c26fed8a4022d45d6d4d90a_icgraph" id="aclass_mla_a10ca5d4c6c26fed8a4022d45d6d4d90a_icgraph">
+<area shape="rect" title=" " alt="" coords="438,13,561,40"/>
+<area shape="rect" href="class_mla_controller.html#af455d597ed4f1de477a0f195daee4c73" title=" " alt="" coords="194,13,390,40"/>
+<area shape="poly" title=" " alt="" coords="423,29,391,29,391,24,423,24"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,5,146,48"/>
+<area shape="poly" title=" " alt="" coords="178,29,146,29,146,24,178,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aba6397ee94aed794c46975696a5a661d" name="aba6397ee94aed794c46975696a5a661d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba6397ee94aed794c46975696a5a661d">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mla::isInitialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00040">40</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_aba6397ee94aed794c46975696a5a661d_icgraph.png" border="0" usemap="#aclass_mla_aba6397ee94aed794c46975696a5a661d_icgraph" alt=""/></div>
+<map name="aclass_mla_aba6397ee94aed794c46975696a5a661d_icgraph" id="aclass_mla_aba6397ee94aed794c46975696a5a661d_icgraph">
+<area shape="rect" title=" " alt="" coords="574,13,689,40"/>
+<area shape="rect" href="class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c" title=" " alt="" coords="374,13,526,40"/>
+<area shape="poly" title=" " alt="" coords="559,29,527,29,527,24,559,24"/>
+<area shape="rect" href="class_mla_selection_dialog.html#aee800c2e4f87924e9596fa0c2eb31bcf" title=" " alt="" coords="194,5,326,48"/>
+<area shape="poly" title=" " alt="" coords="358,29,326,29,326,24,358,24"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,5,146,48"/>
+<area shape="poly" title=" " alt="" coords="178,29,146,29,146,24,178,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a347103b03641965fc85758d42f18547c" name="a347103b03641965fc85758d42f18547c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347103b03641965fc85758d42f18547c">&#9670;&#160;</a></span>setHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mla::setHandle </td>
+          <td>(</td>
+          <td class="paramtype">ViSession&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00021">21</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a41fb7af242a3ba8d026b79596d690b39" name="a41fb7af242a3ba8d026b79596d690b39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41fb7af242a3ba8d026b79596d690b39">&#9670;&#160;</a></span>setInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mla::setInitialized </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_initialized</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00044">44</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae3b64eaf309223f11d9aeb4be72e6ee4" name="ae3b64eaf309223f11d9aeb4be72e6ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b64eaf309223f11d9aeb4be72e6ee4">&#9670;&#160;</a></span>setMlaInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mla::setMlaInfo </td>
+          <td>(</td>
+          <td class="paramtype">ViChar *&#160;</td>
+          <td class="paramname"><em>mla_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>cam_pitchm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>lenslet_pitchm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>spot_offset_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>spot_offset_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>lenslet_fm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>grd_corr_0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ViReal64&#160;</td>
+          <td class="paramname"><em>grd_corr_45</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mla_8cpp_source.html#l00029">29</a> of file <a class="el" href="_mla_8cpp_source.html">Mla.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_mla_ae3b64eaf309223f11d9aeb4be72e6ee4_icgraph.png" border="0" usemap="#aclass_mla_ae3b64eaf309223f11d9aeb4be72e6ee4_icgraph" alt=""/></div>
+<map name="aclass_mla_ae3b64eaf309223f11d9aeb4be72e6ee4_icgraph" id="aclass_mla_ae3b64eaf309223f11d9aeb4be72e6ee4_icgraph">
+<area shape="rect" title=" " alt="" coords="613,13,723,40"/>
+<area shape="rect" href="class_mla_controller.html#adf3f0a99f2861176592001646c9e4406" title=" " alt="" coords="374,13,565,40"/>
+<area shape="poly" title=" " alt="" coords="597,29,566,29,566,24,597,24"/>
+<area shape="rect" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42" title=" " alt="" coords="194,5,326,48"/>
+<area shape="poly" title=" " alt="" coords="359,29,326,29,326,24,359,24"/>
+<area shape="rect" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f" title=" " alt="" coords="5,5,146,48"/>
+<area shape="poly" title=" " alt="" coords="178,29,146,29,146,24,178,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>lisa_project/model/<a class="el" href="_mla_8h_source.html">Mla.h</a></li>
+<li>lisa_project/model/<a class="el" href="_mla_8cpp_source.html">Mla.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_mla.html">Mla</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

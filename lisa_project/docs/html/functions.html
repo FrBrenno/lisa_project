@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,6 +24,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="lisa_logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">PROJH402 - Image Acquisition with Plenoptic Camera
    </div>
@@ -48,6 +53,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,73 +91,148 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
+<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
+
+<h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<li>addListener()&#160;:&#160;<a class="el" href="class_home_frame.html#abb9752bd1ae75a89e1c5a1a822b8a5a6">HomeFrame</a></li>
+<li>app&#160;:&#160;<a class="el" href="class_base_controller.html#addf129ce12fa9d0a22e84e90c81de561">BaseController</a></li>
+</ul>
+
+
+<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>BaseController()&#160;:&#160;<a class="el" href="class_base_controller.html#ad4866c84da6e11450df71deb033b1c1a">BaseController</a></li>
+</ul>
+
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>CameraConfig()&#160;:&#160;<a class="el" href="class_camera_config.html#a03e6228afa19acfc757e310781372b6e">CameraConfig</a></li>
 <li>cameraConfiguration()&#160;:&#160;<a class="el" href="class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac">InstrumentController</a></li>
+<li>CameraSettingsController()&#160;:&#160;<a class="el" href="class_camera_settings_controller.html#ab7c8254d4db7822156af59f1ae5c42b6">CameraSettingsController</a></li>
+<li>CameraSettingsDialog()&#160;:&#160;<a class="el" href="class_camera_settings_dialog.html#a7f6f05277dd86eb48d27b0283baf3d29">CameraSettingsDialog</a></li>
+<li>change_api_status()&#160;:&#160;<a class="el" href="class_my_app.html#a294c2e2f951842a57aef70512277140b">MyApp</a></li>
+<li>check_api_connection()&#160;:&#160;<a class="el" href="class_my_app.html#aca801d84b711cbf88533bce476c81716">MyApp</a>, <a class="el" href="class_my_app_interface.html#a29dd0233417e2c715e07d216f99a5aad">MyAppInterface</a></li>
 <li>closeInstrument()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a0fab52a1bb19d92e0a28cb995a659896">InstrumentController</a></li>
 </ul>
 
 
-<h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
-<li>data&#160;:&#160;<a class="el" href="struct_event.html#a3e8d45074315ea934d34c914b13a844e">Event</a></li>
+<h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>Event()&#160;:&#160;<a class="el" href="class_event.html#aea697ff7963a6f69fe6f7db2aac6e926">Event</a></li>
 </ul>
 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>getBlackLevel()&#160;:&#160;<a class="el" href="class_camera_config.html#a0f503786512172bbc168dfd210843aef">CameraConfig</a></li>
+<li>getCameraConfig()&#160;:&#160;<a class="el" href="class_camera_settings_controller.html#a2a428ba39478d1d0237f1d0ddb842df0">CameraSettingsController</a></li>
+<li>getCameraResolution()&#160;:&#160;<a class="el" href="class_camera_config.html#a07e2122d7c244e4a3cbf888bb33bcdca">CameraConfig</a></li>
+<li>getData()&#160;:&#160;<a class="el" href="class_event.html#a66e3660db6ad05261724596001a15a4a">Event</a></li>
+<li>getDeviceId()&#160;:&#160;<a class="el" href="class_instrument.html#ae99158cd820abcae887fb587ec71aa76">Instrument</a></li>
+<li>getExposureTime()&#160;:&#160;<a class="el" href="class_camera_config.html#a78305059984828025b58ee10564836c8">CameraConfig</a></li>
+<li>getGain()&#160;:&#160;<a class="el" href="class_camera_config.html#a7fbb7c351ffee3a08ecd7497aac9ce52">CameraConfig</a></li>
+<li>getHandle()&#160;:&#160;<a class="el" href="class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25">Instrument</a>, <a class="el" href="class_mla.html#a4c7d07a61c4be66e64533cf4d1d12789">Mla</a></li>
 <li>getImage()&#160;:&#160;<a class="el" href="class_image_controller.html#a44b84682e0506b76e030d24df4368632">ImageController</a></li>
+<li>getInstrument()&#160;:&#160;<a class="el" href="class_instrument_controller.html#ae176955921f654701c9cbe298335d05e">InstrumentController</a></li>
+<li>getInstrumentName()&#160;:&#160;<a class="el" href="class_instrument.html#a302c9c9f4fbd16702cb5e4631998538f">Instrument</a>, <a class="el" href="class_instrument_controller.html#a23fe0b7b3946c9ca2bb2afd75c47d983">InstrumentController</a></li>
+<li>getMlaCount()&#160;:&#160;<a class="el" href="class_mla.html#a10ca5d4c6c26fed8a4022d45d6d4d90a">Mla</a></li>
+<li>getName()&#160;:&#160;<a class="el" href="class_event.html#a36453ab5a21b660a61f2a0369e2689e8">Event</a></li>
+<li>getNbImageReadings()&#160;:&#160;<a class="el" href="class_camera_config.html#a3629d098c062b0bea7acd067418fc4c3">CameraConfig</a></li>
+<li>getNoiseCutLevel()&#160;:&#160;<a class="el" href="class_camera_config.html#a7038eac3f298ef5060b69506a2c08ec5">CameraConfig</a></li>
+<li>getSpotsX()&#160;:&#160;<a class="el" href="class_instrument.html#a5b4fce3e53e195ccc10c70223cc52604">Instrument</a></li>
+<li>getSpotsY()&#160;:&#160;<a class="el" href="class_instrument.html#ae9fe9666b05fbbcae9b757bdb0ac8acd">Instrument</a></li>
+<li>getStatus()&#160;:&#160;<a class="el" href="class_instrument.html#a05f230234deb6092f04eae9c10445b9c">Instrument</a></li>
 </ul>
 
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
-<li>handleError()&#160;:&#160;<a class="el" href="class_image_controller.html#a4a90044112da43addaaa2f8122d63b79">ImageController</a>, <a class="el" href="class_instrument_controller.html#ae0d02d9bf208a9ca365bf7d9cb1da833">InstrumentController</a>, <a class="el" href="class_mla_controller.html#a8b96eb97adac072fde4e4f4ead8057da">MlaController</a></li>
+<li>handleError()&#160;:&#160;<a class="el" href="class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e">BaseController</a></li>
+<li>handleSettingsSelection()&#160;:&#160;<a class="el" href="class_camera_settings_controller.html#a90005ab87b660fb1ea29c336bc5d8c70">CameraSettingsController</a></li>
+<li>hasError()&#160;:&#160;<a class="el" href="class_image_controller.html#ac00ba03746716dab962ab7e03fb8f556">ImageController</a></li>
+<li>HomeFrame()&#160;:&#160;<a class="el" href="class_home_frame.html#a069183984d7bcea242639987608b1b60">HomeFrame</a></li>
+<li>HomeFrameController()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#a514dff71a9fdacd16d9d44f4b2133101">HomeFrameController</a></li>
 </ul>
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>ImageController()&#160;:&#160;<a class="el" href="class_image_controller.html#ad3a9a7f7e0a373cbc3c5afe57625137b">ImageController</a></li>
+<li>ImageProcessingController()&#160;:&#160;<a class="el" href="class_image_processing_controller.html#a9ab1c7a253229f9b47f240c6cd458757">ImageProcessingController</a></li>
 <li>initInstrument()&#160;:&#160;<a class="el" href="class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7">InstrumentController</a></li>
-<li>InstrumentSelectionDialog()&#160;:&#160;<a class="el" href="class_instrument_selection_dialog.html#af1d1f2240c4406d933d92d65a5d3d57f">InstrumentSelectionDialog</a></li>
+<li>Instance()&#160;:&#160;<a class="el" href="class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e">EventDispatcher</a></li>
+<li>InstrumentController()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a4dbeb8dd40aad5d740e49ca3461d2302">InstrumentController</a></li>
+<li>InstrumentSelectionDialog()&#160;:&#160;<a class="el" href="class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1">InstrumentSelectionDialog</a></li>
+<li>is_wfs_connected&#160;:&#160;<a class="el" href="class_base_controller.html#aa62a38ad545a8ea49d30bb363f4095c3">BaseController</a></li>
+<li>isAutoBlackLevel()&#160;:&#160;<a class="el" href="class_camera_config.html#a2eb48b31e0d191c89fa9f159de8ee211">CameraConfig</a></li>
+<li>isAutoExposure()&#160;:&#160;<a class="el" href="class_camera_config.html#af1fa7592443c1a51044bdb15ad258344">CameraConfig</a></li>
+<li>isAutoGain()&#160;:&#160;<a class="el" href="class_camera_config.html#a7bf2c0c972ec3bb2effb4969570e5dae">CameraConfig</a></li>
+<li>isAutoNoiseCutLevel()&#160;:&#160;<a class="el" href="class_camera_config.html#a002b5a8f7af827dcb3e6309ba19f421a">CameraConfig</a></li>
+<li>isInitialized()&#160;:&#160;<a class="el" href="class_instrument.html#a924662347b252917b5ec2ebd81874f07">Instrument</a>, <a class="el" href="class_mla.html#aba6397ee94aed794c46975696a5a661d">Mla</a></li>
+<li>isWfsConnected()&#160;:&#160;<a class="el" href="class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de">BaseController</a></li>
+</ul>
+
+
+<h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>loadCameraSettings()&#160;:&#160;<a class="el" href="class_camera_settings_dialog.html#a8b6637a2abcc0336a67c78a782b32701">CameraSettingsDialog</a></li>
 </ul>
 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>Mla()&#160;:&#160;<a class="el" href="class_mla.html#a41f38c7bf8cad3938b3a665a1895be30">Mla</a></li>
 <li>mlaConfiguration()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a3595712aab55e5a8a441cbb496a7e506">InstrumentController</a></li>
-<li>MlaSelectionDialog()&#160;:&#160;<a class="el" href="class_mla_selection_dialog.html#a744338f1415599bb69ece38492928651">MlaSelectionDialog</a></li>
-</ul>
-
-
-<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
-<li>name&#160;:&#160;<a class="el" href="struct_event.html#ae116bf76fb01a92e000579a5a0d6f35c">Event</a></li>
+<li>MlaController()&#160;:&#160;<a class="el" href="class_mla_controller.html#af2e7fea7bd254e020322c200fef245f5">MlaController</a></li>
+<li>MlaSelectionDialog()&#160;:&#160;<a class="el" href="class_mla_selection_dialog.html#a7af0626397fe6b17bbaa2848246b675f">MlaSelectionDialog</a></li>
 </ul>
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
-<li>onClose()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#aaf1b65a95a59ebb7b7c1d068049b5337">HomeFrameController</a>, <a class="el" href="class_instrument_controller.html#a9ab934b6c87e8a34ea1173729eba7652">InstrumentController</a></li>
+<li>onCameraSettings()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#a00044545db9d5c8847e22a694fb432b0">HomeFrameController</a></li>
+<li>onCapture()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#a4efdfdd297ecaaeb9ba8604db12d6192">HomeFrameController</a></li>
+<li>onClose()&#160;:&#160;<a class="el" href="class_base_controller.html#a7b78f5d9c07117466b79e8f99420a7aa">BaseController</a>, <a class="el" href="class_camera_settings_controller.html#a88a04daaae6db34a1caebbce11bf5835">CameraSettingsController</a></li>
+<li>OnClose()&#160;:&#160;<a class="el" href="class_camera_settings_dialog.html#ad22afa5c3b1974497af3c4e725a3c0d2">CameraSettingsDialog</a></li>
+<li>onClose()&#160;:&#160;<a class="el" href="class_instrument_controller.html#ad0851aaa91af3e1542710a203503d5b8">InstrumentController</a></li>
 <li>OnClose()&#160;:&#160;<a class="el" href="class_instrument_selection_dialog.html#aec2882a8366d77efd2a3ccfc41b3a066">InstrumentSelectionDialog</a></li>
-<li>onClose()&#160;:&#160;<a class="el" href="class_mla_controller.html#a2ecc275cfd819e5a346655380bd585f6">MlaController</a></li>
+<li>onClose()&#160;:&#160;<a class="el" href="class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c">MlaController</a></li>
 <li>OnClose()&#160;:&#160;<a class="el" href="class_mla_selection_dialog.html#aee800c2e4f87924e9596fa0c2eb31bcf">MlaSelectionDialog</a></li>
+<li>onConnectAPI()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#a0e66eeed5456de853a8434f1a0c65b81">HomeFrameController</a></li>
+<li>onExit()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#ad591819867abae4644ae2a7a7ea355c8">HomeFrameController</a>, <a class="el" href="class_instrument_controller.html#a61204309955b0c3c32c5391d7c182eb0">InstrumentController</a></li>
+<li>OnInit()&#160;:&#160;<a class="el" href="class_my_app.html#a79fa75d1155f0e85e20f2869538296d6">MyApp</a></li>
 <li>onInstrumentSelected()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c">InstrumentController</a></li>
 <li>onInstrumentSelection()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#a6ab283538356b6bca9f25b37f21425bd">HomeFrameController</a></li>
+<li>onLoadImage()&#160;:&#160;<a class="el" href="class_home_frame_controller.html#ac22cb05d17deeaa4a0f15cabc0c5ac0d">HomeFrameController</a></li>
 <li>onMlaSelected()&#160;:&#160;<a class="el" href="class_mla_controller.html#adf3f0a99f2861176592001646c9e4406">MlaController</a></li>
-<li>OnOK()&#160;:&#160;<a class="el" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930">InstrumentSelectionDialog</a>, <a class="el" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42">MlaSelectionDialog</a></li>
+<li>onOK()&#160;:&#160;<a class="el" href="class_base_controller.html#aefbf379fb7215666aa8d043fd5a6d2fb">BaseController</a>, <a class="el" href="class_camera_settings_controller.html#ab6fb6a02bc331069f55da93f0cfd2c97">CameraSettingsController</a></li>
+<li>OnOK()&#160;:&#160;<a class="el" href="class_camera_settings_dialog.html#ae324ee5d6b4c62ca9b24122f9362e55d">CameraSettingsDialog</a>, <a class="el" href="class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930">InstrumentSelectionDialog</a>, <a class="el" href="class_mla_selection_dialog.html#ac622575a3df7ca839e14a558f7c1dd42">MlaSelectionDialog</a></li>
+<li>onSetDefault()&#160;:&#160;<a class="el" href="class_camera_settings_controller.html#a25b70fb3e6f59aa4045ef9b4d72fd3db">CameraSettingsController</a></li>
+<li>OnSetDefault()&#160;:&#160;<a class="el" href="class_camera_settings_dialog.html#ae766c6d8fd60a5e81dee7bd879b1ad56">CameraSettingsDialog</a></li>
 </ul>
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>populateInstrumentList()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a914bf819ab5a12ab591b0e4570043337">InstrumentController</a></li>
 <li>populateMlaList()&#160;:&#160;<a class="el" href="class_mla_controller.html#af455d597ed4f1de477a0f195daee4c73">MlaController</a></li>
+<li>processImage()&#160;:&#160;<a class="el" href="class_image_processing_controller.html#a37f35d121139aa4da4443a3fc8d2dad5">ImageProcessingController</a></li>
 <li>PublishEvent()&#160;:&#160;<a class="el" href="class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c">EventDispatcher</a></li>
 </ul>
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>resizeImage()&#160;:&#160;<a class="el" href="class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89">HomeFrame</a></li>
 <li>reviseDrive()&#160;:&#160;<a class="el" href="class_instrument_controller.html#a6ce24bda2cd3ab9919b1e15ac1d28d2f">InstrumentController</a></li>
 </ul>
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
-<li>setInstrumentName()&#160;:&#160;<a class="el" href="class_home_frame.html#a3fd8ad71945b9d0784623df176681d54">HomeFrame</a></li>
-<li>setListener()&#160;:&#160;<a class="el" href="class_home_frame.html#a618cd7ae0ff819ce2144a42349b929ce">HomeFrame</a></li>
+<li>setCamDriverVersion()&#160;:&#160;<a class="el" href="class_instrument.html#a5a307e43580ec17e866572fbee73a0f7">Instrument</a></li>
+<li>setCameraConfig()&#160;:&#160;<a class="el" href="class_camera_config.html#aa6dcbeff547ab358cb8c5c48970efa89">CameraConfig</a></li>
+<li>setDefault()&#160;:&#160;<a class="el" href="class_camera_config.html#a7e19403a4d754cd060fea2fd339d9a34">CameraConfig</a></li>
+<li>setDeviceId()&#160;:&#160;<a class="el" href="class_instrument.html#a4423a277f37a47529fc51c7b67ab0d83">Instrument</a></li>
+<li>setHandle()&#160;:&#160;<a class="el" href="class_mla.html#a347103b03641965fc85758d42f18547c">Mla</a></li>
+<li>setImage()&#160;:&#160;<a class="el" href="class_home_frame.html#aa674bf5b1f855e4f45e119802043254c">HomeFrame</a></li>
+<li>setInitialized()&#160;:&#160;<a class="el" href="class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624">Instrument</a>, <a class="el" href="class_mla.html#a41fb7af242a3ba8d026b79596d690b39">Mla</a></li>
+<li>setInstrumentInfo()&#160;:&#160;<a class="el" href="class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db">Instrument</a></li>
+<li>setInstrumentName()&#160;:&#160;<a class="el" href="class_home_frame.html#a8ed7f586cde30d7c253b9ff49b11d6f3">HomeFrame</a></li>
+<li>setMla()&#160;:&#160;<a class="el" href="class_instrument.html#a9b877e2719794597774c0860318dabad">Instrument</a></li>
+<li>setMlaInfo()&#160;:&#160;<a class="el" href="class_mla.html#ae3b64eaf309223f11d9aeb4be72e6ee4">Mla</a></li>
+<li>setStatus()&#160;:&#160;<a class="el" href="class_instrument.html#a5a3e4442ba862bc4766cbfab75dbcaec">Instrument</a></li>
+<li>setWfsConnected()&#160;:&#160;<a class="el" href="class_base_controller.html#a28782ea291589be6038f2e22879a0568">BaseController</a></li>
+<li>setWfsDriverVersion()&#160;:&#160;<a class="el" href="class_instrument.html#a8098336e1392699c3965aa6bcfbda7d0">Instrument</a></li>
 <li>SubscribeToEvent()&#160;:&#160;<a class="el" href="class_event_dispatcher.html#a3205450e67cc6079c8f6f23522de5e5b">EventDispatcher</a></li>
 </ul>
 
@@ -147,12 +243,24 @@ $(function() {
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>updateImage()&#160;:&#160;<a class="el" href="class_home_frame.html#aa1d5c860cd6045887b7244e831fe022a">HomeFrame</a></li>
+<li>updateImage()&#160;:&#160;<a class="el" href="class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b">HomeFrame</a></li>
+</ul>
+
+
+<h3><a id="index__7E" name="index__7E"></a>- ~ -</h3><ul>
+<li>~ImageController()&#160;:&#160;<a class="el" href="class_image_controller.html#a54289c2878d09d97e0e58be95951be9c">ImageController</a></li>
+<li>~InstrumentController()&#160;:&#160;<a class="el" href="class_instrument_controller.html#acfc70913def7931d0ffa8c512a3d5a0d">InstrumentController</a></li>
+<li>~MlaController()&#160;:&#160;<a class="el" href="class_mla_controller.html#a47dc1fb282a066b290d56f9d6717434f">MlaController</a></li>
+<li>~MyApp()&#160;:&#160;<a class="el" href="class_my_app.html#ac3f9f12e37dee82e7c84c37816e9d1da">MyApp</a></li>
+<li>~MyAppInterface()&#160;:&#160;<a class="el" href="class_my_app_interface.html#a0f340532d2d738254e16e3c8593366d3">MyAppInterface</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,0 +1,7 @@
+<map id="ImageProcessingController" name="ImageProcessingController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,172,182,199"/>
+<area shape="rect" id="Node000002" href="$class_base_controller.html" title=" " alt="" coords="40,96,147,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,138,96,172,91,172,91,138"/>
+<area shape="rect" id="Node000003" href="$class_my_app_interface.html" title=" " alt="" coords="38,5,149,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,48,96,95,91,95,91,48"/>
+</map>

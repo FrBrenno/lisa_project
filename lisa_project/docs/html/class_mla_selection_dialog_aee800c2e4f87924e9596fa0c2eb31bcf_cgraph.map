@@ -1,0 +1,7 @@
+<map id="MlaSelectionDialog::OnClose" name="MlaSelectionDialog::OnClose">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,138,48"/>
+<area shape="rect" id="Node000002" href="$class_mla_controller.html#a761b451b53146227bb4b96ef9e5ccf7c" title=" " alt="" coords="186,13,338,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,24,170,24,170,29,138,29"/>
+<area shape="rect" id="Node000003" href="$class_mla.html#aba6397ee94aed794c46975696a5a661d" title=" " alt="" coords="386,13,500,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,24,371,24,371,29,338,29"/>
+</map>

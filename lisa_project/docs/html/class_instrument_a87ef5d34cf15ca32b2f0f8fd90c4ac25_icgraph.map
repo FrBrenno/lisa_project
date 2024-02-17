@@ -1,0 +1,25 @@
+<map id="Instrument::getHandle" name="Instrument::getHandle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="885,147,1033,173"/>
+<area shape="rect" id="Node000002" href="$class_instrument_controller.html#aa42774bc0375cbf19984da3f607251ac" title=" " alt="" coords="673,5,821,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="931,137,888,99,835,62,812,51,815,46,838,58,891,95,935,133"/>
+<area shape="rect" id="Node000006" href="$class_instrument_controller.html#a0fab52a1bb19d92e0a28cb995a659896" title=" " alt="" coords="678,139,816,181"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="869,163,816,163,816,157,869,157"/>
+<area shape="rect" id="Node000009" href="$class_instrument_controller.html#aa39d3f2b1620d04c4e6081315eaca5d7" title=" " alt="" coords="678,72,816,115"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="898,144,815,117,817,112,900,139"/>
+<area shape="rect" id="Node000010" href="$class_instrument_controller.html#a3595712aab55e5a8a441cbb496a7e506" title=" " alt="" coords="678,205,816,248"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="900,181,817,208,815,203,898,176"/>
+<area shape="rect" id="Node000011" href="$class_image_controller.html#aebeea3e309732706710be62a0ad5b49b" title=" " alt="" coords="657,272,837,299"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="936,186,893,225,838,262,811,274,808,269,835,258,889,221,932,183"/>
+<area shape="rect" id="Node000003" href="$class_instrument_controller.html#a8284a2e71aae1b460644cd067aeee24c" title=" " alt="" coords="454,43,609,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="658,45,610,53,610,48,658,39"/>
+<area shape="rect" id="Node000004" href="$class_instrument_selection_dialog.html#a54fba2df3c5b2e5677eabbd1ccbb34d1" title=" " alt="" coords="5,28,186,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="438,51,406,48,292,44,186,47,186,41,292,39,406,43,439,46"/>
+<area shape="rect" id="Node000005" href="$class_instrument_selection_dialog.html#afba806d17a56c2105cba8c1bd8234930" title=" " alt="" coords="234,57,406,100"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="439,73,407,75,406,70,438,68"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="218,68,186,64,186,59,219,63"/>
+<area shape="rect" id="Node000007" href="$class_instrument_controller.html#a61204309955b0c3c32c5391d7c182eb0" title=" " alt="" coords="463,139,600,181"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="662,163,601,163,601,157,662,157"/>
+<area shape="rect" id="Node000008" href="$class_instrument_controller.html#a4dbeb8dd40aad5d740e49ca3461d2302" title=" " alt="" coords="247,139,393,181"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="448,163,393,163,393,157,448,157"/>
+<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="662,85,609,77,610,72,663,79"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="lisa_project/view/CameraSettingsDialog.h" name="lisa_project/view/CameraSettingsDialog.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="35,5,199,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,261,74,288"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,49,50,248,45,246,108,48"/>
+<area shape="rect" id="Node000003" href="$_camera_settings_controller_8h.html" title=" " alt="" coords="135,96,318,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,46,190,84,187,88,141,50"/>
+<area shape="rect" id="Node000004" href="$_base_controller_8h.html" title=" " alt="" coords="102,187,220,213"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="211,141,183,176,178,173,207,138"/>
+<area shape="rect" id="Node000007" href="$_event_8h.html" title=" " alt="" coords="244,187,320,213"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="243,138,267,172,263,175,238,141"/>
+<area shape="rect" id="Node000008" href="$_camera_config_8h.html" title=" " alt="" coords="344,187,508,213"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="279,137,382,178,380,183,277,142"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="141,216,75,255,72,251,138,212"/>
+<area shape="rect" id="Node000005" href="$_my_app_interface_8h.html" title=" " alt="" coords="98,261,232,288"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="164,214,166,246,161,246,159,214"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="256,261,309,288"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="183,212,249,251,246,255,181,216"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="285,214,285,246,280,246,280,214"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="350,261,503,288"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="429,214,429,246,424,246,424,214"/>
+</map>

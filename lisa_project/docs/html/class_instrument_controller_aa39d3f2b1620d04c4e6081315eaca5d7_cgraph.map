@@ -1,0 +1,17 @@
+<map id="InstrumentController::initInstrument" name="InstrumentController::initInstrument">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,73,143,116"/>
+<area shape="rect" id="Node000002" href="$class_instrument.html#a87ef5d34cf15ca32b2f0f8fd90c4ac25" title=" " alt="" coords="211,5,360,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,70,190,41,212,34,214,39,192,47,122,75"/>
+<area shape="rect" id="Node000003" href="$class_base_controller.html#a3542c6fec2da9a79c1cf8039a371923e" title=" " alt="" coords="195,56,376,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,84,179,79,180,85,143,89"/>
+<area shape="rect" id="Node000007" href="$class_instrument.html#a9150b53b9e1bfd62d7c88a2f7b53e624" title=" " alt="" coords="204,107,367,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="143,100,189,106,188,111,143,106"/>
+<area shape="rect" id="Node000008" href="$class_instrument.html#acb7f982bd796fc7e0d2c0652e03a07db" title=" " alt="" coords="191,157,380,184"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="122,114,192,143,214,150,212,155,190,148,120,119"/>
+<area shape="rect" id="Node000004" href="$class_event_dispatcher.html#a1cb1500328547db1dcd7a40cde4ca24e" title=" " alt="" coords="428,27,600,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="376,55,412,50,413,56,376,60"/>
+<area shape="rect" id="Node000005" href="$class_event_dispatcher.html#a7df8ad4b21ddef37f601dd752075fb7c" title=" " alt="" coords="431,77,597,120"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="376,78,416,83,415,89,376,84"/>
+<area shape="rect" id="Node000006" href="$class_event.html#a36453ab5a21b660a61f2a0369e2689e8" title="Getter for event name." alt="" coords="648,85,762,112"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="597,96,633,96,633,101,597,101"/>
+</map>

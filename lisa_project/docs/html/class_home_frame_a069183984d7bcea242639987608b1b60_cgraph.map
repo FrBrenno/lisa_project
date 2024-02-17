@@ -1,0 +1,11 @@
+<map id="HomeFrame::HomeFrame" name="HomeFrame::HomeFrame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,177,57"/>
+<area shape="rect" id="Node000002" href="$class_home_frame.html#a23a5f2b639ef438bf2a92a1e7498e27b" title=" " alt="" coords="225,31,399,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,41,209,41,209,47,177,47"/>
+<area shape="rect" id="Node000003" href="$class_base_controller.html#a68041fa87d07e7ba9afaba6b5afd64de" title=" " alt="" coords="447,5,656,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="399,32,431,29,432,34,400,37"/>
+<area shape="rect" id="Node000004" href="$class_home_frame.html#aa674bf5b1f855e4f45e119802043254c" title=" " alt="" coords="475,56,628,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="400,51,460,57,460,62,399,56"/>
+<area shape="rect" id="Node000005" href="$class_home_frame.html#a01e490a2993fa1f9d6e546cdc1685b89" title=" " alt="" coords="704,56,875,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="629,67,689,67,689,72,629,72"/>
+</map>

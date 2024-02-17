@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cameraconfig_0',['CameraConfig',['../class_camera_config.html',1,'']]]
+  ['basecontroller_0',['BaseController',['../class_base_controller.html',1,'']]]
 ];
