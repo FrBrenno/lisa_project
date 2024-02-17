@@ -7,9 +7,9 @@
  * @class HomeFrameController.
  * @brief This controller manages HomeFrame view responsible for the main window of the software.
  */
-class HomeFrameController: public BaseController{
+class HomeFrameController : public BaseController{
 public:
-	HomeFrameController(MyAppInterface* main, bool is_wfs_connected);
+	HomeFrameController(MyAppInterface* main, WfsApiService* wfsApiService);
 
 	/**
 	 * Publishes an InstrumentSelectionEvent.

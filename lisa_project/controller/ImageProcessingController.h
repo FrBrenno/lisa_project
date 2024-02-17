@@ -6,7 +6,7 @@
 class ImageProcessingController: public BaseController
 {
 public:
-	ImageProcessingController(MyAppInterface* main, bool is_wfs_connected);
+	ImageProcessingController(MyAppInterface* main, WfsApiService* wfsApiService);
 
 	unsigned char* processImage(unsigned char* image_buffer, int rows, int cols);
 };

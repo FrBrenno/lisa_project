@@ -26,7 +26,7 @@ class MlaController: public BaseController {
 	 */
 	void HandleMlaSelected();
 public:
-	MlaController(MyAppInterface* main, bool is_wfs_connected);
+	MlaController(MyAppInterface* main, WfsApiService* wfsApiService);
 	~MlaController();
 
 	/**

@@ -2,9 +2,9 @@
 #include "../view/InstrumentSelectionDialog.h"
 #include "../EventDispatcher.h"
 
-HomeFrameController::HomeFrameController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected)
+HomeFrameController::HomeFrameController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -14,7 +14,6 @@ HomeFrameController::HomeFrameController(MyAppInterface* main, bool is_wfs_conne
 void HomeFrameController::onInstrumentSelection(wxWindow* parent) 
 {
 	Event instrumentSelectionEvent("InstrumentSelection");
-
 	EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
 }
 

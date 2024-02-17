@@ -160,6 +160,7 @@
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
     <ClCompile Include="view\MlaSelectionDialog.cpp" />
+    <ClCompile Include="wfsApiService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\BaseController.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
     <ClInclude Include="view\MlaSelectionDialog.h" />
+    <ClInclude Include="wfsApiService.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png" />

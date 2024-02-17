@@ -8,6 +8,8 @@
 #include "controller/MlaController.h"
 #include "controller/ImageController.h"
 #include "controller/CameraSettingsController.h"
+#include <wfsApiService.h>
+
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -19,11 +21,12 @@
  */
 class MyApp : public wxApp, MyAppInterface
 {
-    bool is_wfs_connected = false; // Test API connectivity
+    
+    WfsApiService* wfsApiService;
 
     //=== Controllers ===//
 
-    HomeFrameController* homeFrameController;
+    HomeFrameController * homeFrameController;
     InstrumentController* instrumentController;
     MlaController* mlaController;
     ImageController* imageController;
@@ -37,5 +40,4 @@ public:
 
     virtual bool OnInit();    
     void check_api_connection() override;
-    void change_api_status();
 };

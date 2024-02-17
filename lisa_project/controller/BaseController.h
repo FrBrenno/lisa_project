@@ -3,12 +3,13 @@
 #include "wx/wx.h"
 #include "../MyAppInterface.h"
 #include <string>
+#include <wfsApiService.h>
 
 
 class BaseController{
 protected:
 	MyAppInterface* app;
-	bool is_wfs_connected;
+	WfsApiService* wfsApiService;
 	/**
 		 * Handles error messages.
 		 *
@@ -19,11 +20,10 @@ protected:
 
 public:
 
-	BaseController(MyAppInterface* main, bool is_wfs_connected);
+	BaseController(MyAppInterface* main, WfsApiService* wfsApiService);
 	
 	virtual void onOK();
 	virtual void onClose();
 
 	bool isWfsConnected() const;
-	void setWfsConnected(bool* isWfsConnected);
 };

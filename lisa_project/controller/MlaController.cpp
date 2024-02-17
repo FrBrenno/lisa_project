@@ -3,7 +3,7 @@
 #include "../EventDispatcher.h"
 #include "wx/wx.h"
 
-MlaController::MlaController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected) {
+MlaController::MlaController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService) {
 	this->selectMla = new Mla();
 	this->err = 0;
 	
@@ -22,7 +22,7 @@ MlaController::~MlaController() {
 
 void MlaController::HandleMlaSelection(const Event& event) 
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -45,7 +45,7 @@ void MlaController::HandleMlaSelected() {
 
 void MlaController::populateMlaList(wxListBox* list) 
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -90,7 +90,7 @@ void MlaController::populateMlaList(wxListBox* list)
 
 void MlaController::onMlaSelected(int selectedIndex) 
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;

@@ -26,7 +26,7 @@ class InstrumentController: public BaseController{
 	void HandleMlaSelected(const Event& event);
 
 public:
-	InstrumentController(MyAppInterface* main, bool is_wfs_connected);
+	InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService);
 	~InstrumentController();
 
 	std::string getInstrumentName();

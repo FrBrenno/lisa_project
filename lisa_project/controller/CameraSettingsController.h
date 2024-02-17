@@ -9,7 +9,7 @@ class CameraSettingsController : public BaseController
 	CameraConfig* cameraConfig;
 
 public:
-	CameraSettingsController(MyAppInterface* main, bool is_wfs_connected);
+	CameraSettingsController(MyAppInterface* main, WfsApiService* wfsApiService);
 
 	void handleSettingsSelection(const Event& event);
 

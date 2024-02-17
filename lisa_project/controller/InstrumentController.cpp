@@ -3,7 +3,7 @@
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Settings.h"
 
-InstrumentController::InstrumentController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected)
+InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->err = VI_SUCCESS;
 	this->instrumentCount = 0;
@@ -28,7 +28,7 @@ InstrumentController::~InstrumentController()
 
 void InstrumentController::HandleInstrumentSelection(const Event& event)
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -42,7 +42,7 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 void InstrumentController::HandleMlaSelected(const Event& event)
 {
 	// REFACTOR IT
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -54,7 +54,7 @@ void InstrumentController::HandleMlaSelected(const Event& event)
 }
 
 void InstrumentController::mlaConfiguration() {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -72,7 +72,7 @@ void InstrumentController::mlaConfiguration() {
 
 void InstrumentController::populateInstrumentList(wxListBox* list)
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -115,7 +115,7 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 
 void InstrumentController::onInstrumentSelected(int selectedIndex)
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -157,7 +157,7 @@ void InstrumentController::onClose(){
 
 void InstrumentController::reviseDrive() 
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -183,7 +183,7 @@ void InstrumentController::reviseDrive()
 
 void InstrumentController::initInstrument(ViRsrc resourceName) 
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -221,7 +221,7 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 
 void InstrumentController::cameraConfiguration()
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -263,7 +263,7 @@ void InstrumentController::cameraConfiguration()
 
 void InstrumentController::closeInstrument()
 {
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;

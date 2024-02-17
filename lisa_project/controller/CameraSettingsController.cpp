@@ -3,7 +3,7 @@
 #include "../view/CameraSettingsDialog.h"
 #include "lib/thorlabs_api/WFS.h"
 
-CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is_wfs_connected) :  BaseController(main, is_wfs_connected)
+CameraSettingsController::CameraSettingsController(MyAppInterface* main, WfsApiService* wfsApiService) :  BaseController(main, wfsApiService)
 {
 	this->cameraConfig = new CameraConfig();
 	this->cameraConfig->setDefault();
@@ -14,7 +14,7 @@ CameraSettingsController::CameraSettingsController(MyAppInterface* main, bool is
 void CameraSettingsController::handleSettingsSelection(const Event& event)
 {
 	/*
-	if(!is_wfs_connected){
+	if(!this->isWfsConnected()){
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;

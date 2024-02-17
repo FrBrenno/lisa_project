@@ -7,6 +7,7 @@ wxIMPLEMENT_APP(MyApp);
 
 MyApp::~MyApp()
 {
+    delete wfsApiService;
 	delete homeFrameController;
 	delete instrumentController;
 	delete mlaController;
@@ -20,14 +21,18 @@ bool MyApp::OnInit()
     wxImage::AddHandler(new wxPNGHandler);
 
     //=== WFS API initialization ===//
-    check_api_connection();
+    this->wfsApiService = new WfsApiService();
+    if (!this->wfsApiService->isApiConnectionActive())
+    {
+		check_api_connection();
+	}
 
     //=== Controller initialization ===//
 
-    this->homeFrameController = new HomeFrameController(this, this->is_wfs_connected);
-    this->instrumentController = new InstrumentController(this, this->is_wfs_connected);
-    this->mlaController = new MlaController(this, this->is_wfs_connected);
-    this->imageController = new ImageController(this, this->is_wfs_connected, this->instrumentController->getInstrument());
+    this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
+    this->instrumentController = new InstrumentController(this, this->wfsApiService);
+    this->mlaController = new MlaController(this, this->wfsApiService);
+    this->imageController = new ImageController(this, this->wfsApiService, this->instrumentController->getInstrument());
 
     //=== View initialization ===//
 
@@ -35,9 +40,11 @@ bool MyApp::OnInit()
     homeFrame->addListener(this->imageController);
     homeFrame->Show(true);
     
-    if (is_wfs_connected)
+    if (this->wfsApiService->isApiConnectionActive())
     {
-        EventDispatcher::Instance().PublishEvent(Event("InstrumentSelection"));
+        //EventDispatcher::Instance().PublishEvent(Event("InstrumentSelection"));
+        // calls directly InstrumentController::onInstrumentSelection.
+        // because the logic will be sequential and then, instrumentName is well defined.
         homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     }
     
@@ -51,27 +58,17 @@ void MyApp::check_api_connection()
 
     for (int tryCount = 1; tryCount <= maxTries; ++tryCount)
     {
-        ViInt32 instr_count = VI_NULL;
-        int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count);
-
-        if (err == VI_SUCCESS)
+        if (this->wfsApiService->isApiConnectionActive())
         {
-            this->is_wfs_connected = true;
-            change_api_status();
             wxBusyInfo busyInfo(wxString::Format("Connected to API"));
             wxMilliSleep(timeoutMillis / 2);
-            return;
-        }
+			return;
+		}
 
         wxBusyInfo busyInfo(wxString::Format("Connecting to API... Attempt %d of %d", tryCount, maxTries));
         wxMilliSleep(timeoutMillis);
     }
 
-    this->is_wfs_connected = false;
     wxMessageBox("Could not connect to API. Please check connection and try again.", "Error", wxOK | wxICON_ERROR);
 }
 
-void MyApp::change_api_status()
-{
-	EventDispatcher::Instance().PublishEvent(Event("ApiStatusChanged", (void*)&this->is_wfs_connected));
-}

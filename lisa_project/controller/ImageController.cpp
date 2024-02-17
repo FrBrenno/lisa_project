@@ -4,7 +4,7 @@
 
 // TODO: When camera settings change the CameraSettingsController should be notify this class, but it does not.
 
-ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, Instrument* instrument) : BaseController(main, is_wfs_connected)
+ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService, Instrument* instrument) : BaseController(main, wfsApiService)
 {
 	this->instrument = instrument;
 	this->err = 0;
@@ -13,8 +13,8 @@ ImageController::ImageController(MyAppInterface* main, bool is_wfs_connected, In
 	this->imageBuffer = VI_NULL;
 	this->rgbBuffer = VI_NULL;
 	this->image = new wxImage();
-	this->cameraSettingsController = new CameraSettingsController(this->app, this->is_wfs_connected);
-	this->imageProcessingController = new ImageProcessingController(this->app, this->is_wfs_connected);
+	this->cameraSettingsController = new CameraSettingsController(this->app, this->wfsApiService);
+	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 	this->imageProcessingEnabled = true;
 	this->cameraConfig = cameraSettingsController->getCameraConfig();
 
@@ -37,7 +37,7 @@ ImageController::~ImageController()
 
 void ImageController::takeImage(){
 	//Verifies if the api is connected before taking an image, if not, it will return
-	if (!is_wfs_connected) {
+	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		err = -1;
 		this->handleError(-1, "WFS is not connected");

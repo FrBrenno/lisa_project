@@ -1,6 +1,6 @@
 #include "ImageProcessingController.h"
 
-ImageProcessingController::ImageProcessingController(MyAppInterface* main, bool is_wfs_connected) : BaseController(main, is_wfs_connected)
+ImageProcessingController::ImageProcessingController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {}
 
 unsigned char* ImageProcessingController::processImage(unsigned char* image_buffer, int rows, int cols)
