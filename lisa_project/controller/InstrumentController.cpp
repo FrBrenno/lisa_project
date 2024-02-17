@@ -7,8 +7,8 @@
 InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->err = VI_SUCCESS;
-	this->instrumentCount = 0;
-	this->selectedInstrument = new Instrument();
+	this->instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
+	this->instrument = new Instrument();
 
 	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
 		[this](const Event& event) {
@@ -22,7 +22,7 @@ InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* 
 
 InstrumentController::~InstrumentController()
 {
-	delete selectedInstrument;
+	delete instrument;
 }
 
 //=== Event Handlers ===//
@@ -36,8 +36,11 @@ void InstrumentController::HandleInstrumentSelection(const Event& event)
 	}
 
 	// Launch InstrumentSelectionDialog view
-	InstrumentSelectionDialog* instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this); // Make this a attribute of the class to avoid creating a new one every time
-	instrumentSelectionDialog->ShowModal();
+	if (instrumentSelectionDialog != nullptr) {
+		instrumentSelectionDialog->ShowModal();
+		return;
+	}
+
 }
 
 void InstrumentController::HandleMlaSelected(const Event& event)
@@ -51,7 +54,7 @@ void InstrumentController::HandleMlaSelected(const Event& event)
 
 	// Get the reference to the selected MLA and set it into instrument attributes
 	Mla* selectedMla = (Mla*)event.getData();
-	this->selectedInstrument->setMla(selectedMla);
+	this->instrument->setMla(selectedMla);
 }
 
 void InstrumentController::mlaConfiguration() {
@@ -63,7 +66,7 @@ void InstrumentController::mlaConfiguration() {
 
 	// Publish MlaSelectionEvent in order to allow the user to select an MLA
 	// Normally, MlaController should handle this event.
-	Event mlaSelectionEvent("MlaSelection", (void*) this->selectedInstrument->getHandle());
+	Event mlaSelectionEvent("MlaSelection", (void*) this->instrument->getHandle());
 
 	EventDispatcher::Instance().PublishEvent(mlaSelectionEvent);
 	return;
@@ -123,7 +126,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		this->handleError(err, "Not able to get instrument's information");
 	}
 	else{
-		this->selectedInstrument->setDeviceId(device_id);
+		this->instrument->setDeviceId(device_id);
 
 		// Initialize instrument
 		this->initInstrument(resourceName);
@@ -137,7 +140,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 
 void InstrumentController::onClose(){
 	// If instrument is initialized, just close it
-	if (this->selectedInstrument->isInitialized()) 
+	if (this->instrument->isInitialized()) 
 	{
 		return;
 	}
@@ -156,7 +159,7 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 	}
 
 	// Variable initialization
-	ViSession* handle = this->selectedInstrument->getHandle();
+	ViSession* handle = this->instrument->getHandle();
 	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE],
 		serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
 
@@ -174,14 +177,14 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 			return;
 		}
 		else {
-			this->selectedInstrument->setInstrumentInfo(static_cast<std::string> (manufacturer_name),
+			this->instrument->setInstrumentInfo(static_cast<std::string> (manufacturer_name),
 				static_cast<std::string> (instrument_name),
 				static_cast<std::string> (serial_number_wfs),
 				static_cast<std::string> (serial_number_cam)
 			);
 		}
 	}
-	this->selectedInstrument->setInitialized(true);
+	this->instrument->setInitialized(true);
 }
 
 
@@ -193,13 +196,13 @@ void InstrumentController::cameraConfiguration()
 		return;
 	}
 
-	ViSession handle = *this->selectedInstrument->getHandle();
-	int device_id = this->selectedInstrument->getDeviceId();
+	ViSession handle = *this->instrument->getHandle();
+	int device_id = this->instrument->getDeviceId();
 
 	// If device is a WFS20
 	if (device_id & DEVICE_OFFSET_WFS20) {
-		ViInt32* spotsX = this->selectedInstrument->getSpotsX();
-		ViInt32* spotsY = this->selectedInstrument->getSpotsY();
+		ViInt32* spotsX = this->instrument->getSpotsX();
+		ViInt32* spotsY = this->instrument->getSpotsY();
 		if (err = WFS_ConfigureCam(handle,
 			SAMPLE_PIXEL_FORMAT,
 			SAMPLE_CAMERA_RESOL_WFS20,
@@ -235,20 +238,20 @@ void InstrumentController::closeInstrument()
 		return;
 	}
 
-	if (err = WFS_close(*this->selectedInstrument->getHandle())) {
-		delete this->selectedInstrument;
+	if (err = WFS_close(*this->instrument->getHandle())) {
+		delete this->instrument;
 		this->handleError(err, "Not able to close instrument");
 		return;
 	}
 	else {
-		this->selectedInstrument->setInitialized(false);
+		this->instrument->setInitialized(false);
 	}
 }
 
 void InstrumentController::onExit()
 {
 		// If instrument is initialized, just close it
-	if (this->selectedInstrument->isInitialized())
+	if (this->instrument->isInitialized())
 	{
 		this->closeInstrument();
 		return;
@@ -259,11 +262,11 @@ void InstrumentController::onExit()
 //=== Utility Functions ===//
 
 std::string InstrumentController::getInstrumentName() {
-	return this->selectedInstrument->getInstrumentName();
+	return this->instrument->getInstrumentName();
 }
 
 Instrument* InstrumentController::getInstrument() {
-	return this->selectedInstrument;
+	return this->instrument;
 }
 
 

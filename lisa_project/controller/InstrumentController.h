@@ -8,8 +8,8 @@
  * @brief This controller class is responsible for managing Instruments and their associated views.
  */
 class InstrumentController: public BaseController{
-	Instrument* selectedInstrument;
-	ViInt32 instrumentCount;
+	InstrumentSelectionDialog* instrumentSelectionDialog;
+	Instrument* instrument;
 	ViInt32 err;
 
 	/**
