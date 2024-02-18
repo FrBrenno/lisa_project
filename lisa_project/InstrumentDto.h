@@ -7,7 +7,7 @@ class InstrumentDto
 	ViInt32 in_use;
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
-	ViChar resourceName[WFS_BUFFER_SIZE];
+	ViRsrc resourceName[WFS_BUFFER_SIZE];
 
 	public:
 		InstrumentDto();

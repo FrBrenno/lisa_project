@@ -87,9 +87,14 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 
 	// New instrument list
 	std::vector<InstrumentDto> instruments;
-	this->wfsApiService->getInstrumentsList(&instruments);
-	int instrumentCount = instruments.size();
+	ViStatus status = this->wfsApiService->getInstrumentsList(&instruments);
+	if (status != VI_SUCCESS)
+	{
+		this->handleError(err, "Not able to get instruments list");
+		return;
+	}
 
+	int instrumentCount = instruments.size();
 	if (instrumentCount == 0)
 	{
 		// No instrument found
@@ -112,24 +117,22 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 void InstrumentController::onInstrumentSelected(int selectedIndex)
 {
 	if (!this->isWfsConnected()) {
-		// Call to main so it can try to connect to API
+		// API is not connected
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
 
-	ViInt32 device_id;
-	ViChar resourceName[WFS_BUFFER_SIZE];
+	InstrumentDto selectedInstrument;
+	ViStatus status = this->wfsApiService->getInstrumentInfo(&selectedInstrument, selectedIndex);
 
 	// Get information of selected instrument
-	if (err = WFS_GetInstrumentListInfo(VI_NULL, selectedIndex, &device_id, VI_NULL, VI_NULL, VI_NULL, resourceName))
+	if (status != VI_SUCCESS)
 	{
 		this->handleError(err, "Not able to get instrument's information");
 	}
 	else{
-		this->instrument->setDeviceId(device_id);
-
 		// Initialize instrument
-		this->initInstrument(resourceName);
+		this->initInstrument(selectedInstrument);
 		// MLA Selection
 		//this->mlaConfiguration();
 		// Camera Configuration
@@ -150,7 +153,7 @@ void InstrumentController::onClose(){
 }
 
 
-void InstrumentController::initInstrument(ViRsrc resourceName) 
+void InstrumentController::initInstrument(InstrumentDto instrumentDto)
 {
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
@@ -159,32 +162,20 @@ void InstrumentController::initInstrument(ViRsrc resourceName)
 	}
 
 	// Variable initialization
-	ViSession* handle = this->instrument->getHandle();
-	ViChar manufacturer_name[WFS_BUFFER_SIZE], instrument_name[WFS_BUFFER_SIZE],
-		serial_number_wfs[WFS_BUFFER_SIZE], serial_number_cam[WFS_BUFFER_SIZE];
+	Instrument* newInstrument = new Instrument();
+	ViStatus status = this->wfsApiService->initInstrument(instrumentDto, newInstrument);
 
-	// API call to initiate a instrument session (handle)
-	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, handle))
+	if (status != VI_SUCCESS)
 	{
-		this->handleError(err, "Not able to initialize instrument");
+		this->handleError(status, "Not able to initialize instrument");
+		delete newInstrument;  // Delete the instrument in case of failure
 		return;
 	}
-	else{
-		// Get instrument information
-		if (err = WFS_GetInstrumentInfo(*handle, manufacturer_name, instrument_name, serial_number_wfs, serial_number_cam))
-		{
-			this->handleError(err, "Not able to get instrument's information");
-			return;
-		}
-		else {
-			this->instrument->setInstrumentInfo(static_cast<std::string> (manufacturer_name),
-				static_cast<std::string> (instrument_name),
-				static_cast<std::string> (serial_number_wfs),
-				static_cast<std::string> (serial_number_cam)
-			);
-		}
+	else {
+		// If instrument is already initialized, just update it
+		delete this->instrument;
+		this->instrument = newInstrument;
 	}
-	this->instrument->setInitialized(true);
 }
 
 
@@ -238,8 +229,15 @@ void InstrumentController::closeInstrument()
 		return;
 	}
 
-	if (err = WFS_close(*this->instrument->getHandle())) {
-		delete this->instrument;
+	if (!this->instrument->isInitialized()) {
+		// Instrument is not initialized
+		wxMessageBox("No instrument is initialized.", "INFO", wxOK | wxICON_INFORMATION);
+		return;
+	}
+
+	ViStatus status = this->wfsApiService->closeInstrument(this->instrument->getHandle());
+
+	if (status != VI_SUCCESS) {
 		this->handleError(err, "Not able to close instrument");
 		return;
 	}

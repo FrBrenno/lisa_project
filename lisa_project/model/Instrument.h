@@ -10,18 +10,19 @@
  */
 class Instrument{
 	// Instrument Parameters
-	int device_id;
+	bool is_initialized;
 	ViSession handle;
 	ViInt32 status;
-	bool is_initialized;
+	ViInt32 device_id;
+	ViRsrc resourceName[WFS_BUFFER_SIZE];
 
 	// WFS Parameters
-	std::string version_wfs_driver;
-	std::string version_cam_driver;
-	std::string manufacturer_name;
-	std::string instrument_name;
-	std::string serial_number_wfs;
-	std::string serial_number_cam;	
+	ViChar version_wfs_driver[WFS_BUFFER_SIZE];
+	ViChar version_cam_driver[WFS_BUFFER_SIZE];
+	ViChar manufacturer_name[WFS_BUFFER_SIZE];
+	ViChar instrument_name[WFS_BUFFER_SIZE];
+	ViChar serial_number_wfs[WFS_BUFFER_SIZE];
+	ViChar serial_number_cam[WFS_BUFFER_SIZE];
 
 	// MLA Parameters
 	Mla* mla;
@@ -31,21 +32,28 @@ class Instrument{
 	ViInt32 spots_y;
 
 public:
+	Instrument();
+	~Instrument();
+
+	// Setters
 	void setDeviceId(int device_id);
-	void setWfsDriverVersion(std::string version_wfs_driver);
-	void setCamDriverVersion(std::string version_cam_driver);
-	void setInstrumentInfo(std::string manufacturer_name, std::string instrument_name, std::string serial_number_wfs, std::string serial_number_cam);
+	void setHandle(ViSession handle);
+	void setWfsDriverVersion(ViChar* wfs_driver_version);
+	void setCamDriverVersion(ViChar* cam_driver_version);
+	void setManufacturerName(ViChar* manufacturer_name);
+	void setInstrumentName(ViChar* instrument_name);
+	void setSerialNumberWfs(ViChar* serial_number_wfs);
+	void setSerialNumberCam(ViChar* serial_number_cam);
+
 	void setInitialized(bool is_initialized);
 	void setMla(Mla* mla);
 	void setStatus(ViInt32 status);
 
+	// Getters
 	bool isInitialized();
-	std::string getInstrumentName();
-	ViSession* getHandle();
 	int getDeviceId();
-	ViInt32* getSpotsX();
-	ViInt32* getSpotsY();
-	ViInt32 getStatus();
-
-
+	const ViSession getHandle();
+	const ViChar* getInstrumentName();
+	const ViInt32* getSpotsX();
+	const ViInt32* getSpotsY();
 };

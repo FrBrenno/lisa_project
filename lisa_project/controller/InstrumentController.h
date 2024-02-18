@@ -49,12 +49,7 @@ public:
 	 * 
 	 * @param resourceName Resource name of the instrument.
 	 */
-	void initInstrument(ViRsrc resourceName);
-	/**
-	 * Make a driver revision in order to verify driver version. Used to check API connexion.
-	 * 
-	 */
-	void reviseDrive();
+	void initInstrument(InstrumentDto instrumentDto);
 	/**
 	 * Uses Thorslab API to configure the camera.
 	 * 
