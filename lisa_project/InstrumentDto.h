@@ -7,7 +7,7 @@ class InstrumentDto
 	ViInt32 in_use;
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
-	ViRsrc resourceName[WFS_BUFFER_SIZE];
+	ViRsrc* resourceName;
 
 	public:
 		InstrumentDto();
@@ -17,11 +17,11 @@ class InstrumentDto
 		ViInt32 getInUse() const;
 		const ViChar* getInstrName() const;
 		const ViChar* getSerNr() const;
-		const ViChar* getResourceName() const;
+		const ViRsrc* getResourceName() const;
 		void setDeviceId(ViInt32 device_id);
 		void setInUse(ViInt32 in_use);
 		void setInstrName(ViChar* instr_name);
 		void setSerNr(ViChar* serNr);
-		void setResourceName(ViChar* resourceName);
+		void setResourceName(ViRsrc* resourceName);
 };
 

@@ -1,26 +1,27 @@
 #include "MlaController.h"
-#include "../view/MlaSelectionDialog.h"
 #include "../EventDispatcher.h"
+#include "../view/MlaSelectionDialog.h"
 #include "wx/wx.h"
+#include <MlaDto.h>
 
 MlaController::MlaController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService) {
-	this->selectMla = new Mla();
+	this->mla = new Mla();
 	this->err = 0;
 	
 	// This class should be aware whenever the user wants to select an MLA.
 	EventDispatcher::Instance().SubscribeToEvent("MlaSelection",
 		[this](const Event& event) {
-			HandleMlaSelection(event);
+			HandleMlaSelection();
 		});
 }
 
 MlaController::~MlaController() {
-	delete this->selectMla;
+	delete this->mla;
 }
 
 //=== Event Handler ===//
 
-void MlaController::HandleMlaSelection(const Event& event) 
+void MlaController::HandleMlaSelection() 
 {
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
@@ -28,15 +29,13 @@ void MlaController::HandleMlaSelection(const Event& event)
 		return;
 	}
 
-	// Generate the view and handle Mla Selection
-	this->selectMla->setHandle(*(ViSession*)event.getData());
-	MlaSelectionDialog* mlaSelectionDialog = new MlaSelectionDialog(nullptr, this);
-	mlaSelectionDialog->ShowModal();
+	MlaSelectionDialog dialog(nullptr, this);
+	dialog.ShowModal();
 }
 
 void MlaController::HandleMlaSelected() {
 	// Publish the selected MLA to whatever controller that needs it.
-	Event mlaSelectedEvent("MlaSelected", (void*)this->selectMla);
+	Event mlaSelectedEvent("MlaSelected", (void*)this->mla);
 
 	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
 }
@@ -51,41 +50,33 @@ void MlaController::populateMlaList(wxListBox* list)
 		return;
 	}
 
-	ViSession handle = this->selectMla->getHandle();
-	ViInt32* mla_count = this->selectMla->getMlaCount();
+	ViSession handle = this->app->getInstrumentHandle();
+	std::vector<MlaDto> mlas;
+	ViStatus status = this->wfsApiService->getMlaList(handle, &mlas);
 
-	// Get the number of MLAs
-	if (err = WFS_GetMlaCount(handle, mla_count)) {
-		this->handleError(err, "Not able to get the count of MLAs");
+	if (status != VI_SUCCESS) {
+		this->handleError(status, "Not able to get MLA list");
+		return;
 	}
 
-	// If there is no MLA, then show error message
-	if (*mla_count == 0) {
+	int mlaCount = mlas.size();
+	if (mlaCount == 0) {
+		// If there is no MLA, then show error message
 		wxMessageBox("No MLA found", "PCV - Error", wxOK | wxICON_ERROR);
 		return;
 	}
 	else {
-		ViChar mla_name[WFS_BUFFER_SIZE];
-		ViReal64 cam_pitchm, lenslet_pitchm;
-
-		for (int i = 0; i < *mla_count; i++) {
-			if (err = WFS_GetMlaData(handle,
-				i,
-				mla_name,
-				&cam_pitchm,
-				&lenslet_pitchm,
-				VI_NULL,
-				VI_NULL,
-				VI_NULL,
-				VI_NULL,
-				VI_NULL))
-			{
-				this->handleError(err, "Not able to get MLA data");
-				return;
-			}
-			list->Append(wxString::Format("%2d %s CamPitch=%6.3f LensletPitch=%8.3f", i, mla_name, cam_pitchm, lenslet_pitchm));
+		int i = 0;
+		for (const auto& mla : mlas) {
+			list->Append(wxString::Format("%2d %s CamPitchm=%6.3f LensletPitch=%8.3f", 
+				i, 
+				mla.getMlaName(),
+				mla.getCamPitchm(),
+				mla.getLensletPitchm()));
+			++i;
 		}
 	}
+	
 }
 
 void MlaController::onMlaSelected(int selectedIndex) 
@@ -94,52 +85,22 @@ void MlaController::onMlaSelected(int selectedIndex)
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
-	}
+	} 
 
-	// Setup the selected MLA
-	ViStatus handle = this->selectMla->getHandle();
-	if (err = WFS_SelectMla(handle, selectedIndex))
-	{
-		this->handleError(err, "Not able to select MLA");
+	ViSession handle = this->app->getInstrumentHandle();
+	ViStatus status = this->wfsApiService->getMlaInfo(handle, selectedIndex, this->mla);
+	if (status != VI_SUCCESS) {
+		this->handleError(status, "Not able to get MLA info");
+		return;
 	}
-	
-	// Get MLA data
-	ViChar mla_name[WFS_BUFFER_SIZE];
-	ViReal64 cam_pitchm, lenslet_pitchm, spot_offset_x,
-		spot_offset_y, lenslet_fm, grd_corr_0, grd_corr_45;
-	if (err = WFS_GetMlaData(handle,
-		selectedIndex,
-		mla_name,
-		&cam_pitchm,
-		&lenslet_pitchm,
-		&spot_offset_x,
-		&spot_offset_y,
-		&lenslet_fm,
-		&grd_corr_0,
-		&grd_corr_45))
-	{
-		this->handleError(err, "Not able to get MLA data");
-	}
-
-	this->selectMla->setMlaInfo(
-		mla_name,
-		cam_pitchm,
-		lenslet_pitchm,
-		spot_offset_x,
-		spot_offset_y,
-		lenslet_fm,
-		grd_corr_0,
-		grd_corr_45
-	);
-
-	HandleMlaSelected();
+	this->mla->setInitialized(true);
 }
 
 
 void MlaController::onClose() {
 	// When the user closes the view, check if the MLA is selected.
 	// Users should be able to close the view without selecting an MLA.
-	if (this->selectMla->isInitialized()) {
+	if (this->mla->isInitialized()) {
 		return;
 	}
 	wxMessageBox("No MLA selected", "PCV - Error", wxOK | wxICON_ERROR);

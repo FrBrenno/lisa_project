@@ -24,7 +24,7 @@ void BaseController::handleError(int code, std::string message){
 	}
 	else
 	{
-		strcpy(description, "");
+		strcpy_s(description, "");
 	}	
 	wxMessageBox(wxString::Format("%s\n\t%s", message, description), "PCV - Error", wxOK | wxICON_ERROR);
 }

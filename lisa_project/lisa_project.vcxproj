@@ -153,6 +153,7 @@
     <ClCompile Include="controller\MlaController.cpp" />
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="InstrumentDto.cpp" />
+    <ClCompile Include="MlaDto.cpp" />
     <ClCompile Include="model\CameraConfig.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
     <ClInclude Include="InstrumentDto.h" />
+    <ClInclude Include="MlaDto.h" />
     <ClInclude Include="model\CameraConfig.h" />
     <ClInclude Include="model\Instrument.h" />
     <ClInclude Include="model\Mla.h" />

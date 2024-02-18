@@ -9,7 +9,7 @@
 #include "controller/ImageController.h"
 #include "controller/CameraSettingsController.h"
 #include <wfsApiService.h>
-
+#include "MyAppInterface.h"
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
@@ -40,4 +40,6 @@ public:
 
     virtual bool OnInit();    
     void check_api_connection() override;
+    
+    ViSession getInstrumentHandle() override;
 };

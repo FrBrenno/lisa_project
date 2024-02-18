@@ -27,7 +27,7 @@ const ViChar* InstrumentDto::getSerNr() const
 	return this->serNr;
 }
 
-const ViChar* InstrumentDto::getResourceName() const
+const ViRsrc* InstrumentDto::getResourceName() const
 {
 	return this->resourceName;
 }
@@ -44,16 +44,16 @@ void InstrumentDto::setInUse(ViInt32 in_use)
 
 void InstrumentDto::setInstrName(ViChar* instr_name)
 {
-	strcpy(this->instr_name, instr_name);
+	strcpy_s(this->instr_name, instr_name);
 }
 
 void InstrumentDto::setSerNr(ViChar* serNr)
 {
-	strcpy(this->serNr, serNr);
+	strcpy_s(this->serNr, serNr);
 }
 
-void InstrumentDto::setResourceName(ViChar* resourceName)
+void InstrumentDto::setResourceName(ViRsrc* resourceName)
 {
-	strcpy(this->resourceName, resourceName);
+	this->resourceName = resourceName;
 }
 

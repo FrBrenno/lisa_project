@@ -3,27 +3,16 @@
 #include "../model/Instrument.h"
 #include "../Event.h"
 #include "BaseController.h"
+
 /**
  * @class InstrumentController.
  * @brief This controller class is responsible for managing Instruments and their associated views.
  */
 class InstrumentController: public BaseController{
-	InstrumentSelectionDialog* instrumentSelectionDialog;
 	Instrument* instrument;
 	ViInt32 err;
 
-	/**
-	 * Handles when a InstrumentSelectionEvent is published
-	 * 
-	 * @param event InstrumentSelectionEvent
-	 */
-	void HandleInstrumentSelection(const Event& event);
-	/**
-	 * Handles when a MlaSelectedEvent is published.
-	 * 
-	 * @param event MlaSelectedEvent
-	 */
-	void HandleMlaSelected(const Event& event);
+	
 
 public:
 	InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService);
@@ -49,18 +38,7 @@ public:
 	 * 
 	 * @param resourceName Resource name of the instrument.
 	 */
-	void initInstrument(InstrumentDto instrumentDto);
-	/**
-	 * Uses Thorslab API to configure the camera.
-	 * 
-	 */
-	void cameraConfiguration();
-	/**
-	 * Publishes an MlaSelectionEvent.
-	 * 
-	 */
-	void mlaConfiguration();
-	
+	void initInstrument(InstrumentDto instrumentDto);	
 	/**
 	 * Closes instrument API session.
 	 * 
@@ -70,4 +48,12 @@ public:
 	void onClose() override;
 
 	void onExit();
+
+	/**
+	 * Handles when a InstrumentSelectionEvent is published
+	 *
+	 */
+	void HandleInstrumentSelection();
+
+	const ViSession getInstrumentHandle();
 };

@@ -1,18 +1,17 @@
 #include "InstrumentController.h"
 #include "../EventDispatcher.h"
-#include "../view/InstrumentSelectionDialog.h"
 #include "../model/Settings.h"
+#include "../view/InstrumentSelectionDialog.h"
 #include <InstrumentDto.h>
 
 InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->err = VI_SUCCESS;
-	this->instrumentSelectionDialog = new InstrumentSelectionDialog(nullptr, this);
 	this->instrument = new Instrument();
 
 	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
 		[this](const Event& event) {
-			HandleInstrumentSelection(event);
+			HandleInstrumentSelection();
 		});
 	EventDispatcher::Instance().SubscribeToEvent("Exit",
 		[this](const Event& event) {
@@ -27,49 +26,16 @@ InstrumentController::~InstrumentController()
 
 //=== Event Handlers ===//
 
-void InstrumentController::HandleInstrumentSelection(const Event& event)
+void InstrumentController::HandleInstrumentSelection()
 {
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
-
 	// Launch InstrumentSelectionDialog view
-	if (instrumentSelectionDialog != nullptr) {
-		instrumentSelectionDialog->ShowModal();
-		return;
-	}
-
-}
-
-void InstrumentController::HandleMlaSelected(const Event& event)
-{
-	// REFACTOR IT
-	if (!this->isWfsConnected()) {
-		// Call to main so it can try to connect to API
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
-
-	// Get the reference to the selected MLA and set it into instrument attributes
-	Mla* selectedMla = (Mla*)event.getData();
-	this->instrument->setMla(selectedMla);
-}
-
-void InstrumentController::mlaConfiguration() {
-	if (!this->isWfsConnected()) {
-		// Call to main so it can try to connect to API
-		this->handleError(-1, "WFS is not connected");
-		return;
-	}
-
-	// Publish MlaSelectionEvent in order to allow the user to select an MLA
-	// Normally, MlaController should handle this event.
-	Event mlaSelectionEvent("MlaSelection", (void*) this->instrument->getHandle());
-
-	EventDispatcher::Instance().PublishEvent(mlaSelectionEvent);
-	return;
+	InstrumentSelectionDialog dialog(nullptr, this);
+	dialog.ShowModal();
 }
 
 //=== WFS API Functions ===//
@@ -133,10 +99,6 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 	else{
 		// Initialize instrument
 		this->initInstrument(selectedInstrument);
-		// MLA Selection
-		//this->mlaConfiguration();
-		// Camera Configuration
-		this->cameraConfiguration();
 	}
 
 }
@@ -178,7 +140,7 @@ void InstrumentController::initInstrument(InstrumentDto instrumentDto)
 	}
 }
 
-
+/**  
 void InstrumentController::cameraConfiguration()
 {
 	if (!this->isWfsConnected()) {
@@ -220,6 +182,7 @@ void InstrumentController::cameraConfiguration()
 		return;
 	}
 }
+*/
 
 void InstrumentController::closeInstrument()
 {
@@ -267,4 +230,10 @@ Instrument* InstrumentController::getInstrument() {
 	return this->instrument;
 }
 
-
+const ViSession InstrumentController::getInstrumentHandle() {
+	if (this->instrument != nullptr && this->instrument->isInitialized()) {
+		return this->instrument->getHandle();
+	}
+	// Return a default value or handle not available indicator (e.g., VI_NULL)
+	return VI_NULL;
+}

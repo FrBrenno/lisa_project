@@ -1,8 +1,7 @@
 #ifndef MLA_H
 #define MLA_H
 
-#include <string>
-#include "lib/thorlabs_api/WFS.h"
+#include "lib/thorlabs_api/visatype.h"
 
 /**
  * @class Mla.
@@ -12,27 +11,41 @@ class Mla{
 	ViSession handle;
 	bool is_initialized;
 
-	ViInt32 mla_count;
-	int mla_selected;
-	int selected_mla_idx;
-	std::string mla_name;
-	double cam_pitch_um;
-	double lenslet_pitch_um;
-	double center_spot_offset_x;
-	double center_spot_offset_y;
-	double lenslet_f_um;
-	double grd_corr_0;
-	double grd_corr_45;
+	ViChar* mla_name;
+	ViReal64 cam_pitch_m;
+	ViReal64 lenslet_pitch_m;
+	ViReal64 center_spot_offset_x;
+	ViReal64 center_spot_offset_y;
+	ViReal64 lenslet_f_m;
+	ViReal64 grd_corr_0;
+	ViReal64 grd_corr_45;
+
 public:
 	Mla();
+	~Mla();
+	
 
-	ViInt32* getMlaCount();
-	ViSession getHandle();
-	bool isInitialized();
-
-	void setInitialized(bool is_initialized);
 	void setHandle(ViSession handle);
-	void setMlaInfo(ViChar* mla_name, ViReal64 cam_pitchm, ViReal64 lenslet_pitchm, ViReal64 spot_offset_x, ViReal64 spot_offset_y, ViReal64 lenslet_fm, ViReal64 grd_corr_0, ViReal64 grd_corr_45);
+	void setMlaName(ViChar* mla_name);
+	void setCamPitchm(ViReal64 cam_pitch_m);
+	void setLensletPitchm(ViReal64 lenslet_pitch_m);
+	void setCenterSpotOffsetX(ViReal64 center_spot_offset_x);
+	void setCenterSpotOffsetY(ViReal64 center_spot_offset_y);
+	void setLensletFm(ViReal64 lenslet_f_m);
+	void setGrdCorr0(ViReal64 grd_corr_0);
+	void setGrdCorr45(ViReal64 grd_corr_45);
+	void setInitialized(bool is_initialized);
+
+	ViSession getHandle() const;
+	ViChar* getMlaName() const;
+	ViReal64 getCamPitchm() const;
+	ViReal64 getLensletPitchm() const;
+	ViReal64 getCenterSpotOffsetX() const;
+	ViReal64 getCenterSpotOffsetY() const;
+	ViReal64 getLensletFm() const;
+	ViReal64 getGrdCorr0() const;
+	ViReal64 getGrdCorr45() const;
+	bool isInitialized() const;
 };
 
 #endif

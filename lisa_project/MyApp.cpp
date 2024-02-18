@@ -7,11 +7,11 @@ wxIMPLEMENT_APP(MyApp);
 
 MyApp::~MyApp()
 {
+    delete imageController;
+    delete mlaController;
+    delete instrumentController;
+    delete homeFrameController;
     delete wfsApiService;
-	delete homeFrameController;
-	delete instrumentController;
-	delete mlaController;
-	delete imageController;
     delete homeFrame;
 }
 
@@ -42,9 +42,8 @@ bool MyApp::OnInit()
     
     if (this->wfsApiService->isApiConnectionActive())
     {
-        //EventDispatcher::Instance().PublishEvent(Event("InstrumentSelection"));
-        // calls directly InstrumentController::onInstrumentSelection.
-        // because the logic will be sequential and then, instrumentName is well defined.
+        this->instrumentController->HandleInstrumentSelection();
+        this->mlaController->HandleMlaSelection();
         homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     }
     
@@ -72,3 +71,7 @@ void MyApp::check_api_connection()
     wxMessageBox("Could not connect to API. Please check connection and try again.", "Error", wxOK | wxICON_ERROR);
 }
 
+ViSession MyApp::getInstrumentHandle()
+{
+	return this->instrumentController->getInstrument()->getHandle();
+}

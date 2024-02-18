@@ -52,12 +52,12 @@ void ImageController::takeImage(){
 		// Take a camera image with auto exposure
 		for (int i = 0; i < cameraConfig->getNbImageReadings(); i++)
 		{
-			if (err = WFS_TakeSpotfieldImageAutoExpos(*instrument->getHandle(), exposureTime, gain)) {
+			if (err = WFS_TakeSpotfieldImageAutoExpos(instrument->getHandle(), exposureTime, gain)) {
 				this->handleError(err, "Error while taking spotfield image");
 				return;
 			}
 			ViInt32 status = VI_NULL;
-			if (err = WFS_GetStatus(*instrument->getHandle(), &status))
+			if (err = WFS_GetStatus(instrument->getHandle(), &status))
 				this->handleError(err, "Error while getting instrument status");
 			if (instrument->getStatus() & WFS_STATBIT_PTH)
 				this->handleError(-1, "Image exposure is too high");
@@ -81,7 +81,7 @@ void ImageController::takeImage(){
 			}
 		}
 		// Get last image
-        if (err = WFS_GetSpotfieldImage(*instrument->getHandle(), &imageBuffer, &rows, &cols)) {
+        if (err = WFS_GetSpotfieldImage(instrument->getHandle(), &imageBuffer, &rows, &cols)) {
             this->handleError(err, "Error while getting spotfield image");
             return;
         }

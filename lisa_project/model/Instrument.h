@@ -24,9 +24,6 @@ class Instrument{
 	ViChar serial_number_wfs[WFS_BUFFER_SIZE];
 	ViChar serial_number_cam[WFS_BUFFER_SIZE];
 
-	// MLA Parameters
-	Mla* mla;
-
 	// Camera Parameters
 	ViInt32 spots_x;
 	ViInt32 spots_y;
@@ -46,14 +43,19 @@ public:
 	void setSerialNumberCam(ViChar* serial_number_cam);
 
 	void setInitialized(bool is_initialized);
-	void setMla(Mla* mla);
 	void setStatus(ViInt32 status);
 
 	// Getters
-	bool isInitialized();
+	bool isInitialized() const;
 	int getDeviceId();
-	const ViSession getHandle();
-	const ViChar* getInstrumentName();
-	const ViInt32* getSpotsX();
-	const ViInt32* getSpotsY();
+	ViSession getHandle() const;
+	const ViChar* getInstrumentName() const;
+	const ViInt32* getSpotsX() const;
+	const ViInt32* getSpotsY() const;
+	const ViChar* getWfsDriverVersion() const;
+	const ViChar* getCamDriverVersion() const;
+	const ViChar* getManufacturerName() const;
+	const ViChar* getSerialNumberWfs() const;
+	const ViChar* getSerialNumberCam() const;
+	ViInt32 getStatus() const;
 };
