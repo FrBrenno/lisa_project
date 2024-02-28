@@ -147,6 +147,8 @@ void CameraSettingsDialog::OnOK(wxCommandEvent& event)
 	}
 
     CameraConfig* cameraConfig = new CameraConfig();
+    // FIXME: setCameraConfig is too big, consider refactoring.
+    // FIXME: maybe use a DTO to pass the parameters to the function
     cameraConfig->setCameraConfig(resInt,
         wxAtof(exposureTimeCtrl->GetValue()),
         wxAtof(gainCtrl->GetValue()),
