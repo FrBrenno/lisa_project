@@ -11,22 +11,32 @@ CameraSettingsDialog::CameraSettingsDialog(wxWindow* parent, CameraSettingsContr
     resolutionListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayString(), wxLB_SINGLE);
     nbImageReadingCtrl = new wxTextCtrl(this, wxID_ANY);
     exposureTimeCtrl = new wxTextCtrl(this, wxID_ANY);
+    exposureTimeCtrl->Enable(false);
     noiseCutLevelCtrl = new wxTextCtrl(this, wxID_ANY);
+    noiseCutLevelCtrl->Enable(false);
     gainCtrl = new wxTextCtrl(this, wxID_ANY, wxString::Format(wxT("%.2f"), 1.00));
     gainCtrl->Enable(false);
     blackLevelCtrl = new wxTextCtrl(this, wxID_ANY);
+    blackLevelCtrl->Enable(false);
     
     autoExposureButton = new wxCheckBox(this, ID_AUTO_EXPOSURE, wxT("Auto"));
+    autoExposureButton->Enable(false);
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoExposure, this, ID_AUTO_EXPOSURE);
+
     autoNoiseCutButton = new wxCheckBox(this, ID_AUTO_NOISE_CUT, wxT("Auto"));
+    autoNoiseCutButton->Enable(false);
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoNoiseCut, this, ID_AUTO_NOISE_CUT);
+
     autoBlackLevelButton = new wxCheckBox(this, ID_AUTO_BLACK_LEVEL, wxT("Auto"));
+    autoBlackLevelButton->Enable(false);
     Bind(wxEVT_CHECKBOX, &CameraSettingsDialog::OnAutoBlackLevel, this, ID_AUTO_BLACK_LEVEL);
 
    setDefaultButton = new wxButton(this, wxID_ANY, wxT("Set Default"));
    Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnSetDefault, this, setDefaultButton->GetId());
+
    cancelButton = new wxButton(this, wxID_ANY, wxT("Cancel"));
    Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnOK, this, cancelButton->GetId());
+
    okButton = new wxButton(this, wxID_ANY, wxT("OK"));
    Bind(wxEVT_BUTTON, &CameraSettingsDialog::OnOK, this, okButton->GetId());
 
@@ -88,9 +98,6 @@ void CameraSettingsDialog::loadCameraSettings(CameraConfig* cameraConfig)
     this->autoNoiseCutButton->SetValue(cameraConfig->isAutoNoiseCutLevel());
     this->autoBlackLevelButton->SetValue(cameraConfig->isAutoBlackLevel());
 
-    exposureTimeCtrl->Enable(!cameraConfig->isAutoExposure());
-    noiseCutLevelCtrl->Enable(!cameraConfig->isAutoNoiseCutLevel());
-    blackLevelCtrl->Enable(!cameraConfig->isAutoBlackLevel());
 }
 
 //=== Event Handlers ===//

@@ -34,6 +34,12 @@
     <Filter Include="Fichiers d%27en-tête\id">
       <UniqueIdentifier>{043226fd-0189-4021-977d-21fcaa420759}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Model\Dto">
+      <UniqueIdentifier>{e9553678-c93b-4945-a731-eb345df06780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Model\Dto">
+      <UniqueIdentifier>{13e89769-837f-4876-a342-08451bfde981}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyApp.cpp">
@@ -80,6 +86,18 @@
     </ClCompile>
     <ClCompile Include="view\MlaSelectionDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\ImageProcessingController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="WfsApiService.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MlaDto.cpp">
+      <Filter>Fichiers sources\Model\Dto</Filter>
+    </ClCompile>
+    <ClCompile Include="InstrumentDto.cpp">
+      <Filter>Fichiers sources\Model\Dto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +160,18 @@
     </ClInclude>
     <ClInclude Include="id\MenuID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\ImageProcessingController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="WfsApiService.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MlaDto.h">
+      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentDto.h">
+      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
