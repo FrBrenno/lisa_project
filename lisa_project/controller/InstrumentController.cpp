@@ -1,6 +1,5 @@
 #include "InstrumentController.h"
 #include "../EventDispatcher.h"
-#include "../model/Settings.h"
 #include "../view/InstrumentSelectionDialog.h"
 #include <InstrumentDto.h>
 

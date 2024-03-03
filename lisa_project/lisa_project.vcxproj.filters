@@ -51,15 +51,6 @@
     <ClCompile Include="controller\BaseController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="model\CameraConfig.cpp">
-      <Filter>Fichiers sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\CameraSettingsController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="view\CameraSettingsDialog.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
     <ClCompile Include="view\HomeFrame.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
@@ -87,9 +78,6 @@
     <ClCompile Include="view\MlaSelectionDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="controller\ImageProcessingController.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="WfsApiService.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -98,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="InstrumentDto.cpp">
       <Filter>Fichiers sources\Model\Dto</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\ImageProcessingController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,15 +103,6 @@
     </ClInclude>
     <ClInclude Include="controller\BaseController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="model\CameraConfig.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\CameraSettingsController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="view\CameraSettingsDialog.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
     <ClInclude Include="view\HomeFrame.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
@@ -149,9 +131,6 @@
     <ClInclude Include="view\MlaSelectionDialog.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
-    <ClInclude Include="model\Settings.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
     <ClInclude Include="MyAppInterface.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -161,9 +140,6 @@
     <ClInclude Include="id\MenuID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
     </ClInclude>
-    <ClInclude Include="controller\ImageProcessingController.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="WfsApiService.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -172,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="InstrumentDto.h">
       <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\ImageProcessingController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

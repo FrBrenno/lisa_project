@@ -50,12 +50,6 @@ void HomeFrameController::onConnectAPI(wxWindow* parent)
 	this->app->check_api_connection();
 }
 
-void HomeFrameController::onCameraSettings(wxWindow* parent)
-{
-	Event cameraSettingsSelectionEvent("CameraSettingsSelection");
-
-	EventDispatcher::Instance().PublishEvent(cameraSettingsSelectionEvent);
-}
 
 void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 {

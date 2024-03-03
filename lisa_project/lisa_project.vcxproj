@@ -145,7 +145,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="controller\BaseController.cpp" />
-    <ClCompile Include="controller\CameraSettingsController.cpp" />
     <ClCompile Include="controller\HomeFrameController.cpp" />
     <ClCompile Include="controller\ImageController.cpp" />
     <ClCompile Include="controller\ImageProcessingController.cpp" />
@@ -154,11 +153,9 @@
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="InstrumentDto.cpp" />
     <ClCompile Include="MlaDto.cpp" />
-    <ClCompile Include="model\CameraConfig.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
     <ClCompile Include="MyApp.cpp" />
-    <ClCompile Include="view\CameraSettingsDialog.cpp" />
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
     <ClCompile Include="view\MlaSelectionDialog.cpp" />
@@ -166,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\BaseController.h" />
-    <ClInclude Include="controller\CameraSettingsController.h" />
     <ClInclude Include="controller\HomeFrameController.h" />
     <ClInclude Include="controller\ImageController.h" />
     <ClInclude Include="controller\ImageProcessingController.h" />
@@ -178,13 +174,10 @@
     <ClInclude Include="id\MenuID.h" />
     <ClInclude Include="InstrumentDto.h" />
     <ClInclude Include="MlaDto.h" />
-    <ClInclude Include="model\CameraConfig.h" />
     <ClInclude Include="model\Instrument.h" />
     <ClInclude Include="model\Mla.h" />
-    <ClInclude Include="model\Settings.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="MyAppInterface.h" />
-    <ClInclude Include="view\CameraSettingsDialog.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
     <ClInclude Include="view\MlaSelectionDialog.h" />

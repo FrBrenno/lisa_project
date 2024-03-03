@@ -57,11 +57,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
 
-    // Setup Menu
-
-    wxMenu* menuSetup = new wxMenu;
-    menuSetup->Append(ID_SETUP_CAMERA_SETTINGS, "&Camera Settings", "Camera settings...");
-
     // Help Menu
 
     wxMenu* menuHelp = new wxMenu;
@@ -71,7 +66,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
     wxMenuBar* menuBar = new wxMenuBar;
     menuBar->Append(menuFile, "&File");
-    menuBar->Append(menuSetup, "&Setup");
     menuBar->Append(menuHelp, "&Help");
 
     SetMenuBar(menuBar);
@@ -86,7 +80,6 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
     Bind(wxEVT_MENU, &HomeFrame::OnCapture, this, ID_FILE_SAVE_SPOTFIELD_IMAGE);
     Bind(wxEVT_MENU, &HomeFrame::OnLoadImage, this, ID_FILE_LOAD_SPOTFIELD_IMAGE);
     Bind(wxEVT_MENU, &HomeFrame::OnConnectAPI, this, ID_FILE_CONNECT_API);
-    Bind(wxEVT_MENU, &HomeFrame::OnCameraSettings, this, ID_SETUP_CAMERA_SETTINGS);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
 
@@ -118,10 +111,6 @@ void HomeFrame::OnConnectAPI(wxCommandEvent& event)
 	this->controller->onConnectAPI(this);
 }
 
-void HomeFrame::OnCameraSettings(wxCommandEvent& event)
-{
-	this->controller->onCameraSettings(this);
-}
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {

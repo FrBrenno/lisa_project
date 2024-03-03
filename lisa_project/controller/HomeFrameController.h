@@ -22,8 +22,6 @@ public:
 
 	void onConnectAPI(wxWindow* parent);
 
-	void onCameraSettings(wxWindow* parent);
-
 	void onCapture(wxWindow* parent, wxBitmap lastBitmap);
 
 	void onExit();

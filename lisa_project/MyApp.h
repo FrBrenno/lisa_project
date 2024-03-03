@@ -7,8 +7,7 @@
 #include "controller/InstrumentController.h"
 #include "controller/MlaController.h"
 #include "controller/ImageController.h"
-#include "controller/CameraSettingsController.h"
-#include <wfsApiService.h>
+#include "wfsApiService.h"
 #include "MyAppInterface.h"
 
 #ifndef WX_PRECOMP

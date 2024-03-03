@@ -41,8 +41,6 @@ class HomeFrame : public wxFrame
 
     void OnConnectAPI(wxCommandEvent& event);
 
-    void OnCameraSettings(wxCommandEvent& event);
-
     void OnCapture(wxCommandEvent& event);
 
     void OnEraseBackground(wxEraseEvent& event);

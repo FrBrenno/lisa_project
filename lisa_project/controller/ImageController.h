@@ -1,8 +1,6 @@
 #pragma once
 #include "wx/wx.h"
-#include "model/CameraConfig.h"
 #include "model/Instrument.h"
-#include "controller/CameraSettingsController.h"
 #include "controller/ImageProcessingController.h"
 #include "BaseController.h"
 
@@ -11,10 +9,8 @@
  * @brief This controller handles image acquisition. 
  */
 class ImageController: public BaseController{
-	CameraSettingsController* cameraSettingsController;
 	ImageProcessingController* imageProcessingController;
 
-	CameraConfig* cameraConfig;
 	Instrument* instrument;
 
 	int err;
@@ -23,6 +19,7 @@ class ImageController: public BaseController{
 	wxImage* image;
 
 	bool imageProcessingEnabled;
+	const int NUMBER_READING_IMAGES = 5;
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:

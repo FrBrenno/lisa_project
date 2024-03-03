@@ -2,7 +2,6 @@
 #include "lib/thorlabs_api/WFS.h"
 #include "../EventDispatcher.h"
 
-// TODO: When camera settings change the CameraSettingsController should be notify this class, but it does not.
 
 ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService, Instrument* instrument) : BaseController(main, wfsApiService)
 {
@@ -13,29 +12,24 @@ ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiServ
 	this->imageBuffer = VI_NULL;
 	this->rgbBuffer = VI_NULL;
 	this->image = new wxImage();
-	this->cameraSettingsController = new CameraSettingsController(this->app, this->wfsApiService);
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 	this->imageProcessingEnabled = true;
-	this->cameraConfig = cameraSettingsController->getCameraConfig();
 
-	EventDispatcher::Instance().SubscribeToEvent("CameraSettingsSelection",
-		[this](const Event& event) {
-			this->cameraSettingsController->handleSettingsSelection(event);
-			this->cameraConfig = cameraSettingsController->getCameraConfig();
-		});
 }
 
 ImageController::~ImageController()
 {
 	delete[] rgbBuffer;
 	delete[] imageBuffer;
-	delete cameraConfig;
 	delete image;
-	delete cameraSettingsController;
 	delete imageProcessingController;
 }
 
 void ImageController::takeImage(){
+	// TODO: differentiate the function, take image from get image. 
+	// take image should request the buffer for the api, process if needed and store it
+	// get image should returns the 'desirable' image, with or without image processing
+	
 	//Verifies if the api is connected before taking an image, if not, it will return
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
@@ -46,17 +40,15 @@ void ImageController::takeImage(){
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
 
-		ViReal64* exposureTime = cameraConfig->getExposureTime();
-		ViReal64* gain = cameraConfig->getGain();
-
 		// Take a camera image with auto exposure
-		for (int i = 0; i < cameraConfig->getNbImageReadings(); i++)
+		for (int i = 0; i < NUMBER_READING_IMAGES; i++) // TODO: Find somewhere to put the NbOfReadings
 		{
-			if (err = WFS_TakeSpotfieldImageAutoExpos(instrument->getHandle(), exposureTime, gain)) {
+			if (err = WFS_TakeSpotfieldImageAutoExpos(instrument->getHandle(), VI_NULL, VI_NULL)) {
 				this->handleError(err, "Error while taking spotfield image");
 				return;
 			}
 			ViInt32 status = VI_NULL;
+			// TODO: this may be the indicative of how to set the camera in order to take a good picture. think about it later
 			if (err = WFS_GetStatus(instrument->getHandle(), &status))
 				this->handleError(err, "Error while getting instrument status");
 			if (instrument->getStatus() & WFS_STATBIT_PTH)
@@ -66,19 +58,7 @@ void ImageController::takeImage(){
 			else if (instrument->getStatus() & WFS_STATBIT_HAL)
 				this->handleError(-1, "Image gain is too high");
 			else
-			{
-				cameraConfig->setCameraConfig(cameraConfig->getCameraResolution(), 
-					*exposureTime, 
-					*gain, 
-					cameraConfig->getNoiseCutLevel(), 
-					cameraConfig->getBlackLevel(), 
-					cameraConfig->getNbImageReadings(),
-					cameraConfig->isAutoExposure(),
-					cameraConfig->isAutoGain(),
-					cameraConfig->isAutoNoiseCutLevel(),
-					cameraConfig->isAutoBlackLevel()
-				);
-			}
+			{}
 		}
 		// Get last image
         if (err = WFS_GetSpotfieldImage(instrument->getHandle(), &imageBuffer, &rows, &cols)) {
@@ -87,9 +67,11 @@ void ImageController::takeImage(){
         }
 
 		if (this->imageProcessingEnabled)
+			// TODO: maybe keep the original image and only set the desirable one as output. (in order to all display grid or not in a static image.
 			this->imageBuffer = this->imageProcessingController->processImage(this->imageBuffer, this->rows, this->cols);
 
 		// Convert black and white image buffer to RGB image buffer
+		// TODO: Maybe use opencv to do the convertion to RGB
 		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer); //use OpenCV to convert to RGB
@@ -108,7 +90,7 @@ void ImageController::takeImage(){
 
 
 //=== Utility functions ===//
-
+// TODO: replace with opencv function
 void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer) {
 	// Assuming your grayscaleBuffer contains width * height pixel values
 	// Iterate through each pixel in the grayscale image
@@ -123,7 +105,7 @@ void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer
 	}
 }
 
-
+// TODO: return th desirable image
 wxImage* ImageController::getImage()
 {
 	if (this->image && this->image->IsOk()) {
