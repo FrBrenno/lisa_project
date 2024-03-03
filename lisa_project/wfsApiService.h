@@ -1,8 +1,8 @@
 #pragma once
-#include <InstrumentDto.h>
-#include <model/Instrument.h>
-#include <MlaDto.h>
-#include <model/Mla.h>
+#include "model/Dto/InstrumentDto.h"
+#include "model/Dto/MlaDto.h"
+#include "model/Instrument.h"
+#include "model/Mla.h"
 #include <vector>
 
 class WfsApiService

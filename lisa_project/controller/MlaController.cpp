@@ -2,7 +2,7 @@
 #include "../EventDispatcher.h"
 #include "../view/MlaSelectionDialog.h"
 #include "wx/wx.h"
-#include <MlaDto.h>
+#include "../model/Dto/MlaDto.h"
 
 MlaController::MlaController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService) {
 	this->mla = new Mla();

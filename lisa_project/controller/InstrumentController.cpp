@@ -1,7 +1,7 @@
 #include "InstrumentController.h"
 #include "../EventDispatcher.h"
 #include "../view/InstrumentSelectionDialog.h"
-#include <InstrumentDto.h>
+#include "../model/Dto/InstrumentDto.h"
 
 InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {

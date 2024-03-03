@@ -81,14 +81,17 @@
     <ClCompile Include="WfsApiService.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="MlaDto.cpp">
-      <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
-    <ClCompile Include="InstrumentDto.cpp">
-      <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
     <ClCompile Include="controller\ImageProcessingController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="PreviewController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Dto\InstrumentDto.cpp">
+      <Filter>Fichiers sources\Model\Dto</Filter>
+    </ClCompile>
+    <ClCompile Include="model\Dto\MlaDto.cpp">
+      <Filter>Fichiers sources\Model\Dto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,14 +146,17 @@
     <ClInclude Include="WfsApiService.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="MlaDto.h">
-      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
-    </ClInclude>
-    <ClInclude Include="InstrumentDto.h">
-      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
-    </ClInclude>
     <ClInclude Include="controller\ImageProcessingController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="PreviewController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Dto\InstrumentDto.h">
+      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Dto\MlaDto.h">
+      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

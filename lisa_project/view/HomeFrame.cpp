@@ -5,7 +5,7 @@
 #include "../id/ButtonID.h"
 
 
-#define PREVIEW_IMAGE_RATE 1000/24
+constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
 HomeFrame::HomeFrame(HomeFrameController* controller)
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
@@ -239,7 +239,4 @@ void HomeFrame::setInstrumentName(std::string instrument_name)
     SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
 }
 
-void HomeFrame::addListener(BaseController* listener)
-{
-	this->listeners.push_back(listener);
-}
+
