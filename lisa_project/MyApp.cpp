@@ -35,6 +35,7 @@ bool MyApp::OnInit()
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
     this->mlaController = new MlaController(this, this->wfsApiService);
+    this->imageController = new ImageController(this, this->wfsApiService, this->instrumentController)
     
     //=== Controller-View binding ===//
     homeFrame->setListener(homeFrameController);

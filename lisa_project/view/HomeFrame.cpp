@@ -4,8 +4,6 @@
 #include "../EventDispatcher.h"
 
 
-constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
-
 HomeFrame::HomeFrame()
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
@@ -22,15 +20,10 @@ HomeFrame::HomeFrame()
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
     this->imageControl->SetDoubleBuffered(true);
 
+    this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
+
     this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
     Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, ID_CAPTURE);
-
-    this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
-    Bind(wxEVT_BUTTON, &HomeFrame::OnPreviewButton, this, ID_PREVIEW);
-
-    this->previewTimer = new wxTimer(this);
-    Bind(wxEVT_TIMER, &HomeFrame::updateImage, this, wxID_ANY);
-    this->isPreviewOn = false;
 
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     buttonSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
@@ -94,9 +87,8 @@ void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 
 void HomeFrame::OnLoadImage(wxCommandEvent& event)
 {
-    this->stopPreview();
+    //this->previewController->stopPreview();
     wxImage img = this->listener->onLoadImage(this);
-    // if empty image, do not change
     if (!img.IsOk()) 
         return;
     this->setImage(&img);
@@ -111,7 +103,7 @@ void HomeFrame::OnConnectAPI(wxCommandEvent& event)
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
-    this->stopPreview();
+    //this->previewController->stopPreview();
     this->listener->onCapture(this, this->imageControl->GetBitmap());
 }
 
@@ -128,47 +120,8 @@ void HomeFrame::OnAbout(wxCommandEvent& event)
         "About LISA Plenoptic Camera Visualizer", wxOK | wxICON_INFORMATION);
 }
 
-void HomeFrame::OnPreviewButton(wxCommandEvent& event)
-{
-    if (this->isPreviewOn)
-    {
-		this->stopPreview();
-	}
-    else
-    {
-		this->startPreview();
-	}
-}
 
 //=== VIEW FUNCTIONS ===//
-
-void HomeFrame::updateImage(wxTimerEvent& event) {
-    /*
-    this->imageControl->Freeze();
-    if (!listener->isWfsConnected()) {
-        this->stopPreview();
-		return;
-	}
-
-    wxImage* image = new wxImage();
-    for (BaseController* listener : this->listeners)
-    {
-        if (ImageController* imgController = dynamic_cast<ImageController*>(listener))
-        {
-            imgController->takeImage();
-
-            if (imgController->hasError() != 0)
-            {
-                this->stopPreview();
-                return;
-            }
-            image = imgController->getImage();
-        }
-    }
-    this->setImage(image);
-    this->imageControl->Thaw();
-    */
-}
 
 void HomeFrame::setImage(wxImage* image)
 {
@@ -199,38 +152,8 @@ void HomeFrame::resizeImage(wxImage* image)
     return;
 }
 
-void HomeFrame::updatePreviewButton()
-{
-    if (this->isPreviewOn)
-    {
-        if (this->listener->isWfsConnected())
-        {
-            this->previewButton->SetLabel("Stop Preview");
-        }
-        else
-        {
-            wxMessageBox("Cannot start preview: WFS is not connected.", "Error", wxOK | wxICON_ERROR);
-        }
-	}
-    else
-    {
-		this->previewButton->SetLabel("Start Preview");
-	}
-}
 
-void HomeFrame::stopPreview()
-{
-	this->previewTimer->Stop();
-	this->isPreviewOn = false;
-	this->updatePreviewButton();
-}
 
-void HomeFrame::startPreview()
-{
-	this->previewTimer->Start(PREVIEW_IMAGE_RATE);
-	this->isPreviewOn = true;
-	this->updatePreviewButton();
-}
 //=== UTILITY FUNCTIONS ===//
 
 void HomeFrame::setInstrumentName(std::string instrument_name)

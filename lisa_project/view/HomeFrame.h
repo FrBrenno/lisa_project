@@ -1,7 +1,6 @@
 #pragma once
 #include <wx/wx.h>
 #include <string>
-#include "../controller/HomeFrameController.h"
 #include "../interface/IHomeFrameListener.h"
 
 /**
@@ -24,7 +23,6 @@ class HomeFrame : public wxFrame
 
     wxButton* captureButton;
     wxButton* previewButton;
-    wxTimer* previewTimer;
     bool isPreviewOn;
     /**
      * Name of the instrument in use.
@@ -57,10 +55,6 @@ class HomeFrame : public wxFrame
      */
     void OnAbout(wxCommandEvent& event);
 
-    void updatePreviewButton();
-    void stopPreview();
-    void startPreview();
-    void OnPreviewButton(wxCommandEvent& event);
 public:
     HomeFrame();
 
@@ -71,13 +65,6 @@ public:
      */
     void setInstrumentName(std::string instrumentName);
 
-    /**
-     * Generate a Bitmap and display it on the image control.
-     * @note This function is called by the ImageController that is the controller responsible to manage image acquisition.
-     * 
-     * @param newImage Reference to the new image to be displayed.
-     */
-    void updateImage(wxTimerEvent& event);
 
     void setImage(wxImage* image);
 
@@ -89,4 +76,5 @@ public:
     ** @param listener Listener to be added.
     **/
     void setListener(IHomeFrameListener* listener);
+
 };
