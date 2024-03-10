@@ -52,7 +52,7 @@ void PreviewController::onTimer(wxTimerEvent& event)
 {
 	this->imageControl->Freeze();
 
-	this->imageController->takeImage();
+	this->imageController->acquireImage();
 	wxImage* image = this->imageController->getImage();
 
 	this->updateImageFrame(image);

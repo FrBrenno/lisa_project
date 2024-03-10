@@ -5,8 +5,14 @@
 
 class ImageProcessingController: public BaseController
 {
+	cv::Mat* image;
+	int rows, cols;
 public:
 	ImageProcessingController(MyAppInterface* main, WfsApiService* wfsApiService);
 
-	unsigned char* processImage(unsigned char* image_buffer, int rows, int cols);
+	void setImage(cv::Mat* image, int rows, int cols);
+
+	void processImage();
+
+	cv::Mat getProcessedImage();
 };

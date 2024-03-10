@@ -1,7 +1,7 @@
 #include "ImageController.h"
 #include "lib/thorlabs_api/WFS.h"
 #include "../EventDispatcher.h"
-
+#include <opencv2/opencv.hpp>
 
 ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
@@ -10,8 +10,7 @@ ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiServ
 	this->rows = 0;
 	this->cols = 0;
 	this->imageBuffer = VI_NULL;
-	this->rgbBuffer = VI_NULL;
-	this->image = new wxImage();
+	this->image = cv::Mat();
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 	this->imageProcessingEnabled = true;
 
@@ -24,13 +23,11 @@ ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiServ
 
 ImageController::~ImageController()
 {
-	delete[] rgbBuffer;
 	delete[] imageBuffer;
-	delete image;
 	delete imageProcessingController;
 }
 
-void ImageController::takeImage(){
+void ImageController::acquireImage(){
 
 	//Verifies if the api is connected before taking an image, if not, it will return
 	if (!this->isWfsConnected()) {
@@ -46,54 +43,53 @@ void ImageController::takeImage(){
 			&this->imageBuffer, &this->rows, &this->cols);
 		
 		// Convert black and white image buffer to RGB image buffer
-		// TODO: Maybe use opencv to do the convertion to RGB
-		delete[] rgbBuffer;
-		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
-		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer); //use OpenCV to convert to RGB
+		this->image = cv::Mat(this->rows, this->cols, CV_8UC1, this->imageBuffer);
+		cv::cvtColor(this->image, this->image, cv::COLOR_GRAY2RGB);
 
 		if (this->imageProcessingEnabled)
-			// TODO: maybe keep the original image and only set the desirable one as output. (in order to all display grid or not in a static image.
-			this->imageBuffer = this->imageProcessingController->processImage(this->imageBuffer, this->rows, this->cols);
-
-		this->image->Destroy();
-        this->image = new wxImage(cols, rows, rgbBuffer, true);
-        // Check if the image creation was successful
-        if (!this->image->IsOk()) {
-			err = -1;
-            this->handleError(-1, "Failed to create wxImage");
-            return;
-        }
+		{
+			this->imageProcessingController->setImage(&this->image, this->rows, this->cols);
+			this->imageProcessingController->processImage();
+		}
 	}
 
 }
 
 
 //=== Utility functions ===//
-// TODO: replace with opencv function
-void ImageController::convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer) {
-	// Assuming your grayscaleBuffer contains width * height pixel values
-	// Iterate through each pixel in the grayscale image
-	for (int i = 0; i < width * height; ++i) {
-		// Grayscale pixel value (0 to 255)
-		unsigned char grayValue = grayscaleBuffer[i];
-
-		// Copy the grayscale value to all three channels (RGB)
-		rgbBuffer[3 * i] = grayValue;     // Red channel
-		rgbBuffer[3 * i + 1] = grayValue; // Green channel
-		rgbBuffer[3 * i + 2] = grayValue; // Blue channel
-	}
-}
 
 // TODO: return th desirable image
 wxImage* ImageController::getImage()
 {
-	if (this->image && this->image->IsOk()) {
-		return this->image;
-	}
-	else {
-		err = -1;
-		this->handleError(-1, "Image is not ok");
+	if (this->err != 0) {
+		this->handleError(this->err, "Error taking image");
 		return nullptr;
+	}
+
+	if (this->imageProcessingEnabled)
+	{
+		cv::Mat processedImage = this->imageProcessingController->getProcessedImage();
+		wxImage* image = new wxImage(processedImage.cols, processedImage.rows,
+			processedImage.data, true);
+		if (image->IsOk()) {
+			return image;
+		}
+		else {
+			this->handleError(-1, "Error creating wxImage");
+			return nullptr;
+		}
+	}
+	else
+	{
+		wxImage* image = new wxImage(this->image.cols, this->image.rows,
+						this->image.data, true);
+		if (image->IsOk()) {
+			return image;
+		}
+		else {
+			this->handleError(-1, "Error creating wxImage");
+			return nullptr;
+		}
 	}
 }
 

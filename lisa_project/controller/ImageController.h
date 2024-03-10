@@ -14,14 +14,13 @@ class ImageController: public BaseController{
 	Instrument* instrument;
 
 	int err;
-	ViAUInt8 imageBuffer, rgbBuffer;
+	ViAUInt8 imageBuffer;
 	ViInt32 rows, cols;
-	wxImage* image;
+	cv::Mat image;
 
 	bool imageProcessingEnabled;
 	const int NUMBER_READING_IMAGES = 5;
 
-	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
 	ImageController(MyAppInterface* main, WfsApiService* wfsApiService);
 	~ImageController();
@@ -29,7 +28,7 @@ public:
 	 * Returns a pointer the image buffer.
 	 * 
 	 */
-	void takeImage();
+	void acquireImage();
 
 	/**
 	 * Returns a pointer to the wxImage created from the image buffer given by the API.

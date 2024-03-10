@@ -241,7 +241,7 @@ ViStatus WfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES, Vi
 	{
 		if (err = WFS_TakeSpotfieldImageAutoExpos(handle, VI_NULL, VI_NULL)) {
 			std::cerr << "Error while taking spotfield image" << err << std::endl;
-			return;
+			return err;
 		}
 		ViInt32 status = VI_NULL;
 		// TODO: this may be the indicative of how to set the camera in order to take a good picture. think about it later
@@ -258,6 +258,7 @@ ViStatus WfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES, Vi
 	// Get last image
 	if (err = WFS_GetSpotfieldImage(handle, imageBuffer, rows, cols)) {
 		std::cerr << "Error while getting spotfield image" << err << std::endl;
-		return;
+		return err;
 	}
+	return VI_SUCCESS; // Success
 }
