@@ -173,6 +173,7 @@
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
+    <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />

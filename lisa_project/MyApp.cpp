@@ -26,15 +26,18 @@ bool MyApp::OnInit()
 		check_api_connection();
 	}
 
+    //=== View initialization ===//
+
+    homeFrame = new HomeFrame();
+
     //=== Controller initialization ===//
 
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
     this->mlaController = new MlaController(this, this->wfsApiService);
-
-    //=== View initialization ===//
-
-    homeFrame = new HomeFrame(this->homeFrameController);
+    
+    //=== Controller-View binding ===//
+    homeFrame->setListener(homeFrameController);
     homeFrame->Show(true);
     
     if (this->wfsApiService->isApiConnectionActive())

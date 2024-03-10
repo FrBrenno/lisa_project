@@ -2,27 +2,21 @@
 #include "wx/wx.h"
 #include "../Event.h"
 #include "BaseController.h"
+#include "../interface/IHomeFrameListener.h"
 
 /**
  * @class HomeFrameController.
  * @brief This controller manages HomeFrame view responsible for the main window of the software.
  */
-class HomeFrameController : public BaseController{
+class HomeFrameController : public BaseController, public IHomeFrameListener{
 public:
 	HomeFrameController(MyAppInterface* main, WfsApiService* wfsApiService);
 
-	/**
-	 * Publishes an InstrumentSelectionEvent.
-	 * 
-	 * @param parent 
-	 */
-	void onInstrumentSelection(wxWindow* parent);
+	wxImage onLoadImage(wxWindow* parent) override;
 
-	wxImage onLoadImage(wxWindow* parent);
+	void onConnectAPI() override;
 
-	void onConnectAPI(wxWindow* parent);
+	void onCapture(wxWindow* parent, wxBitmap lastBitmap) override;
 
-	void onCapture(wxWindow* parent, wxBitmap lastBitmap);
-
-	void onExit();
+	bool isWfsConnected() override;
 };

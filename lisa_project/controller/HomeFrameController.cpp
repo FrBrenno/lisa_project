@@ -11,12 +11,6 @@ HomeFrameController::HomeFrameController(MyAppInterface* main, WfsApiService* wf
 	}
 }
 
-void HomeFrameController::onInstrumentSelection(wxWindow* parent) 
-{
-	Event instrumentSelectionEvent("InstrumentSelection");
-	EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
-}
-
 wxImage HomeFrameController::onLoadImage(wxWindow* parent)
 {
 	wxFileDialog openFileDialog(parent, "Open Image", "", "", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
@@ -45,7 +39,7 @@ wxImage HomeFrameController::onLoadImage(wxWindow* parent)
 	return image;
 }
 
-void HomeFrameController::onConnectAPI(wxWindow* parent)
+void HomeFrameController::onConnectAPI()
 {
 	this->app->check_api_connection();
 }
@@ -73,13 +67,7 @@ void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 }
 
 
-void HomeFrameController::onExit()
+bool HomeFrameController::isWfsConnected()
 {
-	// Publish ExitEvent
-	Event exitEvent("Exit");
-	EventDispatcher::Instance().PublishEvent(exitEvent);
-
-	return;
+	return this->wfsApiService->isApiConnectionActive();
 }
-
-

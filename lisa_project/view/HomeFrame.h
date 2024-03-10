@@ -2,6 +2,7 @@
 #include <wx/wx.h>
 #include <string>
 #include "../controller/HomeFrameController.h"
+#include "../interface/IHomeFrameListener.h"
 
 /**
  * @class HomeFrame.
@@ -11,11 +12,10 @@
 class HomeFrame : public wxFrame
 {
     /**
-     * View Controller that manages it.
+     * Controllers that listen to this view.
      */
-    HomeFrameController* controller;
+    IHomeFrameListener* listener;
 
-    std::vector<BaseController*> listeners;
     //=== GUI Elements ===//
     /**
      * This image control element that displays the camera image.
@@ -62,7 +62,7 @@ class HomeFrame : public wxFrame
     void startPreview();
     void OnPreviewButton(wxCommandEvent& event);
 public:
-    HomeFrame(HomeFrameController* controller);
+    HomeFrame();
 
     /**
      * Sets the instrument in use name.
@@ -82,10 +82,11 @@ public:
     void setImage(wxImage* image);
 
     void resizeImage(wxImage* image);
+
     /**
     * Adds a listener to the list of listeners.
     ** 
     ** @param listener Listener to be added.
     **/
-    void addListener(BaseController* listener);
+    void setListener(IHomeFrameListener* listener);
 };

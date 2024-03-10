@@ -1,18 +1,14 @@
 #include "HomeFrame.h"
-#include "../controller/HomeFrameController.h"
-#include "../controller/ImageController.h"
 #include "../id/MenuID.h"
 #include "../id/ButtonID.h"
+#include "../EventDispatcher.h"
 
 
 constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
-HomeFrame::HomeFrame(HomeFrameController* controller)
+HomeFrame::HomeFrame()
     : wxFrame(NULL, wxID_ANY, "LISA - Plenoptic Camera Visualizer PCV")
 {
-    this->controller = controller;
-    this->listeners = std::vector<BaseController*>();
-
     //=== Icon Initialization ===//
 
     wxBitmap iconBitmap("./img/polytech_logo.png", wxBITMAP_TYPE_PNG);
@@ -92,13 +88,14 @@ HomeFrame::HomeFrame(HomeFrameController* controller)
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
-    this->controller->onInstrumentSelection(this);
+    Event instrumentSelectionEvent("InstrumentSelection");
+    EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
 }
 
 void HomeFrame::OnLoadImage(wxCommandEvent& event)
 {
     this->stopPreview();
-    wxImage img = this->controller->onLoadImage(this);
+    wxImage img = this->listener->onLoadImage(this);
     // if empty image, do not change
     if (!img.IsOk()) 
         return;
@@ -108,19 +105,20 @@ void HomeFrame::OnLoadImage(wxCommandEvent& event)
 
 void HomeFrame::OnConnectAPI(wxCommandEvent& event)
 {
-	this->controller->onConnectAPI(this);
+	this->listener->onConnectAPI();
 }
 
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
     this->stopPreview();
-    this->controller->onCapture(this, this->imageControl->GetBitmap());
+    this->listener->onCapture(this, this->imageControl->GetBitmap());
 }
 
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
-    this->controller->onExit();
+    Event exitEvent("Exit");
+    EventDispatcher::Instance().PublishEvent(exitEvent);
     exit(0);
 }
 
@@ -145,8 +143,9 @@ void HomeFrame::OnPreviewButton(wxCommandEvent& event)
 //=== VIEW FUNCTIONS ===//
 
 void HomeFrame::updateImage(wxTimerEvent& event) {
+    /*
     this->imageControl->Freeze();
-    if (!controller->isWfsConnected()) {
+    if (!listener->isWfsConnected()) {
         this->stopPreview();
 		return;
 	}
@@ -168,6 +167,7 @@ void HomeFrame::updateImage(wxTimerEvent& event) {
     }
     this->setImage(image);
     this->imageControl->Thaw();
+    */
 }
 
 void HomeFrame::setImage(wxImage* image)
@@ -203,7 +203,7 @@ void HomeFrame::updatePreviewButton()
 {
     if (this->isPreviewOn)
     {
-        if (this->controller->isWfsConnected())
+        if (this->listener->isWfsConnected())
         {
             this->previewButton->SetLabel("Stop Preview");
         }
@@ -239,4 +239,8 @@ void HomeFrame::setInstrumentName(std::string instrument_name)
     SetStatusText(wxString::Format("Welcome to Plenoptic Camera Visualizer! - Instrument in use: %s", this->instrumentName));
 }
 
+void HomeFrame::setListener(IHomeFrameListener* listener)
+{
+	this->listener = listener;
+}
 
