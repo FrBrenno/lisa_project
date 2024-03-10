@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\Eigen;D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
