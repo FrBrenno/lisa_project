@@ -42,43 +42,18 @@ void ImageController::takeImage(){
 
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
-
-		// Take a camera image with auto exposure
-		// TODO: use wfsApiService to take the image
-		for (int i = 0; i < NUMBER_READING_IMAGES; i++) // TODO: Find somewhere to put the NbOfReadings
-		{
-			if (err = WFS_TakeSpotfieldImageAutoExpos(instrument->getHandle(), VI_NULL, VI_NULL)) {
-				this->handleError(err, "Error while taking spotfield image");
-				return;
-			}
-			ViInt32 status = VI_NULL;
-			// TODO: this may be the indicative of how to set the camera in order to take a good picture. think about it later
-			if (err = WFS_GetStatus(instrument->getHandle(), &status))
-				this->handleError(err, "Error while getting instrument status");
-			if (status & WFS_STATBIT_PTH)
-				this->handleError(-1, "Image exposure is too high");
-			else if (status & WFS_STATBIT_PTL)
-				this->handleError(-1, "Image exposure is too low");
-			else if (status & WFS_STATBIT_HAL)
-				this->handleError(-1, "Image gain is too high");
-			else
-			{}
-		}
-		// Get last image
-        if (err = WFS_GetSpotfieldImage(instrument->getHandle(), &imageBuffer, &rows, &cols)) {
-            this->handleError(err, "Error while getting spotfield image");
-            return;
-        }
-
-		if (this->imageProcessingEnabled)
-			// TODO: maybe keep the original image and only set the desirable one as output. (in order to all display grid or not in a static image.
-			this->imageBuffer = this->imageProcessingController->processImage(this->imageBuffer, this->rows, this->cols);
-
+		this->wfsApiService->getImage(this->instrument->getHandle(), this->NUMBER_READING_IMAGES,
+			&this->imageBuffer, &this->rows, &this->cols);
+		
 		// Convert black and white image buffer to RGB image buffer
 		// TODO: Maybe use opencv to do the convertion to RGB
 		delete[] rgbBuffer;
 		rgbBuffer = new unsigned char[3 * this->cols * this->rows];
 		this->convertGrayscaleToRGB(imageBuffer, this->cols, this->rows, rgbBuffer); //use OpenCV to convert to RGB
+
+		if (this->imageProcessingEnabled)
+			// TODO: maybe keep the original image and only set the desirable one as output. (in order to all display grid or not in a static image.
+			this->imageBuffer = this->imageProcessingController->processImage(this->imageBuffer, this->rows, this->cols);
 
 		this->image->Destroy();
         this->image = new wxImage(cols, rows, rgbBuffer, true);

@@ -26,5 +26,8 @@ public:
 	// MLA
 	ViStatus getMlaList(ViSession handle, std::vector<MlaDto>* mlas);
 	ViStatus getMlaInfo(ViSession handle, int selectedIndex, Mla* mla);
+
+	// Image
+	ViStatus getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols);
 };
 
