@@ -1,6 +1,6 @@
 #pragma once
 #include <wx/wx.h>
-#include "../controller/InstrumentController.h"
+#include "../interface/IInstrumentViewListener.h"
 
 /**
  * @class InstrumentSelectionDialog.
@@ -9,7 +9,7 @@
  */
 class InstrumentSelectionDialog: public wxDialog{
 	wxWindow* parent;
-	InstrumentController* controller;
+	IInstrumentViewListener* listener;
 
 public:	
 	/**
@@ -18,7 +18,7 @@ public:
 	 * @param parent The window that generated this dialog. This could be a nullptr.
 	 * @param controller The controller that manages this view.
 	 */
-	InstrumentSelectionDialog(wxWindow* parent, InstrumentController* controller);
+	InstrumentSelectionDialog(wxWindow* parent, IInstrumentViewListener* controller);
 
 	/**
 	 * Handles when the user clicks the OK button.
