@@ -2,9 +2,9 @@
 
 constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
-PreviewController::PreviewController(MyAppInterface* app, WfsApiService* wfsApiService)
+PreviewController::PreviewController(MyAppInterface* app, WfsApiService* wfsApiService, ImageController* imageController) : BaseController(app, wfsApiService)
 {
-
+	this->imageController = imageController;
 	this->previewTimer = new wxTimer(this);
 	this->Bind(wxEVT_TIMER, [this](wxTimerEvent& event) {
 		this->onTimer(event);
@@ -50,18 +50,10 @@ void PreviewController::updateImageFrame(wxImage* image)
 
 void PreviewController::onTimer(wxTimerEvent& event)
 {
-	// get image from api
 	this->imageControl->Freeze();
 
-	wxImage* image = new wxImage();
 	this->imageController->takeImage();
-	if (this->imageController->hasError() != 0)
-	{
-		this->stopPreview();
-		return;
-	}
-
-	image = this->imageController->getImage();
+	wxImage* image = this->imageController->getImage();
 
 	this->updateImageFrame(image);
 	this->imageControl->Thaw();

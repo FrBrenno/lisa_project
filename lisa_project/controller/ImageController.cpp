@@ -3,9 +3,9 @@
 #include "../EventDispatcher.h"
 
 
-ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService, Instrument* instrument) : BaseController(main, wfsApiService)
+ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
-	this->instrument = instrument;
+	this->instrument = nullptr;
 	this->err = 0;
 	this->rows = 0;
 	this->cols = 0;
@@ -15,6 +15,11 @@ ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiServ
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 	this->imageProcessingEnabled = true;
 
+	EventDispatcher::Instance().SubscribeToEvent("NewInstrumentSelected",
+		[this](const Event& event) {
+			Instrument* instrument = (Instrument*) event.getData();
+			HandleNewInstrumentSelected(instrument);
+		});
 }
 
 ImageController::~ImageController()
@@ -26,10 +31,7 @@ ImageController::~ImageController()
 }
 
 void ImageController::takeImage(){
-	// TODO: differentiate the function, take image from get image. 
-	// take image should request the buffer for the api, process if needed and store it
-	// get image should returns the 'desirable' image, with or without image processing
-	
+
 	//Verifies if the api is connected before taking an image, if not, it will return
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API
@@ -37,10 +39,12 @@ void ImageController::takeImage(){
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
+
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
 
 		// Take a camera image with auto exposure
+		// TODO: use wfsApiService to take the image
 		for (int i = 0; i < NUMBER_READING_IMAGES; i++) // TODO: Find somewhere to put the NbOfReadings
 		{
 			if (err = WFS_TakeSpotfieldImageAutoExpos(instrument->getHandle(), VI_NULL, VI_NULL)) {
@@ -51,11 +55,11 @@ void ImageController::takeImage(){
 			// TODO: this may be the indicative of how to set the camera in order to take a good picture. think about it later
 			if (err = WFS_GetStatus(instrument->getHandle(), &status))
 				this->handleError(err, "Error while getting instrument status");
-			if (instrument->getStatus() & WFS_STATBIT_PTH)
+			if (status & WFS_STATBIT_PTH)
 				this->handleError(-1, "Image exposure is too high");
-			else if (instrument->getStatus() & WFS_STATBIT_PTL)
+			else if (status & WFS_STATBIT_PTL)
 				this->handleError(-1, "Image exposure is too low");
-			else if (instrument->getStatus() & WFS_STATBIT_HAL)
+			else if (status & WFS_STATBIT_HAL)
 				this->handleError(-1, "Image gain is too high");
 			else
 			{}
@@ -118,8 +122,27 @@ wxImage* ImageController::getImage()
 	}
 }
 
-int ImageController::hasError() const
-{
-	return this->err;
-}
 
+//=== Event Handlers ===//
+
+void ImageController::HandleNewInstrumentSelected(Instrument* instrument)
+{
+	if (instrument == nullptr) {
+		err = -1;
+		this->handleError(-1, "Instrument is null");
+		return;
+	}
+
+	if (this->instrument != nullptr) {
+		delete this->instrument;
+	}
+
+	this->instrument = instrument;
+	if (this->instrument->isInitialized()) {
+		this->err = 0;
+	}
+	else {
+		this->err = -1;
+		this->handleError(-1, "Instrument is not initialized");
+	}
+}

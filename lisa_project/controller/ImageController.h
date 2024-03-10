@@ -1,6 +1,6 @@
 #pragma once
 #include "wx/wx.h"
-#include "model/Instrument.h"
+#include "model/Dto/InstrumentDto.h"
 #include "controller/ImageProcessingController.h"
 #include "BaseController.h"
 
@@ -23,7 +23,7 @@ class ImageController: public BaseController{
 
 	void convertGrayscaleToRGB(const unsigned char* grayscaleBuffer, int width, int height, unsigned char* rgbBuffer);
 public:
-	ImageController(MyAppInterface* main, WfsApiService* wfsApiService, Instrument* instrument);
+	ImageController(MyAppInterface* main, WfsApiService* wfsApiService);
 	~ImageController();
 	/**
 	 * Returns a pointer the image buffer.
@@ -38,5 +38,6 @@ public:
 	 */
 	wxImage* getImage();
 
-	int hasError() const;
+
+	void HandleNewInstrumentSelected(Instrument* instrument);
 };

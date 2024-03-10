@@ -7,6 +7,7 @@
 #include "controller/InstrumentController.h"
 #include "controller/MlaController.h"
 #include "controller/ImageController.h"
+#include "controller/PreviewController.h"
 #include "wfsApiService.h"
 #include "MyAppInterface.h"
 
@@ -28,6 +29,8 @@ class MyApp : public wxApp, MyAppInterface
     HomeFrameController * homeFrameController;
     InstrumentController* instrumentController;
     MlaController* mlaController;
+    ImageController* imageController;
+    PreviewController* previewController;
 
     //== Views ===//
 

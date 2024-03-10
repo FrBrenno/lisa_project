@@ -136,6 +136,8 @@ void InstrumentController::initInstrument(InstrumentDto instrumentDto)
 		// If instrument is already initialized, just update it
 		delete this->instrument;
 		this->instrument = newInstrument;
+
+		EventDispatcher::Instance().PublishEvent(Event("NewInstrumentSelected", &(this->instrument)));
 	}
 }
 
