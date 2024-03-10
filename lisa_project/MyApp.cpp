@@ -7,7 +7,6 @@ wxIMPLEMENT_APP(MyApp);
 
 MyApp::~MyApp()
 {
-    delete imageController;
     delete mlaController;
     delete instrumentController;
     delete homeFrameController;

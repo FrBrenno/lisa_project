@@ -28,7 +28,6 @@ class MyApp : public wxApp, MyAppInterface
     HomeFrameController * homeFrameController;
     InstrumentController* instrumentController;
     MlaController* mlaController;
-    ImageController* imageController;
 
     //== Views ===//
 
