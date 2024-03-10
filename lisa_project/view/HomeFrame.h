@@ -2,18 +2,21 @@
 #include <wx/wx.h>
 #include <string>
 #include "../interface/IHomeFrameListener.h"
+#include "../interface/IPreviewHolder.h"
+#include "../interface/IPreviewHolderListener.h"
 
 /**
  * @class HomeFrame.
  * @brief This view is responsible to display the main windows of the software.
  * @details It is manage by its respective controller, HomeFrameController.
  */
-class HomeFrame : public wxFrame
+class HomeFrame : public wxFrame, public IPreviewHolder
 {
     /**
      * Controllers that listen to this view.
      */
     IHomeFrameListener* listener;
+    IPreviewHolderListener* previewListener;
 
     //=== GUI Elements ===//
     /**
@@ -40,8 +43,6 @@ class HomeFrame : public wxFrame
     void OnConnectAPI(wxCommandEvent& event);
 
     void OnCapture(wxCommandEvent& event);
-
-    void OnEraseBackground(wxEraseEvent& event);
     /**
      * Handles when the user clicks on the exit menu item or closes the window.
      * 
@@ -65,7 +66,6 @@ public:
      */
     void setInstrumentName(std::string instrumentName);
 
-
     void setImage(wxImage* image);
 
     void resizeImage(wxImage* image);
@@ -77,4 +77,8 @@ public:
     **/
     void setListener(IHomeFrameListener* listener);
 
+    wxStaticBitmap* getPreviewImageControl() override;
+    wxButton* getPreviewButton() override;
+
+    void setPreviewListener(IPreviewHolderListener* listener) override;
 };

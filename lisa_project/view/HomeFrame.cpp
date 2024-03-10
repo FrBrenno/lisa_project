@@ -87,7 +87,7 @@ void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 
 void HomeFrame::OnLoadImage(wxCommandEvent& event)
 {
-    //this->previewController->stopPreview();
+    this->previewListener->stopPreview();
     wxImage img = this->listener->onLoadImage(this);
     if (!img.IsOk()) 
         return;
@@ -103,7 +103,7 @@ void HomeFrame::OnConnectAPI(wxCommandEvent& event)
 
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
-    //this->previewController->stopPreview();
+    this->previewListener->stopPreview();
     this->listener->onCapture(this, this->imageControl->GetBitmap());
 }
 
@@ -167,3 +167,18 @@ void HomeFrame::setListener(IHomeFrameListener* listener)
 	this->listener = listener;
 }
 
+//=== IPreviewHolder implementation ===//
+wxStaticBitmap* HomeFrame::getPreviewImageControl()
+{
+	return this->imageControl;
+}
+
+wxButton* HomeFrame::getPreviewButton()
+{
+	return this->previewButton;
+}
+
+void HomeFrame::setPreviewListener(IPreviewHolderListener* listener)
+{
+	this->previewListener = listener;
+}

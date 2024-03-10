@@ -76,3 +76,4 @@ void PreviewController::setImageControl(wxStaticBitmap* imageControl)
 {
 	this->imageControl = imageControl;
 }
+

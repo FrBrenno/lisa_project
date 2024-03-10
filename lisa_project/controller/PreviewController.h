@@ -1,11 +1,12 @@
 #pragma once
 #include "./controller/BaseController.h"
 #include "./controller/ImageController.h"
+#include "./interface/IPreviewHolderListener.h"
 #include <wx/wx.h>
 #include <wx/timer.h>
 
 class PreviewController :
-    public wxEvtHandler, public BaseController
+    public wxEvtHandler, public BaseController, public IPreviewHolderListener
 {
     ImageController* imageController;
 
@@ -23,8 +24,8 @@ public:
     void setPreviewButton(wxButton* previewButton);
     void setImageControl(wxStaticBitmap* imageControl);
 
-    void startPreview();
-    void stopPreview();
+    void startPreview() override;
+    void stopPreview() override;
     void updatePreviewButton();
     void updateImageFrame(wxImage* image);
 

@@ -176,6 +176,8 @@
     <ClInclude Include="id\MenuID.h" />
     <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="interface\IInstrumentViewListener.h" />
+    <ClInclude Include="interface\IPreviewHolder.h" />
+    <ClInclude Include="interface\IPreviewHolderListener.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />

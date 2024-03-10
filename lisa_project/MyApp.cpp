@@ -39,6 +39,9 @@ bool MyApp::OnInit()
     this->previewController = new PreviewController(this, this->wfsApiService, this->imageController);
     
     //=== Controller-View binding ===//
+    this->homeFrame->setPreviewListener(this->previewController);
+    this->previewController->setImageControl(homeFrame->getPreviewImageControl());
+    this->previewController->setPreviewButton(homeFrame->getPreviewButton());
     homeFrame->setListener(homeFrameController);
     homeFrame->Show(true);
     
