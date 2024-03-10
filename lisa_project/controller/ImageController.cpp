@@ -49,7 +49,7 @@ void ImageController::acquireImage(){
 		if (this->imageProcessingEnabled)
 		{
 			this->imageProcessingController->setImage(&this->image, this->rows, this->cols);
-			this->imageProcessingController->processImage();
+			this->imageProcessingController->calibrationPipeline();
 		}
 	}
 

@@ -31,7 +31,6 @@ bool MyApp::OnInit()
     homeFrame = new HomeFrame();
 
     //=== Controller initialization ===//
-
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
     this->mlaController = new MlaController(this, this->wfsApiService);
