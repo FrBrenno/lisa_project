@@ -14,7 +14,7 @@ class Instrument{
 	ViSession handle;
 	ViInt32 status;
 	ViInt32 device_id;
-	ViRsrc resourceName[WFS_BUFFER_SIZE];
+	ViChar resourceName[WFS_BUFFER_SIZE];
 
 	// WFS Parameters
 	ViChar version_wfs_driver[WFS_BUFFER_SIZE];

@@ -16,13 +16,12 @@ WfsApiService::~WfsApiService(){}
 const bool WfsApiService::isApiConnectionActive()
 {
     ViInt32 instr_count = VI_NULL;
-    int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count);
 
     if (int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count))
 	{
 		isConnected = false;
 		std::cerr << "API connection status changed. New status: Disconnected" << std::endl;
-    }
+	}
 	else{
         isConnected = true;
 		std::cerr << "API connection status changed. New status: Connected" << std::endl;
@@ -34,7 +33,7 @@ const bool WfsApiService::isApiConnectionActive()
 //=== API Usage ===//
 // Instrument
 
-ViStatus WfsApiService::getInstrumentsList(std::vector<InstrumentDto>* instruments)
+ViStatus WfsApiService::getInstrumentsList(std::vector<InstrumentDto>& instruments)
 {
 	// Variables
 	ViInt32 instrumentCount = 0;
@@ -42,7 +41,7 @@ ViStatus WfsApiService::getInstrumentsList(std::vector<InstrumentDto>* instrumen
 	ViInt32 in_use;
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
-	ViRsrc resourceName[WFS_BUFFER_SIZE];
+	ViChar resourceName[WFS_BUFFER_SIZE];
 	ViStatus err;
 
 	// Get instrument count
@@ -56,14 +55,14 @@ ViStatus WfsApiService::getInstrumentsList(std::vector<InstrumentDto>* instrumen
 	if (instrumentCount == 0)
 	{
 		// No instrument found, return empty list
-		instruments->clear();
+		instruments.clear();
 		return VI_SUCCESS;
 	}
 	else
 	{
 		for (int i = 0; i < instrumentCount; i++)
 		{
-			if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, (ViChar*)resourceName))
+			if (err = WFS_GetInstrumentListInfo(VI_NULL, i, &device_id, &in_use, instr_name, serNr, resourceName))
 			{
 				// Not able to get instrument's information
 				std::cerr << "Failed to get instrument info. Error code: " << err << std::endl;
@@ -76,46 +75,47 @@ ViStatus WfsApiService::getInstrumentsList(std::vector<InstrumentDto>* instrumen
 			instrument.setInstrName(instr_name);
 			instrument.setSerNr(serNr);
 			instrument.setResourceName(resourceName);
-			instruments->push_back(instrument);
+			instruments.push_back(instrument);
 		}
 		return VI_SUCCESS; // Success
 	}
 }
 
-ViStatus WfsApiService::getInstrumentInfo(InstrumentDto* instrument, int selectedIndex)
+ViStatus WfsApiService::getInstrumentInfo(InstrumentDto& instrument, int selectedIndex)
 {
 	// Variables
 	ViInt32 device_id;
 	ViInt32 in_use;
 	ViChar instr_name[WFS_BUFFER_SIZE];
 	ViChar serNr[WFS_BUFFER_SIZE];
-	ViRsrc resourceName[WFS_BUFFER_SIZE];
+	ViChar resourceName[WFS_BUFFER_SIZE];
 	ViStatus err;
 
 	// Get instrument information
-	if (err = WFS_GetInstrumentListInfo(VI_NULL, selectedIndex, &device_id, &in_use, instr_name, serNr, (ViChar*)resourceName))
+	if (err = WFS_GetInstrumentListInfo(VI_NULL, selectedIndex, &device_id, &in_use, instr_name, serNr, resourceName))
 	{
 		// Not able to get instrument's information
 		std::cerr << "Failed to get instrument info. Error code: " << err << std::endl;
 		return err;
 	}
 	// Set instrument information
-	instrument->setDeviceId(device_id);
-	instrument->setInUse(in_use);
-	instrument->setInstrName(instr_name);
-	instrument->setSerNr(serNr);
-	instrument->setResourceName(resourceName);
+	instrument.setDeviceId(device_id);
+	instrument.setInUse(in_use);
+	instrument.setInstrName(instr_name);
+	instrument.setSerNr(serNr);
+	instrument.setResourceName(resourceName);
 	return VI_SUCCESS; // Success
 }
 
-ViStatus WfsApiService::initInstrument(InstrumentDto instrDto, Instrument* instr)
+ViStatus WfsApiService::initInstrument(InstrumentDto& instrDto, Instrument* instr)
 {
-	const ViRsrc* resourceName = instrDto.getResourceName(); 
+	ViChar resourceName[WFS_BUFFER_SIZE];
+	strcpy_s(resourceName, instrDto.getResourceName());
 	ViSession handle;
-
 	ViStatus err;
+
 	// API call to initiate a instrument session (handle)
-	if (err = WFS_init(*resourceName, VI_FALSE, VI_FALSE, &handle))
+	if (err = WFS_init(resourceName, VI_FALSE, VI_FALSE, &handle))
 	{
 		// Not able to initiate instrument
 		std::cerr << "Failed to initiate instrument. Error code: " << err << std::endl;

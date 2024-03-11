@@ -23,7 +23,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, IInstrume
         this->Destroy();
     }
     // Show popup if more than one instruments is available
-    if (instrumentList->GetCount() > 0)
+    else if (instrumentList->GetCount() > 0)
 	{
         // Ok Button
         wxButton* okButton = new wxButton(panel, wxID_ANY, "OK");
@@ -42,6 +42,7 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, IInstrume
     }
 
     CenterOnScreen();
+    this->Show(true);
 }
 
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)

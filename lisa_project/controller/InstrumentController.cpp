@@ -34,7 +34,6 @@ void InstrumentController::HandleInstrumentSelection()
 	}
 	// Launch InstrumentSelectionDialog view
 	InstrumentSelectionDialog dialog(nullptr, this);
-	dialog.ShowModal();
 }
 
 //=== WFS API Functions ===//
@@ -52,7 +51,7 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 
 	// New instrument list
 	std::vector<InstrumentDto> instruments;
-	ViStatus status = this->wfsApiService->getInstrumentsList(&instruments);
+	ViStatus status = this->wfsApiService->getInstrumentsList(instruments);
 	if (status != VI_SUCCESS)
 	{
 		this->handleError(err, "Not able to get instruments list");
@@ -88,7 +87,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 	}
 
 	InstrumentDto selectedInstrument;
-	ViStatus status = this->wfsApiService->getInstrumentInfo(&selectedInstrument, selectedIndex);
+	ViStatus status = this->wfsApiService->getInstrumentInfo(selectedInstrument, selectedIndex);
 
 	// Get information of selected instrument
 	if (status != VI_SUCCESS)
@@ -114,7 +113,7 @@ void InstrumentController::onClose(){
 }
 
 
-void InstrumentController::initInstrument(InstrumentDto instrumentDto)
+void InstrumentController::initInstrument(InstrumentDto& instrumentDto)
 {
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API

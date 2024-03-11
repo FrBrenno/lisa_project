@@ -49,7 +49,7 @@ public:
 	 * 
 	 * @param resourceName Resource name of the instrument.
 	 */
-	void initInstrument(InstrumentDto instrumentDto);	
+	void initInstrument(InstrumentDto& instrumentDto);
 	/**
 	 * Closes instrument API session.
 	 * 

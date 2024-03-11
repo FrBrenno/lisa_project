@@ -18,9 +18,9 @@ public:
 	//=== API Usage ===//
 
 	// Instrument
-	ViStatus getInstrumentsList(std::vector<InstrumentDto>* instruments);
-	ViStatus getInstrumentInfo(InstrumentDto* instrument, int selectedIndex);
-	ViStatus initInstrument(InstrumentDto instrDto, Instrument* instr);
+	ViStatus getInstrumentsList(std::vector<InstrumentDto>& instruments);
+	ViStatus getInstrumentInfo(InstrumentDto& instrument, int selectedIndex);
+	ViStatus initInstrument(InstrumentDto& instrDto, Instrument* instr);
 	ViStatus closeInstrument(ViSession handle);
 
 	// MLA
