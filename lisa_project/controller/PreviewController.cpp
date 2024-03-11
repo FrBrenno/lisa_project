@@ -50,6 +50,10 @@ void PreviewController::updateImageFrame(wxImage* image)
 
 void PreviewController::onTimer(wxTimerEvent& event)
 {
+	if (this->wfsApiService->isApiConnectionActive())
+	{
+		if (this->isPreviewOn)
+		{
 	this->imageControl->Freeze();
 
 	this->imageController->acquireImage();
@@ -57,6 +61,14 @@ void PreviewController::onTimer(wxTimerEvent& event)
 
 	this->updateImageFrame(image);
 	this->imageControl->Thaw();
+}
+	}
+	else
+	{
+		this->stopPreview();
+		wxMessageBox("WFS API connection is not active.", "Error", wxOK | wxICON_ERROR);
+	}
+	
 }
 
 void PreviewController::onPreviewButton()

@@ -13,18 +13,22 @@ WfsApiService::~WfsApiService(){}
 
 //=== API Connection ===//
 
-bool WfsApiService::isApiConnectionActive()
+const bool WfsApiService::isApiConnectionActive()
 {
     ViInt32 instr_count = VI_NULL;
     int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count);
 
-    const bool connected = (err == VI_SUCCESS);
-    if (connected != isConnected) {
-        isConnected = connected;
-		std::cerr << "API connection status changed. New status: " << (connected ? "Connected" : "Disconnected") << std::endl;
+    if (int err = WFS_GetInstrumentListLen(VI_NULL, &instr_count))
+	{
+		isConnected = false;
+		std::cerr << "API connection status changed. New status: Disconnected" << std::endl;
+    }
+	else{
+        isConnected = true;
+		std::cerr << "API connection status changed. New status: Connected" << std::endl;
     }
 
-    return isConnected;
+    return this->isConnected;
 }
 
 //=== API Usage ===//

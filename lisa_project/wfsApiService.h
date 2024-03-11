@@ -13,7 +13,7 @@ public:
 	~WfsApiService();
 
 	//=== API Connection ===//
-	bool isApiConnectionActive();
+	const bool isApiConnectionActive();
 
 	//=== API Usage ===//
 

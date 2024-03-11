@@ -33,10 +33,10 @@ wxImage HomeFrameController::onLoadImage(wxWindow* parent)
 	wxImage image(filePath, wxBITMAP_TYPE_PNG);
 	// TEST PURPOSES
 	// testing calibration pipeline
-	ImageProcessingController ipc = ImageProcessingController(this->app, this->wfsApiService);
+	/*ImageProcessingController ipc = ImageProcessingController(this->app, this->wfsApiService);
 	cv::Mat img = cv::imread(filePath.ToStdString());
 	ipc.setImage(&img, img.rows, img.cols);
-	ipc.calibrationPipeline();
+	ipc.calibrationPipeline();*/
 	// END TEST PURPOSES
 
 	if (!image.IsOk()) {
