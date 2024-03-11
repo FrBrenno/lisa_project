@@ -12,7 +12,6 @@ class PreviewController :
 
     wxStaticBitmap* imageControl;
     wxButton* previewButton;
-    wxButton* captureButton;
 
     wxTimer* previewTimer;
     bool isPreviewOn;
