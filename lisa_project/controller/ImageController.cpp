@@ -16,8 +16,7 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 
 	EventDispatcher::Instance().SubscribeToEvent("NewInstrumentSelected",
 		[this](const Event& event) {
-			Instrument* instrument = (Instrument*) event.getData();
-			HandleNewInstrumentSelected(instrument);
+			HandleNewInstrumentSelected(event);
 		});
 }
 
@@ -96,24 +95,8 @@ wxImage* ImageController::getImage()
 
 //=== Event Handlers ===//
 
-void ImageController::HandleNewInstrumentSelected(Instrument* instrument)
+void ImageController::HandleNewInstrumentSelected(Event event)
 {
-	if (instrument == nullptr) {
-		err = -1;
-		this->handleError(-1, "Instrument is null");
-		return;
-	}
-
-	if (this->instrument != nullptr) {
-		delete this->instrument;
-	}
-
+	Instrument* instrument = (Instrument*)event.getData();
 	this->instrument = instrument;
-	if (this->instrument->isInitialized()) {
-		this->err = 0;
-	}
-	else {
-		this->err = -1;
-		this->handleError(-1, "Instrument is not initialized");
-	}
 }

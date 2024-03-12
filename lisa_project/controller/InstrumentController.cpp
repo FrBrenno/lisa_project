@@ -33,7 +33,11 @@ void InstrumentController::HandleInstrumentSelection()
 		return;
 	}
 	// Launch InstrumentSelectionDialog view
-	InstrumentSelectionDialog dialog(nullptr, this);
+	InstrumentSelectionDialog instrumentSelectionDialog(this->app->getHomeFrame(), this);
+	instrumentSelectionDialog.ShowSelectionDialog();
+
+	Event newInstrumentSelected("NewInstrumentSelected", (void*)(this->instrument));
+	EventDispatcher::Instance().PublishEvent(newInstrumentSelected);
 }
 
 //=== WFS API Functions ===//
@@ -45,9 +49,6 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
-
-	// Clear list
-	list->Clear();
 
 	// New instrument list
 	std::vector<InstrumentDto> instruments;
@@ -67,7 +68,7 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 	}
 	else
 	{
-		for (const auto& instr: instruments)
+		for (InstrumentDto instr : instruments)
 		{
 			list->Append(wxString::Format("%4d %s %s %s\n", 
 				instr.getDeviceId(),
@@ -135,8 +136,6 @@ void InstrumentController::initInstrument(InstrumentDto& instrumentDto)
 		// If instrument is already initialized, just update it
 		delete this->instrument;
 		this->instrument = newInstrument;
-
-		EventDispatcher::Instance().PublishEvent(Event("NewInstrumentSelected", &(this->instrument)));
 	}
 }
 

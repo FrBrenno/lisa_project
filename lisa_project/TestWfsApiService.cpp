@@ -45,12 +45,12 @@ ViStatus TestWfsApiService::getInstrumentInfo(InstrumentDto& instrument, int sel
 
 ViStatus TestWfsApiService::initInstrument(InstrumentDto& instrDto, Instrument* instr)
 {
-	instr->setDeviceId(1);
+	instr->setDeviceId(instrDto.getDeviceId());
 	instr->setWfsDriverVersion((ViChar*) "Test Wfs Driver Version");
 	instr->setCamDriverVersion((ViChar*) "Test Cam Driver Version");
 	instr->setManufacturerName((ViChar*) "Test Manufacturer Name");
-	instr->setInstrumentName((ViChar*) "Test Instrument Name");
-	instr->setSerialNumberWfs((ViChar*) "Test Serial Number Wfs");
+	instr->setInstrumentName((ViChar*)"Test Instrument Name");
+	instr->setSerialNumberWfs((ViChar*) "Test Serial Number WFS");
 	instr->setSerialNumberCam((ViChar*) "Test Serial Number Cam");
 	instr->setHandle(1);
 	instr->setInitialized(true);

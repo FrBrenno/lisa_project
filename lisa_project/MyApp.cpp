@@ -84,3 +84,8 @@ ViSession MyApp::getInstrumentHandle()
 {
 	return this->instrumentController->getInstrument()->getHandle();
 }
+
+HomeFrame* MyApp::getHomeFrame()
+{
+	return this->homeFrame;
+}

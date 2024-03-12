@@ -3,6 +3,7 @@
 #include "model/Dto/InstrumentDto.h"
 #include "controller/ImageProcessingController.h"
 #include "BaseController.h"
+#include "Event.h"
 
 /**
  * @class ImageController.
@@ -38,5 +39,5 @@ public:
 	wxImage* getImage();
 
 
-	void HandleNewInstrumentSelected(Instrument* instrument);
+	void HandleNewInstrumentSelected(Event event);
 };

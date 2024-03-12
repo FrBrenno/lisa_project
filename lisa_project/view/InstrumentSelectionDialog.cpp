@@ -9,53 +9,49 @@ InstrumentSelectionDialog::InstrumentSelectionDialog(wxWindow* parent, IInstrume
 
     //=== View Construction ===//
 
-    wxPanel* panel = new wxPanel(this, wxID_ANY);
-    wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
-    wxListBox* instrumentList = new wxListBox(panel, wxID_ANY, wxDefaultPosition, wxSize(300, -1), 0, NULL, wxLB_SINGLE);
+    this->panel = new wxPanel(this, wxID_ANY);
+    this->panelSizer = new wxBoxSizer(wxVERTICAL);
+    this->instrumentList = new wxListBox(panel, wxID_ANY, wxDefaultPosition, wxSize(300, -1), 0, NULL, wxLB_SINGLE);
     panelSizer->Add(instrumentList, 1, wxEXPAND | wxALL, 5);
 
-    // Populate Instrument List
-    listener->populateInstrumentList(instrumentList);
+    // Ok Button
+    wxButton* okButton = new wxButton(panel, wxID_ANY, "OK");
+    Bind(wxEVT_BUTTON, &InstrumentSelectionDialog::OnOK, this, okButton->GetId());
+    panelSizer->Add(okButton, 0, wxALIGN_CENTER | wxALL, 5);
 
-    if (instrumentList->GetCount() == 1)
-    {
-        listener->onInstrumentSelected(0);
-        this->Destroy();
-    }
-    // Show popup if more than one instruments is available
-    else if (instrumentList->GetCount() > 0)
-	{
-        // Ok Button
-        wxButton* okButton = new wxButton(panel, wxID_ANY, "OK");
-        Bind(wxEVT_BUTTON, &InstrumentSelectionDialog::OnOK, this, okButton->GetId());
-        panelSizer->Add(okButton, 0, wxALIGN_CENTER | wxALL, 5);
+    // Close Button
+    Bind(wxEVT_CLOSE_WINDOW, &InstrumentSelectionDialog::OnClose, this);
 
-        // Close Button
-        Bind(wxEVT_CLOSE_WINDOW, &InstrumentSelectionDialog::OnClose, this);
+    panel->SetSizerAndFit(panelSizer);
 
-        panel->SetSizerAndFit(panelSizer);
-
-        // Center the panel in the dialog
-        wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
-        mainSizer->Add(panel, 1, wxALIGN_CENTER | wxALL, 10);
-        SetSizerAndFit(mainSizer);
-    }
+    // Center the panel in the dialog
+    this->mainSizer = new wxBoxSizer(wxHORIZONTAL);
+    mainSizer->Add(panel, 1, wxALIGN_CENTER | wxALL, 10);
+    SetSizerAndFit(mainSizer);
 
     CenterOnScreen();
-    this->Show(true);
+
 }
+
+void InstrumentSelectionDialog::ShowSelectionDialog()
+{
+    this->instrumentList->Clear();
+    listener->populateInstrumentList(this->instrumentList);
+    this->ShowModal();
+}
+
+
 
 void InstrumentSelectionDialog::OnOK(wxCommandEvent& event)
 {
-    // FIXME: The selectedIndex is not the index of the element selected in the list.
-    int selectedIndex = event.GetSelection();
+    int selectedIndex = this->instrumentList->GetSelection();
     listener->onInstrumentSelected(selectedIndex);
-    this->Destroy();
+    this->EndModal(wxID_OK);
 }
 
 void InstrumentSelectionDialog::OnClose(wxCloseEvent& event)
 {
 	listener->onClose();
-    this->Destroy();
+    this->EndModal(wxID_CANCEL);
 }
 

@@ -43,4 +43,5 @@ public:
     void check_api_connection() override;
     
     ViSession getInstrumentHandle() override;
+    HomeFrame* getHomeFrame() override;
 };

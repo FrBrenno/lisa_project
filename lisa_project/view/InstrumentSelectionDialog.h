@@ -11,6 +11,12 @@ class InstrumentSelectionDialog: public wxDialog{
 	wxWindow* parent;
 	IInstrumentViewListener* listener;
 
+	wxPanel* panel;
+	wxBoxSizer* panelSizer;
+	wxListBox* instrumentList;
+	wxButton* okButton;
+	wxBoxSizer* mainSizer;
+
 public:	
 	/**
 	 * InstrumentSelectionDialog Constructor.
@@ -19,6 +25,8 @@ public:
 	 * @param controller The controller that manages this view.
 	 */
 	InstrumentSelectionDialog(wxWindow* parent, IInstrumentViewListener* controller);
+
+	void ShowSelectionDialog();
 
 	/**
 	 * Handles when the user clicks the OK button.
