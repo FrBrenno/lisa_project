@@ -40,12 +40,24 @@
     <Filter Include="Fichiers d%27en-tête\Model\Dto">
       <UniqueIdentifier>{13e89769-837f-4876-a342-08451bfde981}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Interface">
+      <UniqueIdentifier>{089f2915-1aac-46ba-a65e-d53327e79731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Events">
+      <UniqueIdentifier>{4113cf98-d36a-46b2-af4c-4725e210d7a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Controller\Api">
+      <UniqueIdentifier>{0a66bca5-8667-49d7-8f56-b07539fea832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Event">
+      <UniqueIdentifier>{7bff324c-6c0a-4790-8c91-bc970cb8c78b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Api">
+      <UniqueIdentifier>{1187fbf0-4242-4445-8329-c6dc1b564bd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyApp.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="EventDispatcher.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="controller\BaseController.cpp">
@@ -78,13 +90,7 @@
     <ClCompile Include="view\MlaSelectionDialog.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="WfsApiService.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="controller\ImageProcessingController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="PreviewController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
     <ClCompile Include="model\Dto\InstrumentDto.cpp">
@@ -93,15 +99,18 @@
     <ClCompile Include="model\Dto\MlaDto.cpp">
       <Filter>Fichiers sources\Model\Dto</Filter>
     </ClCompile>
+    <ClCompile Include="EventDispatcher.cpp">
+      <Filter>Fichiers sources\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\PreviewController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="WfsApiService.cpp">
+      <Filter>Fichiers sources\Api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyApp.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EventDispatcher.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="controller\BaseController.h">
@@ -134,22 +143,13 @@
     <ClInclude Include="view\MlaSelectionDialog.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
-    <ClInclude Include="MyAppInterface.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="id\ButtonID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
     </ClInclude>
     <ClInclude Include="id\MenuID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
     </ClInclude>
-    <ClInclude Include="WfsApiService.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="controller\ImageProcessingController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="PreviewController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
     <ClInclude Include="model\Dto\InstrumentDto.h">
@@ -157,6 +157,33 @@
     </ClInclude>
     <ClInclude Include="model\Dto\MlaDto.h">
       <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IHomeFrameListener.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IInstrumentViewListener.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IPreviewHolder.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IPreviewHolderListener.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\PreviewController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="MyAppInterface.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDispatcher.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="WfsApiService.h">
+      <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
