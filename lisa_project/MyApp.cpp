@@ -1,6 +1,4 @@
 #include "MyApp.h"
-#include "Event.h"
-#include "EventDispatcher.h"
 #include "wx/busyinfo.h"
 #include "wfsApiService.h"
 #include "TestWfsApiService.h"

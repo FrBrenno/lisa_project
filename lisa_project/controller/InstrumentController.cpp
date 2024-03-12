@@ -2,18 +2,21 @@
 #include "../EventDispatcher.h"
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Dto/InstrumentDto.h"
+#include "InstrumentSelectedEvent.h"
+#include "InstrumentSelectionEvent.h"
+#include "ExitEvent.h"
 
 InstrumentController::InstrumentController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->err = VI_SUCCESS;
 	this->instrument = new Instrument();
 
-	EventDispatcher::Instance().SubscribeToEvent("InstrumentSelection",
-		[this](const Event& event) {
+	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectionEvent>(
+		[this](const InstrumentSelectionEvent& event) {
 			HandleInstrumentSelection();
 		});
-	EventDispatcher::Instance().SubscribeToEvent("Exit",
-		[this](const Event& event) {
+	EventDispatcher::Instance().SubscribeToEvent<ExitEvent>(
+		[this](const ExitEvent& event) {
 			onExit();
 		});
 }
@@ -36,8 +39,9 @@ void InstrumentController::HandleInstrumentSelection()
 	InstrumentSelectionDialog instrumentSelectionDialog(this->app->getHomeFrame(), this);
 	instrumentSelectionDialog.ShowSelectionDialog();
 
-	Event newInstrumentSelected("NewInstrumentSelected", (void*)(this->instrument));
-	EventDispatcher::Instance().PublishEvent(newInstrumentSelected);
+	EventDispatcher::Instance().PublishEvent(
+		InstrumentSelectedEvent(this->instrument)
+	);
 }
 
 //=== WFS API Functions ===//

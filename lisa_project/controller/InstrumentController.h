@@ -1,7 +1,6 @@
 #pragma once
 #include "wx/wx.h"
 #include "../model/Instrument.h"
-#include "../Event.h"
 #include "BaseController.h"
 #include "../interface/IInstrumentViewListener.h"
 

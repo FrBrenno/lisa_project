@@ -26,7 +26,6 @@ class HomeFrame : public wxFrame, public IPreviewHolder
 
     wxButton* captureButton;
     wxButton* previewButton;
-    bool isPreviewOn;
     /**
      * Name of the instrument in use.
      */

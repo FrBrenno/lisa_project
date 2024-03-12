@@ -1,6 +1,5 @@
 #include "wfsApiService.h"
 #include <lib/thorlabs_api/WFS.h>
-#include <EventDispatcher.h>
 #include <iostream>
 
 

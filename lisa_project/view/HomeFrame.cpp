@@ -2,6 +2,8 @@
 #include "../id/MenuID.h"
 #include "../id/ButtonID.h"
 #include "../EventDispatcher.h"
+#include "InstrumentSelectionEvent.h"
+#include "ExitEvent.h"
 
 
 HomeFrame::HomeFrame()
@@ -81,8 +83,9 @@ HomeFrame::HomeFrame()
 
 void HomeFrame::OnInstrumentSelection(wxCommandEvent& event)
 {
-    Event instrumentSelectionEvent("InstrumentSelection");
-    EventDispatcher::Instance().PublishEvent(instrumentSelectionEvent);
+    EventDispatcher::Instance().PublishEvent(
+        InstrumentSelectionEvent()
+    );
 }
 
 void HomeFrame::OnLoadImage(wxCommandEvent& event)
@@ -109,8 +112,9 @@ void HomeFrame::OnCapture(wxCommandEvent& event)
 
 void HomeFrame::OnExit(wxCommandEvent& event)
 {
-    Event exitEvent("Exit");
-    EventDispatcher::Instance().PublishEvent(exitEvent);
+    EventDispatcher::Instance().PublishEvent(
+        ExitEvent()
+    );
     exit(0);
 }
 

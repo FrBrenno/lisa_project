@@ -2,7 +2,6 @@
 
 #include <string>
 #include "lib/thorlabs_api/WFS.h"
-#include "Mla.h"
 
 /**
  * @class Instrument.

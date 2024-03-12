@@ -151,7 +151,6 @@
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\MlaController.cpp" />
     <ClCompile Include="controller\PreviewController.cpp" />
-    <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="model\Dto\InstrumentDto.cpp" />
     <ClCompile Include="model\Dto\MlaDto.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
@@ -172,14 +171,19 @@
     <ClInclude Include="controller\MlaController.h" />
     <ClInclude Include="controller\PreviewController.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="EventBase.h" />
     <ClInclude Include="EventDispatcher.h" />
+    <ClInclude Include="ExitEvent.h" />
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
+    <ClInclude Include="InstrumentSelectedEvent.h" />
+    <ClInclude Include="InstrumentSelectionEvent.h" />
     <ClInclude Include="interface\IApiService.h" />
     <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="interface\IInstrumentViewListener.h" />
     <ClInclude Include="interface\IPreviewHolder.h" />
     <ClInclude Include="interface\IPreviewHolderListener.h" />
+    <ClInclude Include="MlaSelectionEvent.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />

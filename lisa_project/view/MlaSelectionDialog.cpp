@@ -42,7 +42,7 @@ MlaSelectionDialog::MlaSelectionDialog(wxWindow* parent, MlaController* controll
 void MlaSelectionDialog::OnOK(wxCommandEvent& event)
 {
 	// FIXME: It should get the index of the element selected on the list. I guess this is getting a 0 every time.
-	int selectedIndex = event.GetSelection();
+	int selectedIndex = 0;
 	controller->onMlaSelected(selectedIndex);
 	this->Destroy();
 }

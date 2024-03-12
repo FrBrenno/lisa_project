@@ -1,7 +1,6 @@
 #include "HomeFrameController.h"
 #include "../view/InstrumentSelectionDialog.h"
 #include "ImageProcessingController.h"
-#include "../EventDispatcher.h"
 
 HomeFrameController::HomeFrameController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {

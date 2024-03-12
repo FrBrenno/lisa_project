@@ -49,9 +49,6 @@
     <Filter Include="Fichiers d%27en-tête\Controller\Api">
       <UniqueIdentifier>{0a66bca5-8667-49d7-8f56-b07539fea832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Event">
-      <UniqueIdentifier>{7bff324c-6c0a-4790-8c91-bc970cb8c78b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\Api">
       <UniqueIdentifier>{1187fbf0-4242-4445-8329-c6dc1b564bd3}</UniqueIdentifier>
     </Filter>
@@ -98,9 +95,6 @@
     </ClCompile>
     <ClCompile Include="model\Dto\MlaDto.cpp">
       <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
-    <ClCompile Include="EventDispatcher.cpp">
-      <Filter>Fichiers sources\Event</Filter>
     </ClCompile>
     <ClCompile Include="controller\PreviewController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
@@ -193,6 +187,21 @@
     </ClInclude>
     <ClInclude Include="TestWfsApiService.h">
       <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentSelectionEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="InstrumentSelectedEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="MlaSelectionEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventBase.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

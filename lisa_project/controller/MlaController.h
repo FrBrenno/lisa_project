@@ -36,11 +36,6 @@ public:
 	 * @param event MlaSelectionEvent.
 	 */
 	void HandleMlaSelection();
-	/**
-	 * Handles when this class finishes handling MlaSelectionEvent.
-	 *
-	 * @param event MlaSelectedEvent
-	 */
-	void HandleMlaSelected();
+
 	void onClose() override;
 };

@@ -2,7 +2,9 @@
 #include <string>
 #include <functional>
 #include <vector>
-#include "Event.h"
+#include "EventBase.h"
+#include <unordered_map>
+#include <typeindex>
 
 /**
   @class EventDispatcher
@@ -11,7 +13,7 @@
  */
 class EventDispatcher {
     EventDispatcher() {}  // Private constructor
-    std::vector<std::pair<std::string, std::function<void(const Event&)>>> subscribers; // List of subscribers and their callbacks
+    std::unordered_map<std::type_index, std::function<void(const EventBase&)>> subscribers; // Map of subscribers and their callbacks
 
 public:
     static EventDispatcher& Instance() {
@@ -19,16 +21,19 @@ public:
         return instance;
     }
 
-    /**
-     * Publishes an event. This will call all the callbacks of the subscribers to this event.
-     * @param event Event to publish
-     */
-    void PublishEvent(const Event& event); 
-    /**
-     * Allow an object to subscribe to an event. Whenever this event is published, the callback will be called.
-     * 
-     * @param eventName Event to subscribe to
-     * @param callback Callback to be called when the event is published
-     */
-    void SubscribeToEvent(const std::string& eventName, std::function<void(const Event&)> callback);
+    template<typename T>
+    void PublishEvent(const T& event) {
+        auto it = subscribers.find(std::type_index(typeid(event)));
+        if (it != subscribers.end()) {
+            it->second(event);
+        }
+    }
+
+    template<typename T>
+    void SubscribeToEvent(std::function<void(const T&)> callback) {
+        subscribers[std::type_index(typeid(T))] = [=](const EventBase& baseEvent) {
+            const T& event = dynamic_cast<const T&>(baseEvent);
+            callback(event);
+            };
+    }
 };

@@ -14,8 +14,8 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 	this->imageProcessingEnabled = true;
 
-	EventDispatcher::Instance().SubscribeToEvent("NewInstrumentSelected",
-		[this](const Event& event) {
+	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectedEvent>(
+		[this](const InstrumentSelectedEvent& event) {
 			HandleNewInstrumentSelected(event);
 		});
 }
@@ -95,8 +95,8 @@ wxImage* ImageController::getImage()
 
 //=== Event Handlers ===//
 
-void ImageController::HandleNewInstrumentSelected(Event event)
+void ImageController::HandleNewInstrumentSelected(InstrumentSelectedEvent event)
 {
-	Instrument* instrument = (Instrument*)event.getData();
+	Instrument* instrument = event.getData();
 	this->instrument = instrument;
 }

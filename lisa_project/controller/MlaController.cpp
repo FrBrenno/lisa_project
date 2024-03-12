@@ -3,14 +3,15 @@
 #include "../view/MlaSelectionDialog.h"
 #include "wx/wx.h"
 #include "../model/Dto/MlaDto.h"
+#include "MlaSelectionEvent.h"
 
 MlaController::MlaController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService) {
 	this->mla = new Mla();
 	this->err = 0;
 	
 	// This class should be aware whenever the user wants to select an MLA.
-	EventDispatcher::Instance().SubscribeToEvent("MlaSelection",
-		[this](const Event& event) {
+	EventDispatcher::Instance().SubscribeToEvent<MlaSelectionEvent>(
+		[this](const MlaSelectionEvent& event) {
 			HandleMlaSelection();
 		});
 }
@@ -31,13 +32,6 @@ void MlaController::HandleMlaSelection()
 
 	MlaSelectionDialog dialog(nullptr, this);
 	dialog.ShowModal();
-}
-
-void MlaController::HandleMlaSelected() {
-	// Publish the selected MLA to whatever controller that needs it.
-	Event mlaSelectedEvent("MlaSelected", (void*)this->mla);
-
-	EventDispatcher::Instance().PublishEvent(mlaSelectedEvent);
 }
 
 //=== WFS API Functions ===//

@@ -1,6 +1,5 @@
 #pragma once
 #include "wx/wx.h"
-#include "../Event.h"
 #include "BaseController.h"
 #include "../interface/IHomeFrameListener.h"
 
