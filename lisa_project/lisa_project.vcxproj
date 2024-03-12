@@ -149,7 +149,6 @@
     <ClCompile Include="controller\ImageController.cpp" />
     <ClCompile Include="controller\ImageProcessingController.cpp" />
     <ClCompile Include="controller\InstrumentController.cpp" />
-    <ClCompile Include="controller\MlaController.cpp" />
     <ClCompile Include="controller\PreviewController.cpp" />
     <ClCompile Include="model\Dto\InstrumentDto.cpp" />
     <ClCompile Include="model\Dto\MlaDto.cpp" />
@@ -159,7 +158,6 @@
     <ClCompile Include="TestWfsApiService.cpp" />
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
-    <ClCompile Include="view\MlaSelectionDialog.cpp" />
     <ClCompile Include="WfsApiService.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +166,6 @@
     <ClInclude Include="controller\ImageController.h" />
     <ClInclude Include="controller\ImageProcessingController.h" />
     <ClInclude Include="controller\InstrumentController.h" />
-    <ClInclude Include="controller\MlaController.h" />
     <ClInclude Include="controller\PreviewController.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventBase.h" />
@@ -183,7 +180,6 @@
     <ClInclude Include="interface\IInstrumentViewListener.h" />
     <ClInclude Include="interface\IPreviewHolder.h" />
     <ClInclude Include="interface\IPreviewHolderListener.h" />
-    <ClInclude Include="MlaSelectionEvent.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />
@@ -193,7 +189,6 @@
     <ClInclude Include="TestWfsApiService.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
-    <ClInclude Include="view\MlaSelectionDialog.h" />
     <ClInclude Include="WfsApiService.h" />
   </ItemGroup>
   <ItemGroup>

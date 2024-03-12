@@ -22,8 +22,8 @@ public:
 	virtual ViStatus closeInstrument(ViSession handle) = 0;
 
 	// MLA
-	virtual ViStatus getMlaList(ViSession handle, std::vector<MlaDto>* mlas) = 0;
-	virtual ViStatus getMlaInfo(ViSession handle, int selectedIndex, Mla* mla) = 0;
+	virtual ViStatus getMlaInfo(ViSession handle, int selectedIndex, MlaDto& mla) = 0;
+	virtual ViStatus selectMla(ViSession handle, int selectedIndex) = 0;
 
 	// Image
 	virtual ViStatus getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols) = 0;

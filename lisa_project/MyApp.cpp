@@ -7,7 +7,6 @@ wxIMPLEMENT_APP(MyApp);
 
 MyApp::~MyApp()
 {
-    delete mlaController;
     delete instrumentController;
     delete homeFrameController;
     delete wfsApiService;
@@ -36,7 +35,6 @@ bool MyApp::OnInit()
     //=== Controller initialization ===//
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
-    this->mlaController = new MlaController(this, this->wfsApiService);
     this->imageController = new ImageController(this, this->wfsApiService);
     this->previewController = new PreviewController(this, this->wfsApiService, this->imageController);
     
@@ -50,7 +48,6 @@ bool MyApp::OnInit()
     if (this->wfsApiService->isApiConnectionActive())
     {
         this->instrumentController->HandleInstrumentSelection();
-        this->mlaController->HandleMlaSelection();
         homeFrame->setInstrumentName(instrumentController->getInstrumentName());
     }
     

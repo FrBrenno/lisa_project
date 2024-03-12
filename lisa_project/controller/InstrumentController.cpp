@@ -10,6 +10,7 @@ InstrumentController::InstrumentController(MyAppInterface* main, IApiService* wf
 {
 	this->err = VI_SUCCESS;
 	this->instrument = new Instrument();
+	this->mla = new Mla();
 
 	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectionEvent>(
 		[this](const InstrumentSelectionEvent& event) {
@@ -102,6 +103,8 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 	else{
 		// Initialize instrument
 		this->initInstrument(selectedInstrument);
+		this->selectMla();
+		//this->cameraConfiguration();
 	}
 
 }
@@ -211,6 +214,46 @@ void InstrumentController::closeInstrument()
 		this->instrument->setInitialized(false);
 	}
 }
+
+void InstrumentController::selectMla()
+{
+	if (!this->isWfsConnected()) {
+		// Call to main so it can try to connect to API
+		this->handleError(-1, "WFS is not connected");
+		return;
+	}
+
+	// Get MLA information
+	int defaultMlaIndex = 0;
+	MlaDto mlaDto;
+	ViStatus status = this->wfsApiService->getMlaInfo(this->getInstrumentHandle(), defaultMlaIndex, mlaDto);
+	if (status != VI_SUCCESS)
+	{
+		this->handleError(err, "Not able to get MLA information");
+		return;
+	}
+
+	// Set MLA information
+	this->mla->setMlaName(mlaDto.getMlaName());
+	this->mla->setCamPitchm(mlaDto.getCamPitchm());
+	this->mla->setLensletPitchm(mlaDto.getLensletPitchm());
+	this->mla->setCenterSpotOffsetX(mlaDto.getSpotOffsetX());
+	this->mla->setCenterSpotOffsetY(mlaDto.getSpotOffsetY());
+	this->mla->setLensletFm(mlaDto.getLensletFm());
+	this->mla->setGrdCorr0(mlaDto.getGrdCorr0());
+	this->mla->setGrdCorr45(mlaDto.getGrdCorr45());
+
+
+	// Select MLA, set calibration files active
+	status = this->wfsApiService->selectMla(this->getInstrumentHandle(), defaultMlaIndex);
+	if (status != VI_SUCCESS)
+	{
+		this->handleError(err, "Not able to select MLA");
+		return;
+	}
+
+}
+
 
 void InstrumentController::onExit()
 {

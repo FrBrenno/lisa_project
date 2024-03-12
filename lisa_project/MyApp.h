@@ -5,7 +5,6 @@
 #include "view/HomeFrame.h"
 #include "controller/HomeFrameController.h"
 #include "controller/InstrumentController.h"
-#include "controller/MlaController.h"
 #include "controller/ImageController.h"
 #include "controller/PreviewController.h"
 #include "interface/IApiService.h"
@@ -28,7 +27,6 @@ class MyApp : public wxApp, MyAppInterface
 
     HomeFrameController * homeFrameController;
     InstrumentController* instrumentController;
-    MlaController* mlaController;
     ImageController* imageController;
     PreviewController* previewController;
 

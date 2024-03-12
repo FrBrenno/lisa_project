@@ -81,12 +81,6 @@
     <ClCompile Include="model\Mla.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="controller\MlaController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="view\MlaSelectionDialog.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
     <ClCompile Include="controller\ImageProcessingController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
@@ -133,12 +127,6 @@
     </ClInclude>
     <ClInclude Include="model\Mla.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\MlaController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="view\MlaSelectionDialog.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
     <ClInclude Include="id\ButtonID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
@@ -195,9 +183,6 @@
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
     <ClInclude Include="ExitEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="MlaSelectionEvent.h">
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
     <ClInclude Include="EventBase.h">

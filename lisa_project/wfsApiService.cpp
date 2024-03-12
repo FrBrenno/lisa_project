@@ -161,55 +161,7 @@ ViStatus WfsApiService::closeInstrument(ViSession handle)
 
 // MLA
 
-ViStatus WfsApiService::getMlaList(ViSession handle, std::vector<MlaDto>* mlas)
-{
-	// Variables
-	ViInt32 mlaCount = 0;
-	ViChar mla_name[WFS_BUFFER_SIZE];
-	ViReal64 cam_pitch, lenslet_pitch, spot_offset_x, spot_offset_y, lenslet_fm, grd_corr_0, grd_corr_45;
-	ViStatus err;
-
-	// Get MLA count
-	if (err = WFS_GetMlaCount(handle, &mlaCount))
-	{
-		// Not able to get the count of MLA
-		std::cerr << "Failed to get MLA count. Error code: " << err << std::endl;
-		return err;
-	}
-
-	if (mlaCount == 0)
-	{
-		// No MLA found, return empty list
-		mlas->clear();
-		return VI_SUCCESS;
-	}
-	else
-	{
-		for (int i = 0; i < mlaCount; i++)
-		{
-			if (err = WFS_GetMlaData(handle, i, mla_name, &cam_pitch, &lenslet_pitch, &spot_offset_x, &spot_offset_y, &lenslet_fm, &grd_corr_0, &grd_corr_45))
-			{
-				// Not able to get MLA's information
-				std::cerr << "Failed to get MLA info. Error code: " << err << std::endl;
-				return err;
-			}
-			// Add MLA to list
-			MlaDto mla;
-			mla.setMlaName(mla_name);
-			mla.setCamPitchm(cam_pitch);
-			mla.setLensletPitchm(lenslet_pitch);
-			mla.setSpotOffsetX(spot_offset_x);
-			mla.setSpotOffsetY(spot_offset_y);
-			mla.setLensletFm(lenslet_fm);
-			mla.setGrdCorr0(grd_corr_0);
-			mla.setGrdCorr45(grd_corr_45);
-			mlas->push_back(mla);
-		}
-		return VI_SUCCESS; // Success
-	}
-}
-
-ViStatus WfsApiService::getMlaInfo(ViSession handle, int selectedIndex, Mla* mla)
+ViStatus WfsApiService::getMlaInfo(ViSession handle, int selectedIndex, MlaDto& mla)
 {
 	// Variables
 	ViChar mla_name[WFS_BUFFER_SIZE];
@@ -224,14 +176,26 @@ ViStatus WfsApiService::getMlaInfo(ViSession handle, int selectedIndex, Mla* mla
 		return err;
 	}
 	// Set MLA information
-	mla->setMlaName(mla_name);
-	mla->setCamPitchm(cam_pitch);
-	mla->setLensletPitchm(lenslet_pitch);
-	mla->setCenterSpotOffsetX(spot_offset_x);
-	mla->setCenterSpotOffsetY(spot_offset_y);
-	mla->setLensletFm(lenslet_fm);
-	mla->setGrdCorr0(grd_corr_0);	
-	mla->setGrdCorr45(grd_corr_45);
+	mla.setMlaName(mla_name);
+	mla.setCamPitchm(cam_pitch);
+	mla.setLensletPitchm(lenslet_pitch);
+	mla.setSpotOffsetX(spot_offset_x);
+	mla.setSpotOffsetY(spot_offset_y);
+	mla.setLensletFm(lenslet_fm);
+	mla.setGrdCorr0(grd_corr_0);	
+	mla.setGrdCorr45(grd_corr_45);
+	return VI_SUCCESS; // Success
+}
+
+ViStatus WfsApiService::selectMla(ViSession handle, int selectedIndex)
+{
+	// API call to select MLA
+	if (ViStatus err = WFS_SelectMla(handle, selectedIndex))
+	{
+		// Not able to select MLA
+		std::cerr << "Failed to select MLA. Error code: " << err << std::endl;
+		return err;
+	}
 	return VI_SUCCESS; // Success
 }
 

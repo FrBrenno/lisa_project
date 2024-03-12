@@ -62,42 +62,21 @@ ViStatus TestWfsApiService::closeInstrument(ViSession handle)
 	return VI_SUCCESS;
 }
 
-ViStatus TestWfsApiService::getMlaList(ViSession handle, std::vector<MlaDto>* mlas)
+ViStatus TestWfsApiService::getMlaInfo(ViSession handle, int selectedIndex, MlaDto& mla)
 {
-	MlaDto mla_1, mla_2;
-	mla_1.setMlaName((ViChar*) "Test MLA 1");
-	mla_1.setCamPitchm(0.001);
-	mla_1.setLensletPitchm(0.001);
-	mla_1.setSpotOffsetX(0.001);
-	mla_1.setSpotOffsetY(0.001);
-	mla_1.setLensletFm(0.001);
-	mla_1.setGrdCorr0(0.001);
-	mla_1.setGrdCorr45(0.001);
-
-	mla_2.setMlaName((ViChar*) "Test MLA 2");
-	mla_2.setCamPitchm(0.002);
-	mla_2.setLensletPitchm(0.002);
-	mla_2.setSpotOffsetX(0.002);
-	mla_2.setSpotOffsetY(0.002);
-	mla_2.setLensletFm(0.002);
-	mla_2.setGrdCorr0(0.002);
-	mla_2.setGrdCorr45(0.002);
-
-	mlas->push_back(mla_1);
-	mlas->push_back(mla_2);
+	mla.setMlaName((ViChar*) "Test MLA");
+	mla.setCamPitchm(0.001);
+	mla.setLensletPitchm(0.001);
+	mla.setSpotOffsetX(0.001);
+	mla.setSpotOffsetY(0.001);
+	mla.setLensletFm(0.001);
+	mla.setGrdCorr0(0.001);
+	mla.setGrdCorr45(0.001);
 	return VI_SUCCESS;
 }
 
-ViStatus TestWfsApiService::getMlaInfo(ViSession handle, int selectedIndex, Mla* mla)
+ViStatus TestWfsApiService::selectMla(ViSession handle, int selectedIndex)
 {
-	mla->setMlaName((ViChar*) "Test MLA");
-	mla->setCamPitchm(0.001);
-	mla->setLensletPitchm(0.001);
-	mla->setCenterSpotOffsetX(0.001);
-	mla->setCenterSpotOffsetY(0.001);
-	mla->setLensletFm(0.001);
-	mla->setGrdCorr0(0.001);
-	mla->setGrdCorr45(0.001);
 	return VI_SUCCESS;
 }
 

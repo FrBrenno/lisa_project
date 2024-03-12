@@ -10,6 +10,7 @@
  */
 class InstrumentController: public BaseController, public IInstrumentViewListener{
 	Instrument* instrument;
+	Mla* mla;
 	ViInt32 err;
 
 public:
@@ -55,6 +56,8 @@ public:
 	 */
 	void closeInstrument();
 
+	void selectMla();
+
 
 	//=== Event Handlers ===//
 
@@ -71,5 +74,4 @@ public:
 
 	//=== Getters ===//
 	const ViSession getInstrumentHandle();
-
 };
