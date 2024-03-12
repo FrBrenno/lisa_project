@@ -40,6 +40,8 @@ public:
 	void setInstrumentName(ViChar* instrument_name);
 	void setSerialNumberWfs(ViChar* serial_number_wfs);
 	void setSerialNumberCam(ViChar* serial_number_cam);
+	void setSpotsX(ViInt32 spots_x);
+	void setSpotsY(ViInt32 spots_y);
 
 	void setInitialized(bool is_initialized);
 	void setStatus(ViInt32 status);

@@ -23,6 +23,11 @@ public:
 	ViStatus getMlaInfo(ViSession handle, int selectedIndex, MlaDto& mla) override;
 	ViStatus selectMla(ViSession handle, int selectedIndex) override;
 
+	// Camera
+	virtual ViStatus configureCamera(ViSession handle, int devideId, ViInt32& spotsX, ViInt32& spotsY) override;
+	virtual ViStatus setReferencePlane(ViSession handle) override;
+	virtual ViStatus setPupil(ViSession handle) override;
+
 	// Image
 	ViStatus getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols) override;
 };

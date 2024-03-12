@@ -4,7 +4,7 @@
 
 HomeFrameController::HomeFrameController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -74,8 +74,3 @@ void HomeFrameController::onCapture(wxWindow* parent, wxBitmap lastBitmap)
 	lastBitmap.SaveFile(filePath, wxBITMAP_TYPE_PNG);
 }
 
-
-bool HomeFrameController::isWfsConnected()
-{
-	return this->wfsApiService->isApiConnectionActive();
-}

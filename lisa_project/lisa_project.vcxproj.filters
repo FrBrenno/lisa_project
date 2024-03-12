@@ -188,6 +188,9 @@
     <ClInclude Include="EventBase.h">
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
+    <ClInclude Include="WfsParameters.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png">

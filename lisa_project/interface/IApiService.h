@@ -25,6 +25,11 @@ public:
 	virtual ViStatus getMlaInfo(ViSession handle, int selectedIndex, MlaDto& mla) = 0;
 	virtual ViStatus selectMla(ViSession handle, int selectedIndex) = 0;
 
+	// Camera
+	virtual ViStatus configureCamera(ViSession handle, int devideId, ViInt32& spotsX, ViInt32& spotsY) = 0;
+	virtual ViStatus setReferencePlane(ViSession handle) = 0;
+	virtual ViStatus setPupil(ViSession handle) = 0;
+	
 	// Image
 	virtual ViStatus getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols) = 0;
 };

@@ -190,6 +190,7 @@
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
     <ClInclude Include="WfsApiService.h" />
+    <ClInclude Include="WfsParameters.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png" />

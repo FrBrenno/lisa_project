@@ -55,9 +55,16 @@ public:
 	 * 
 	 */
 	void closeInstrument();
-
+	/**
+	 * Selects default MLA.
+	 * 
+	 */
 	void selectMla();
-
+	/**
+	 * Configures the camera.
+	 * 
+	 */
+	void cameraConfiguration();
 
 	//=== Event Handlers ===//
 

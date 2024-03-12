@@ -46,6 +46,16 @@ void Instrument::setSerialNumberCam(ViChar* serial_number_cam)
 	strcpy_s(this->serial_number_cam, serial_number_cam);
 }
 
+void Instrument::setSpotsX(ViInt32 spots_x)
+{
+	this->spots_x = spots_x;
+}
+
+void Instrument::setSpotsY(ViInt32 spots_y)
+{
+	this->spots_y = spots_y;
+}
+
 void Instrument::setInitialized(bool is_initialized)
 {
 	this->is_initialized = is_initialized;

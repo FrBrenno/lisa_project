@@ -17,5 +17,4 @@ public:
 
 	void onCapture(wxWindow* parent, wxBitmap lastBitmap) override;
 
-	bool isWfsConnected() override;
 };

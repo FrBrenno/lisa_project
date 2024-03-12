@@ -31,7 +31,7 @@ InstrumentController::~InstrumentController()
 
 void InstrumentController::HandleInstrumentSelection()
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -49,7 +49,7 @@ void InstrumentController::HandleInstrumentSelection()
 
 void InstrumentController::populateInstrumentList(wxListBox* list)
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -86,7 +86,7 @@ void InstrumentController::populateInstrumentList(wxListBox* list)
 
 void InstrumentController::onInstrumentSelected(int selectedIndex)
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// API is not connected
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -104,7 +104,7 @@ void InstrumentController::onInstrumentSelected(int selectedIndex)
 		// Initialize instrument
 		this->initInstrument(selectedInstrument);
 		this->selectMla();
-		//this->cameraConfiguration();
+		this->cameraConfiguration();
 	}
 
 }
@@ -123,7 +123,7 @@ void InstrumentController::onClose(){
 
 void InstrumentController::initInstrument(InstrumentDto& instrumentDto)
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -146,53 +146,55 @@ void InstrumentController::initInstrument(InstrumentDto& instrumentDto)
 	}
 }
 
-/**  
+
 void InstrumentController::cameraConfiguration()
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
 	}
 
-	ViSession handle = *this->instrument->getHandle();
-	int device_id = this->instrument->getDeviceId();
+	ViSession handle = this->instrument->getHandle();
+	int deviceId = this->instrument->getDeviceId();
+	ViInt32 spotsX, spotsY;
 
-	// If device is a WFS20
-	if (device_id & DEVICE_OFFSET_WFS20) {
-		ViInt32* spotsX = this->instrument->getSpotsX();
-		ViInt32* spotsY = this->instrument->getSpotsY();
-		if (err = WFS_ConfigureCam(handle,
-			SAMPLE_PIXEL_FORMAT,
-			SAMPLE_CAMERA_RESOL_WFS20,
-			spotsX,
-			spotsY))
+	ViStatus status = 0;
+	if (status = this->wfsApiService->configureCamera(handle, deviceId, spotsX, spotsY))
+	{
+		if (status == -1) {
+			// Other devices are not compatible with this software for now
+			this->handleError(-1, "The device selected is not a WFS20. Others devices are not compatible.");
+			return;
+		}
+		else
 		{
 			this->handleError(err, "Not able to configure camera");
 			return;
 		}
 	}
-	else {
-		// Other devices are not compatible with this software for now
-		this->handleError(-1, "The device selected is not a WFS20. Others devices are not compatible.");
-	}
+	this->instrument->setSpotsX(spotsX);
+	this->instrument->setSpotsY(spotsY);
 
 	// WFS Internal Reference Plane Setup
-	if (err = WFS_SetReferencePlane(handle, SAMPLE_REF_PLANE)) {
+	if (status = this->wfsApiService->setReferencePlane(handle))
+	{
 		this->handleError(err, "Not able to set reference plane");
 		return;
 	}
+
 	// WFS Pupil Setup
-	if (err = WFS_SetPupil(handle, SAMPLE_PUPIL_CENTROID_X, SAMPLE_PUPIL_CENTROID_Y, SAMPLE_PUPIL_DIAMETER_X, SAMPLE_PUPIL_DIAMETER_Y)) {
+	if (status = this->wfsApiService->setPupil(handle))
+	{
 		this->handleError(err, "Not able to set pupil");
 		return;
 	}
 }
-*/
+
 
 void InstrumentController::closeInstrument()
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;
@@ -217,7 +219,7 @@ void InstrumentController::closeInstrument()
 
 void InstrumentController::selectMla()
 {
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		this->handleError(-1, "WFS is not connected");
 		return;

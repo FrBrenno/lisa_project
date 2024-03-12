@@ -33,7 +33,3 @@ void BaseController::onClose() {
 	return;
 }
 
-bool BaseController::isWfsConnected() const
-{
-	return this->wfsApiService->isApiConnectionActive();
-}

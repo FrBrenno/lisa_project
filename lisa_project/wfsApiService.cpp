@@ -1,6 +1,7 @@
 #include "wfsApiService.h"
 #include <lib/thorlabs_api/WFS.h>
 #include <iostream>
+#include <WfsParameters.h>
 
 
 WfsApiService::WfsApiService()
@@ -194,6 +195,54 @@ ViStatus WfsApiService::selectMla(ViSession handle, int selectedIndex)
 	{
 		// Not able to select MLA
 		std::cerr << "Failed to select MLA. Error code: " << err << std::endl;
+		return err;
+	}
+	return VI_SUCCESS; // Success
+}
+
+// Camera
+
+ViStatus WfsApiService::configureCamera(ViSession handel, int deviceId, ViInt32& spotsX, ViInt32& spotsY)
+{
+	if (deviceId & DEVICE_OFFSET_WFS20)
+	{
+		// API call to configure camera
+		if (ViStatus err = WFS_ConfigureCam(handel, SAMPLE_PIXEL_FORMAT, SAMPLE_CAMERA_RESOL_WFS20, &spotsX, &spotsY))
+		{
+			// Not able to configure camera
+			std::cerr << "Failed to configure camera. Error code: " << err << std::endl;
+			return err;
+		}
+		return VI_SUCCESS; // Success
+	}
+	else
+	{
+		// Other devices are not compatible with this software for now
+		std::cerr << "Device is not compatible with this software for now" << std::endl;
+		return -1;
+	}
+	
+}
+
+ViStatus WfsApiService::setReferencePlane(ViSession handle)
+{
+	// API call to set reference plane
+	if (ViStatus err = WFS_SetReferencePlane(handle, SAMPLE_REF_PLANE))
+	{
+		// Not able to set reference plane
+		std::cerr << "Failed to set reference plane. Error code: " << err << std::endl;
+		return err;
+	}
+	return VI_SUCCESS; // Success
+}
+
+ViStatus WfsApiService::setPupil(ViSession handle)
+{
+	// API call to set pupil
+	if (ViStatus err = WFS_SetPupil(handle, SAMPLE_PUPIL_CENTROID_X, SAMPLE_PUPIL_CENTROID_Y, SAMPLE_PUPIL_DIAMETER_X, SAMPLE_PUPIL_DIAMETER_Y))
+	{
+		// Not able to set pupil
+		std::cerr << "Failed to set pupil. Error code: " << err << std::endl;
 		return err;
 	}
 	return VI_SUCCESS; // Success

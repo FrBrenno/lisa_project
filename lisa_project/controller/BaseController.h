@@ -25,5 +25,4 @@ public:
 	virtual void onOK();
 	virtual void onClose();
 
-	bool isWfsConnected() const;
 };

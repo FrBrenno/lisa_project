@@ -80,6 +80,24 @@ ViStatus TestWfsApiService::selectMla(ViSession handle, int selectedIndex)
 	return VI_SUCCESS;
 }
 
+ViStatus TestWfsApiService::configureCamera(ViSession handle, int devideId, ViInt32& spotsX, ViInt32& spotsY)
+{
+	spotsX = 512;
+	spotsY = 512;
+	return VI_SUCCESS;
+}
+
+ViStatus TestWfsApiService::setReferencePlane(ViSession handle)
+{
+	return VI_SUCCESS;
+}
+
+ViStatus TestWfsApiService::setPupil(ViSession handle)
+{
+	return VI_SUCCESS;
+}
+
+
 ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols)
 {
 	*rows = 512;

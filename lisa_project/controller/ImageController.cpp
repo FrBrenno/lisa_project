@@ -29,7 +29,7 @@ ImageController::~ImageController()
 void ImageController::acquireImage(){
 
 	//Verifies if the api is connected before taking an image, if not, it will return
-	if (!this->isWfsConnected()) {
+	if (!this->wfsApiService->isApiConnectionActive()) {
 		// Call to main so it can try to connect to API
 		err = -1;
 		this->handleError(-1, "WFS is not connected");
