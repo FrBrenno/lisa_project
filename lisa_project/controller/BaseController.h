@@ -3,13 +3,13 @@
 #include "wx/wx.h"
 #include "../MyAppInterface.h"
 #include <string>
-#include <wfsApiService.h>
+#include <interface/IApiService.h>
 
 
 class BaseController{
 protected:
 	MyAppInterface* app;
-	WfsApiService* wfsApiService;
+	IApiService* wfsApiService;
 	/**
 		 * Handles error messages.
 		 *
@@ -20,7 +20,7 @@ protected:
 
 public:
 
-	BaseController(MyAppInterface* main, WfsApiService* wfsApiService);
+	BaseController(MyAppInterface* main, IApiService* wfsApiService);
 	
 	virtual void onOK();
 	virtual void onClose();

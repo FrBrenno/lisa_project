@@ -10,7 +10,7 @@
  */
 class HomeFrameController : public BaseController, public IHomeFrameListener{
 public:
-	HomeFrameController(MyAppInterface* main, WfsApiService* wfsApiService);
+	HomeFrameController(MyAppInterface* main, IApiService* wfsApiService);
 
 	wxImage onLoadImage(wxWindow* parent) override;
 

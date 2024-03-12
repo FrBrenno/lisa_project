@@ -3,7 +3,7 @@
 #include "../MyApp.h"
 #include "../EventDispatcher.h"
 
-BaseController::BaseController(MyAppInterface* main, WfsApiService* wfsApiService) {
+BaseController::BaseController(MyAppInterface* main, IApiService* wfsApiService) {
 	this->app = main;
 	this->wfsApiService = wfsApiService;
 }

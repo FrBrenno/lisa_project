@@ -4,7 +4,7 @@
 #include "wx/wx.h"
 #include "../model/Dto/MlaDto.h"
 
-MlaController::MlaController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService) {
+MlaController::MlaController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService) {
 	this->mla = new Mla();
 	this->err = 0;
 	

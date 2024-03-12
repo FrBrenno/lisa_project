@@ -22,7 +22,7 @@ class ImageController: public BaseController{
 	const int NUMBER_READING_IMAGES = 5;
 
 public:
-	ImageController(MyAppInterface* main, WfsApiService* wfsApiService);
+	ImageController(MyAppInterface* main, IApiService* wfsApiService);
 	~ImageController();
 	/**
 	 * Returns a pointer the image buffer.

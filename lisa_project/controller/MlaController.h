@@ -15,7 +15,7 @@ class MlaController: public BaseController {
 
 	
 public:
-	MlaController(MyAppInterface* main, WfsApiService* wfsApiService);
+	MlaController(MyAppInterface* main, IApiService* wfsApiService);
 	~MlaController();
 
 	/**

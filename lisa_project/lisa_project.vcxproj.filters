@@ -108,6 +108,9 @@
     <ClCompile Include="WfsApiService.cpp">
       <Filter>Fichiers sources\Api</Filter>
     </ClCompile>
+    <ClCompile Include="TestWfsApiService.cpp">
+      <Filter>Fichiers sources\Api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyApp.h">
@@ -183,6 +186,12 @@
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
     <ClInclude Include="WfsApiService.h">
+      <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IApiService.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWfsApiService.h">
       <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
     </ClInclude>
   </ItemGroup>

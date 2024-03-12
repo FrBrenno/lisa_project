@@ -17,7 +17,7 @@ class PreviewController :
     bool isPreviewOn;
 
 public:
-    PreviewController(MyAppInterface* app, WfsApiService* wfsApiService, ImageController* imageController);
+    PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
     void setPreviewButton(wxButton* previewButton);

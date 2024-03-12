@@ -24,7 +24,7 @@ class ImageProcessingController: public BaseController
 	std::vector<Eigen::VectorXi> clusterValues(Eigen::VectorXi values);
 	Eigen::MatrixXi pairwiseDistance(Eigen::VectorXi values);
 public:
-	ImageProcessingController(MyAppInterface* main, WfsApiService* wfsApiService);
+	ImageProcessingController(MyAppInterface* main, IApiService* wfsApiService);
 
 	void setImage(cv::Mat* image, int rows, int cols);
 	cv::Mat getProcessedImage();

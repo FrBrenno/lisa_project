@@ -3,7 +3,7 @@
 #include "ImageProcessingController.h"
 #include "../EventDispatcher.h"
 
-HomeFrameController::HomeFrameController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
+HomeFrameController::HomeFrameController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	if (!this->isWfsConnected()) {
 		// Call to main so it can try to connect to API

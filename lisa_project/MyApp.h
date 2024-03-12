@@ -8,7 +8,7 @@
 #include "controller/MlaController.h"
 #include "controller/ImageController.h"
 #include "controller/PreviewController.h"
-#include "wfsApiService.h"
+#include "interface/IApiService.h"
 #include "MyAppInterface.h"
 
 #ifndef WX_PRECOMP
@@ -22,7 +22,7 @@
 class MyApp : public wxApp, MyAppInterface
 {
     
-    WfsApiService* wfsApiService;
+    IApiService* wfsApiService;
 
     //=== Controllers ===//
 

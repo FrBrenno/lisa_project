@@ -21,7 +21,7 @@ const bool WfsApiService::isApiConnectionActive()
 	{
 		isConnected = false;
 		std::cerr << "API connection status changed. New status: Disconnected" << std::endl;
-	}
+	}	
 	else{
         isConnected = true;
 		std::cerr << "API connection status changed. New status: Connected" << std::endl;
@@ -231,7 +231,7 @@ ViStatus WfsApiService::getMlaInfo(ViSession handle, int selectedIndex, Mla* mla
 	mla->setCenterSpotOffsetX(spot_offset_x);
 	mla->setCenterSpotOffsetY(spot_offset_y);
 	mla->setLensletFm(lenslet_fm);
-	mla->setGrdCorr0(grd_corr_0);
+	mla->setGrdCorr0(grd_corr_0);	
 	mla->setGrdCorr45(grd_corr_45);
 	return VI_SUCCESS; // Success
 }

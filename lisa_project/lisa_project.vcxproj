@@ -157,6 +157,7 @@
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
     <ClCompile Include="MyApp.cpp" />
+    <ClCompile Include="TestWfsApiService.cpp" />
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
     <ClCompile Include="view\MlaSelectionDialog.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
+    <ClInclude Include="interface\IApiService.h" />
     <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="interface\IInstrumentViewListener.h" />
     <ClInclude Include="interface\IPreviewHolder.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="model\Mla.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="MyAppInterface.h" />
+    <ClInclude Include="TestWfsApiService.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
     <ClInclude Include="view\MlaSelectionDialog.h" />

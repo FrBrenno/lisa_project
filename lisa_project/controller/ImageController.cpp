@@ -3,7 +3,7 @@
 #include "../EventDispatcher.h"
 #include <opencv2/opencv.hpp>
 
-ImageController::ImageController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
+ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->instrument = nullptr;
 	this->err = 0;

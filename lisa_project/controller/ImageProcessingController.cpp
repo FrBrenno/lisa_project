@@ -1,6 +1,6 @@
 #include "ImageProcessingController.h"
 
-ImageProcessingController::ImageProcessingController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
+ImageProcessingController::ImageProcessingController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->image = nullptr;
 	this->rows = 0;

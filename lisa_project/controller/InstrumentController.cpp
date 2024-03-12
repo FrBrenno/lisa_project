@@ -3,7 +3,7 @@
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Dto/InstrumentDto.h"
 
-InstrumentController::InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService) : BaseController(main, wfsApiService)
+InstrumentController::InstrumentController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->err = VI_SUCCESS;
 	this->instrument = new Instrument();

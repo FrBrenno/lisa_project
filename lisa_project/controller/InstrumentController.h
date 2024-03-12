@@ -14,7 +14,7 @@ class InstrumentController: public BaseController, public IInstrumentViewListene
 	ViInt32 err;
 
 public:
-	InstrumentController(MyAppInterface* main, WfsApiService* wfsApiService);
+	InstrumentController(MyAppInterface* main, IApiService* wfsApiService);
 	~InstrumentController();
 
 	std::string getInstrumentName();

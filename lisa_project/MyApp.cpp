@@ -2,6 +2,8 @@
 #include "Event.h"
 #include "EventDispatcher.h"
 #include "wx/busyinfo.h"
+#include "wfsApiService.h"
+#include "TestWfsApiService.h"
 
 wxIMPLEMENT_APP(MyApp);
 
@@ -20,7 +22,10 @@ bool MyApp::OnInit()
     wxImage::AddHandler(new wxPNGHandler);
 
     //=== WFS API initialization ===//
-    this->wfsApiService = new WfsApiService();
+
+    // Test mode
+    this->wfsApiService = new TestWfsApiService();
+    //this->wfsApiService = new WfsApiService();
     if (!this->wfsApiService->isApiConnectionActive())
     {
 		check_api_connection();

@@ -1,12 +1,12 @@
 #pragma once
 #include "interface/IApiService.h"
 
-class WfsApiService: public IApiService
+class TestWfsApiService: public IApiService
 {
 	bool isConnected;
 public:
-	WfsApiService();
-	~WfsApiService();
+	TestWfsApiService();
+	~TestWfsApiService();
 
 	//=== API Connection ===//
 	const bool isApiConnectionActive() override;
