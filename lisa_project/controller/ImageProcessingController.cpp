@@ -27,22 +27,16 @@ cv::Mat ImageProcessingController::getProcessedImage()
 void ImageProcessingController::calibrationPipeline()
 {
 	cv::Mat thresh = generateThresholdImage();
-	// Display the threshold image
-	cv::imshow("Threshold", thresh);
 	// Convert to Eigen matrix
 	Eigen::VectorXi eigen_image = cvMatToEigen(thresh);
 
 	//=== Find circles ===//
 	Eigen::VectorXi intensity_x = intensityHistogram(eigen_image, 0);
 	Eigen::VectorXi intensity_y = intensityHistogram(eigen_image, 1);
-	// display the histograms
-	wxMessageBox("Histograms in x: " + std::to_string(intensity_x.size()) + "\nHistograms in y: " + std::to_string(intensity_y.size()), "Histograms", wxOK | wxICON_INFORMATION);
 	
 	// Find peaks in the intensity histograms
 	Eigen::VectorXd peaks_x = findPeaks(intensity_x);
 	Eigen::VectorXd peaks_y = findPeaks(intensity_y);
-	// Display the peaks
-	wxMessageBox("Peaks in x: " + std::to_string(peaks_x.size()) + "\nPeaks in y: " + std::to_string(peaks_y.size()), "Peaks", wxOK | wxICON_INFORMATION);
 
 	// Construct circles
 	std::vector<cv::Vec3f> circles;
@@ -58,10 +52,6 @@ void ImageProcessingController::calibrationPipeline()
 		int radius = cvRound(circles[i][2]);
 		cv::circle(*this->image, center, radius, cv::Scalar(0, 255, 0), 2);
 	}
-	cv::imshow("Calibration", *this->image);
-	cv::waitKey(0);
-
-
 }
 
 Eigen::MatrixXi ImageProcessingController::cvMatToEigen(const cv::Mat& image)

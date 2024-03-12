@@ -114,8 +114,6 @@ ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES
 			buffer[i * 512 + j] = rand() % 256;
 		}
 	}
-	ViAUInt8* save = imageBuffer;
-	imageBuffer = &buffer;
-	delete save;
+	*imageBuffer = buffer;
 	return VI_SUCCESS;
 }

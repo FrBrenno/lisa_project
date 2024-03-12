@@ -38,6 +38,7 @@ void ImageController::acquireImage(){
 
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
+		delete[] this->imageBuffer;
 		this->wfsApiService->getImage(this->instrument->getHandle(), this->NUMBER_READING_IMAGES,
 			&this->imageBuffer, &this->rows, &this->cols);
 		
