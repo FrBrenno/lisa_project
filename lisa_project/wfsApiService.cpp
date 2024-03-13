@@ -253,24 +253,29 @@ ViStatus WfsApiService::setPupil(ViSession handle)
 ViStatus WfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols)
 {
 	ViStatus err;
+	ViStatus status = VI_NULL;
+	ViReal64 exposure = 0.0;
+	ViReal64 gain = 0.0;
 	for (int i = 0; i < NUMBER_READING_IMAGES; i++) // TODO: Find somewhere to put the NbOfReadings
 	{
-		if (err = WFS_TakeSpotfieldImageAutoExpos(handle, VI_NULL, VI_NULL)) {
+		if (err = WFS_TakeSpotfieldImageAutoExpos(handle, &exposure, &gain)){
 			std::cerr << "Error while taking spotfield image" << err << std::endl;
 			return err;
 		}
-		ViInt32 status = VI_NULL;
 		// TODO: this may be the indicative of how to set the camera in order to take a good picture. think about it later
 		if (err = WFS_GetStatus(handle, &status))
 			std::cerr << "Error while getting instrument status" << err << std::endl;
+
 		if (status & WFS_STATBIT_PTH)
 			std::cerr << "Image exposure is too high" << status << std::endl;
-		else if (status & WFS_STATBIT_PTL)
+		if (status & WFS_STATBIT_PTL)
 			std::cerr << "Image exposure is too low" << status << std::endl;
-		else if (status & WFS_STATBIT_HAL)
+		if (status & WFS_STATBIT_HAL)
 			std::cerr << "Image gain is too high" << status << std::endl;
-		else{}
+		else
+		{}
 	}
+
 	// Get last image
 	if (err = WFS_GetSpotfieldImage(handle, imageBuffer, rows, cols)) {
 		std::cerr << "Error while getting spotfield image" << err << std::endl;

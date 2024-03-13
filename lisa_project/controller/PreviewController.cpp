@@ -55,10 +55,13 @@ void PreviewController::onTimer(wxTimerEvent& event)
 		if (this->isPreviewOn)
 		{
 			this->imageControl->Freeze();
-
 			this->imageController->acquireImage();
 			wxImage* image = this->imageController->getImage();
-
+			if (image == nullptr)
+			{
+				this->stopPreview();
+				return;
+			}
 			this->updateImageFrame(image);
 			this->imageControl->Thaw();
 		}

@@ -12,7 +12,7 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 	this->imageBuffer = VI_NULL;
 	this->image = cv::Mat();
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
-	this->imageProcessingEnabled = true;
+	this->imageProcessingEnabled = false;
 
 	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectedEvent>(
 		[this](const InstrumentSelectedEvent& event) {
@@ -38,9 +38,20 @@ void ImageController::acquireImage(){
 
 	// It can only take an image if the instrument is initialized
 	if (instrument->isInitialized()) {
-		delete[] this->imageBuffer;
-		this->wfsApiService->getImage(this->instrument->getHandle(), this->NUMBER_READING_IMAGES,
-			&this->imageBuffer, &this->rows, &this->cols);
+		ViStatus status;
+		status = this->wfsApiService->getImage(
+			this->instrument->getHandle(), 
+			this->NUMBER_READING_IMAGES,
+			&this->imageBuffer, 
+			&this->rows, 
+			&this->cols);
+
+		if (status != VI_SUCCESS) 
+		{
+			this->imageBuffer = VI_NULL;
+			this->handleError(status, "Error taking image");
+
+		}
 		
 		// Convert black and white image buffer to RGB image buffer
 		this->image = cv::Mat(this->rows, this->cols, CV_8UC1, this->imageBuffer);
@@ -81,8 +92,7 @@ wxImage* ImageController::getImage()
 	}
 	else
 	{
-		wxImage* image = new wxImage(this->image.cols, this->image.rows,
-						this->image.data, true);
+		wxImage* image = new wxImage(cols, rows, this->image.data, true);
 		if (image->IsOk()) {
 			return image;
 		}

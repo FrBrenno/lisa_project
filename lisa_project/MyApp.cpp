@@ -20,9 +20,8 @@ bool MyApp::OnInit()
 
     //=== WFS API initialization ===//
 
-    // Test mode
-    this->wfsApiService = new TestWfsApiService();
-    //this->wfsApiService = new WfsApiService();
+    // this->wfsApiService = new TestWfsApiService();  // Test mode: random api information
+    this->wfsApiService = new WfsApiService();    // Real mode: connect to WFS API, only works when connected
     if (!this->wfsApiService->isApiConnectionActive())
     {
 		check_api_connection();
