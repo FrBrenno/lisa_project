@@ -1,17 +1,15 @@
 #pragma once
 #include "wx/wx.h"
 #include "model/Dto/InstrumentDto.h"
-#include "controller/ImageProcessingController.h"
 #include "BaseController.h"
 #include "InstrumentSelectedEvent.h"
+#include <opencv2/opencv.hpp>
 
 /**
  * @class ImageController.
  * @brief This controller handles image acquisition. 
  */
 class ImageController: public BaseController{
-	ImageProcessingController* imageProcessingController;
-
 	Instrument* instrument;
 
 	int err;

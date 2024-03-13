@@ -1,6 +1,5 @@
 #include "HomeFrameController.h"
 #include "../view/InstrumentSelectionDialog.h"
-#include "ImageProcessingController.h"
 
 HomeFrameController::HomeFrameController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
@@ -32,10 +31,10 @@ wxImage HomeFrameController::onLoadImage(wxWindow* parent)
 	wxImage image(filePath, wxBITMAP_TYPE_PNG);
 	// TEST PURPOSES
 	// testing calibration pipeline
-	/*ImageProcessingController ipc = ImageProcessingController(this->app, this->wfsApiService);
+	/*CalibrationController calibrationController(this->app, this->wfsApiService);
 	cv::Mat img = cv::imread(filePath.ToStdString());
-	ipc.setImage(&img, img.rows, img.cols);
-	ipc.calibrationPipeline();*/
+	calibrationController.setImage(&img, img.rows, img.cols);
+	calibrationController.calibrationPipeline();*/
 	// END TEST PURPOSES
 
 	if (!image.IsOk()) {

@@ -5,8 +5,10 @@
 #include "lib/Eigen/Dense"
 
 
-class ImageProcessingController: public BaseController
+class CalibrationController: public BaseController
 {
+
+
 	cv::Mat* image;
 	int rows, cols;
 
@@ -24,7 +26,9 @@ class ImageProcessingController: public BaseController
 	std::vector<Eigen::VectorXi> clusterValues(Eigen::VectorXi values);
 	Eigen::MatrixXi pairwiseDistance(Eigen::VectorXi values);
 public:
-	ImageProcessingController(MyAppInterface* main, IApiService* wfsApiService);
+	CalibrationController(MyAppInterface* main, IApiService* wfsApiService);
+
+	void HandleCalibrationStart();
 
 	void setImage(cv::Mat* image, int rows, int cols);
 	cv::Mat getProcessedImage();

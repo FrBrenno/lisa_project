@@ -48,6 +48,8 @@ class HomeFrame : public wxFrame, public IPreviewHolder
      * @param event Exit event.
      */
     void OnExit(wxCommandEvent& event);
+
+    void OnCalibrationStart(wxCommandEvent& event);
     /**
      * Handles when the user clicks on the about menu item.
      * 

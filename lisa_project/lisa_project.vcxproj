@@ -147,7 +147,7 @@
     <ClCompile Include="controller\BaseController.cpp" />
     <ClCompile Include="controller\HomeFrameController.cpp" />
     <ClCompile Include="controller\ImageController.cpp" />
-    <ClCompile Include="controller\ImageProcessingController.cpp" />
+    <ClCompile Include="controller\CalibrationController.cpp" />
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\PreviewController.cpp" />
     <ClCompile Include="model\Dto\InstrumentDto.cpp" />
@@ -161,10 +161,11 @@
     <ClCompile Include="WfsApiService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CalibrationStartEvent.h" />
     <ClInclude Include="controller\BaseController.h" />
     <ClInclude Include="controller\HomeFrameController.h" />
     <ClInclude Include="controller\ImageController.h" />
-    <ClInclude Include="controller\ImageProcessingController.h" />
+    <ClInclude Include="controller\CalibrationController.h" />
     <ClInclude Include="controller\InstrumentController.h" />
     <ClInclude Include="controller\PreviewController.h" />
     <ClInclude Include="Event.h" />

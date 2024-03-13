@@ -12,6 +12,10 @@ enum MenuID
 	ID_FILE_LOAD_SPOTFIELD_IMAGE,
 	ID_FILE_CONNECT_API,
 
+	// Calibration menu
+
+	ID_CALIBRATION_START,
+
 
 };
 

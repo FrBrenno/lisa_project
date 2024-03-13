@@ -4,6 +4,7 @@
 #include "../EventDispatcher.h"
 #include "InstrumentSelectionEvent.h"
 #include "ExitEvent.h"
+#include <CalibrationStartEvent.h>
 
 
 HomeFrame::HomeFrame()
@@ -48,6 +49,11 @@ HomeFrame::HomeFrame()
     menuFile->AppendSeparator();
     menuFile->Append(wxID_EXIT);
 
+    // Calibration Menu
+
+    wxMenu* menuCalibration = new wxMenu;
+    menuCalibration->Append(ID_CALIBRATION_START, "&Start Calibration", "Start calibration process...");
+
     // Help Menu
 
     wxMenu* menuHelp = new wxMenu;
@@ -57,6 +63,7 @@ HomeFrame::HomeFrame()
 
     wxMenuBar* menuBar = new wxMenuBar;
     menuBar->Append(menuFile, "&File");
+    menuBar->Append(menuCalibration, "&Calibration");
     menuBar->Append(menuHelp, "&Help");
 
     SetMenuBar(menuBar);
@@ -71,8 +78,10 @@ HomeFrame::HomeFrame()
     Bind(wxEVT_MENU, &HomeFrame::OnCapture, this, ID_FILE_SAVE_SPOTFIELD_IMAGE);
     Bind(wxEVT_MENU, &HomeFrame::OnLoadImage, this, ID_FILE_LOAD_SPOTFIELD_IMAGE);
     Bind(wxEVT_MENU, &HomeFrame::OnConnectAPI, this, ID_FILE_CONNECT_API);
-    Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
+    Bind(wxEVT_MENU, &HomeFrame::OnCalibrationStart, this, ID_CALIBRATION_START);
+    Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
+
 
     Fit();
     SetBackgroundColour(wxColour(255, 255, 255));
@@ -116,6 +125,13 @@ void HomeFrame::OnExit(wxCommandEvent& event)
         ExitEvent()
     );
     exit(0);
+}
+
+void HomeFrame::OnCalibrationStart(wxCommandEvent& event)
+{
+    EventDispatcher::Instance().PublishEvent(
+		CalibrationStartEvent()
+	);
 }
 
 void HomeFrame::OnAbout(wxCommandEvent& event)

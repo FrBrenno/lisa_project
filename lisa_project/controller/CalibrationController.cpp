@@ -1,6 +1,8 @@
-#include "ImageProcessingController.h"
+#include "CalibrationController.h"
+#include "EventDispatcher.h"
+#include "CalibrationStartEvent.h"
 
-ImageProcessingController::ImageProcessingController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
+CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {
 	this->image = nullptr;
 	this->rows = 0;
@@ -10,21 +12,33 @@ ImageProcessingController::ImageProcessingController(MyAppInterface* main, IApiS
 	this->block_size = 31;
 	this->c = 3;
 	this->clustering_distance = 3;
+
+	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
+		[this](const CalibrationStartEvent& event) {
+			HandleCalibrationStart();
+		}
+	);
 }
 
-void ImageProcessingController::setImage(cv::Mat* image, int rows, int cols)
+void CalibrationController::HandleCalibrationStart()
+{
+	// Launch Calibration Preview in order to get a calibration frame
+	// apply the calibration pipeline to the frame	
+}
+
+void CalibrationController::setImage(cv::Mat* image, int rows, int cols)
 {
 	this->image = image;
 	this->rows = rows;
 	this->cols = cols;
 }
 
-cv::Mat ImageProcessingController::getProcessedImage()
+cv::Mat CalibrationController::getProcessedImage()
 {
 	return this->image->clone();
 }
 
-void ImageProcessingController::calibrationPipeline()
+void CalibrationController::calibrationPipeline()
 {
 	cv::Mat thresh = generateThresholdImage();
 	// Convert to Eigen matrix
@@ -54,7 +68,7 @@ void ImageProcessingController::calibrationPipeline()
 	}
 }
 
-Eigen::MatrixXi ImageProcessingController::cvMatToEigen(const cv::Mat& image)
+Eigen::MatrixXi CalibrationController::cvMatToEigen(const cv::Mat& image)
 {
 	// Convert the image to Eigen matrix
 	Eigen::MatrixXi result(image.rows, image.cols);
@@ -67,7 +81,7 @@ Eigen::MatrixXi ImageProcessingController::cvMatToEigen(const cv::Mat& image)
 	return result;
 }
 
-cv::Mat ImageProcessingController::generateThresholdImage()
+cv::Mat CalibrationController::generateThresholdImage()
 {
 	// Convert to gray
 	cv::Mat result;
@@ -88,7 +102,7 @@ cv::Mat ImageProcessingController::generateThresholdImage()
 	return result;
 }
 
-Eigen::VectorXi ImageProcessingController::intensityHistogram(const Eigen::MatrixXi& image, int axis)
+Eigen::VectorXi CalibrationController::intensityHistogram(const Eigen::MatrixXi& image, int axis)
 {
 	// Transpose the image if 'axis' is set to 1
 	Eigen::MatrixXi img = (axis == 0) ? image : image.transpose();
@@ -103,7 +117,7 @@ Eigen::VectorXi ImageProcessingController::intensityHistogram(const Eigen::Matri
 	return intensity;
 }
 
-Eigen::VectorXd ImageProcessingController::findPeaks(const Eigen::VectorXi& intensity)
+Eigen::VectorXd CalibrationController::findPeaks(const Eigen::VectorXi& intensity)
 {
 	// Compute the first derivative of the intensity histogram
 	Eigen::VectorXi diff = intensity.tail(intensity.size() - 1) - intensity.head(intensity.size() - 1);
@@ -134,7 +148,7 @@ Eigen::VectorXd ImageProcessingController::findPeaks(const Eigen::VectorXi& inte
 	return mean_peaks;
 
 }	
-std::vector<Eigen::VectorXi> ImageProcessingController::clusterValues(Eigen::VectorXi values) {
+std::vector<Eigen::VectorXi> CalibrationController::clusterValues(Eigen::VectorXi values) {
 	int num_points = values.rows();
 
 	Eigen::MatrixXi distances = this->pairwiseDistance(values);
@@ -182,7 +196,7 @@ std::vector<Eigen::VectorXi> ImageProcessingController::clusterValues(Eigen::Vec
 }
 
 
-Eigen::MatrixXi ImageProcessingController::pairwiseDistance(Eigen::VectorXi values) {
+Eigen::MatrixXi CalibrationController::pairwiseDistance(Eigen::VectorXi values) {
 	int num_points = values.rows();
 	Eigen::MatrixXi distances(num_points, num_points);
 

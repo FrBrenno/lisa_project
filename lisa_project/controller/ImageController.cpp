@@ -11,7 +11,6 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 	this->cols = 0;
 	this->imageBuffer = VI_NULL;
 	this->image = cv::Mat();
-	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
 
 	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectedEvent>(
 		[this](const InstrumentSelectedEvent& event) {
@@ -22,7 +21,6 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 ImageController::~ImageController()
 {
 	delete[] imageBuffer;
-	delete imageProcessingController;
 }
 
 void ImageController::acquireImage(){
