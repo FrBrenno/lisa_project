@@ -19,8 +19,7 @@ class ImageController: public BaseController{
 	ViInt32 rows, cols;
 	cv::Mat image;
 
-	bool imageProcessingEnabled;
-	const int NUMBER_READING_IMAGES = 5;
+	const int NUMBER_READING_IMAGES = 3;
 
 public:
 	ImageController(MyAppInterface* main, IApiService* wfsApiService);

@@ -12,7 +12,6 @@ ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiServic
 	this->imageBuffer = VI_NULL;
 	this->image = cv::Mat();
 	this->imageProcessingController = new ImageProcessingController(this->app, this->wfsApiService);
-	this->imageProcessingEnabled = false;
 
 	EventDispatcher::Instance().SubscribeToEvent<InstrumentSelectedEvent>(
 		[this](const InstrumentSelectedEvent& event) {
@@ -53,15 +52,12 @@ void ImageController::acquireImage(){
 
 		}
 		
-		// Convert black and white image buffer to RGB image buffer
 		this->image = cv::Mat(this->rows, this->cols, CV_8UC1, this->imageBuffer);
+		// Flip the image (it is upside down)
+		cv::flip(this->image, this->image, 0); 
+		// Convert black and white image buffer to RGB image buffer
 		cv::cvtColor(this->image, this->image, cv::COLOR_GRAY2RGB);
 
-		if (this->imageProcessingEnabled)
-		{
-			this->imageProcessingController->setImage(&this->image, this->rows, this->cols);
-			this->imageProcessingController->calibrationPipeline();
-		}
 	}
 
 }
@@ -77,29 +73,13 @@ wxImage* ImageController::getImage()
 		return nullptr;
 	}
 
-	if (this->imageProcessingEnabled)
-	{
-		cv::Mat processedImage = this->imageProcessingController->getProcessedImage();
-		wxImage* image = new wxImage(processedImage.cols, processedImage.rows,
-			processedImage.data, true);
-		if (image->IsOk()) {
-			return image;
-		}
-		else {
-			this->handleError(-1, "Error creating wxImage");
-			return nullptr;
-		}
+	wxImage* image = new wxImage(cols, rows, this->image.data, true);
+	if (image->IsOk()) {
+		return image;
 	}
-	else
-	{
-		wxImage* image = new wxImage(cols, rows, this->image.data, true);
-		if (image->IsOk()) {
-			return image;
-		}
-		else {
-			this->handleError(-1, "Error creating wxImage");
-			return nullptr;
-		}
+	else {
+		this->handleError(-1, "Error creating wxImage");
+		return nullptr;
 	}
 }
 
