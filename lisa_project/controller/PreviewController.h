@@ -12,6 +12,7 @@ class PreviewController :
 
     wxStaticBitmap* imageControl;
     wxButton* previewButton;
+    wxButton* captureButton;
 
     wxTimer* previewTimer;
     bool isPreviewOn;
@@ -21,10 +22,13 @@ public:
     ~PreviewController();
 
     void setPreviewButton(wxButton* previewButton);
+    void setCaptureButton(wxButton* captureButton);
     void setImageControl(wxStaticBitmap* imageControl);
 
     void startPreview() override;
     void stopPreview() override;
+    void onCapture(wxWindow* window, wxBitmap bitmap) override;
+
     void updatePreviewButton();
     void updateImageFrame(wxImage* image);
 

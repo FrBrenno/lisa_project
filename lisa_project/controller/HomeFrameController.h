@@ -15,6 +15,4 @@ public:
 
 	void onConnectAPI() override;
 
-	void onCapture(wxWindow* parent, wxBitmap lastBitmap) override;
-
 };

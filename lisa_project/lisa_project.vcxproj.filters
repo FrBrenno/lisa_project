@@ -81,9 +81,6 @@
     <ClCompile Include="model\Mla.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
-    <ClCompile Include="controller\ImageProcessingController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="model\Dto\InstrumentDto.cpp">
       <Filter>Fichiers sources\Model\Dto</Filter>
     </ClCompile>
@@ -98,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="TestWfsApiService.cpp">
       <Filter>Fichiers sources\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\CalibrationController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,9 +133,6 @@
     </ClInclude>
     <ClInclude Include="id\MenuID.h">
       <Filter>Fichiers d%27en-tête\id</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\ImageProcessingController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
     <ClInclude Include="model\Dto\InstrumentDto.h">
       <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
@@ -189,6 +186,12 @@
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
     <ClInclude Include="WfsParameters.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CalibrationStartEvent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\CalibrationController.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

@@ -80,6 +80,7 @@ public:
 
     wxStaticBitmap* getPreviewImageControl() override;
     wxButton* getPreviewButton() override;
+    wxButton* getCaptureButton() override;
 
     void setPreviewListener(IPreviewHolderListener* listener) override;
 };

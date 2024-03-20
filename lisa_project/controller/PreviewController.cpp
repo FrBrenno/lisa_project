@@ -32,6 +32,27 @@ void PreviewController::stopPreview()
 	this->updatePreviewButton();
 }
 
+void PreviewController::onCapture(wxWindow* window, wxBitmap bitmap)
+{
+	wxFileDialog saveFileDialog(window, "Save Image", "", "pcv_image.png", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+	if (saveFileDialog.ShowModal() == wxID_CANCEL) {
+		// User canceled the operation
+		return;
+	}
+
+	wxString filePath = saveFileDialog.GetPath();
+
+	// Ensure a valid file path
+	if (filePath.empty()) {
+		wxMessageBox("Invalid file path.", "Error", wxOK | wxICON_ERROR);
+		return;
+	}
+
+	// Save the image
+	bitmap.SaveFile(filePath, wxBITMAP_TYPE_PNG);
+}
+
 void PreviewController::updatePreviewButton()
 {
 	if (this->isPreviewOn)
@@ -87,8 +108,17 @@ void PreviewController::setPreviewButton(wxButton* previewButton)
 	});
 }
 
+void PreviewController::setCaptureButton(wxButton* captureButton)
+{
+	this->captureButton = captureButton;
+	this->captureButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+		this->onCapture(this->captureButton, this->imageControl->GetBitmap());
+	});
+}
+
 void PreviewController::setImageControl(wxStaticBitmap* imageControl)
 {
 	this->imageControl = imageControl;
 }
+
 

@@ -41,6 +41,7 @@ bool MyApp::OnInit()
     this->homeFrame->setPreviewListener(this->previewController);
     this->previewController->setImageControl(homeFrame->getPreviewImageControl());
     this->previewController->setPreviewButton(homeFrame->getPreviewButton());
+    this->previewController->setCaptureButton(homeFrame->getCaptureButton());
     homeFrame->setListener(homeFrameController);
     homeFrame->Show(true);
     

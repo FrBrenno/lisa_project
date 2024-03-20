@@ -18,15 +18,15 @@ HomeFrame::HomeFrame()
     SetIcon(icon);
 
     //=== Main Initialization ===//
+
+    //=== Preview ====//
     wxImage::AddHandler(new wxPNGHandler);
     wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
     this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
     this->imageControl->SetDoubleBuffered(true);
 
     this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
-
     this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
-    Bind(wxEVT_BUTTON, &HomeFrame::OnCapture, this, ID_CAPTURE);
 
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     buttonSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
@@ -35,6 +35,7 @@ HomeFrame::HomeFrame()
     mainSizer->Add(this->imageControl, 0, wxALIGN_CENTER | wxALL, 5);
     mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxALL, 5);
     SetSizerAndFit(mainSizer);
+    //=== Preview ====//
 
     //=== Menu Initialization ===//
     // File Menu
@@ -116,7 +117,7 @@ void HomeFrame::OnConnectAPI(wxCommandEvent& event)
 void HomeFrame::OnCapture(wxCommandEvent& event)
 {
     this->previewListener->stopPreview();
-    this->listener->onCapture(this, this->imageControl->GetBitmap());
+    this->previewListener->onCapture(this, this->imageControl->GetBitmap());
 }
 
 void HomeFrame::OnExit(wxCommandEvent& event)
@@ -196,6 +197,11 @@ wxStaticBitmap* HomeFrame::getPreviewImageControl()
 wxButton* HomeFrame::getPreviewButton()
 {
 	return this->previewButton;
+}
+
+wxButton* HomeFrame::getCaptureButton()
+{
+	return this->captureButton;
 }
 
 void HomeFrame::setPreviewListener(IPreviewHolderListener* listener)
