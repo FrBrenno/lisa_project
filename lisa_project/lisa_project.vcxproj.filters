@@ -99,6 +99,9 @@
     <ClCompile Include="controller\CalibrationController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="PreviewPanel.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyApp.h">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="controller\CalibrationController.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PreviewPanel.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

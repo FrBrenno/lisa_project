@@ -34,5 +34,7 @@ public:
 
     void onTimer(wxTimerEvent& event);
     void onPreviewButton();
+
+    void setPreviewHolder(IPreviewHolder* previewHolder);
 };
 

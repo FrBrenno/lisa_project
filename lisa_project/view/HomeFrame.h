@@ -2,7 +2,7 @@
 #include <wx/wx.h>
 #include <string>
 #include "../interface/IHomeFrameListener.h"
-#include "../interface/IPreviewHolder.h"
+#include "PreviewPanel.h"
 #include "../interface/IPreviewHolderListener.h"
 
 /**
@@ -10,22 +10,15 @@
  * @brief This view is responsible to display the main windows of the software.
  * @details It is manage by its respective controller, HomeFrameController.
  */
-class HomeFrame : public wxFrame, public IPreviewHolder
+class HomeFrame : public wxFrame
 {
     /**
      * Controllers that listen to this view.
      */
     IHomeFrameListener* listener;
-    IPreviewHolderListener* previewListener;
 
     //=== GUI Elements ===//
-    /**
-     * This image control element that displays the camera image.
-     */
-    wxStaticBitmap* imageControl;
-
-    wxButton* captureButton;
-    wxButton* previewButton;
+    PreviewPanel* previewPanel;
     /**
      * Name of the instrument in use.
      */
@@ -67,10 +60,6 @@ public:
      */
     void setInstrumentName(std::string instrumentName);
 
-    void setImage(wxImage* image);
-
-    void resizeImage(wxImage* image);
-
     /**
     * Adds a listener to the list of listeners.
     ** 
@@ -78,9 +67,6 @@ public:
     **/
     void setListener(IHomeFrameListener* listener);
 
-    wxStaticBitmap* getPreviewImageControl() override;
-    wxButton* getPreviewButton() override;
-    wxButton* getCaptureButton() override;
-
-    void setPreviewListener(IPreviewHolderListener* listener) override;
+    void setPreviewListener(IPreviewHolderListener* listener);
+    PreviewPanel* getPreviewPanel();
 };

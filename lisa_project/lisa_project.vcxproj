@@ -155,6 +155,7 @@
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
     <ClCompile Include="MyApp.cpp" />
+    <ClCompile Include="PreviewPanel.cpp" />
     <ClCompile Include="TestWfsApiService.cpp" />
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="model\Mla.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="MyAppInterface.h" />
+    <ClInclude Include="PreviewPanel.h" />
     <ClInclude Include="TestWfsApiService.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />

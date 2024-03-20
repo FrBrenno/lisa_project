@@ -122,3 +122,9 @@ void PreviewController::setImageControl(wxStaticBitmap* imageControl)
 }
 
 
+void PreviewController::setPreviewHolder(IPreviewHolder* previewHolder)
+{
+	this->setCaptureButton(previewHolder->getCaptureButton());
+	this->setPreviewButton(previewHolder->getPreviewButton());
+	this->setImageControl(previewHolder->getPreviewImageControl());
+}
