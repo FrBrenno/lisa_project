@@ -2,16 +2,15 @@
 #include "EventDispatcher.h"
 #include "CalibrationStartEvent.h"
 
-CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
-{
-	this->image = nullptr;
-	this->rows = 0;
-	this->cols = 0;
 
-	this->gauss_kernel_size = 15;
-	this->block_size = 31;
+using namespace cv;
+using namespace Eigen;
+
+CalibrationController::CalibrationController() {
+	this->gaussKernel = Size(15, 15);
+	this->blockSize = 31;
 	this->c = 3;
-	this->clustering_distance = 3;
+	this->clusterDistance = 10;
 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
@@ -26,185 +25,172 @@ void CalibrationController::HandleCalibrationStart()
 	// apply the calibration pipeline to the frame	
 }
 
-void CalibrationController::setImage(cv::Mat* image, int rows, int cols)
-{
-	this->image = image;
-	this->rows = rows;
-	this->cols = cols;
+void CalibrationController::setParameters(const cv::Size& gaussKernel, int blockSize, double c, double clusterDistance) {
+	this->gaussKernel = gaussKernel;
+	this->blockSize = blockSize;
+	this->c = c;
+	this->clusterDistance = clusterDistance;
 }
 
-cv::Mat CalibrationController::getProcessedImage()
-{
-	return this->image->clone();
+Mat CalibrationController::generateThresholdImg(const Mat& img) {
+    Mat gray;
+    cvtColor(img, gray, COLOR_BGR2GRAY);
+    GaussianBlur(gray, gray, gaussKernel, 0);
+    Mat thresh;
+    adaptiveThreshold(gray, thresh, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, blockSize, c);
+    return thresh;
 }
 
-void CalibrationController::calibrationPipeline()
-{
-	cv::Mat thresh = generateThresholdImage();
-	// Convert to Eigen matrix
-	Eigen::VectorXi eigen_image = cvMatToEigen(thresh);
-
-	//=== Find circles ===//
-	Eigen::VectorXi intensity_x = intensityHistogram(eigen_image, 0);
-	Eigen::VectorXi intensity_y = intensityHistogram(eigen_image, 1);
-	
-	// Find peaks in the intensity histograms
-	Eigen::VectorXd peaks_x = findPeaks(intensity_x);
-	Eigen::VectorXd peaks_y = findPeaks(intensity_y);
-
-	// Construct circles
-	std::vector<cv::Vec3f> circles;
-	for (int i = 0; i < peaks_x.size(); ++i) {
-		for (int j = 0; j < peaks_y.size(); ++j) {
-			circles.push_back(cv::Vec3f(peaks_x[i], peaks_y[j], 1));
-		}
-	}
-
-	// Draw circles & show the image
-	for (int i = 0; i < circles.size(); ++i) {
-		cv::Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
-		int radius = cvRound(circles[i][2]);
-		cv::circle(*this->image, center, radius, cv::Scalar(0, 255, 0), 2);
-	}
+std::vector<int> CalibrationController::intensityHist(const Mat& image) {
+    std::vector<int> intensity;
+    for (int i = 0; i < image.rows; ++i) {
+        intensity.push_back(sum(image.row(i))[0] / 255);
+    }
+    return intensity;
 }
 
-Eigen::MatrixXi CalibrationController::cvMatToEigen(const cv::Mat& image)
-{
-	// Convert the image to Eigen matrix
-	Eigen::MatrixXi result(image.rows, image.cols);
-	for (int i = 0; i < image.rows; ++i) {
-		for (int j = 0; j < image.cols; ++j) {
-			result(i, j) = static_cast<int>(image.at<uchar>(i, j));
-		}
-	}
-
-	return result;
+MatrixXd CalibrationController::pairwiseDistances(const MatrixXd& values) {
+    int numPoints = values.rows();
+    MatrixXd distances(numPoints, numPoints);
+    for (int i = 0; i < numPoints; ++i) {
+        for (int j = 0; j < numPoints; ++j) {
+            distances(i, j) = (values.row(i) - values.row(j)).norm();
+        }
+    }
+    return distances;
 }
 
-cv::Mat CalibrationController::generateThresholdImage()
-{
-	// Convert to gray
-	cv::Mat result;
-	cv::cvtColor(*this->image, result, cv::COLOR_BGR2GRAY);
-	
-	// Apply GaussianBlur
-	cv::GaussianBlur(result, result, 
-		cv::Size(this->gauss_kernel_size, this->gauss_kernel_size), 0);
+MatrixXd CalibrationController::generateAdjacencyMatrix(const MatrixXd& dist, double clusterDistance) {
+    MatrixXd adjacencyMatrix = MatrixXd::Zero(dist.rows(), dist.cols());
 
-	// Apply adaptiveThreshold
-	/* 
-	Apply adaptive thresholding using mean of neighborhood as the threshold value
-    Pixels with values above the threshold become white, and below become black
-	*/
-	cv::adaptiveThreshold(result, result, 255, cv::ADAPTIVE_THRESH_MEAN_C,
-		cv::THRESH_BINARY, this->block_size, this->c);
-
-	return result;
+    // Iterate over each element of dist
+    for (int i = 0; i < dist.rows(); ++i) {
+        for (int j = 0; j < dist.cols(); ++j) {
+            // If distance is less than clusterDistance, set adjacency to 1
+            double elem = dist(i, j);
+            if (elem < clusterDistance) {
+                adjacencyMatrix(i, j) = 1.0; // or any other value representing adjacency
+            }
+        }
+    }
+    return adjacencyMatrix;
 }
 
-Eigen::VectorXi CalibrationController::intensityHistogram(const Eigen::MatrixXi& image, int axis)
-{
-	// Transpose the image if 'axis' is set to 1
-	Eigen::MatrixXi img = (axis == 0) ? image : image.transpose();
+std::vector<std::vector<double>> CalibrationController::clusterValues(const std::vector<double>& values) {
+    MatrixXd dist = pairwiseDistances(Map<const MatrixXd>(&values[0], values.size(), 1));
+    MatrixXd adjacencyMatrix = generateAdjacencyMatrix(dist, clusterDistance);
 
-	// Calculate the row-wise sum of pixel values, considering 255 as the maximum intensity
-	Eigen::VectorXi intensity(img.rows());
-	for (int i = 0; i < img.rows(); ++i) {
-		intensity[i] = static_cast<int>(img.row(i).sum() / 255); // integer division
-	}
+    std::vector<std::vector<double>> clusters;
+    std::vector<bool> visited(values.size(), false); // Track visited values
 
-	// Return the calculated intensity histogram
-	return intensity;
-}
+    for (int i = 0; i < values.size(); ++i) {
+        if (visited[i]) continue; // If value is already part of a cluster, skip it
+        std::vector<double> cluster;
+        cluster.push_back(values[i]); // Start a new cluster with this value
+        visited[i] = true; // Mark it as visited
 
-Eigen::VectorXd CalibrationController::findPeaks(const Eigen::VectorXi& intensity)
-{
-	// Compute the first derivative of the intensity histogram
-	Eigen::VectorXi diff = intensity.tail(intensity.size() - 1) - intensity.head(intensity.size() - 1);
+        for (int j = i + 1; j < values.size(); ++j) {
+            if (!visited[j] && adjacencyMatrix(i, j) > 0) {
+                cluster.push_back(values[j]); // Add adjacent values to the cluster
+                visited[j] = true; // Mark them as visited
+            }
+        }
 
-	// Find the indexes of the peaks
-	std::vector<int> peaks_indexes;
-	for (int i = 0; i < diff.size() - 1; ++i) {
-		if (diff[i] > 0 && diff[i + 1] < 0) {
-			peaks_indexes.push_back(i);
-		}
-	}
+        clusters.push_back(cluster); // Add the cluster to the list of clusters
+    }
 
-	// Extract the peak values
-	Eigen::VectorXi peaks(peaks_indexes.size());
-	for (int i = 0; i < peaks_indexes.size(); ++i) {
-		peaks[i] = static_cast<int>(intensity[peaks_indexes[i]]);
-	}
-
-	// Cluster close peaks
-	std::vector<Eigen::VectorXi> peaks_clust = this->clusterValues(peaks);
-
-	// Compute the mean intensity of the clustered peaks
-	Eigen::VectorXd mean_peaks(peaks_clust.size());
-	for (int i = 0; i < peaks_clust.size(); ++i) {
-		mean_peaks[i] = peaks_clust[i].mean();
-	}
-
-	return mean_peaks;
-
-}	
-std::vector<Eigen::VectorXi> CalibrationController::clusterValues(Eigen::VectorXi values) {
-	int num_points = values.rows();
-
-	Eigen::MatrixXi distances = this->pairwiseDistance(values);
-
-	Eigen::MatrixXi adjacency_matrix(distances.rows(), distances.cols());
-	for (int i = 0; i < distances.rows(); ++i) {
-		for (int j = 0; j < distances.cols(); ++j) {
-			adjacency_matrix(i, j) = (distances(i, j) < this->clustering_distance) ? 1 : 0;
-		}
-	}
-
-	std::vector<std::vector<int>> clusters;
-
-	for (int i = 0; i < num_points; ++i) {
-		bool found_cluster = false;
-
-		for (auto& cluster : clusters) {
-			for (int c : cluster) {
-				if (adjacency_matrix(i, c)) {
-					cluster.push_back(i);
-					found_cluster = true;
-					break;
-				}
-			}
-			if (found_cluster) {
-				break;
-			}
-		}
-
-		if (!found_cluster) {
-			clusters.push_back({ i });
-		}
-	}
-
-	std::vector<Eigen::VectorXi> clustered_values;
-	for (auto& cluster : clusters) {
-		Eigen::VectorXi cluster_values(cluster.size());
-		for (int i = 0; i < cluster.size(); ++i) {
-			cluster_values[i] = values(cluster[i]);
-		}
-		clustered_values.push_back(cluster_values);
-	}
-
-	return clustered_values;
+    return clusters;
 }
 
 
-Eigen::MatrixXi CalibrationController::pairwiseDistance(Eigen::VectorXi values) {
-	int num_points = values.rows();
-	Eigen::MatrixXi distances(num_points, num_points);
-
-	for (int i = 0; i < num_points; ++i) {
-			for (int j = 0; j < num_points; ++j) {
-				distances(i, j) = static_cast<int>(std::sqrt(std::pow(values[i] - values[j], 2)));
-			}
-		}
-
-	return distances;
+std::vector<double> CalibrationController::getPeaks(const std::vector<int>& intensityHist) {
+    std::vector<double> firstDerivative;
+    for (size_t i = 0; i < intensityHist.size() - 1; ++i) {
+        firstDerivative.push_back(static_cast<double>(intensityHist[i + 1] - intensityHist[i]));
+    }
+    std::vector<double> potentialPeaks;
+    for (size_t i = 0; i < firstDerivative.size() - 1; ++i) {
+        if (firstDerivative[i] >= 0 && firstDerivative[i + 1] <= 0) {
+            potentialPeaks.push_back(i + 1);
+        }
+    }
+    std::vector<std::vector<double>> intensityClust = clusterValues(potentialPeaks);
+    std::vector<double> peaks;
+    for (const auto& cluster : intensityClust) {
+        double sum = 0.0;
+        for (double val : cluster) {
+            sum += val;
+        }
+        peaks.push_back(sum / cluster.size());
+    }
+    return peaks;
 }
+
+std::vector<cv::Point2d> CalibrationController::getCircles(const Mat& image) {
+    std::vector<int> intensityX = intensityHist(image);
+    std::vector<double> peaksX = getPeaks(intensityX);
+    std::vector<int> intensityY = intensityHist(image.t());
+    std::vector<double> peaksY = getPeaks(intensityY);
+
+    std::vector<cv::Point2d> circles;
+    for (double x : peaksX) {
+        for (double y : peaksY) {
+            circles.push_back(Point2d(x, y));
+        }
+    }
+    return circles;
+}
+
+void CalibrationController::initializeMatrixA(int numCircles) {
+    // verify is the matrix A is initialized for the given number of circles
+    if (A.rows() == 2 * numCircles && A.cols() == 4) {
+		return;
+	}
+    int nbX = (numCircles + 1) / 2; // Assuming a rectangular grid
+    int nbY = numCircles / nbX;
+    A.resize(2 * numCircles, 4);
+    A.block(0, 0, numCircles, 1).setConstant(1);
+    A.block(0, 2, numCircles, 1) = Eigen::VectorXd::LinSpaced(nbX, 0, nbX - 1).replicate(1, nbY).transpose().col(0).head(numCircles);
+    A.block(numCircles, 1, numCircles, 1).setConstant(1);
+    A.block(numCircles, 3, numCircles, 1) = Eigen::VectorXd::LinSpaced(nbY, 0, nbY - 1).replicate(1, nbX).row(0).head(numCircles);
+    svd = Eigen::JacobiSVD<Eigen::MatrixXd>(A, Eigen::ComputeThinU | Eigen::ComputeThinV);
+}
+
+CalibrationData* CalibrationController::applyCalibrationPipeline(const cv::Mat& image){
+    cv::Mat thresh = generateThresholdImg(image);
+    std::vector<cv::Point2d> circles = getCircles(thresh);
+    std::sort(circles.begin(), circles.end(), [](const cv::Point2d& a, const cv::Point2d& b) {
+        return a.x < b.x || (a.x == b.x && a.y < b.y);
+        });
+
+    int numCircles = circles.size();
+    initializeMatrixA(numCircles);
+    Eigen::MatrixXd B(2 * numCircles, 1);
+    for (int i = 0; i < numCircles; ++i) {
+        B(i, 0) = circles[i].x;
+        B(i + numCircles, 0) = circles[i].y;
+    }
+
+    Eigen::VectorXd sv = svd.singularValues();
+    Eigen::MatrixXd U = svd.matrixU();
+    Eigen::MatrixXd V = svd.matrixV();
+
+    Eigen::VectorXd S_inv = sv.array().inverse();
+    Eigen::VectorXd X = V * S_inv.asDiagonal() * U.transpose() * B;
+
+    // Verify is X is not null
+    if (X[2] == 0 || X[3] == 0) {
+        return new CalibrationData();
+	}
+
+    cv::Mat outputImage = image.clone();
+    for (double i = X[2]; i < 512; i += X[2]) {
+        cv::line(outputImage, cv::Point(0, static_cast<int>(i)), cv::Point(image.cols - 1, static_cast<int>(i)), cv::Scalar(0, 0, 255), 1);
+    }
+    for (double j = X[3]; j < 512; j += X[3]) {
+        cv::line(outputImage, cv::Point(static_cast<int>(j), 0), cv::Point(static_cast<int>(j), image.rows - 1), cv::Scalar(0, 0, 255), 1);
+    }
+
+    return new CalibrationData(outputImage, X[2], X[3], circles);
+}
+
