@@ -11,35 +11,6 @@ HomeFrameController::HomeFrameController(MyAppInterface* main, IApiService* wfsA
 	}
 }
 
-wxImage HomeFrameController::onLoadImage(wxWindow* parent)
-{
-	wxFileDialog openFileDialog(parent, "Open Image", "", "", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
-
-	if (openFileDialog.ShowModal() == wxID_CANCEL) {
-		// User canceled the operation
-		return wxImage();
-	}
-
-	wxString filePath = openFileDialog.GetPath();
-
-	// Ensure a valid file path
-	if (filePath.empty()) {
-		wxMessageBox("Invalid file path.", "Error", wxOK | wxICON_ERROR);
-		return wxImage();
-	}
-
-	// Load the image
-	wxImage image(filePath, wxBITMAP_TYPE_PNG);
-
-	if (!image.IsOk()) {
-		wxMessageBox("Failed to load the image.", "Error", wxOK | wxICON_ERROR);
-		// Return an empty wxBitmap or handle the error accordingly
-		return wxImage();
-	}
-
-	return image;
-}
-
 void HomeFrameController::onConnectAPI()
 {
 	this->app->check_api_connection();

@@ -17,9 +17,7 @@ class CalibrationController{
 
     cv::Mat generateThresholdImg(const cv::Mat& img);
     std::vector<int> intensityHist(const cv::Mat& image);
-    Eigen::MatrixXd pairwiseDistances(const Eigen::MatrixXd& values);
-    Eigen::MatrixXd generateAdjacencyMatrix(const Eigen::MatrixXd& dist, double clusterDistance);
-    std::vector<std::vector<double>> clusterValues(const std::vector<double>& values);
+    std::vector<std::vector<int>> clusterValues(const std::vector<int>& values);
     std::vector<double> getPeaks(const std::vector<int>& intensityHist);
     std::vector<cv::Point2d> getCircles(const cv::Mat& image);
 public:

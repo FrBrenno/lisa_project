@@ -49,72 +49,43 @@ std::vector<int> CalibrationController::intensityHist(const Mat& image) {
     return intensity;
 }
 
-MatrixXd CalibrationController::pairwiseDistances(const MatrixXd& values) {
-    int numPoints = values.rows();
-    MatrixXd distances(numPoints, numPoints);
-    for (int i = 0; i < numPoints; ++i) {
-        for (int j = 0; j < numPoints; ++j) {
-            distances(i, j) = (values.row(i) - values.row(j)).norm();
-        }
-    }
-    return distances;
-}
+std::vector<std::vector<int>> CalibrationController::clusterValues(const std::vector<int>& values) {
+    std::vector<std::vector<int>> clusters;
 
-MatrixXd CalibrationController::generateAdjacencyMatrix(const MatrixXd& dist, double clusterDistance) {
-    MatrixXd adjacencyMatrix = MatrixXd::Zero(dist.rows(), dist.cols());
-
-    // Iterate over each element of dist
-    for (int i = 0; i < dist.rows(); ++i) {
-        for (int j = 0; j < dist.cols(); ++j) {
-            // If distance is less than clusterDistance, set adjacency to 1
-            double elem = dist(i, j);
-            if (elem < clusterDistance) {
-                adjacencyMatrix(i, j) = 1.0; // or any other value representing adjacency
+    for (const auto& val : values) {
+        bool foundCluster = false;
+        for (auto& cluster : clusters) {
+            if (!cluster.empty() && std::abs(val - cluster.front()) < clusterDistance) {
+                cluster.push_back(val);
+                foundCluster = true;
+                break;
             }
         }
-    }
-    return adjacencyMatrix;
-}
-
-std::vector<std::vector<double>> CalibrationController::clusterValues(const std::vector<double>& values) {
-    MatrixXd dist = pairwiseDistances(Map<const MatrixXd>(&values[0], values.size(), 1));
-    MatrixXd adjacencyMatrix = generateAdjacencyMatrix(dist, clusterDistance);
-
-    std::vector<std::vector<double>> clusters;
-    std::vector<bool> visited(values.size(), false); // Track visited values
-
-    for (int i = 0; i < values.size(); ++i) {
-        if (visited[i]) continue; // If value is already part of a cluster, skip it
-        std::vector<double> cluster;
-        cluster.push_back(values[i]); // Start a new cluster with this value
-        visited[i] = true; // Mark it as visited
-
-        for (int j = i + 1; j < values.size(); ++j) {
-            if (!visited[j] && adjacencyMatrix(i, j) > 0) {
-                cluster.push_back(values[j]); // Add adjacent values to the cluster
-                visited[j] = true; // Mark them as visited
-            }
+        if (!foundCluster) {
+            clusters.push_back({ val });
         }
-
-        clusters.push_back(cluster); // Add the cluster to the list of clusters
     }
-
     return clusters;
 }
 
 
 std::vector<double> CalibrationController::getPeaks(const std::vector<int>& intensityHist) {
-    std::vector<double> firstDerivative;
+    // Compute the first derivative as the difference between consecutive values
+    std::vector<int> firstDerivative;
     for (size_t i = 0; i < intensityHist.size() - 1; ++i) {
-        firstDerivative.push_back(static_cast<double>(intensityHist[i + 1] - intensityHist[i]));
+        firstDerivative.push_back(static_cast<int>(intensityHist[i + 1] - intensityHist[i]));
     }
-    std::vector<double> potentialPeaks;
+
+    // Find indexes of potential peaks by looking for sign changes in the first derivative
+    std::vector<int> potentialPeaks;
     for (size_t i = 0; i < firstDerivative.size() - 1; ++i) {
         if (firstDerivative[i] >= 0 && firstDerivative[i + 1] <= 0) {
             potentialPeaks.push_back(i + 1);
         }
     }
-    std::vector<std::vector<double>> intensityClust = clusterValues(potentialPeaks);
+
+    // Cluster neighboring values to get the average intensity of each peak
+    std::vector<std::vector<int>> intensityClust = clusterValues(potentialPeaks);
     std::vector<double> peaks;
     for (const auto& cluster : intensityClust) {
         double sum = 0.0;
@@ -142,55 +113,104 @@ std::vector<cv::Point2d> CalibrationController::getCircles(const Mat& image) {
 }
 
 void CalibrationController::initializeMatrixA(int numCircles) {
+    // Matrix A is a 2n x 4 matrix where n is the number of circles
+    // It is a fixed matrix that determine the relationship between the circles and the grid
+    // should one be computed once
+    
     // verify is the matrix A is initialized for the given number of circles
     if (A.rows() == 2 * numCircles && A.cols() == 4) {
 		return;
 	}
-    int nbX = (numCircles + 1) / 2; // Assuming a rectangular grid
-    int nbY = numCircles / nbX;
+    // if not initialize yet
+    int nbX = static_cast<int>(std::sqrt(numCircles));  // Number of circles on the x-axis
+    int nbY = numCircles / nbX;                         // Number of circles on the y-axis
+
     A.resize(2 * numCircles, 4);
-    A.block(0, 0, numCircles, 1).setConstant(1);
-    A.block(0, 2, numCircles, 1) = Eigen::VectorXd::LinSpaced(nbX, 0, nbX - 1).replicate(1, nbY).transpose().col(0).head(numCircles);
-    A.block(numCircles, 1, numCircles, 1).setConstant(1);
-    A.block(numCircles, 3, numCircles, 1) = Eigen::VectorXd::LinSpaced(nbY, 0, nbY - 1).replicate(1, nbX).row(0).head(numCircles);
+    for (int i = 0; i < numCircles; ++i) {
+        A(i, 0) = 1;
+        A(i, 1) = 0;
+        A(i, 2) = i % nbX;
+        A(i, 3) = 0;
+    }
+    // Second half of the rows
+    for (int i = numCircles; i < 2 * numCircles; ++i) {
+        A(i, 0) = 0;
+        A(i, 1) = 1;
+        A(i, 2) = 0;
+        A(i, 3) = (int)(i - numCircles) / nbX;
+    }
     svd = Eigen::JacobiSVD<Eigen::MatrixXd>(A, Eigen::ComputeThinU | Eigen::ComputeThinV);
+}
+
+void displayMatrix(const Eigen::MatrixXd& A, int startRow = 0) {
+    int rows = A.rows();
+    int cols = A.cols();
+
+    // Create an OpenCV Mat to store the printed matrix
+    cv::Mat matrixImage(rows * 20, cols * 60, CV_8UC3, cv::Scalar(255, 255, 255)); // Adjust size as needed
+
+    // Print the matrix onto the OpenCV Mat
+    for (int i = startRow; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::stringstream ss;
+            ss << std::fixed << std::setprecision(2) << A(i, j);
+            cv::putText(matrixImage, ss.str(), cv::Point(j * 60, (i - startRow + 1) * 20), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 0, 0), 1);
+
+        }
+    }
+
+    // Display the OpenCV Mat in a window
+    cv::imshow("Matrix Viewer", matrixImage);
+    cv::waitKey(0); // Wait for a key press
 }
 
 CalibrationData* CalibrationController::applyCalibrationPipeline(const cv::Mat& image){
     cv::Mat thresh = generateThresholdImg(image);
     std::vector<cv::Point2d> circles = getCircles(thresh);
-    std::sort(circles.begin(), circles.end(), [](const cv::Point2d& a, const cv::Point2d& b) {
-        return a.x < b.x || (a.x == b.x && a.y < b.y);
-        });
 
     int numCircles = circles.size();
     initializeMatrixA(numCircles);
+
+    // Matrix B is a 2n x 1 matrix where n is the number of circles
+    // It is a matrix that contains the coordinates of the circles
+    // where the first n rows are the x-coordinates and the second n rows are the y-coordinates
     Eigen::MatrixXd B(2 * numCircles, 1);
     for (int i = 0; i < numCircles; ++i) {
         B(i, 0) = circles[i].x;
         B(i + numCircles, 0) = circles[i].y;
     }
-
-    Eigen::VectorXd sv = svd.singularValues();
-    Eigen::MatrixXd U = svd.matrixU();
-    Eigen::MatrixXd V = svd.matrixV();
-
-    Eigen::VectorXd S_inv = sv.array().inverse();
-    Eigen::VectorXd X = V * S_inv.asDiagonal() * U.transpose() * B;
-
-    // Verify is X is not null
-    if (X[2] == 0 || X[3] == 0) {
-        return new CalibrationData();
+    
+    // Compute the least square solution of the system
+    // X = (cx0, cy0, dx, dy)
+    Eigen::MatrixXd X = svd.solve(B);
+    displayMatrix(A);
+    displayMatrix(A, numCircles);
+    displayMatrix(B);
+    displayMatrix(B, numCircles);
+    displayMatrix(X);
+    cv::Mat outputImage = image.clone();
+    // Draw circles of diameter means(X(2), X(3)) at the computed positions
+    int radius = (int)(X(2) + X(3)) / 2;
+    for (const auto& circle : circles) {
+		cv::circle(outputImage, cv::Point(circle.x, circle.y), radius, cv::Scalar(0, 0, 255), 1);
 	}
 
-    cv::Mat outputImage = image.clone();
-    for (double i = X[2]; i < 512; i += X[2]) {
-        cv::line(outputImage, cv::Point(0, static_cast<int>(i)), cv::Point(image.cols - 1, static_cast<int>(i)), cv::Scalar(0, 0, 255), 1);
-    }
-    for (double j = X[3]; j < 512; j += X[3]) {
-        cv::line(outputImage, cv::Point(static_cast<int>(j), 0), cv::Point(static_cast<int>(j), image.rows - 1), cv::Scalar(0, 0, 255), 1);
-    }
+    // Draw grid lines
+    for (int i = 0; i < numCircles; ++i) {
+		cv::line(outputImage, cv::Point(0, (int)(X(3) * i)), cv::Point(outputImage.cols, (int)(X(3) * i)), cv::Scalar(0, 255, 0), 1);
+		cv::line(outputImage, cv::Point((int)(X(2) * i), 0), cv::Point((int)(X(2) * i), outputImage.rows), cv::Scalar(0, 255, 0), 1);
+	}
+    // Draw box with all calibration parameters & results
+    cv::rectangle(outputImage, cv::Point(0, 0), cv::Point(200, 180), cv::Scalar(0, 0, 0), -1);
+    cv::putText(outputImage, "c: " + std::to_string(c), cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "blockSize: " + std::to_string(blockSize), cv::Point(10, 40), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "gaussKernel: " + std::to_string(gaussKernel.width) + "x" + std::to_string(gaussKernel.height), cv::Point(10, 60), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "clusterDistance: " + std::to_string((int)clusterDistance), cv::Point(10, 80), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "dx: " + std::to_string(X(2)), cv::Point(10, 100), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "dy: " + std::to_string(X(3)), cv::Point(10, 120), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "cx0: " + std::to_string(X(0)), cv::Point(10, 140), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    cv::putText(outputImage, "cy0: " + std::to_string(X(1)), cv::Point(10, 160), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
 
-    return new CalibrationData(outputImage, X[2], X[3], circles);
+    return new CalibrationData(outputImage, X(2), X(3), circles);
 }
 

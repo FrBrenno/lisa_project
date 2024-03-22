@@ -73,11 +73,11 @@ void PreviewPanel::loadImage()
 	cv::Mat img = cv::imread(filename.ToStdString());
 	CalibrationData* calibrationData = calibrationController.applyCalibrationPipeline(img);
 	cv::Mat calib_img = calibrationData->getImage();
-	image = wxImage(calib_img.cols, calib_img.rows, calib_img.data, true);
+	wxImage image_proc = wxImage(calib_img.cols, calib_img.rows, calib_img.data, true);
 	delete calibrationData;
 	// END TEST PURPOSES
 
-	this->setImage(&image);
+	this->setImage(&image_proc);
 }
 
 void PreviewPanel::setImage(wxImage* image)

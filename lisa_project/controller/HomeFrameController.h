@@ -11,7 +11,6 @@ class HomeFrameController : public BaseController, public IHomeFrameListener{
 public:
 	HomeFrameController(MyAppInterface* main, IApiService* wfsApiService);
 
-	wxImage onLoadImage(wxWindow* parent) override;
 
 	void onConnectAPI() override;
 
