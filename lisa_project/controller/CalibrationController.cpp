@@ -143,28 +143,6 @@ void CalibrationController::initializeMatrixA(int numCircles) {
     svd = Eigen::JacobiSVD<Eigen::MatrixXd>(A, Eigen::ComputeThinU | Eigen::ComputeThinV);
 }
 
-void displayMatrix(const Eigen::MatrixXd& A, int startRow = 0) {
-    int rows = A.rows();
-    int cols = A.cols();
-
-    // Create an OpenCV Mat to store the printed matrix
-    Mat matrixImage(rows * 20, cols * 60, CV_8UC3, Scalar(255, 255, 255)); // Adjust size as needed
-
-    // Print the matrix onto the OpenCV Mat
-    for (int i = startRow; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            std::stringstream ss;
-            ss << std::fixed << std::setprecision(2) << A(i, j);
-            putText(matrixImage, ss.str(), Point(j * 60, (i - startRow + 1) * 20), FONT_HERSHEY_SIMPLEX, 0.4, Scalar(0, 0, 0), 1);
-
-        }
-    }
-
-    // Display the OpenCV Mat in a window
-    imshow("Matrix Viewer", matrixImage);
-    waitKey(0); // Wait for a key press
-}
-
 CalibrationData* CalibrationController::applyCalibrationPipeline(const Mat& image){
     Mat thresh = generateThresholdImg(image);
     std::vector<Point2d> circles = getCircles(thresh);
