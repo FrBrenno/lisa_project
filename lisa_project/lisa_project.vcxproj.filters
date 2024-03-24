@@ -99,10 +99,10 @@
     <ClCompile Include="controller\CalibrationController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
-    <ClCompile Include="PreviewPanel.cpp">
+    <ClCompile Include="view\PreviewPanel.cpp">
       <Filter>Fichiers sources\View</Filter>
     </ClCompile>
-    <ClCompile Include="CalibrationData.cpp">
+    <ClCompile Include="model\CalibrationData.cpp">
       <Filter>Fichiers sources\Model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,12 +164,6 @@
     <ClInclude Include="MyAppInterface.h">
       <Filter>Fichiers d%27en-tête\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="EventDispatcher.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
     <ClInclude Include="WfsApiService.h">
       <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
     </ClInclude>
@@ -179,32 +173,38 @@
     <ClInclude Include="TestWfsApiService.h">
       <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
     </ClInclude>
-    <ClInclude Include="InstrumentSelectionEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="InstrumentSelectedEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="ExitEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="EventBase.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
     <ClInclude Include="WfsParameters.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CalibrationStartEvent.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="controller\CalibrationController.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="PreviewPanel.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
+    <ClInclude Include="event\CalibrationStartEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
-    <ClInclude Include="CalibrationData.h">
+    <ClInclude Include="event\Event.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="event\EventBase.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="event\EventDispatcher.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="event\ExitEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="event\InstrumentSelectedEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="event\InstrumentSelectionEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="model\CalibrationData.h">
       <Filter>Fichiers d%27en-tête\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="view\PreviewPanel.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

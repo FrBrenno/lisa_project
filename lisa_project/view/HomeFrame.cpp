@@ -1,10 +1,10 @@
 #include "HomeFrame.h"
 #include "../id/MenuID.h"
 #include "../id/ButtonID.h"
-#include "../EventDispatcher.h"
-#include "InstrumentSelectionEvent.h"
-#include "ExitEvent.h"
-#include <CalibrationStartEvent.h>
+#include "../event/EventDispatcher.h"
+#include "../event/InstrumentSelectionEvent.h"
+#include "../event/ExitEvent.h"
+#include "../event/CalibrationStartEvent.h"
 
 
 HomeFrame::HomeFrame()

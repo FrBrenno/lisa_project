@@ -1,10 +1,10 @@
 #include "InstrumentController.h"
-#include "../EventDispatcher.h"
+#include "../event/EventDispatcher.h"
 #include "../view/InstrumentSelectionDialog.h"
 #include "../model/Dto/InstrumentDto.h"
-#include "InstrumentSelectedEvent.h"
-#include "InstrumentSelectionEvent.h"
-#include "ExitEvent.h"
+#include "../event/InstrumentSelectedEvent.h"
+#include "../event/InstrumentSelectionEvent.h"
+#include "../event/ExitEvent.h"
 
 InstrumentController::InstrumentController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
 {

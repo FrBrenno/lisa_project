@@ -2,7 +2,7 @@
 #include "wx/wx.h"
 #include "model/Dto/InstrumentDto.h"
 #include "BaseController.h"
-#include "InstrumentSelectedEvent.h"
+#include "event/InstrumentSelectedEvent.h"
 #include <opencv2/opencv.hpp>
 
 /**

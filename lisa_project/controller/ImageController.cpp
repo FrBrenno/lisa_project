@@ -1,6 +1,6 @@
 #include "ImageController.h"
 #include "lib/thorlabs_api/WFS.h"
-#include "../EventDispatcher.h"
+#include "../event/EventDispatcher.h"
 #include <opencv2/opencv.hpp>
 
 ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)

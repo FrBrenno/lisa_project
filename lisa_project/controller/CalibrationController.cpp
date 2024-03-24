@@ -1,6 +1,6 @@
 #include "CalibrationController.h"
-#include "EventDispatcher.h"
-#include "CalibrationStartEvent.h"
+#include "../event/EventDispatcher.h"
+#include "../event/CalibrationStartEvent.h"
 
 
 using namespace cv;

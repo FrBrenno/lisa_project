@@ -144,56 +144,56 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalibrationData.cpp" />
     <ClCompile Include="controller\BaseController.cpp" />
     <ClCompile Include="controller\HomeFrameController.cpp" />
     <ClCompile Include="controller\ImageController.cpp" />
     <ClCompile Include="controller\CalibrationController.cpp" />
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\PreviewController.cpp" />
+    <ClCompile Include="model\CalibrationData.cpp" />
     <ClCompile Include="model\Dto\InstrumentDto.cpp" />
     <ClCompile Include="model\Dto\MlaDto.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
     <ClCompile Include="model\Mla.cpp" />
     <ClCompile Include="MyApp.cpp" />
-    <ClCompile Include="PreviewPanel.cpp" />
     <ClCompile Include="TestWfsApiService.cpp" />
     <ClCompile Include="view\HomeFrame.cpp" />
     <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
+    <ClCompile Include="view\PreviewPanel.cpp" />
     <ClCompile Include="WfsApiService.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CalibrationData.h" />
-    <ClInclude Include="CalibrationStartEvent.h" />
     <ClInclude Include="controller\BaseController.h" />
     <ClInclude Include="controller\HomeFrameController.h" />
     <ClInclude Include="controller\ImageController.h" />
     <ClInclude Include="controller\CalibrationController.h" />
     <ClInclude Include="controller\InstrumentController.h" />
     <ClInclude Include="controller\PreviewController.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="EventBase.h" />
-    <ClInclude Include="EventDispatcher.h" />
-    <ClInclude Include="ExitEvent.h" />
+    <ClInclude Include="event\CalibrationStartEvent.h" />
+    <ClInclude Include="event\Event.h" />
+    <ClInclude Include="event\EventBase.h" />
+    <ClInclude Include="event\EventDispatcher.h" />
+    <ClInclude Include="event\ExitEvent.h" />
+    <ClInclude Include="event\InstrumentSelectedEvent.h" />
+    <ClInclude Include="event\InstrumentSelectionEvent.h" />
     <ClInclude Include="id\ButtonID.h" />
     <ClInclude Include="id\MenuID.h" />
-    <ClInclude Include="InstrumentSelectedEvent.h" />
-    <ClInclude Include="InstrumentSelectionEvent.h" />
     <ClInclude Include="interface\IApiService.h" />
     <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="interface\IInstrumentViewListener.h" />
     <ClInclude Include="interface\IPreviewHolder.h" />
     <ClInclude Include="interface\IPreviewHolderListener.h" />
+    <ClInclude Include="model\CalibrationData.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />
     <ClInclude Include="model\Mla.h" />
     <ClInclude Include="MyApp.h" />
     <ClInclude Include="MyAppInterface.h" />
-    <ClInclude Include="PreviewPanel.h" />
     <ClInclude Include="TestWfsApiService.h" />
     <ClInclude Include="view\HomeFrame.h" />
     <ClInclude Include="view\InstrumentSelectionDialog.h" />
+    <ClInclude Include="view\PreviewPanel.h" />
     <ClInclude Include="WfsApiService.h" />
     <ClInclude Include="WfsParameters.h" />
   </ItemGroup>
