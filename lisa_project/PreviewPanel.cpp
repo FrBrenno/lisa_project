@@ -1,6 +1,5 @@
 #include "PreviewPanel.h"
 #include "id/ButtonID.h"
-#include <controller/CalibrationController.h>
 
 PreviewPanel::PreviewPanel(wxWindow* parent)
 	: wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(512, 512))
@@ -67,17 +66,7 @@ void PreviewPanel::loadImage()
 	wxString filename = openFileDialog.GetPath();
 	wxImage image(filename, wxBITMAP_TYPE_PNG);
 
-	// TEST PURPOSES
-	// testing calibration pipeline
-	CalibrationController calibrationController;
-	cv::Mat img = cv::imread(filename.ToStdString());
-	CalibrationData* calibrationData = calibrationController.applyCalibrationPipeline(img);
-	cv::Mat calib_img = calibrationData->getImage();
-	wxImage image_proc = wxImage(calib_img.cols, calib_img.rows, calib_img.data, true);
-	delete calibrationData;
-	// END TEST PURPOSES
-
-	this->setImage(&image_proc);
+	this->setImage(&image);
 }
 
 void PreviewPanel::setImage(wxImage* image)
