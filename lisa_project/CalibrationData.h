@@ -4,14 +4,17 @@
 
 class CalibrationData {
     cv::Mat image;
+    double cx0;
+    double cy0;
     double gridSpacingX;
     double gridSpacingY;
-    std::vector<cv::Point2d> circlesPositions;
+    std::vector<cv::Point2d> circles;
 public:
     CalibrationData();
-    CalibrationData(cv::Mat modifiedImage, double gridSpacingX, double gridSpacingY, std::vector<cv::Point2d> circlesPositions);
+    CalibrationData(cv::Mat modifiedImage, double cx0, double cy0, double gridSpacingX, double gridSpacingY, std::vector<cv::Point2d> circles);
 
     cv::Mat getImage();
+    cv::Point2d getRefCircle();
     std::vector<double> getGridSpacing();
-    std::vector<cv::Point2d> getCirclesPositions();
+    std::vector<cv::Point2d> getCircles();
 };

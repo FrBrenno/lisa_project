@@ -186,31 +186,19 @@ CalibrationData* CalibrationController::applyCalibrationPipeline(const Mat& imag
     Eigen::MatrixXd X = svd.solve(B);
     Mat outputImage = image.clone();
     // Draw circles of diameter means(X(2), X(3)) at the computed positions
-    int radius = (int)(X(2) + X(3)) / 4;
-    int cx0 = (int)X(0);
-    int cy0 = (int)X(1);
+    double radius = (X(2) + X(3)) / 4;
     for (const auto& c : circles) {
-		cv::circle(outputImage, Point((int)(c.x), (int)(c.y)), radius, Scalar(0, 0, 255), 1);
+		cv::circle(outputImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
 	}
 
     // Add grid lines
-    for (int i = X(2); i < outputImage.rows; i += X(2)) {
+    for (double i = X(2); i < outputImage.rows; i += X(2)) {
         line(outputImage, Point(i, 0), Point(i, outputImage.cols), Scalar(0,0,255));
     }
-    for (int j = X(3); j < outputImage.cols; j += X(3)) {
+    for (double j = X(3); j < outputImage.cols; j += X(3)) {
         line(outputImage, Point(0, j), Point(outputImage.rows, j), Scalar(0, 0, 255));
     }
-    // Draw box with all calibration parameters & results
-    rectangle(outputImage, Point(0, 0), Point(200, 180), Scalar(0, 0, 0), -1);
-    putText(outputImage, "c: " + std::to_string(c), Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "blockSize: " + std::to_string(blockSize), Point(10, 40), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "gaussKernel: " + std::to_string(gaussKernel.width) + "x" + std::to_string(gaussKernel.height), Point(10, 60), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "clusterDistance: " + std::to_string((int)clusterDistance), Point(10, 80), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "dx: " + std::to_string(X(2)), Point(10, 100), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "dy: " + std::to_string(X(3)), Point(10, 120), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "cx0: " + std::to_string(X(0)), Point(10, 140), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    putText(outputImage, "cy0: " + std::to_string(X(1)), Point(10, 160), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
 
-    return new CalibrationData(outputImage, X(2), X(3), circles);
+    return new CalibrationData(outputImage, X(0), X(1), X(2), X(3), circles);
 }
 
