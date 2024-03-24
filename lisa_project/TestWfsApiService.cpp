@@ -1,4 +1,5 @@
 #include "TestWfsApiService.h"
+#include <opencv2/opencv.hpp>
 
 TestWfsApiService::TestWfsApiService()
 {
@@ -114,6 +115,11 @@ ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES
 			buffer[i * 512 + j] = rand() % 256;
 		}
 	}
+	//== TEST == //
+	/*cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
+	bool calibrationTest = true;
+	if (calibrationTest) memcpy(buffer, img.data, 512 * 512);*/
+	//== TEST == //
 	*imageBuffer = buffer;
 	return VI_SUCCESS;
 }

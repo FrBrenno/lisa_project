@@ -7,6 +7,7 @@
 #include "controller/InstrumentController.h"
 #include "controller/ImageController.h"
 #include "controller/PreviewController.h"
+#include "controller/CalibrationController.h"
 #include "interface/IApiService.h"
 #include "MyAppInterface.h"
 
@@ -29,6 +30,7 @@ class MyApp : public wxApp, MyAppInterface
     InstrumentController* instrumentController;
     ImageController* imageController;
     PreviewController* previewController;
+    CalibrationController* calibrationController;
 
     //== Views ===//
 

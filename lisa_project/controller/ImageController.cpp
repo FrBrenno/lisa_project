@@ -1,6 +1,7 @@
 #include "ImageController.h"
 #include "lib/thorlabs_api/WFS.h"
 #include "../event/EventDispatcher.h"
+#include "CalibrationEngine.h"
 #include <opencv2/opencv.hpp>
 
 ImageController::ImageController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
@@ -55,7 +56,6 @@ void ImageController::acquireImage(){
 		cv::flip(this->image, this->image, 0); 
 		// Convert black and white image buffer to RGB image buffer
 		cv::cvtColor(this->image, this->image, cv::COLOR_GRAY2RGB);
-
 	}
 
 }

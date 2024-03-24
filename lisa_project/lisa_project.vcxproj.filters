@@ -96,7 +96,7 @@
     <ClCompile Include="TestWfsApiService.cpp">
       <Filter>Fichiers sources\Api</Filter>
     </ClCompile>
-    <ClCompile Include="controller\CalibrationController.cpp">
+    <ClCompile Include="controller\CalibrationEngine.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
     <ClCompile Include="view\PreviewPanel.cpp">
@@ -104,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="model\CalibrationData.cpp">
       <Filter>Fichiers sources\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="view\CalibrationDialog.cpp">
+      <Filter>Fichiers sources\View</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\CalibrationController.cpp">
+      <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,9 +182,6 @@
     <ClInclude Include="WfsParameters.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="controller\CalibrationController.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="event\CalibrationStartEvent.h">
       <Filter>Fichiers d%27en-tête\Events</Filter>
     </ClInclude>
@@ -205,6 +208,18 @@
     </ClInclude>
     <ClInclude Include="view\PreviewPanel.h">
       <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="view\CalibrationDialog.h">
+      <Filter>Fichiers d%27en-tête\View</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\ICalibrationViewListener.h">
+      <Filter>Fichiers d%27en-tête\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\CalibrationEngine.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\CalibrationController.h">
+      <Filter>Fichiers d%27en-tête\Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
