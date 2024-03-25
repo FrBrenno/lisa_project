@@ -8,6 +8,7 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 {
 	this->previewController = new PreviewController(main, wfsApiService, imageController);
 	this->calibrationData = new CalibrationData();
+	this->calibrationEngine = new CalibrationEngine();
 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
@@ -42,3 +43,19 @@ void CalibrationController::OnClose()
 	this->previewController->setPreview(nullptr);
 }
 
+void CalibrationController::OnCalibrate()
+{
+	this->previewController->stopPreview();
+	wxImage* image = this->previewController->getFrame();
+	if (image == nullptr)
+	{
+		this->handleError(-1, "No image to calibrate");
+		return;
+	}
+	cv::Mat cvImage(image->GetHeight(), image->GetWidth(), CV_8UC3, image->GetData());
+	delete calibrationData;
+	this->calibrationData = this->calibrationEngine->applyCalibrationPipeline(cvImage);
+	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
+	this->previewController->setFrame(&procImage);
+	delete image;
+}

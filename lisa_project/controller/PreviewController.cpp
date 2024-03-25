@@ -66,7 +66,17 @@ void PreviewController::onPreviewButton()
 	this->isPreviewOn ? this->stopPreview() : this->startPreview();
 }
 
+wxImage* PreviewController::getFrame()
+{
+    return this->previewHolder->getFrame();
+}
+
 void PreviewController::setPreview(IPreview* preview)
 {
 	this->previewHolder = preview;
+}
+
+void PreviewController::setFrame(wxImage* image)
+{
+	this->previewHolder->setImage(image);
 }

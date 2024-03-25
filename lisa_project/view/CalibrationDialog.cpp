@@ -78,5 +78,5 @@ void CalibrationDialog::OnClose(wxCloseEvent& event)
 
 void CalibrationDialog::OnCalibrate(wxCommandEvent& event)
 {
-	
+	this->listener->OnCalibrate();
 }

@@ -19,6 +19,9 @@ public:
     PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
+    wxImage* getFrame();
+    void setFrame(wxImage* image);
+
     void setPreview(IPreview* preview);
 
     void startPreview();

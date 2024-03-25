@@ -95,3 +95,10 @@ void PreviewPanel::setPreviewListener(IPreviewListener* listener)
 		this->previewListener->onPreviewButton();
 		});
 }
+
+wxImage* PreviewPanel::getFrame()
+{
+
+	wxImage image = this->imageControl->GetBitmap().ConvertToImage();
+	return new wxImage(image);
+}

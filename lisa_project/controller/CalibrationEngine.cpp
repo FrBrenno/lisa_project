@@ -152,10 +152,10 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     Eigen::MatrixXd X = svd.solve(B);
     Mat outputImage = image.clone();
     // Draw circles of diameter means(X(2), X(3)) at the computed positions
-    double radius = (X(2) + X(3)) / 4;
+    /*double radius = (X(2) + X(3)) / 4;
     for (const auto& c : circles) {
 		cv::circle(outputImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
-	}
+	}*/
 
     // Add grid lines
     for (double i = X(2); i < outputImage.rows; i += X(2)) {
@@ -164,7 +164,7 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     for (double j = X(3); j < outputImage.cols; j += X(3)) {
         line(outputImage, Point(0, j), Point(outputImage.rows, j), Scalar(0, 0, 255));
     }
-
+    putText(outputImage, "Calibration Frame", Point(10, 10), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 255), 1);
     return new CalibrationData(outputImage, X(0), X(1), X(2), X(3), circles);
 }
 

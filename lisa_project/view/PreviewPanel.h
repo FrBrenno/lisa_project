@@ -22,6 +22,7 @@ public:
 	// Inherited via IPreview
 	void stopPreview() override;
 	void updatePreviewButton(bool isPreviewOn) override;
+	wxImage* getFrame() override;
 	void setImage(wxImage* image) override;
 	void freezePreview() override;
 	void thawPreview() override;
