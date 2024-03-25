@@ -12,6 +12,44 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticBoxSizer* parametersBox = new wxStaticBoxSizer(wxVERTICAL, this, "Parameters");
 
+	useInvertImage = new wxCheckBox(this, wxID_ANY, "Invert Image");
+	drawCircles = new wxCheckBox(this, wxID_ANY, "Draw Circles");
+	drawGrid = new wxCheckBox(this, wxID_ANY, "Draw Lines");
+
+	wxBoxSizer* gaussBlurSizeSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* gaussBlurSizeLabel = new wxStaticText(this, wxID_ANY, "Gauss Blur Size:");
+	gaussBlurSizeSizer->Add(gaussBlurSizeLabel, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	gaussBlurSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 2);
+	gaussBlurSizeSizer->Add(gaussBlurSize, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	wxBoxSizer* blockSizeSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* blockSizeLabel = new wxStaticText(this, wxID_ANY, "Block Size:");
+	blockSizeSizer->Add(blockSizeLabel, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	blockSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 1);
+	blockSizeSizer->Add(blockSize, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	wxBoxSizer* cSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* cLabel = new wxStaticText(this, wxID_ANY, "C:");
+	cSizer->Add(cLabel, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	c = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 1);
+	cSizer->Add(c, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	wxBoxSizer* clusterDistanceSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* clusterDistanceLabel = new wxStaticText(this, wxID_ANY, "Cluster Distance:");
+	clusterDistanceSizer->Add(clusterDistanceLabel, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	clusterDistance = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 1);
+	clusterDistanceSizer->Add(clusterDistance, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	parametersBox->Add(useInvertImage, 0, wxALIGN_LEFT| wxALL, 5);
+	parametersBox->Add(drawCircles, 0, wxALIGN_LEFT | wxALL, 5);
+	parametersBox->Add(drawGrid, 0, wxALIGN_LEFT | wxALL, 5);
+
+	parametersBox->Add(gaussBlurSizeSizer, 0, wxALIGN_LEFT | wxALL, 5);
+	parametersBox->Add(blockSizeSizer, 0, wxALIGN_LEFT | wxALL, 5);
+	parametersBox->Add(cSizer, 0, wxALIGN_LEFT | wxALL, 5);
+	parametersBox->Add(clusterDistanceSizer, 0, wxALIGN_LEFT | wxALL, 5);
+
+
 	defaultParametersButton = new wxButton(this, wxID_ANY, "Default Parameters");
 	// TODO: Bind defaultParametersButton to a method
 
@@ -51,7 +89,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	rightSizer->Add(buttonsSizer, 0, wxEXPAND | wxALL, 5);
 
 	// Main Sizer
-	mainSizer->Add(leftSizer, 1, wxEXPAND | wxALL, 5);
+	mainSizer->Add(leftSizer, 0, wxEXPAND | wxALL, 5);
 	mainSizer->Add(rightSizer, 1, wxEXPAND | wxALL, 5);
 		
 	SetSizerAndFit(mainSizer);
