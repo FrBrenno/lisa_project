@@ -113,7 +113,7 @@ void HomeFrame::OnCalibrationStart(wxCommandEvent& event)
 {
     this->previewPanel->stopPreview();
     EventDispatcher::Instance().PublishEvent(
-		CalibrationStartEvent()
+		CalibrationStartEvent()  
 	);
 }
 
