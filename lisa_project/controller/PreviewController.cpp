@@ -35,28 +35,30 @@ void PreviewController::stopPreview()
 
 void PreviewController::onTimer(wxTimerEvent& event)
 {
-	if (this->wfsApiService->isApiConnectionActive())
-	{
-		if (this->isPreviewOn)
-		{
-			this->previewHolder->freezePreview();
-			this->imageController->acquireImage();
-			wxImage* image = this->imageController->getImage();
-			if (image == nullptr)
-			{
-				this->stopPreview();
-				return;
-			}
-			this->previewHolder->setImage(image);
-			this->previewHolder->thawPreview();
-		}
-	}
-	else
-	{
-		this->stopPreview();
-		wxMessageBox("WFS API connection is not active.", "Error", wxOK | wxICON_ERROR);
-	}
-	
+    if (this->wfsApiService->isApiConnectionActive())
+    {
+        if (this->isPreviewOn)
+        {
+            this->previewHolder->freezePreview();
+            this->imageController->acquireImage();
+            wxImage* image = this->imageController->getImage();
+            if (image == nullptr)
+            {
+                this->stopPreview();
+                return;
+            }
+            // Set the new image in the preview panel
+            this->previewHolder->setImage(image);
+            this->previewHolder->thawPreview();
+            // Delete the old image to prevent memory leak
+            delete image;
+        }
+    }
+    else
+    {
+        this->stopPreview();
+        wxMessageBox("WFS API connection is not active.", "Error", wxOK | wxICON_ERROR);
+    }
 }
 
 void PreviewController::onPreviewButton()

@@ -19,6 +19,8 @@ public:
 	void onCapture(wxWindow* parent);
 	void loadImage();
 
+	// Inherited via IPreview
+	void stopPreview() override;
 	void updatePreviewButton(bool isPreviewOn) override;
 	void setImage(wxImage* image) override;
 	void freezePreview() override;

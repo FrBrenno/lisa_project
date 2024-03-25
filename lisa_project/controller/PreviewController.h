@@ -22,7 +22,7 @@ public:
     void setPreview(IPreview* preview);
 
     void startPreview();
-    void stopPreview();
+    void stopPreview() override;
 
     void onTimer(wxTimerEvent& event);
 

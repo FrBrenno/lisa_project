@@ -7,8 +7,8 @@ PreviewPanel::PreviewPanel(wxWindow* parent)
 	this->parent = parent;
 
 	wxImage::AddHandler(new wxPNGHandler);
-	wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
-	this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
+	wxBitmap placeholder("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
+	this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholder, wxDefaultPosition, wxSize(512, 512));
 	this->imageControl->SetDoubleBuffered(true);
 
 	this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
@@ -32,6 +32,12 @@ PreviewPanel::~PreviewPanel()
 	delete this->previewButton;
 	delete this->captureButton;
 }
+
+void PreviewPanel::stopPreview()
+{
+	this->previewListener->stopPreview();
+}
+
 void PreviewPanel::onCapture(wxWindow* parent)
 {
 	wxFileDialog saveFileDialog(parent, "Save Image", "", "", "PNG files (*.png)|*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
@@ -55,10 +61,13 @@ void PreviewPanel::loadImage()
 
 void PreviewPanel::setImage(wxImage* image)
 {
+	// Clear the existing bitmap displayed in the imageControl
 	this->imageControl->SetBitmap(wxNullBitmap);
-	wxBitmap* bitmap = new wxBitmap(*image);
-	imageControl->SetBitmap(*bitmap);
-	imageControl->Refresh();
+
+	// Create a new bitmap from the provided image and display it in the imageControl
+	wxBitmap bitmap(*image);
+	this->imageControl->SetBitmap(bitmap);
+	this->imageControl->Refresh();
 }
 
 void PreviewPanel::updatePreviewButton(bool isPreviewOn)
