@@ -4,6 +4,8 @@
 PreviewPanel::PreviewPanel(wxWindow* parent)
 	: wxPanel(parent, wxID_ANY, wxDefaultPosition, wxSize(512, 512))
 {
+	this->parent = parent;
+
 	wxImage::AddHandler(new wxPNGHandler);
 	wxBitmap placeholderBitmap("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
 	this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholderBitmap, wxDefaultPosition, wxSize(512, 512));
@@ -11,6 +13,9 @@ PreviewPanel::PreviewPanel(wxWindow* parent)
 
 	this->previewButton = new wxButton(this, ID_PREVIEW, "Start Preview");
 	this->captureButton = new wxButton(this, ID_CAPTURE, "Capture");
+	this->captureButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+		this->onCapture(this->parent);
+		});	
 
 	wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
 	buttonSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
@@ -27,27 +32,6 @@ PreviewPanel::~PreviewPanel()
 	delete this->previewButton;
 	delete this->captureButton;
 }
-
-wxStaticBitmap* PreviewPanel::getPreviewImageControl()
-{
-	return this->imageControl;
-}
-
-wxButton* PreviewPanel::getPreviewButton()
-{
-	return this->previewButton;
-}
-
-wxButton* PreviewPanel::getCaptureButton()
-{
-	return this->captureButton;
-}
-
-void PreviewPanel::setPreviewListener(IPreviewHolderListener* listener)
-{
-	this->previewListener = listener;
-}
-
 void PreviewPanel::onCapture(wxWindow* parent)
 {
 	wxFileDialog saveFileDialog(parent, "Save Image", "", "", "PNG files (*.png)|*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
@@ -75,4 +59,30 @@ void PreviewPanel::setImage(wxImage* image)
 	wxBitmap* bitmap = new wxBitmap(*image);
 	imageControl->SetBitmap(*bitmap);
 	imageControl->Refresh();
+}
+
+void PreviewPanel::updatePreviewButton(bool isPreviewOn)
+{
+	if (isPreviewOn)
+		this->previewButton->SetLabel("Stop Preview");
+	else
+		this->previewButton->SetLabel("Start Preview");
+}
+
+void PreviewPanel::freezePreview()
+{
+	this->imageControl->Freeze();
+}
+
+void PreviewPanel::thawPreview()
+{
+	this->imageControl->Thaw();
+}
+
+void PreviewPanel::setPreviewListener(IPreviewListener* listener)
+{
+	this->previewListener = listener;
+	this->previewButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+		this->previewListener->onPreviewButton();
+		});
 }

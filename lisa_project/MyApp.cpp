@@ -34,8 +34,9 @@ bool MyApp::OnInit()
     //=== Controller initialization ===//
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
-    this->previewController = new PreviewController(this, this->wfsApiService);
-    this->calibrationController = new CalibrationController(this, this->wfsApiService);
+    this->imageController = new ImageController(this, this->wfsApiService);
+    this->previewController = new PreviewController(this, this->wfsApiService, this->imageController);
+    this->calibrationController = new CalibrationController(this, this->wfsApiService, this->imageController);
     
     //=== Controller-View binding ===//
     this->homeFrame->setPreviewListener(this->previewController);

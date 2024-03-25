@@ -1,40 +1,30 @@
 #pragma once
 #include "./controller/BaseController.h"
 #include "./controller/ImageController.h"
-#include "./interface/IPreviewHolderListener.h"
+#include "./interface/IPreviewListener.h"
+#include "./interface/IPreview.h"
 #include <wx/wx.h>
 #include <wx/timer.h>
 
 class PreviewController :
-    public wxEvtHandler, public BaseController, public IPreviewHolderListener
+    public wxEvtHandler, public BaseController, public IPreviewListener
 {
     ImageController* imageController;
-
-    wxStaticBitmap* imageControl;
-    wxButton* previewButton;
-    wxButton* captureButton;
+    IPreview* previewHolder;
 
     wxTimer* previewTimer;
     bool isPreviewOn;
 
 public:
-    PreviewController(MyAppInterface* app, IApiService* wfsApiService);
+    PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
-    void setPreviewButton(wxButton* previewButton);
-    void setCaptureButton(wxButton* captureButton);
-    void setImageControl(wxStaticBitmap* imageControl);
-
-    void startPreview() override;
-    void stopPreview() override;
-    void onCapture(wxWindow* window, wxBitmap bitmap) override;
-
-    void updatePreviewButton();
-    void updateImageFrame(wxImage* image);
+    void startPreview();
+    void stopPreview();
 
     void onTimer(wxTimerEvent& event);
-    void onPreviewButton();
+    void onPreviewButton() override;
 
-    void setPreviewHolder(IPreviewHolder* previewHolder);
+    void setPreviewHolder(IPreview* previewHolder);
 };
 

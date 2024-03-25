@@ -2,9 +2,10 @@
 
 constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
-PreviewController::PreviewController(MyAppInterface* app, IApiService* wfsApiService) : BaseController(app, wfsApiService)
+PreviewController::PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController) :
+	BaseController(app, wfsApiService)
 {
-	this->imageController = new ImageController(app, wfsApiService);
+	this->imageController = imageController;
 	this->previewTimer = new wxTimer(this);
 	this->Bind(wxEVT_TIMER, [this](wxTimerEvent& event) {
 		this->onTimer(event);
@@ -16,58 +17,20 @@ PreviewController::~PreviewController()
 {
 	this->previewTimer->Stop();
 	delete this->previewTimer;
-	delete this->imageController;
 }
 
 void PreviewController::startPreview()
 {
 	this->previewTimer->Start(PREVIEW_IMAGE_RATE);
 	this->isPreviewOn = true;
-	this->updatePreviewButton();
+	this->previewHolder->updatePreviewButton(this->isPreviewOn);
 }
 
 void PreviewController::stopPreview()
 {
 	this->previewTimer->Stop();
 	this->isPreviewOn = false;
-	this->updatePreviewButton();
-}
-
-void PreviewController::onCapture(wxWindow* window, wxBitmap bitmap)
-{
-	wxFileDialog saveFileDialog(window, "Save Image", "", "pcv_image.png", "PNG files (*.png)|*.png|All files (*.*)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-
-	if (saveFileDialog.ShowModal() == wxID_CANCEL) {
-		// User canceled the operation
-		return;
-	}
-
-	wxString filePath = saveFileDialog.GetPath();
-
-	// Ensure a valid file path
-	if (filePath.empty()) {
-		wxMessageBox("Invalid file path.", "Error", wxOK | wxICON_ERROR);
-		return;
-	}
-
-	// Save the image
-	bitmap.SaveFile(filePath, wxBITMAP_TYPE_PNG);
-}
-
-void PreviewController::updatePreviewButton()
-{
-	if (this->isPreviewOn)
-		this->previewButton->SetLabel("Stop Preview");
-	else
-		this->previewButton->SetLabel("Start Preview");
-}
-
-void PreviewController::updateImageFrame(wxImage* image)
-{
-	this->imageControl->SetBitmap(wxNullBitmap);
-	wxBitmap* bitmap = new wxBitmap(*image);
-	imageControl->SetBitmap(*bitmap);
-	imageControl->Refresh();
+	this->previewHolder->updatePreviewButton(this->isPreviewOn);
 }
 
 void PreviewController::onTimer(wxTimerEvent& event)
@@ -76,7 +39,7 @@ void PreviewController::onTimer(wxTimerEvent& event)
 	{
 		if (this->isPreviewOn)
 		{
-			this->imageControl->Freeze();
+			this->previewHolder->freezePreview();
 			this->imageController->acquireImage();
 			wxImage* image = this->imageController->getImage();
 			if (image == nullptr)
@@ -84,8 +47,8 @@ void PreviewController::onTimer(wxTimerEvent& event)
 				this->stopPreview();
 				return;
 			}
-			this->updateImageFrame(image);
-			this->imageControl->Thaw();
+			this->previewHolder->setImage(image);
+			this->previewHolder->thawPreview();
 		}
 	}
 	else
@@ -101,31 +64,7 @@ void PreviewController::onPreviewButton()
 	this->isPreviewOn ? this->stopPreview() : this->startPreview();
 }
 
-void PreviewController::setPreviewButton(wxButton* previewButton)
+void PreviewController::setPreviewHolder(IPreview* previewHolder)
 {
-	this->previewButton = previewButton;
-	this->previewButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
-		this->onPreviewButton();
-	});
-}
-
-void PreviewController::setCaptureButton(wxButton* captureButton)
-{
-	this->captureButton = captureButton;
-	this->captureButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
-		this->onCapture(this->captureButton, this->imageControl->GetBitmap());
-	});
-}
-
-void PreviewController::setImageControl(wxStaticBitmap* imageControl)
-{
-	this->imageControl = imageControl;
-}
-
-
-void PreviewController::setPreviewHolder(IPreviewHolder* previewHolder)
-{
-	this->setCaptureButton(previewHolder->getCaptureButton());
-	this->setPreviewButton(previewHolder->getPreviewButton());
-	this->setImageControl(previewHolder->getPreviewImageControl());
+	this->previewHolder = previewHolder;
 }

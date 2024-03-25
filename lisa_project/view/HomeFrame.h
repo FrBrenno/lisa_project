@@ -3,7 +3,7 @@
 #include <string>
 #include "../interface/IHomeFrameListener.h"
 #include "PreviewPanel.h"
-#include "../interface/IPreviewHolderListener.h"
+#include "../interface/IPreviewListener.h"
 
 /**
  * @class HomeFrame.
@@ -67,6 +67,6 @@ public:
     **/
     void setListener(IHomeFrameListener* listener);
 
-    void setPreviewListener(IPreviewHolderListener* listener);
+    void setPreviewListener(IPreviewListener* listener);
     PreviewPanel* getPreviewPanel();
 };
