@@ -185,8 +185,8 @@
     <ClInclude Include="interface\ICalibrationViewListener.h" />
     <ClInclude Include="interface\IHomeFrameListener.h" />
     <ClInclude Include="interface\IInstrumentViewListener.h" />
-    <ClInclude Include="interface\IPreviewHolder.h" />
-    <ClInclude Include="interface\IPreviewHolderListener.h" />
+    <ClInclude Include="interface\IPreview.h" />
+    <ClInclude Include="interface\IPreviewListener.h" />
     <ClInclude Include="model\CalibrationData.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />

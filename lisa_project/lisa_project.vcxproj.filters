@@ -158,10 +158,10 @@
     <ClInclude Include="interface\IInstrumentViewListener.h">
       <Filter>Fichiers d%27en-tête\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="interface\IPreviewHolder.h">
+    <ClInclude Include="interface\IPreview.h">
       <Filter>Fichiers d%27en-tête\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="interface\IPreviewHolderListener.h">
+    <ClInclude Include="interface\IPreviewListener.h">
       <Filter>Fichiers d%27en-tête\Interface</Filter>
     </ClInclude>
     <ClInclude Include="controller\PreviewController.h">
