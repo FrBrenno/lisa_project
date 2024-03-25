@@ -8,12 +8,11 @@ class CalibrationDialog : public wxDialog {
 	wxWindow* parent;
 	ICalibrationViewListener* listener;
 
-	wxStaticBoxSizer* parametersBox;
-	wxStaticBoxSizer* resultsBox;
 	PreviewPanel* previewPanel;
-
-	wxBoxSizer* mainSizer;
-	wxBoxSizer* leftSizer;
+	wxButton* calibrateButton;
+	wxButton* saveButton;
+	wxButton* loadButton;
+	wxButton* defaultParametersButton;
 public:
 	CalibrationDialog(wxWindow* parent, ICalibrationViewListener* controller, IPreviewListener* previewListener);
 
@@ -21,4 +20,5 @@ public:
 	PreviewPanel* getPreviewPanel();
 
 	void OnClose(wxCloseEvent& event);
+	void OnCalibrate(wxCommandEvent& event);	
 };
