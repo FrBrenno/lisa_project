@@ -34,13 +34,13 @@ bool MyApp::OnInit()
     //=== Controller initialization ===//
     this->homeFrameController = new HomeFrameController(this, this->wfsApiService);
     this->instrumentController = new InstrumentController(this, this->wfsApiService);
-    this->imageController = new ImageController(this, this->wfsApiService);
-    this->previewController = new PreviewController(this, this->wfsApiService, this->imageController);
+    this->previewController = new PreviewController(this, this->wfsApiService);
     this->calibrationController = new CalibrationController(this, this->wfsApiService);
     
     //=== Controller-View binding ===//
     this->homeFrame->setPreviewListener(this->previewController);
     this->previewController->setPreviewHolder(this->homeFrame->getPreviewPanel());
+
     homeFrame->setListener(homeFrameController);
     homeFrame->Show(true);
     
