@@ -19,12 +19,14 @@ public:
     PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
+    void setPreview(IPreview* preview);
+
     void startPreview();
     void stopPreview();
 
     void onTimer(wxTimerEvent& event);
-    void onPreviewButton() override;
 
-    void setPreviewHolder(IPreview* previewHolder);
+    // Hérité via IPreviewListener
+    void onPreviewButton() override;
 };
 

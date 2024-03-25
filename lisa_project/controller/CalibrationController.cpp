@@ -3,8 +3,10 @@
 #include "../event/CalibrationStartEvent.h"
 #include "../view/CalibrationDialog.h"
 
-CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService) : BaseController(main, wfsApiService)
+CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
+	BaseController(main, wfsApiService)
 {
+	this->previewController = new PreviewController(main, wfsApiService, imageController);
 	this->calibrationData = new CalibrationData();
 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
@@ -28,7 +30,8 @@ void CalibrationController::HandleCalibrationStart()
 	}
 
 	// Launch CalibrationDialog view
-	CalibrationDialog calibrationDialog(this->app->getHomeFrame(), this);
+	CalibrationDialog calibrationDialog(this->app->getHomeFrame(), this, this->previewController);
+	this->previewController->setPreview(calibrationDialog.getPreviewPanel());
 	calibrationDialog.ShowCalibrationDialog();
 }
 

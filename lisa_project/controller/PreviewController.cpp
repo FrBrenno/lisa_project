@@ -64,7 +64,7 @@ void PreviewController::onPreviewButton()
 	this->isPreviewOn ? this->stopPreview() : this->startPreview();
 }
 
-void PreviewController::setPreviewHolder(IPreview* previewHolder)
+void PreviewController::setPreview(IPreview* preview)
 {
-	this->previewHolder = previewHolder;
+	this->previewHolder = preview;
 }

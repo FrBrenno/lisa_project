@@ -136,12 +136,12 @@ void HomeFrame::setListener(IHomeFrameListener* listener)
 	this->listener = listener;
 }
 
-void HomeFrame::setPreviewListener(IPreviewHolderListener* listener)
-{
-	this->previewPanel->setPreviewListener(listener);
-}
-
 PreviewPanel* HomeFrame::getPreviewPanel()
 {
 	return this->previewPanel;
+}
+
+void HomeFrame::setPreviewListener(IPreviewListener* listener)
+{
+	this->previewPanel->setPreviewListener(listener);
 }

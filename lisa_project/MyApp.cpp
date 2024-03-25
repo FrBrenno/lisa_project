@@ -40,7 +40,7 @@ bool MyApp::OnInit()
     
     //=== Controller-View binding ===//
     this->homeFrame->setPreviewListener(this->previewController);
-    this->previewController->setPreviewHolder(this->homeFrame->getPreviewPanel());
+    this->previewController->setPreview(this->homeFrame->getPreviewPanel());
 
     homeFrame->setListener(homeFrameController);
     homeFrame->Show(true);
