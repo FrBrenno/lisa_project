@@ -15,6 +15,8 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
 
+	Bind(wxEVT_CLOSE_WINDOW, &CalibrationDialog::OnClose, this);
+
 	// Left Sizer
 	leftSizer = new wxBoxSizer(wxVERTICAL);
 	leftSizer->Add(parametersBox, 1, wxEXPAND | wxALL, 5);
@@ -38,4 +40,10 @@ void CalibrationDialog::ShowCalibrationDialog()
 PreviewPanel* CalibrationDialog::getPreviewPanel()
 {
 	return this->previewPanel;
+}
+
+void CalibrationDialog::OnClose(wxCloseEvent& event)
+{
+	this->listener->OnClose();
+	this->EndModal(wxOK);
 }

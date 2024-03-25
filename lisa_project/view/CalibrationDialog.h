@@ -19,4 +19,6 @@ public:
 
 	void ShowCalibrationDialog();
 	PreviewPanel* getPreviewPanel();
+
+	void OnClose(wxCloseEvent& event);
 };

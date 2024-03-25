@@ -7,11 +7,12 @@
 class CalibrationController: public BaseController, public ICalibrationViewListener{
 	CalibrationData* calibrationData;
 	PreviewController* previewController;
-	IPreview* previewPanel;
 
 public:
 	CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController);
 	~CalibrationController();
 
 	void HandleCalibrationStart();
+
+	void OnClose() override;
 };

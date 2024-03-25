@@ -18,6 +18,7 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 
 CalibrationController::~CalibrationController()
 {
+	delete previewController;
 	delete calibrationData;
 }
 
@@ -33,5 +34,11 @@ void CalibrationController::HandleCalibrationStart()
 	CalibrationDialog calibrationDialog(this->app->getHomeFrame(), this, this->previewController);
 	this->previewController->setPreview(calibrationDialog.getPreviewPanel());
 	calibrationDialog.ShowCalibrationDialog();
+}
+
+void CalibrationController::OnClose()
+{
+	this->previewController->stopPreview();
+	this->previewController->setPreview(nullptr);
 }
 

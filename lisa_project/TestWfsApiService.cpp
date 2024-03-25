@@ -116,9 +116,9 @@ ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES
 		}
 	}
 	//== TEST == //
-	/*cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
+	cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
 	bool calibrationTest = true;
-	if (calibrationTest) memcpy(buffer, img.data, 512 * 512);*/
+	if (calibrationTest) memcpy(buffer, img.data, 512 * 512);
 	//== TEST == //
 	*imageBuffer = buffer;
 	return VI_SUCCESS;
