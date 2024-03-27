@@ -1,10 +1,13 @@
 #include "CalibrationParametersDto.h"
 
-CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance) {
+CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance, bool useInvertImage, bool drawCircles, bool drawGrid) {
 	this->gaussKernel = gaussKernel;
 	this->blockSize = blockSize;
 	this->c = c;
 	this->clusterDistance = clusterDistance;
+	this->useInvertImage = useInvertImage;
+	this->drawCircles = drawCircles;
+	this->drawGrid = drawGrid;
 }
 
 cv::Size CalibrationParametersDto::getGaussKernel() const {
@@ -22,3 +25,16 @@ double CalibrationParametersDto::getC() const {
 double CalibrationParametersDto::getClusterDistance() const {
 	return clusterDistance;
 }
+
+bool CalibrationParametersDto::getUseInvertImage() const {
+	return useInvertImage;
+}
+
+bool CalibrationParametersDto::getDrawCircles() const {
+	return drawCircles;
+}
+
+bool CalibrationParametersDto::getDrawGrid() const {
+	return drawGrid;
+}
+
