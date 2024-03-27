@@ -101,26 +101,37 @@ ViStatus TestWfsApiService::setPupil(ViSession handle)
 
 ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES, ViAUInt8* imageBuffer, ViInt32* rows, ViInt32* cols)
 {
+	bool calibrationTest = false;
 	*rows = 512;
 	*cols = 512;
 	
-	ViAUInt8 buffer = new ViUInt8[512 * 512];
-	
-	// Load an image and store it in imageBuffer
-	for (int i = 0; i < 512; i++)
+	// Clean the image buffer
+	if (*imageBuffer != nullptr)
 	{
-		for (int j = 0; j < 512; j++)
+		delete[] *imageBuffer;
+		*imageBuffer = nullptr;
+	}
+
+	// Allocate memory for the image buffer
+	ViUInt8* buffer = new ViUInt8[512 * 512];
+
+	if (calibrationTest){
+		// Load an image and store it in imageBuffer
+		cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
+		memcpy(buffer, img.data, 512 * 512);
+	}
+	else {
+
+		// Load an image and store it in imageBuffer
+		for (int i = 0; i < 512; i++)
 		{
-			// Fill the image with random values
-			buffer[i * 512 + j] = rand() % 256;
+			for (int j = 0; j < 512; j++)
+			{
+				// Fill the image with random values
+				buffer[i * 512 + j] = rand() % 256;
+			}
 		}
 	}
-	//== TEST == //
-	cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
-	bool calibrationTest = true;
-	if (calibrationTest) memcpy(buffer, img.data, 512 * 512);
-	//== TEST == //
 	*imageBuffer = buffer;
-	delete buffer;
 	return VI_SUCCESS;
 }
