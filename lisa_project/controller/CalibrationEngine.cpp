@@ -157,13 +157,14 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
 		cv::circle(outputImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
 	}*/
 
-    // Add grid lines
-    for (double i = X(2); i < outputImage.rows; i += X(2)) {
-        line(outputImage, Point(i, 0), Point(i, outputImage.cols), Scalar(0,0,255));
+    // Add grid lines with spacing X(2) for X and X(3) for Y
+    for (double i = 0; i < outputImage.cols; i += X(2)) {
+		line(outputImage, Point(i, 0), Point(i, outputImage.rows), Scalar(0, 0, 255), 1);
+	}
+    for (double i = 0; i < outputImage.rows; i += X(3)) {
+        line(outputImage, Point(0, i), Point(outputImage.cols, i), Scalar(0, 0, 255), 1);
     }
-    for (double j = X(3); j < outputImage.cols; j += X(3)) {
-        line(outputImage, Point(0, j), Point(outputImage.rows, j), Scalar(0, 0, 255));
-    }
+
     rectangle(outputImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);
     putText(outputImage, "Calibration Result Frame", Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
        
