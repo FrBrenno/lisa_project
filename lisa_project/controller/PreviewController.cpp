@@ -21,16 +21,22 @@ PreviewController::~PreviewController()
 
 void PreviewController::startPreview()
 {
-	this->previewTimer->Start(PREVIEW_IMAGE_RATE);
-	this->isPreviewOn = true;
-	this->previewHolder->updatePreviewButton(this->isPreviewOn);
+    if (!this->isPreviewOn)
+    {
+        this->previewTimer->Start(PREVIEW_IMAGE_RATE);
+        this->isPreviewOn = true;
+        this->previewHolder->updatePreviewButton(this->isPreviewOn);
+    }
 }
 
 void PreviewController::stopPreview()
 {
-	this->previewTimer->Stop();
-	this->isPreviewOn = false;
-	this->previewHolder->updatePreviewButton(this->isPreviewOn);
+    if (this->isPreviewOn)
+    {
+        this->previewTimer->Stop();
+        this->isPreviewOn = false;
+        this->previewHolder->updatePreviewButton(this->isPreviewOn);
+	}
 }
 
 void PreviewController::onTimer(wxTimerEvent& event)
@@ -79,4 +85,9 @@ void PreviewController::setPreview(IPreview* preview)
 void PreviewController::setFrame(wxImage* image)
 {
 	this->previewHolder->setImage(image);
+}
+
+bool PreviewController::getIsPreviewOn() const 
+{
+	return this->isPreviewOn;
 }

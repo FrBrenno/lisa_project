@@ -19,6 +19,7 @@ public:
     PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
+    bool getIsPreviewOn() const;
     wxImage* getFrame();
     void setFrame(wxImage* image);
 

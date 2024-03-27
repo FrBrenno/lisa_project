@@ -9,6 +9,7 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 	this->previewController = new PreviewController(main, wfsApiService, imageController);
 	this->calibrationData = new CalibrationData();
 	this->calibrationEngine = new CalibrationEngine();
+	this->lastCalibrationFrame = nullptr;
 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
@@ -56,19 +57,18 @@ void CalibrationController::OnClose()
 
 void CalibrationController::OnCalibrate()
 {
-	this->previewController->stopPreview();
-	wxImage* image = this->previewController->getFrame();
-	if (image == nullptr)
+	if (this->previewController->getIsPreviewOn())
 	{
-		this->handleError(-1, "No image to calibrate");
-		return;
+		this->previewController->stopPreview();
+		delete this->lastCalibrationFrame;
+		this->lastCalibrationFrame = this->previewController->getFrame();
 	}
-	cv::Mat cvImage(image->GetHeight(), image->GetWidth(), CV_8UC3, image->GetData());
+
+	cv::Mat cvImage(lastCalibrationFrame->GetHeight(), lastCalibrationFrame->GetWidth(), CV_8UC3, lastCalibrationFrame->GetData());
 	delete calibrationData;
 	this->calibrationData = this->calibrationEngine->applyCalibrationPipeline(cvImage);
 	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
 	this->previewController->setFrame(&procImage);
-	delete image;
 }
 
 void CalibrationController::OnDefaultParameters()
