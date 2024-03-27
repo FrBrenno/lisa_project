@@ -35,12 +35,6 @@ void ImageController::acquireImage() {
 
     // It can only take an image if the instrument is initialized
     if (instrument->isInitialized()) {
-        // If the image buffer is not null, it means that it has already taken an image
-        if (this->imageBuffer != VI_NULL) {
-            // Delete the previously allocated memory
-            delete[] this->imageBuffer;
-            this->imageBuffer = VI_NULL; // Set to NULL after deletion
-        }
 
         ViStatus status;
         status = this->wfsApiService->getImage(
@@ -56,15 +50,13 @@ void ImageController::acquireImage() {
             return;
         }
 
-        // Ensure that imageBuffer is not NULL
-        if (this->imageBuffer != VI_NULL) {
-            // Create cv::Mat using the acquired imageBuffer
-            this->image = cv::Mat(this->rows, this->cols, CV_8UC1, this->imageBuffer);
-            // Flip the image (it is upside down)
-            cv::flip(this->image, this->image, 0);
-            // Convert black and white image buffer to RGB image buffer
-            cv::cvtColor(this->image, this->image, cv::COLOR_GRAY2RGB);
-        }
+
+        // Create cv::Mat using the acquired imageBuffer
+        this->image = cv::Mat(this->rows, this->cols, CV_8UC1, this->imageBuffer);
+        // Flip the image (it is upside down)
+        cv::flip(this->image, this->image, 0);
+        // Convert black and white image buffer to RGB image buffer
+        cv::cvtColor(this->image, this->image, cv::COLOR_GRAY2RGB);
     }
 }
 
