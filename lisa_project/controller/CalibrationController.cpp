@@ -75,3 +75,32 @@ void CalibrationController::OnDefaultParameters()
 {
 	this->calibrationEngine->setDefaultParameters();
 }
+
+uint8_t CalibrationController::validateParameters(CalibrationParametersDto param)
+{
+	uint8_t errors = 0x0;
+	// Check if the gauss kernel is odd
+	if (param.getGaussKernel().height % 2 == 0 || param.getGaussKernel().width % 2 == 0)
+	{
+		errors |= 0x1; // 0001
+	}
+
+	// Check if the block size is odd
+	if (param.getBlockSize() % 2 == 0)
+	{
+		errors |= 0x2; // 0010
+	}
+
+	// Check if the c value is positive
+	if (param.getC() <= 0)
+	{
+		errors |= 0x4; // 0100
+	}
+
+	// Check if the cluster distance is positive
+	if (param.getClusterDistance() <= 0)
+	{
+		errors |= 0x8; // 1000
+	}
+	return errors;
+}

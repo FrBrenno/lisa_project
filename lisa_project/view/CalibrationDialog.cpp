@@ -136,34 +136,35 @@ CalibrationParametersDto CalibrationDialog::getCalibrationParameters()
 
 bool CalibrationDialog::validateParameters(CalibrationParametersDto param)
 {
+	uint8_t error_code = this->listener->validateParameters(param);
 	// Create a string and concatenate all the errors then show them in a message box
 	wxString errors = "";
 	// Check if the gauss kernel is odd
-	if (param.getGaussKernel().height % 2 == 0 || param.getGaussKernel().width % 2 == 0)
+	if (error_code & 0x1)
 	{
-		errors += "Gauss Kernel must be an odd numbers\n";
+		errors += "Gauss Kernel must be an odd number\n";
 	}
 
 	// Check if the block size is odd
-	if (param.getBlockSize() % 2 == 0)
+	if (error_code & 0x2)
 	{
-		errors += "Block Size must be an odd numbers\n";
+		errors += "Block Size must be an odd number\n";
 	}
 
 	// Check if the c value is positive
-	if (param.getC() <= 0)
+	if (error_code & 0x4)
 	{
 		errors += "C must be a positive number\n";
 	}
 
 	// Check if the cluster distance is positive
-	if (param.getClusterDistance() <= 0)
+	if (error_code & 0x8)
 	{
 		errors += "Cluster Distance must be a positive number\n";
 	}
 
 	// If there are no errors return true
-	if (errors == "")
+	if (errors.IsEmpty())
 	{
 		return true;
 	}
@@ -172,7 +173,6 @@ bool CalibrationDialog::validateParameters(CalibrationParametersDto param)
 		wxMessageBox(errors, "Invalid Parameters", wxICON_ERROR);
 		return false;
 	}
-
 }
 
 

@@ -19,6 +19,8 @@ public:
 
 	void HandleCalibrationStart();
 
+	uint8_t validateParameters(CalibrationParametersDto param) override;
+
 	void OnDefaultParameters() override;
 	void SetCalibrationParameters(CalibrationParametersDto param) override;
 	CalibrationParametersDto GetCalibrationParameters() override;
