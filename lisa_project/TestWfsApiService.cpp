@@ -121,5 +121,6 @@ ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES
 	if (calibrationTest) memcpy(buffer, img.data, 512 * 512);
 	//== TEST == //
 	*imageBuffer = buffer;
+	delete buffer;
 	return VI_SUCCESS;
 }
