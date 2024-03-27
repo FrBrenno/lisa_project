@@ -21,6 +21,12 @@ class CalibrationDialog : public wxDialog {
 	wxCheckBox* drawCircles;
 	wxCheckBox* drawGrid;
 
+	//=== Results ===//
+	wxStaticText* cx0_value;
+	wxStaticText* cy0_value;
+	wxStaticText* dx_value;
+	wxStaticText* dy_value;
+
 	PreviewPanel* previewPanel;
 	wxButton* calibrateButton;
 	wxButton* saveButton;
