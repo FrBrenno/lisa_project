@@ -35,6 +35,7 @@ void CalibrationController::HandleCalibrationStart()
 	// Launch CalibrationDialog view
 	CalibrationDialog calibrationDialog(this->app->getHomeFrame(), this, this->previewController);
 	this->previewController->setPreview(calibrationDialog.getPreviewPanel());
+	this->previewController->startPreview();
 	calibrationDialog.ShowCalibrationDialog();
 }
 
