@@ -11,6 +11,7 @@ class CalibrationParametersDto {
 	double c;
 	double clusterDistance;
 public:
+	CalibrationParametersDto();
 	CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance, bool useInvertImage = false, bool drawCircles = false, bool drawGrid = false);
 	cv::Size getGaussKernel() const;
 	int getBlockSize() const;

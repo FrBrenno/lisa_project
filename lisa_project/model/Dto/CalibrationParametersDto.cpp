@@ -1,4 +1,13 @@
 #include "CalibrationParametersDto.h"
+CalibrationParametersDto::CalibrationParametersDto() :
+	gaussKernel(cv::Size(0, 0)),
+	blockSize(0),
+	c(0.0),
+	clusterDistance(0.0),
+	useInvertImage(false),
+	drawCircles(false),
+	drawGrid(false) 
+{}
 
 CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance, bool useInvertImage, bool drawCircles, bool drawGrid) {
 	this->gaussKernel = gaussKernel;

@@ -7,12 +7,15 @@ using namespace cv;
 using namespace Eigen;
 
 CalibrationEngine::CalibrationEngine() {
-	this->gaussKernel = Size(15, 15);
-	this->blockSize = 31;
-	this->c = 3;
-	this->clusterDistance = 20;
+    this->gaussKernel = Size(15, 15);
+    this->blockSize = 31;
+    this->c = 3;
+    this->clusterDistance = 20;
+    this->useInvertImage = false;
+    this->drawCircles = false;
+    this->drawGrid = true;
 
-    this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance);
+    this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
 }
 
 void CalibrationEngine::setParameters(CalibrationParametersDto param) {
@@ -20,10 +23,13 @@ void CalibrationEngine::setParameters(CalibrationParametersDto param) {
 	this->blockSize = param.getBlockSize();
 	this->c = param.getC();
 	this->clusterDistance = param.getClusterDistance();
+    this->useInvertImage = param.getUseInvertImage();
+	this->drawCircles = param.getDrawCircles();
+	this->drawGrid = param.getDrawGrid();
 }
 
 CalibrationParametersDto CalibrationEngine::getParameters() {
-	return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance);
+    return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
 }
 
 void CalibrationEngine::setDefaultParameters() {
@@ -31,6 +37,9 @@ void CalibrationEngine::setDefaultParameters() {
 	this->blockSize = defaultParameters.getBlockSize();
 	this->c = defaultParameters.getC();
 	this->clusterDistance = defaultParameters.getClusterDistance();
+    this->useInvertImage = defaultParameters.getUseInvertImage();
+    this->drawCircles = defaultParameters.getDrawCircles();
+    this->drawGrid = defaultParameters.getDrawGrid();
 }
 
 CalibrationParametersDto CalibrationEngine::getDefaultParameters() const {
@@ -149,6 +158,9 @@ void CalibrationEngine::initializeMatrixA(int numCircles) {
 }
 
 CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
+    if (useInvertImage) {
+		bitwise_not(image, image);
+	}
     Mat thresh = generateThresholdImg(image);
     std::vector<Point2d> circles = getCircles(thresh);
 
@@ -168,20 +180,23 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     // X = (cx0, cy0, dx, dy)
     Eigen::MatrixXd X = svd.solve(B);
     Mat outputImage = image.clone();
-    // Draw circles of diameter means(X(2), X(3)) at the computed positions
-    /*double radius = (X(2) + X(3)) / 4;
-    for (const auto& c : circles) {
-		cv::circle(outputImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
-	}*/
 
-    // Add grid lines with spacing X(2) for X and X(3) for Y
-    for (double i = 0; i < outputImage.cols; i += X(2)) {
-		line(outputImage, Point(i, 0), Point(i, outputImage.rows), Scalar(0, 0, 255), 1);
+    if (drawCircles) {
+		double radius = (X(2) + X(3)) / 4;
+        for (const auto& c : circles) {
+			cv::circle(outputImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
+		}
 	}
-    for (double i = 0; i < outputImage.rows; i += X(3)) {
-        line(outputImage, Point(0, i), Point(outputImage.cols, i), Scalar(0, 0, 255), 1);
-    }
 
+    if (drawGrid) {
+        // Add grid lines with spacing X(2) for X and X(3) for Y
+        for (double i = 0; i < outputImage.cols; i += X(2)) {
+            line(outputImage, Point(i, 0), Point(i, outputImage.rows), Scalar(0, 0, 255), 1);
+        }
+        for (double i = 0; i < outputImage.rows; i += X(3)) {
+            line(outputImage, Point(0, i), Point(outputImage.cols, i), Scalar(0, 0, 255), 1);
+        }
+    }
     rectangle(outputImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);
     putText(outputImage, "Calibration Result Frame", Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
        

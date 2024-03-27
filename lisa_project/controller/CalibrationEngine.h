@@ -6,12 +6,16 @@
 #include <vector>
 
 class CalibrationEngine{
+    bool useInvertImage;
+    bool drawCircles;
+    bool drawGrid;
+
     cv::Size gaussKernel;
     int blockSize;
     double c;
     double clusterDistance;
 
-    const CalibrationParametersDto defaultParameters;
+    CalibrationParametersDto defaultParameters;
 
     Eigen::MatrixXd A;
     Eigen::JacobiSVD<Eigen::MatrixXd> svd;

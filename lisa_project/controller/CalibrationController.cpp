@@ -37,6 +37,17 @@ void CalibrationController::HandleCalibrationStart()
 	calibrationDialog.ShowCalibrationDialog();
 }
 
+
+void CalibrationController::SetCalibrationParameters(CalibrationParametersDto param)
+{
+	this->calibrationEngine->setParameters(param);
+}
+
+CalibrationParametersDto CalibrationController::GetCalibrationParameters()
+{
+	return this->calibrationEngine->getParameters();
+}
+
 void CalibrationController::OnClose()
 {
 	this->previewController->stopPreview();
@@ -58,4 +69,9 @@ void CalibrationController::OnCalibrate()
 	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
 	this->previewController->setFrame(&procImage);
 	delete image;
+}
+
+void CalibrationController::OnDefaultParameters()
+{
+	this->calibrationEngine->setDefaultParameters();
 }
