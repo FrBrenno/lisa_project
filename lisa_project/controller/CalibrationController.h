@@ -19,12 +19,16 @@ public:
 
 	void HandleCalibrationStart();
 
+	// ICalibrationViewListener
 	uint8_t validateParameters(CalibrationParametersDto param) override;
-
 	void OnDefaultParameters() override;
 	void SetCalibrationParameters(CalibrationParametersDto param) override;
 	CalibrationParametersDto GetCalibrationParameters() override;
 
 	CalibrationData OnCalibrate() override;
 	void OnClose() override;
+
+	void SaveCalibrationData(std::string path) override;
+	void LoadCalibrationData(std::string path) override;
+	CalibrationData GetCalibrationData() override;
 };

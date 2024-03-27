@@ -109,12 +109,12 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
 
-	saveButton = new wxButton(this, wxID_ANY, "Save");
+	saveButton = new wxButton(this, wxID_ANY, "Save Calibration File");
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
-	// TODO: Bind saveButton to a method
-	loadButton = new wxButton(this, wxID_ANY, "Load");
+	saveButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnSave, this);
+	loadButton = new wxButton(this, wxID_ANY, "Load Calibration File");
 	loadButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
-	// TODO: Bind loadButton to a method
+ 	loadButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnLoad, this);
 
 	Bind(wxEVT_CLOSE_WINDOW, &CalibrationDialog::OnClose, this);
 
@@ -299,3 +299,24 @@ void CalibrationDialog::OnOddSpin(wxSpinEvent& event)
 	event.Skip(); // Allow default processing of the event
 }
 
+void CalibrationDialog::OnSave(wxCommandEvent& event)
+{
+	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.calib)|*.calib", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (saveFileDialog.ShowModal() == wxID_CANCEL)
+		return;     // the user changed idea...
+
+	// Save the file
+	this->listener->SaveCalibrationData(saveFileDialog.GetPath().ToStdString());
+}
+
+void CalibrationDialog::OnLoad(wxCommandEvent& event)
+{
+	wxFileDialog openFileDialog(this, _("Open Calibration File"), "", "", "Calibration Files (*.calib)|*.calib", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	if (openFileDialog.ShowModal() == wxID_CANCEL)
+		return;     // the user changed idea...
+
+	// Load the file
+	this->listener->LoadCalibrationData(openFileDialog.GetPath().ToStdString());
+	this->updateResultsView(this->listener->GetCalibrationData());
+	this->updateParametersView(this->listener->GetCalibrationParameters());
+}

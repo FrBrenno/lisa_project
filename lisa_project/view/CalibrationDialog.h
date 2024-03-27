@@ -48,4 +48,6 @@ public:
 	void OnClose(wxCloseEvent& event);
 	void OnCalibrate(wxCommandEvent& event);
 	void OnDefaultParameters(wxCommandEvent& event);
+	void OnSave(wxCommandEvent& event);
+	void OnLoad(wxCommandEvent& event);
 };

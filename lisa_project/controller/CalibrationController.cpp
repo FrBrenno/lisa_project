@@ -2,6 +2,8 @@
 #include "../event/EventDispatcher.h"
 #include "../event/CalibrationStartEvent.h"
 #include "../view/CalibrationDialog.h"
+#include "../lib/nlohmann/json.hpp"
+#include <fstream>
 
 CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
 	BaseController(main, wfsApiService)
@@ -106,4 +108,85 @@ uint8_t CalibrationController::validateParameters(CalibrationParametersDto param
 		errors |= 0x8; // 1000
 	}
 	return errors;
+}
+
+void CalibrationController::SaveCalibrationData(std::string path)
+{
+	// Gather all information to save: calibration parameters, calibration data
+	CalibrationParametersDto param = this->calibrationEngine->getParameters();
+
+	// Save image next to the calibration data
+	std::string imagePath = path + ".png";
+	cv::Mat cvImage(this->calibrationData->getImage().cols, this->calibrationData->getImage().rows, CV_8UC3, this->calibrationData->getImage().data);
+	cv::imwrite(imagePath, cvImage);
+
+	// Save to file in a JSON format
+	nlohmann::json j;
+	j["gaussKernel"] = { param.getGaussKernel().width, param.getGaussKernel().height };
+	j["blockSize"] = param.getBlockSize();
+	j["c"] = param.getC();
+	j["clusterDistance"] = param.getClusterDistance();
+	j["useInvertImage"] = param.getUseInvertImage();
+	j["drawCircles"] = param.getDrawCircles();
+	j["drawGrid"] = param.getDrawGrid();
+
+	j["image"] = imagePath;
+	j["cx0"] = this->calibrationData->getRefCircle().x;
+	j["cy0"] = this->calibrationData->getRefCircle().y;
+	j["dx"] = this->calibrationData->getGridSpacing()[0];
+	j["dy"] = this->calibrationData->getGridSpacing()[1];
+
+	j["circles"] = nlohmann::json::array();
+	for (auto& circle : this->calibrationData->getCircles())
+	{
+		j["circles"].push_back({ circle.x, circle.y });
+	}
+
+	// Save to file
+	std::ofstream file(path);
+	file << j.dump(4);
+	file.close();
+
+}
+
+void CalibrationController::LoadCalibrationData(std::string path)
+{
+	// Load from file
+	std::ifstream file(path);
+	nlohmann::json j;
+	file >> j;
+	file.close();
+
+	// Load image
+	std::string imagePath = j["image"];
+	cv::Mat cvImage = cv::imread(imagePath);
+	wxImage image(cvImage.cols, cvImage.rows, cvImage.data, true);
+	this->previewController->setFrame(&image);
+
+	// Load calibration parameters
+	CalibrationParametersDto param(
+		cv::Size(j["gaussKernel"][0], j["gaussKernel"][1]),
+		j["blockSize"],
+		j["c"],
+		j["clusterDistance"],
+		j["useInvertImage"],
+		j["drawCircles"],
+		j["drawGrid"]
+	);
+	this->calibrationEngine->setParameters(param);
+
+	// Load calibration data
+	std::vector<cv::Point2d> circles;
+	for (auto& circle : j["circles"])
+	{
+		circles.push_back(cv::Point2d(circle[0], circle[1]));
+	}
+	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], (double)j["cy0"], (double)j["dx"], (double)j["dy"], circles);
+	delete this->calibrationData;
+	this->calibrationData = calibData;
+}
+
+CalibrationData CalibrationController::GetCalibrationData()
+{
+	return *this->calibrationData;
 }
