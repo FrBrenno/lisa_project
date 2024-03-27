@@ -5,6 +5,7 @@
 #include "PreviewPanel.h"
 #include "../controller/PreviewController.h"
 #include "../model/Dto/CalibrationParametersDto.h"
+#include "../model/CalibrationData.h"
 
 class CalibrationDialog : public wxDialog {
 	wxWindow* parent;
@@ -34,6 +35,7 @@ class CalibrationDialog : public wxDialog {
 	wxButton* defaultParametersButton;
 
 	void updateParametersView(CalibrationParametersDto param);
+	void updateResultsView(CalibrationData calibData);
 	CalibrationParametersDto getCalibrationParameters();
 	bool validateParameters(CalibrationParametersDto param);
 public:

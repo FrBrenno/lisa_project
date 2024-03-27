@@ -25,6 +25,6 @@ public:
 	void SetCalibrationParameters(CalibrationParametersDto param) override;
 	CalibrationParametersDto GetCalibrationParameters() override;
 
-	void OnCalibrate() override;
+	CalibrationData OnCalibrate() override;
 	void OnClose() override;
 };

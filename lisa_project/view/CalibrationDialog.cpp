@@ -56,6 +56,10 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	defaultParametersButton = new wxButton(this, wxID_ANY, "Default Parameters");
 	defaultParametersButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnDefaultParameters, this);
 
+	calibrateButton = new wxButton(this, wxID_ANY, "Calibrate");
+	calibrateButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+	calibrateButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnCalibrate, this);
+
 	//=== Results
 	wxStaticBoxSizer* resultsBox = new wxStaticBoxSizer(wxVERTICAL, this, "Results");
 
@@ -105,10 +109,6 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
 
-	calibrateButton = new wxButton(this, wxID_ANY, "Calibrate");
-	calibrateButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
-	calibrateButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnCalibrate, this);
-
 	saveButton = new wxButton(this, wxID_ANY, "Save");
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	// TODO: Bind saveButton to a method
@@ -121,19 +121,21 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	// Left Sizer
 	wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
 	leftSizer->Add(parametersBox, 1, wxEXPAND | wxALL, 5);
-	leftSizer->Add(defaultParametersButton, 0, wxALIGN_CENTER | wxALL, 5);
+	wxBoxSizer* leftButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
+	leftButtonsSizer->Add(defaultParametersButton, 1, wxEXPAND | wxALL, 5);
+	leftButtonsSizer->Add(calibrateButton, 1, wxEXPAND | wxALL, 5);
+	leftSizer->Add(leftButtonsSizer, 0, wxEXPAND | wxALL, 5);
 	leftSizer->Add(resultsBox, 1, wxEXPAND | wxALL, 5);
 
 	// RightSizer
 	wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
 	rightSizer->Add(previewPanel, 1, wxEXPAND | wxALL, 5);
 
-	wxBoxSizer* buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
-	buttonsSizer->Add(saveButton, 1, wxEXPAND | wxALL, 5);
-	buttonsSizer->Add(loadButton, 1, wxEXPAND | wxALL, 5);
-	buttonsSizer->Add(calibrateButton, 1, wxEXPAND | wxALL, 5);
+	wxBoxSizer* rightButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
+	rightButtonsSizer->Add(saveButton, 1, wxEXPAND | wxALL, 5);
+	rightButtonsSizer->Add(loadButton, 1, wxEXPAND | wxALL, 5);
 
-	rightSizer->Add(buttonsSizer, 0, wxEXPAND | wxALL, 5);
+	rightSizer->Add(rightButtonsSizer, 0, wxEXPAND | wxALL, 5);
 
 	// Main Sizer
 	mainSizer->Add(leftSizer, 0, wxEXPAND | wxALL, 5);
@@ -163,6 +165,14 @@ void CalibrationDialog::updateParametersView(CalibrationParametersDto param)
 	this->clusterDistance->SetValue(param.getClusterDistance());
 	this->drawCircles->SetValue(param.getDrawCircles());
 	this->drawGrid->SetValue(param.getDrawGrid());
+}
+
+void CalibrationDialog::updateResultsView(CalibrationData calibData)
+{
+	this->cx0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().x));
+	this->cy0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().y));
+	this->dx_value->SetLabel(wxString::Format("%.4f", calibData.getGridSpacing()[0]));
+	this->dy_value->SetLabel(wxString::Format("%.4f", calibData.getGridSpacing()[1]));
 }
 
 CalibrationParametersDto CalibrationDialog::getCalibrationParameters()
@@ -236,7 +246,8 @@ void CalibrationDialog::OnCalibrate(wxCommandEvent& event)
 	CalibrationParametersDto param = this->getCalibrationParameters();
 	if (this->validateParameters(param)) {
 		this->listener->SetCalibrationParameters(param);
-		this->listener->OnCalibrate();
+		CalibrationData calibData = this->listener->OnCalibrate();
+		this->updateResultsView(calibData);
 	}
 }
 

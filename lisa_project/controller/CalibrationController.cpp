@@ -55,20 +55,22 @@ void CalibrationController::OnClose()
 	this->previewController->setPreview(nullptr);
 }
 
-void CalibrationController::OnCalibrate()
+CalibrationData CalibrationController::OnCalibrate()
 {
+	// Collect the last frame for calibration
 	if (this->previewController->getIsPreviewOn())
 	{
 		this->previewController->stopPreview();
 		delete this->lastCalibrationFrame;
 		this->lastCalibrationFrame = this->previewController->getFrame();
 	}
-
 	cv::Mat cvImage(lastCalibrationFrame->GetHeight(), lastCalibrationFrame->GetWidth(), CV_8UC3, lastCalibrationFrame->GetData());
 	delete calibrationData;
+	// Apply calibration pipeline and display the processed image
 	this->calibrationData = this->calibrationEngine->applyCalibrationPipeline(cvImage);
 	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
 	this->previewController->setFrame(&procImage);
+	return *this->calibrationData;
 }
 
 void CalibrationController::OnDefaultParameters()
