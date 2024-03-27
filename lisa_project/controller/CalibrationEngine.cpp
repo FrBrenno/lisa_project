@@ -11,13 +11,30 @@ CalibrationEngine::CalibrationEngine() {
 	this->blockSize = 31;
 	this->c = 3;
 	this->clusterDistance = 20;
+
+    this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance);
 }
 
-void CalibrationEngine::setParameters(const Size& gaussKernel, int blockSize, double c, double clusterDistance) {
-	this->gaussKernel = gaussKernel;
-	this->blockSize = blockSize;
-	this->c = c;
-	this->clusterDistance = clusterDistance;
+void CalibrationEngine::setParameters(CalibrationParametersDto param) {
+    this->gaussKernel = param.getGaussKernel();
+	this->blockSize = param.getBlockSize();
+	this->c = param.getC();
+	this->clusterDistance = param.getClusterDistance();
+}
+
+CalibrationParametersDto CalibrationEngine::getParameters() {
+	return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance);
+}
+
+void CalibrationEngine::setDefaultParameters() {
+	this->gaussKernel = defaultParameters.getGaussKernel();
+	this->blockSize = defaultParameters.getBlockSize();
+	this->c = defaultParameters.getC();
+	this->clusterDistance = defaultParameters.getClusterDistance();
+}
+
+CalibrationParametersDto CalibrationEngine::getDefaultParameters() const {
+	return defaultParameters;
 }
 
 Mat CalibrationEngine::generateThresholdImg(const Mat& img) {

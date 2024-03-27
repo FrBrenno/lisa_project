@@ -1,6 +1,7 @@
 #include "lib/Eigen/Dense"
 #include "BaseController.h"
 #include "model/CalibrationData.h"
+#include "model/Dto/CalibrationParametersDto.h"
 #include <opencv2/opencv.hpp>
 #include <vector>
 
@@ -9,6 +10,8 @@ class CalibrationEngine{
     int blockSize;
     double c;
     double clusterDistance;
+
+    const CalibrationParametersDto defaultParameters;
 
     Eigen::MatrixXd A;
     Eigen::JacobiSVD<Eigen::MatrixXd> svd;
@@ -23,7 +26,10 @@ class CalibrationEngine{
 public:
     CalibrationEngine();
 
-    void setParameters(const cv::Size& gaussKernel, int blockSize, double c, double clusterDistance);
+    void setParameters(CalibrationParametersDto param);
+    CalibrationParametersDto getParameters();
+    void setDefaultParameters();
+    CalibrationParametersDto getDefaultParameters() const;
 
     CalibrationData* applyCalibrationPipeline(const cv::Mat& image);
 };

@@ -152,6 +152,7 @@
     <ClCompile Include="controller\InstrumentController.cpp" />
     <ClCompile Include="controller\PreviewController.cpp" />
     <ClCompile Include="model\CalibrationData.cpp" />
+    <ClCompile Include="model\Dto\CalibrationParametersDto.cpp" />
     <ClCompile Include="model\Dto\InstrumentDto.cpp" />
     <ClCompile Include="model\Dto\MlaDto.cpp" />
     <ClCompile Include="model\Instrument.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="interface\IPreview.h" />
     <ClInclude Include="interface\IPreviewListener.h" />
     <ClInclude Include="model\CalibrationData.h" />
+    <ClInclude Include="model\Dto\CalibrationParametersDto.h" />
     <ClInclude Include="model\Dto\InstrumentDto.h" />
     <ClInclude Include="model\Dto\MlaDto.h" />
     <ClInclude Include="model\Instrument.h" />

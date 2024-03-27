@@ -111,6 +111,9 @@
     <ClCompile Include="controller\CalibrationController.cpp">
       <Filter>Fichiers sources\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="model\Dto\CalibrationParametersDto.cpp">
+      <Filter>Fichiers sources\Model\Dto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyApp.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="controller\CalibrationController.h">
       <Filter>Fichiers d%27en-tête\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="model\Dto\CalibrationParametersDto.h">
+      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
