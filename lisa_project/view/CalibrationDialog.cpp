@@ -19,7 +19,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	wxBoxSizer* gaussBlurSizeSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText* gaussBlurSizeLabel = new wxStaticText(this, wxID_ANY, "Gauss Blur Size:");
 	gaussBlurSizeSizer->Add(gaussBlurSizeLabel, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
-	gaussBlurSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 15);
+	gaussBlurSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 51, 15);
 	m_gaussBlurSize = gaussBlurSize->GetValue();
 	gaussBlurSize->Bind(wxEVT_SPINCTRL, &CalibrationDialog::OnOddSpin, this);
 	gaussBlurSizeSizer->Add(gaussBlurSize, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5); 
@@ -27,7 +27,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	wxBoxSizer* blockSizeSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText* blockSizeLabel = new wxStaticText(this, wxID_ANY, "Block Size:");
 	blockSizeSizer->Add(blockSizeLabel, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
-	blockSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 5, 50, 31);
+	blockSize = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 5, 51, 31);
 	m_blockSize = blockSize->GetValue();
 	blockSize->Bind(wxEVT_SPINCTRL, &CalibrationDialog::OnOddSpin, this);
 	blockSizeSizer->Add(blockSize, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5); 
