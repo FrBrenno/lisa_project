@@ -195,6 +195,11 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
 		}
 	}
 
+    // draw circle centers
+    for (const auto& c : circles) {
+		cv::circle(workingImage, Point(c.x, c.y), 1, Scalar(0, 0, 255), -1);
+	}
+
     if (drawGrid) {
         // Add grid lines with spacing X(2) for X and X(3) for Y
         for (double i = 0; i < workingImage.cols; i += X(2)) {
