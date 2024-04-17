@@ -112,10 +112,10 @@ std::vector<double> CalibrationEngine::getPeaks(const std::vector<int>& intensit
 }
 
 std::vector<Point2d> CalibrationEngine::getCircles(const Mat& image) {
-    std::vector<int> intensityX = intensityHist(image);
-    std::vector<double> peaksX = getPeaks(intensityX);
-    std::vector<int> intensityY = intensityHist(image.t());
+    std::vector<int> intensityY = intensityHist(image);
     std::vector<double> peaksY = getPeaks(intensityY);
+    std::vector<int> intensityX = intensityHist(image.t());
+    std::vector<double> peaksX = getPeaks(intensityX);
 
     std::vector<Point2d> circles;
     // Generate all possible circles and sorting them by y-coordinate
@@ -191,22 +191,22 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     if (drawCircles) {
 		double radius = (X(2) + X(3)) / 4;
         for (const auto& c : circles) {
-			cv::circle(workingImage, Point(c.x, c.y), radius, Scalar(0, 0, 255), 1);
+			cv::circle(workingImage, c, radius, Scalar(0, 0, 255), 1);
 		}
 	}
 
     // draw circle centers
     for (const auto& c : circles) {
-		cv::circle(workingImage, Point(c.x, c.y), 1, Scalar(0, 0, 255), -1);
+		cv::circle(workingImage, c, 1, Scalar(0, 0, 255), -1);
 	}
 
     if (drawGrid) {
         // Add grid lines with spacing X(2) for X and X(3) for Y
-        for (double i = 0; i < workingImage.cols; i += X(2)) {
-            line(workingImage, Point(i, 0), Point(i, workingImage.rows), Scalar(0, 0, 255), 1);
-        }
-        for (double i = 0; i < workingImage.rows; i += X(3)) {
+        for (double i = -X(0); i < workingImage.cols; i += X(2)) {
             line(workingImage, Point(0, i), Point(workingImage.cols, i), Scalar(0, 0, 255), 1);
+        }
+        for (double i = -X(1); i < workingImage.rows; i += X(3)) {
+            line(workingImage, Point(i, 0), Point(i, workingImage.rows), Scalar(0, 0, 255), 1);
         }
     }
     rectangle(workingImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);

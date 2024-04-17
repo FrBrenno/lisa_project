@@ -68,7 +68,12 @@ CalibrationData CalibrationController::OnCalibrate()
 		this->lastCalibrationFrame = this->previewController->getFrame();
 	}
 	cv::Mat cvImage(lastCalibrationFrame->GetHeight(), lastCalibrationFrame->GetWidth(), CV_8UC3, lastCalibrationFrame->GetData());
-	delete calibrationData;
+	
+	if (this->calibrationData != nullptr)
+	{
+		delete this->calibrationData;
+	}
+
 	// Apply calibration pipeline and display the processed image
 	this->calibrationData = this->calibrationEngine->applyCalibrationPipeline(cvImage);
 	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
