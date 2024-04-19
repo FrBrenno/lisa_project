@@ -227,6 +227,9 @@
     <ClInclude Include="model\Dto\CalibrationParametersDto.h">
       <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
     </ClInclude>
+    <ClInclude Include="event\OnLoadImageEvent.h">
+      <Filter>Fichiers d%27en-tête\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png">

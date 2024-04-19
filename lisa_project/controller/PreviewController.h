@@ -27,6 +27,7 @@ public:
 
     void startPreview();
     void stopPreview() override;
+    void onLoadImage() override;
 
     void onTimer(wxTimerEvent& event);
 

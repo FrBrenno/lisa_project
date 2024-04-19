@@ -1,4 +1,6 @@
 #include "PreviewController.h"
+#include "event/EventDispatcher.h"
+#include "event/OnLoadImageEvent.h"
 
 constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
@@ -72,6 +74,13 @@ void PreviewController::onPreviewButton()
 	this->isPreviewOn ? this->stopPreview() : this->startPreview();
 }
 
+void PreviewController::onLoadImage()
+{
+    EventDispatcher::Instance().PublishEvent(
+        OnLoadImageEvent()
+    );
+}
+
 wxImage* PreviewController::getFrame()
 {
     return this->previewHolder->getFrame();
@@ -91,3 +100,4 @@ bool PreviewController::getIsPreviewOn() const
 {
 	return this->isPreviewOn;
 }
+

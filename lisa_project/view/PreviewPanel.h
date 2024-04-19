@@ -10,6 +10,7 @@ class PreviewPanel : public wxPanel, public IPreview
 	wxStaticBitmap* imageControl;
 	wxButton* previewButton;
 	wxButton* captureButton;
+	wxButton* loadButton;
 
 	IPreviewListener* previewListener;
 public:

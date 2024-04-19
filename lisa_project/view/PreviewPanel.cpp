@@ -16,10 +16,15 @@ PreviewPanel::PreviewPanel(wxWindow* parent)
 	this->captureButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
 		this->onCapture(this->parent);
 		});	
+	this->loadButton = new wxButton(this, ID_LOAD, "Load Image");
+	this->loadButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+		this->loadImage();
+		});
 
 	wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
 	buttonSizer->Add(this->captureButton, 0, wxALIGN_CENTER | wxALL, 5);
 	buttonSizer->Add(this->previewButton, 0, wxALIGN_CENTER | wxALL, 5);
+	buttonSizer->Add(this->loadButton, 0, wxALIGN_CENTER | wxALL, 5);
 	wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 	mainSizer->Add(this->imageControl, 0, wxALIGN_CENTER | wxALL, 5);
 	mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER | wxALL, 5);
@@ -50,6 +55,8 @@ void PreviewPanel::onCapture(wxWindow* parent)
 
 void PreviewPanel::loadImage()
 {
+	this->previewListener->stopPreview();
+
 	wxFileDialog openFileDialog(this, "Open Image", "", "", "PNG files (*.png)|*.png", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 	if (openFileDialog.ShowModal() == wxID_CANCEL)
 		return;
@@ -57,6 +64,7 @@ void PreviewPanel::loadImage()
 	wxImage image(filename, wxBITMAP_TYPE_PNG);
 
 	this->setImage(&image);
+	this->previewListener->onLoadImage();
 }
 
 void PreviewPanel::setImage(wxImage* image)
@@ -98,7 +106,10 @@ void PreviewPanel::setPreviewListener(IPreviewListener* listener)
 
 wxImage* PreviewPanel::getFrame()
 {
-
-	wxImage image = this->imageControl->GetBitmap().ConvertToImage();
-	return new wxImage(image);
+ 	wxBitmap bitmap = this->imageControl->GetBitmap();
+	if (bitmap.IsOk())
+	{
+		return new wxImage(bitmap.ConvertToImage());
+	}
+	return nullptr;
 }

@@ -1,6 +1,7 @@
 #include "CalibrationController.h"
 #include "../event/EventDispatcher.h"
 #include "../event/CalibrationStartEvent.h"
+#include "../event/OnLoadImageEvent.h"
 #include "../view/CalibrationDialog.h"
 #include "../lib/nlohmann/json.hpp"
 #include <fstream>
@@ -16,6 +17,11 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
 			HandleCalibrationStart();
+		}
+	);
+	EventDispatcher::Instance().SubscribeToEvent<OnLoadImageEvent>(
+		[this](const OnLoadImageEvent& event) {
+			this->lastCalibrationFrame = this->previewController->getFrame();
 		}
 	);
 }
