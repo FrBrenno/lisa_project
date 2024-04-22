@@ -84,7 +84,7 @@ void PreviewController::onLoadImage(wxImage& image)
     this->setFrame(&image);
 }
 
-wxImage* PreviewController::getFrame()
+wxImage PreviewController::getFrame()
 {
     this->hasImageChanged = false;
     return this->previewHolder->getFrame();

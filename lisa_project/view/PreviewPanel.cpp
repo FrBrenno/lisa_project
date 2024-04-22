@@ -104,12 +104,12 @@ void PreviewPanel::setPreviewListener(IPreviewListener* listener)
 		});
 }
 
-wxImage* PreviewPanel::getFrame()
+wxImage PreviewPanel::getFrame()
 {
  	wxBitmap bitmap = this->imageControl->GetBitmap();
 	if (bitmap.IsOk())
 	{
-		return new wxImage(bitmap.ConvertToImage());
+		return wxImage(bitmap.ConvertToImage());
 	}
-	return nullptr;
+	return wxImage();
 }

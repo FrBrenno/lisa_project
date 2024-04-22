@@ -69,7 +69,7 @@ CalibrationData CalibrationController::OnCalibrate()
 		if (this->lastCalibrationFrame != nullptr) {
 			delete this->lastCalibrationFrame;
 		}
-		this->lastCalibrationFrame = this->previewController->getFrame();
+		this->lastCalibrationFrame = new wxImage(this->previewController->getFrame());
 	}
 
 	// Convert the frame to a cv::Mat
@@ -206,8 +206,13 @@ void CalibrationController::LoadCalibrationData(std::string path)
 	}
 	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 
 		(double)j["cy0"], (double)j["dx"], (double)j["dy"], circles);
-	delete this->calibrationData;
-	this->calibrationData = calibData;
+
+	// Delete the previous calibration data & set the new one
+	if (this->calibrationData != nullptr)
+	{
+		delete this->calibrationData;
+		this->calibrationData = calibData;
+	}
 }
 
 CalibrationData CalibrationController::GetCalibrationData()

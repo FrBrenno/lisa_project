@@ -22,7 +22,7 @@ public:
 
     bool getIsPreviewOn() const;
     bool getHasImageChanged() const;
-    wxImage* getFrame();
+    wxImage getFrame();
     void setFrame(wxImage* image, bool notifyChange = true);
 
     void setPreview(IPreview* preview);
