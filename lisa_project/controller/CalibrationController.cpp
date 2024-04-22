@@ -136,7 +136,7 @@ void CalibrationController::SaveCalibrationData(std::string path)
 
 	// Save image next to the calibration data
 	std::string imagePath = path + ".png";
-	cv::Mat cvImage(this->calibrationData->getImage().cols, this->calibrationData->getImage().rows, CV_8UC3, this->calibrationData->getImage().data);
+	cv::Mat cvImage(this->lastCalibrationFrame->GetHeight(), this->lastCalibrationFrame->GetWidth(), CV_8UC3, this->lastCalibrationFrame->GetData());
 	cv::imwrite(imagePath, cvImage);
 
 	// Save to file in a JSON format
@@ -180,6 +180,10 @@ void CalibrationController::LoadCalibrationData(std::string path)
 	std::string imagePath = j["image"];
 	cv::Mat cvImage = cv::imread(imagePath);
 	wxImage image(cvImage.cols, cvImage.rows, cvImage.data, true);
+	if (this->previewController->getIsPreviewOn())
+	{
+		this->previewController->stopPreview();
+	}
 	this->previewController->setFrame(&image);
 
 	// Load calibration parameters
@@ -200,7 +204,8 @@ void CalibrationController::LoadCalibrationData(std::string path)
 	{
 		circles.push_back(cv::Point2d(circle[0], circle[1]));
 	}
-	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], (double)j["cy0"], (double)j["dx"], (double)j["dy"], circles);
+	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 
+		(double)j["cy0"], (double)j["dx"], (double)j["dy"], circles);
 	delete this->calibrationData;
 	this->calibrationData = calibData;
 }
