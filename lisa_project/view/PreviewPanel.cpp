@@ -55,16 +55,16 @@ void PreviewPanel::onCapture(wxWindow* parent)
 
 void PreviewPanel::loadImage()
 {
-	this->previewListener->stopPreview();
-
 	wxFileDialog openFileDialog(this, "Open Image", "", "", "PNG files (*.png)|*.png", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 	if (openFileDialog.ShowModal() == wxID_CANCEL)
 		return;
 	wxString filename = openFileDialog.GetPath();
 	wxImage image(filename, wxBITMAP_TYPE_PNG);
 
-	this->setImage(&image);
-	this->previewListener->onLoadImage();
+	// Notify the listener that an image has been loaded
+	// The view could update its img control but the listener
+	// should manage the isImageChanged flag
+	this->previewListener->onLoadImage(image);
 }
 
 void PreviewPanel::setImage(wxImage* image)

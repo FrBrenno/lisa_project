@@ -1,6 +1,5 @@
 #include "PreviewController.h"
 #include "event/EventDispatcher.h"
-#include "event/OnLoadImageEvent.h"
 
 constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
@@ -13,6 +12,7 @@ PreviewController::PreviewController(MyAppInterface* app, IApiService* wfsApiSer
 		this->onTimer(event);
 	});
 	this->isPreviewOn = false;
+    this->hasImageChanged = false;
 }
 
 PreviewController::~PreviewController()
@@ -56,7 +56,7 @@ void PreviewController::onTimer(wxTimerEvent& event)
                 return;
             }
             // Set the new image in the preview panel
-            this->previewHolder->setImage(image);
+            this->setFrame(image);
             this->previewHolder->thawPreview();
             // Delete the old image to prevent memory leak
             delete image;
@@ -74,15 +74,19 @@ void PreviewController::onPreviewButton()
 	this->isPreviewOn ? this->stopPreview() : this->startPreview();
 }
 
-void PreviewController::onLoadImage()
+void PreviewController::onLoadImage(wxImage& image)
 {
-    EventDispatcher::Instance().PublishEvent(
-        OnLoadImageEvent()
-    );
+    // Stop preview if running
+    if (this->isPreviewOn)
+		this->stopPreview();
+
+    // Set the new image in the preview panel
+    this->setFrame(&image);
 }
 
 wxImage* PreviewController::getFrame()
 {
+    this->hasImageChanged = false;
     return this->previewHolder->getFrame();
 }
 
@@ -91,9 +95,13 @@ void PreviewController::setPreview(IPreview* preview)
 	this->previewHolder = preview;
 }
 
-void PreviewController::setFrame(wxImage* image)
+void PreviewController::setFrame(wxImage* image, bool notifyChange)
 {
+    // Set the new image in the preview panel
 	this->previewHolder->setImage(image);
+    // Set the flag to indicate that the image has changed
+    if (notifyChange)
+        this->hasImageChanged = true;
 }
 
 bool PreviewController::getIsPreviewOn() const 
@@ -101,3 +109,7 @@ bool PreviewController::getIsPreviewOn() const
 	return this->isPreviewOn;
 }
 
+bool PreviewController::getHasImageChanged() const
+{
+	return this->hasImageChanged;
+}

@@ -1,7 +1,6 @@
 #include "CalibrationController.h"
 #include "../event/EventDispatcher.h"
 #include "../event/CalibrationStartEvent.h"
-#include "../event/OnLoadImageEvent.h"
 #include "../view/CalibrationDialog.h"
 #include "../lib/nlohmann/json.hpp"
 #include <fstream>
@@ -17,11 +16,6 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
 			HandleCalibrationStart();
-		}
-	);
-	EventDispatcher::Instance().SubscribeToEvent<OnLoadImageEvent>(
-		[this](const OnLoadImageEvent& event) {
-			this->lastCalibrationFrame = this->previewController->getFrame();
 		}
 	);
 }
@@ -66,15 +60,22 @@ void CalibrationController::OnClose()
 
 CalibrationData CalibrationController::OnCalibrate()
 {
-	// Collect the last frame for calibration
-	if (this->previewController->getIsPreviewOn())
-	{
+	// Collect the last frame for calibration if it has changed
+	if (this->previewController->getIsPreviewOn()) {
 		this->previewController->stopPreview();
-		delete this->lastCalibrationFrame;
+	}
+
+	if (this->previewController->getHasImageChanged()) {
+		if (this->lastCalibrationFrame != nullptr) {
+			delete this->lastCalibrationFrame;
+		}
 		this->lastCalibrationFrame = this->previewController->getFrame();
 	}
+
+	// Convert the frame to a cv::Mat
 	cv::Mat cvImage(lastCalibrationFrame->GetHeight(), lastCalibrationFrame->GetWidth(), CV_8UC3, lastCalibrationFrame->GetData());
 	
+	// Delete the previous calibration data & apply the calibration pipeline
 	if (this->calibrationData != nullptr)
 	{
 		delete this->calibrationData;
@@ -87,8 +88,10 @@ CalibrationData CalibrationController::OnCalibrate()
 		return CalibrationData();
 	}
 	this->calibrationData = results;
+
+	// Display the processed image
 	wxImage procImage(results->getImage().cols, results->getImage().rows, results->getImage().data, true);
-	this->previewController->setFrame(&procImage);
+	this->previewController->setFrame(&procImage, false);
 	return *results;
 }
 

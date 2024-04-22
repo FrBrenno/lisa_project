@@ -14,20 +14,22 @@ class PreviewController :
 
     wxTimer* previewTimer;
     bool isPreviewOn;
+    bool hasImageChanged;
 
 public:
     PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController);
     ~PreviewController();
 
     bool getIsPreviewOn() const;
+    bool getHasImageChanged() const;
     wxImage* getFrame();
-    void setFrame(wxImage* image);
+    void setFrame(wxImage* image, bool notifyChange = true);
 
     void setPreview(IPreview* preview);
 
     void startPreview();
     void stopPreview() override;
-    void onLoadImage() override;
+    void onLoadImage(wxImage& image) override;
 
     void onTimer(wxTimerEvent& event);
 
