@@ -167,7 +167,7 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
 
     int numCircles = circles.size();
     if (numCircles < 4) {
-		return new CalibrationData();
+		return nullptr;
     }
     initializeMatrixA(numCircles);
 
@@ -185,8 +185,8 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     Eigen::MatrixXd X = svd.solve(B);
     // check if the solution is valid
     if (X(2) < 0.01 || X(3) < 0.01) {
-        return new CalibrationData();
-	}
+        return nullptr;
+    }
 
     if (drawCircles) {
 		double radius = (X(2) + X(3)) / 4;

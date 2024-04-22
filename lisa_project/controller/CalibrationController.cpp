@@ -81,10 +81,15 @@ CalibrationData CalibrationController::OnCalibrate()
 	}
 
 	// Apply calibration pipeline and display the processed image
-	this->calibrationData = this->calibrationEngine->applyCalibrationPipeline(cvImage);
-	wxImage procImage(calibrationData->getImage().cols, calibrationData->getImage().rows, calibrationData->getImage().data, true);
+	CalibrationData* results = this->calibrationEngine->applyCalibrationPipeline(cvImage);
+	if (results == nullptr)
+	{
+		return CalibrationData();
+	}
+	this->calibrationData = results;
+	wxImage procImage(results->getImage().cols, results->getImage().rows, results->getImage().data, true);
 	this->previewController->setFrame(&procImage);
-	return *this->calibrationData;
+	return *results;
 }
 
 void CalibrationController::OnDefaultParameters()
