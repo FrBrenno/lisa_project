@@ -80,6 +80,7 @@ CalibrationData CalibrationController::OnCalibrate()
 	CalibrationData* results = this->calibrationEngine->applyCalibrationPipeline(cvImage);
 	if (results == nullptr)
 	{
+		this->handleError(-1, "Calibration failed !\n\nThis frame is not adequate for calibration.");
 		return CalibrationData();
 	}
 	// Delete the previous calibration data & set the new one
