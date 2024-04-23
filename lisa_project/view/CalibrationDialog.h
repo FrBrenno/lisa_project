@@ -27,6 +27,7 @@ class CalibrationDialog : public wxDialog {
 	wxStaticText* cy0_value;
 	wxStaticText* dx_value;
 	wxStaticText* dy_value;
+	wxStaticText* error_value;
 
 	PreviewPanel* previewPanel;
 	wxButton* calibrateButton;

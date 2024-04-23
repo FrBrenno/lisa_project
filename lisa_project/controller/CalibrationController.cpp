@@ -155,6 +155,7 @@ void CalibrationController::SaveCalibrationData(std::string path)
 	j["cy0"] = this->calibrationData->getRefCircle().y;
 	j["dx"] = this->calibrationData->getGridSpacing()[0];
 	j["dy"] = this->calibrationData->getGridSpacing()[1];
+	j["error"] = this->calibrationData->getError();
 
 	j["circles"] = nlohmann::json::array();
 	for (auto& circle : this->calibrationData->getCircles())
@@ -206,7 +207,7 @@ void CalibrationController::LoadCalibrationData(std::string path)
 		circles.push_back(cv::Point2d(circle[0], circle[1]));
 	}
 	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 
-		(double)j["cy0"], (double)j["dx"], (double)j["dy"], circles);
+		(double)j["cy0"], (double)j["dx"], (double)j["dy"], (double)j["error"], circles);
 
 	// Delete the previous calibration data & set the new one
 	if (this->calibrationData != nullptr)

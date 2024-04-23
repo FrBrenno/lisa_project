@@ -99,12 +99,20 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	dy_value->SetFont(font); // Set font for the value
 	dySizer->Add(dy_value, 1, wxALIGN_LEFT | wxALL, 5);
 
+	wxBoxSizer* errorSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* errorLabel = new wxStaticText(this, wxID_ANY, "Error:");
+	errorLabel->SetFont(font); // Set font for the label
+	errorSizer->Add(errorLabel, 1, wxALIGN_RIGHT | wxALL, 5);
+	error_value = new wxStaticText(this, wxID_ANY, "0");
+	error_value->SetFont(font); // Set font for the value
+	errorSizer->Add(error_value, 1, wxALIGN_LEFT | wxALL, 5);
+
 	// Add sizers for each parameter to the resultsBox
 	resultsBox->Add(cx0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5); 
 	resultsBox->Add(cy0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
 	resultsBox->Add(dxSizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
-	resultsBox->Add(dySizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5); 
-
+	resultsBox->Add(dySizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
+	resultsBox->Add(errorSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
@@ -171,8 +179,9 @@ void CalibrationDialog::updateResultsView(CalibrationData calibData)
 {
 	this->cx0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().x));
 	this->cy0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().y));
-	this->dx_value->SetLabel(wxString::Format("%.4f", calibData.getGridSpacing()[0]));
-	this->dy_value->SetLabel(wxString::Format("%.4f", calibData.getGridSpacing()[1]));
+	this->dx_value->SetLabel(wxString::Format("%.4f mm", calibData.getGridSpacing()[0]));
+	this->dy_value->SetLabel(wxString::Format("%.4f mm", calibData.getGridSpacing()[1]));
+	this->error_value->SetLabel(wxString::Format("%.4f mm", calibData.getError()));
 }
 
 CalibrationParametersDto CalibrationDialog::getCalibrationParameters()

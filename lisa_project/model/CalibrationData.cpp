@@ -6,15 +6,17 @@ CalibrationData::CalibrationData() {
 	this->cy0 = 0;
 	this->gridSpacingX = 0;
 	this->gridSpacingY = 0;
+	this->error = 0;
 	this->circles = std::vector<cv::Point2d>();
 }
 
-CalibrationData::CalibrationData(cv::Mat image, double cx0, double cy0, double gridSpacingX, double gridSpacingY, std::vector<cv::Point2d> circles) {
+CalibrationData::CalibrationData(cv::Mat image, double cx0, double cy0, double gridSpacingX, double gridSpacingY, double error, std::vector<cv::Point2d> circles) {
 	this->image = image;
 	this->cx0 = cx0;
 	this->cy0 = cy0;
 	this->gridSpacingX = gridSpacingX;
 	this->gridSpacingY = gridSpacingY;
+	this->error = error;
 	this->circles = circles;
 }
 
@@ -28,6 +30,10 @@ cv::Point2d CalibrationData::getRefCircle() {
 
 std::vector<double> CalibrationData::getGridSpacing() {
 	return { gridSpacingX, gridSpacingY };
+}
+
+double CalibrationData::getError() {
+	return error;
 }
 
 std::vector<cv::Point2d> CalibrationData::getCircles() {

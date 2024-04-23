@@ -15,6 +15,7 @@ CalibrationEngine::CalibrationEngine() {
     this->drawCircles = false;
     this->drawGrid = true;
 
+
     this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
 }
 
@@ -183,6 +184,10 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     // Compute the least square solution of the system
     // X = (cx0, cy0, dx, dy)
     Eigen::MatrixXd X = svd.solve(B);
+
+    // Error computation
+    double error = (A * X - B).norm();
+
     // check if the solution is valid
     if (X(2) < 0.01 || X(3) < 0.01) {
         return nullptr;
@@ -212,6 +217,6 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     rectangle(workingImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);
     putText(workingImage, "Calibration Result Frame", Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
        
-    return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), circles);
+    return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), error, circles);
 }
 
