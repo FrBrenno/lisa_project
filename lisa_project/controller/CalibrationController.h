@@ -13,6 +13,7 @@ class CalibrationController: public BaseController, public ICalibrationViewListe
 
 	wxImage* lastCalibrationFrame;
 
+	wxImage drawOnImage(CalibrationData* calibData);
 public:
 	CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController);
 	~CalibrationController();

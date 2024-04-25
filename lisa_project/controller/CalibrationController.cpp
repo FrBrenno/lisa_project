@@ -24,6 +24,7 @@ CalibrationController::~CalibrationController()
 {
 	delete previewController;
 	delete calibrationData;
+	delete calibrationEngine;
 }
 
 void CalibrationController::HandleCalibrationStart()
@@ -58,6 +59,41 @@ void CalibrationController::OnClose()
 	this->previewController->setPreview(nullptr);
 }
 
+wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
+	CalibrationParametersDto param = this->calibrationEngine->getParameters();
+	std::vector<cv::Point2d> circles = calibData->getCircles();
+	std::vector<double> gridSpacing = calibData->getGridSpacing();
+	cv::Mat cvImage = calibData->getImage();
+	cv::Point2d refCircle = calibData->getRefCircle();
+
+	if (param.getDrawCircles()){
+		double radius = (gridSpacing[0] + gridSpacing[1]) / 4;
+		for (const auto& c : circles) {
+			cv::circle(cvImage, c, radius, cv::Scalar(0, 0, 255), 1);
+		}
+	}
+
+	// draw circle centers
+	for (const auto& c : circles) {
+		cv::circle(cvImage, c, 1, cv::Scalar(0, 0, 255), -1);
+	}
+
+	if (param.getDrawGrid()) {
+		// TODO: verify that the grid is well drawn
+		// Add grid lines with spacing X(2) for X and X(3) for Y
+		for (double i = -refCircle.x; i < cvImage.cols; i += gridSpacing[0]) {
+			line(cvImage, cv::Point(0, i), cv::Point(cvImage.cols, i), cv::Scalar(0, 0, 255), 1);
+		}
+		for (double i = -refCircle.y; i < cvImage.rows; i += gridSpacing[1]) {
+			line(cvImage, cv::Point(i, 0), cv::Point(i, cvImage.rows), cv::Scalar(0, 0, 255), 1);
+		}
+	}
+	rectangle(cvImage, cv::Point(0, 0), cv::Point(215, 30), cv::Scalar(0, 0, 0), -1);
+	putText(cvImage, "Calibration Result Frame", cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+
+	return wxImage(cvImage.cols, cvImage.rows, cvImage.data, true);
+}
+
 CalibrationData CalibrationController::OnCalibrate()
 {
 	// Collect the last frame for calibration if it has changed
@@ -90,7 +126,7 @@ CalibrationData CalibrationController::OnCalibrate()
 		this->calibrationData = results;
 	}
 	// Display the processed image
-	wxImage procImage(results->getImage().cols, results->getImage().rows, results->getImage().data, true);
+	wxImage procImage = this->drawOnImage(results);
 	this->previewController->setFrame(&procImage, false);
 
 	return *results;

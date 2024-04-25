@@ -192,7 +192,7 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     if (X(2) < 0.01 || X(3) < 0.01) {
         return nullptr;
     }
-
+    /** 
     if (drawCircles) {
 		double radius = (X(2) + X(3)) / 4;
         for (const auto& c : circles) {
@@ -216,7 +216,7 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     }
     rectangle(workingImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);
     putText(workingImage, "Calibration Result Frame", Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-       
+    */
     return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), error, circles);
 }
 
