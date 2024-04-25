@@ -94,6 +94,12 @@ wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
 	return wxImage(cvImage.cols, cvImage.rows, cvImage.data, true);
 }
 
+void CalibrationController::updateImage(cv::Mat image) {
+	// TODO: add flag to do draw or not
+	wxImage wxImage = this->drawOnImage(this->calibrationData);
+	this->previewController->setFrame(&wxImage, false);
+}
+
 CalibrationData CalibrationController::OnCalibrate()
 {
 	// Collect the last frame for calibration if it has changed
@@ -125,10 +131,8 @@ CalibrationData CalibrationController::OnCalibrate()
 		delete this->calibrationData;
 		this->calibrationData = results;
 	}
-	// Display the processed image
-	wxImage procImage = this->drawOnImage(results);
-	this->previewController->setFrame(&procImage, false);
-
+	
+	this->updateImage(cvImage);
 	return *results;
 }
 
