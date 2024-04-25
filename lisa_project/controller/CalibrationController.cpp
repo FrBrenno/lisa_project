@@ -80,10 +80,13 @@ wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
 
 	if (param.getDrawGrid()) {
 		// TODO: verify that the grid is well drawn
-		// Add grid lines with spacing X(2) for X and X(3) for Y
+
+		// Vertical lines: x = cx0 + i*dx
 		for (double i = -refCircle.x; i < cvImage.cols; i += gridSpacing[0]) {
 			line(cvImage, cv::Point(0, i), cv::Point(cvImage.cols, i), cv::Scalar(0, 0, 255), 1);
 		}
+
+		// Horizontal lines: y = cy0 + i*dy
 		for (double i = -refCircle.y; i < cvImage.rows; i += gridSpacing[1]) {
 			line(cvImage, cv::Point(i, 0), cv::Point(i, cvImage.rows), cv::Scalar(0, 0, 255), 1);
 		}
@@ -93,6 +96,7 @@ wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
 
 	return wxImage(cvImage.cols, cvImage.rows, cvImage.data, true);
 }
+
 
 void CalibrationController::updateImage(cv::Mat image) {
 	// TODO: add flag to do draw or not

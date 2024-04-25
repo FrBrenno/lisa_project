@@ -192,31 +192,6 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     if (X(2) < 0.01 || X(3) < 0.01) {
         return nullptr;
     }
-    /** 
-    if (drawCircles) {
-		double radius = (X(2) + X(3)) / 4;
-        for (const auto& c : circles) {
-			cv::circle(workingImage, c, radius, Scalar(0, 0, 255), 1);
-		}
-	}
-
-    // draw circle centers
-    for (const auto& c : circles) {
-		cv::circle(workingImage, c, 1, Scalar(0, 0, 255), -1);
-	}
-
-    if (drawGrid) {
-        // Add grid lines with spacing X(2) for X and X(3) for Y
-        for (double i = -X(0); i < workingImage.cols; i += X(2)) {
-            line(workingImage, Point(0, i), Point(workingImage.cols, i), Scalar(0, 0, 255), 1);
-        }
-        for (double i = -X(1); i < workingImage.rows; i += X(3)) {
-            line(workingImage, Point(i, 0), Point(i, workingImage.rows), Scalar(0, 0, 255), 1);
-        }
-    }
-    rectangle(workingImage, Point(0, 0), Point(215, 30), Scalar(0, 0, 0), -1);
-    putText(workingImage, "Calibration Result Frame", Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
-    */
     return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), error, circles);
 }
 
