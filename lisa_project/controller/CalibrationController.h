@@ -29,6 +29,7 @@ public:
 
 	CalibrationData OnCalibrate() override;
 	void OnShowErrorHeatmap() override;
+	std::vector<cv::Point2d> GetCircles() override;
 	void OnClose() override;
 
 	void SaveCalibrationData(std::string path) override;

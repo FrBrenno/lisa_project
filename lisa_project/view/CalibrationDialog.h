@@ -36,6 +36,7 @@ class CalibrationDialog : public wxDialog {
 	wxButton* defaultParametersButton;
 
 	wxButton* showErrorHeatmap;
+	wxButton* showCirclesPos;
 
 
 	void updateParametersView(CalibrationParametersDto param);
@@ -55,4 +56,5 @@ public:
 	void OnSave(wxCommandEvent& event);
 	void OnLoad(wxCommandEvent& event);
 	void OnShowErrorHeatmap(wxCommandEvent& event);
+	void OnShowCirclesPos(wxCommandEvent& event);
 };

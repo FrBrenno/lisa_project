@@ -12,6 +12,7 @@ public:
 
 	virtual CalibrationData OnCalibrate() = 0;
 	virtual void OnShowErrorHeatmap() = 0;
+	virtual std::vector<cv::Point2d> GetCircles() = 0;
 	virtual void OnClose() = 0;
 
 	virtual void SaveCalibrationData(std::string path) = 0;

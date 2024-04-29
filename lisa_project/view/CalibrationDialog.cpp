@@ -1,4 +1,5 @@
 #include "CalibrationDialog.h"
+#include <wx/grid.h>
 
 CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener* listener, IPreviewListener* previewListener) :
 	wxDialog(parent, wxID_ANY, "LISA - PCV: Calibration")
@@ -111,6 +112,10 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	showErrorHeatmap->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	showErrorHeatmap->Bind(wxEVT_BUTTON, &CalibrationDialog::OnShowErrorHeatmap, this);
 
+	showCirclesPos = new wxButton(this, wxID_ANY, "Show Circles Position");
+	showCirclesPos->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+	showCirclesPos->Bind(wxEVT_BUTTON, &CalibrationDialog::OnShowCirclesPos, this);
+
 	// Add sizers for each parameter to the resultsBox
 	resultsBox->Add(cx0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5); 
 	resultsBox->Add(cy0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
@@ -118,6 +123,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	resultsBox->Add(dySizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 	resultsBox->Add(errorSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 	resultsBox->Add(showErrorHeatmap, 1, wxEXPAND | wxALL, 5);
+	resultsBox->Add(showCirclesPos, 1, wxEXPAND | wxALL, 5);	
 
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
@@ -338,4 +344,36 @@ void CalibrationDialog::OnLoad(wxCommandEvent& event)
 void CalibrationDialog::OnShowErrorHeatmap(wxCommandEvent& event)
 {
 	this->listener->OnShowErrorHeatmap();
+}
+
+void CalibrationDialog::OnShowCirclesPos(wxCommandEvent& event)
+{
+	std::vector<cv::Point2d> circles = this->listener->GetCircles();
+
+	// Create a frame to contain the grid
+	wxFrame* frame = new wxFrame(this, wxID_ANY, "Circles Position", wxDefaultPosition, wxSize(400, 300));
+
+	// Create a grid to display circle positions
+	wxGrid* grid = new wxGrid(frame, wxID_ANY);
+	grid->CreateGrid(circles.size(), 2);
+
+	// Set column labels
+	grid->SetColLabelValue(0, "X");
+	grid->SetColLabelValue(1, "Y");
+
+	// Set row labels (optional)
+	for (int i = 0; i < circles.size(); ++i) {
+		grid->SetRowLabelValue(i, wxString::Format("Circle %d", i + 1));
+	}
+
+	// Set cell values
+	for (int i = 0; i < circles.size(); ++i) {
+		grid->SetCellValue(i, 0, wxString::Format("%.2f", circles[i].x));
+		grid->SetCellValue(i, 1, wxString::Format("%.2f", circles[i].y));
+	}
+
+	// Show the frame
+	frame->Show();
+
+
 }

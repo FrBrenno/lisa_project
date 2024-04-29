@@ -161,6 +161,16 @@ void CalibrationController::OnShowErrorHeatmap()
 	cv::imshow("Error Heatmap", errorHeatmap);
 }
 
+std::vector<cv::Point2d> CalibrationController::GetCircles()
+{
+	if (this->calibrationData == nullptr)
+	{
+		this->handleError(-1, "No calibration data available");
+		return std::vector<cv::Point2d>();
+	}
+
+	return this->calibrationData->getCircles();
+}
 
 void CalibrationController::OnDefaultParameters()
 {
