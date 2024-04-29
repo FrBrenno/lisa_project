@@ -82,14 +82,18 @@ wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
 		// TODO: verify that the grid is well drawn
 
 		// Vertical lines: x = cx0 + i*dx
-		for (double i = -refCircle.x; i < cvImage.cols; i += gridSpacing[0]) {
-			line(cvImage, cv::Point(0, i), cv::Point(cvImage.cols, i), cv::Scalar(0, 0, 255), 1);
+		double startX = refCircle.x - gridSpacing[0]/2;
+		for (double x = startX; x < cvImage.cols; x += gridSpacing[0]) {
+			cv::line(cvImage, cv::Point(x, 0), cv::Point(x, cvImage.rows), cv::Scalar(0, 0, 255), 1);
+
+		}
+		// Horizontal lines: y = cy0 + i*dy
+		double startY = refCircle.y - gridSpacing[1]/2;
+		for (double y = startY; y < cvImage.rows; y += gridSpacing[1]) {
+			cv::line(cvImage, cv::Point(0, y), cv::Point(cvImage.cols, y), cv::Scalar(0, 255, 0), 1);
+
 		}
 
-		// Horizontal lines: y = cy0 + i*dy
-		for (double i = -refCircle.y; i < cvImage.rows; i += gridSpacing[1]) {
-			line(cvImage, cv::Point(i, 0), cv::Point(i, cvImage.rows), cv::Scalar(0, 0, 255), 1);
-		}
 	}
 	rectangle(cvImage, cv::Point(0, 0), cv::Point(215, 30), cv::Scalar(0, 0, 0), -1);
 	putText(cvImage, "Calibration Result Frame", cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
