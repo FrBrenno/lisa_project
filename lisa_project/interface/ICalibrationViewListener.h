@@ -11,6 +11,7 @@ public:
 	virtual CalibrationParametersDto GetCalibrationParameters() = 0;
 
 	virtual CalibrationData OnCalibrate() = 0;
+	virtual void OnShowErrorHeatmap() = 0;
 	virtual void OnClose() = 0;
 
 	virtual void SaveCalibrationData(std::string path) = 0;

@@ -107,12 +107,17 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	error_value->SetFont(font); // Set font for the value
 	errorSizer->Add(error_value, 1, wxALIGN_LEFT | wxALL, 5);
 
+	showErrorHeatmap = new wxButton(this, wxID_ANY, "Show Error Heatmap");
+	showErrorHeatmap->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+	showErrorHeatmap->Bind(wxEVT_BUTTON, &CalibrationDialog::OnShowErrorHeatmap, this);
+
 	// Add sizers for each parameter to the resultsBox
 	resultsBox->Add(cx0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5); 
 	resultsBox->Add(cy0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
 	resultsBox->Add(dxSizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
 	resultsBox->Add(dySizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 	resultsBox->Add(errorSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
+	resultsBox->Add(showErrorHeatmap, 1, wxEXPAND | wxALL, 5);
 
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
@@ -328,4 +333,9 @@ void CalibrationDialog::OnLoad(wxCommandEvent& event)
 	this->listener->LoadCalibrationData(openFileDialog.GetPath().ToStdString());
 	this->updateResultsView(this->listener->GetCalibrationData());
 	this->updateParametersView(this->listener->GetCalibrationParameters());
+}
+
+void CalibrationDialog::OnShowErrorHeatmap(wxCommandEvent& event)
+{
+	this->listener->OnShowErrorHeatmap();
 }

@@ -35,6 +35,9 @@ class CalibrationDialog : public wxDialog {
 	wxButton* loadButton;
 	wxButton* defaultParametersButton;
 
+	wxButton* showErrorHeatmap;
+
+
 	void updateParametersView(CalibrationParametersDto param);
 	void updateResultsView(CalibrationData calibData);
 	CalibrationParametersDto getCalibrationParameters();
@@ -51,4 +54,5 @@ public:
 	void OnDefaultParameters(wxCommandEvent& event);
 	void OnSave(wxCommandEvent& event);
 	void OnLoad(wxCommandEvent& event);
+	void OnShowErrorHeatmap(wxCommandEvent& event);
 };

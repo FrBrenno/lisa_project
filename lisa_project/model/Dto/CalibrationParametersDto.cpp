@@ -6,7 +6,7 @@ CalibrationParametersDto::CalibrationParametersDto() :
 	clusterDistance(0.0),
 	useInvertImage(false),
 	drawCircles(false),
-	drawGrid(false) 
+	drawGrid(false)
 {}
 
 CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance, bool useInvertImage, bool drawCircles, bool drawGrid) {
@@ -46,4 +46,5 @@ bool CalibrationParametersDto::getDrawCircles() const {
 bool CalibrationParametersDto::getDrawGrid() const {
 	return drawGrid;
 }
+
 

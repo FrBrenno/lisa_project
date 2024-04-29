@@ -186,12 +186,50 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
     Eigen::MatrixXd X = svd.solve(B);
 
     // Error computation
-    double error = (A * X - B).norm();
+    
+    // Error heatmap based on A*X - B matrix
+    Eigen::MatrixXd errorMatrix = A * X - B;
+	// Error vector where each element is Point2d((A*X-B)_i, (A*X-B)_(i+numCircles))
+    double meanError = 0;
+	std::vector<double> errorVector;
+    for (int i = 0; i < numCircles; ++i) {
+        errorVector.push_back(
+			cv::norm(cv::Point2d(errorMatrix(i, 0), errorMatrix(i + numCircles, 0)))
+        );
+		meanError += errorVector[i];
+    }
+	meanError /= numCircles;
+
+    // Max error
+	double minError = *std::min_element(errorVector.begin(), errorVector.end());
+    double maxError = *std::max_element(errorVector.begin(), errorVector.end());
+	// Error heatmap
+	Mat errorHeatmap = Mat::zeros(thresh.size(), CV_8UC3);
+    for (int i = 0; i < numCircles; ++i) {
+		// Get the error value as the norm of the error vector
+		double errorPointNorm = (errorVector[i] - minError) / (maxError - minError);
+
+        // Choose color based on the normalized error value (example: colormap from blue to red)
+        cv::Scalar color(255 * (1 - errorPointNorm), 0, 255 * errorPointNorm);
+        // Draw circle on the heatmap with color indicating error value
+        cv::circle(errorHeatmap, circles[i], (X(2) + X(3)) / 4, color, -1);
+
+        // Truncate error value to two decimal places
+        std::string errorString = std::to_string(errorVector[i]);
+        errorString = errorString.substr(0, errorString.find(".") + 3);
+        // Label the circle with the truncated error value centered at the circle
+        cv::putText(errorHeatmap, errorString, circles[i] - cv::Point2d((X(2) + X(3)) / 4, -X(3)/10),
+            cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255, 255, 255), 1);
+    }
+	
+
+    // Display the error heatmap
+    cv::imshow("Error Heatmap", errorHeatmap);
 
     // check if the solution is valid
     if (X(2) < 0.01 || X(3) < 0.01) {
         return nullptr;
     }
-    return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), error, circles);
+    return new CalibrationData(workingImage, X(0), X(1), X(2), X(3), meanError, errorHeatmap, circles);
 }
 

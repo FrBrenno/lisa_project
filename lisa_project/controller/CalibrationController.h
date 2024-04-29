@@ -28,6 +28,7 @@ public:
 	CalibrationParametersDto GetCalibrationParameters() override;
 
 	CalibrationData OnCalibrate() override;
+	void OnShowErrorHeatmap() override;
 	void OnClose() override;
 
 	void SaveCalibrationData(std::string path) override;

@@ -4,6 +4,7 @@
 #include "../view/CalibrationDialog.h"
 #include "../lib/nlohmann/json.hpp"
 #include <fstream>
+#include <opencv2/opencv.hpp>
 
 CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
 	BaseController(main, wfsApiService)
@@ -66,35 +67,33 @@ wxImage CalibrationController::drawOnImage(CalibrationData* calibData) {
 	cv::Mat cvImage = calibData->getImage();
 	cv::Point2d refCircle = calibData->getRefCircle();
 
+	// draw circle centers
+	for (const auto& c : circles) {
+		cv::circle(cvImage, c, 1, cv::Scalar(255, 255, 0), -1);
+	}
+
 	if (param.getDrawCircles()){
 		double radius = (gridSpacing[0] + gridSpacing[1]) / 4;
 		for (const auto& c : circles) {
-			cv::circle(cvImage, c, radius, cv::Scalar(0, 0, 255), 1);
+			cv::circle(cvImage, c, radius, cv::Scalar(255, 255, 0), 1);
 		}
 	}
 
-	// draw circle centers
-	for (const auto& c : circles) {
-		cv::circle(cvImage, c, 1, cv::Scalar(0, 0, 255), -1);
-	}
-
 	if (param.getDrawGrid()) {
-		// TODO: verify that the grid is well drawn
-
 		// Vertical lines: x = cx0 + i*dx
 		double startX = refCircle.x - gridSpacing[0]/2;
 		for (double x = startX; x < cvImage.cols; x += gridSpacing[0]) {
+			// draw grid line
 			cv::line(cvImage, cv::Point(x, 0), cv::Point(x, cvImage.rows), cv::Scalar(0, 0, 255), 1);
-
 		}
 		// Horizontal lines: y = cy0 + i*dy
 		double startY = refCircle.y - gridSpacing[1]/2;
 		for (double y = startY; y < cvImage.rows; y += gridSpacing[1]) {
-			cv::line(cvImage, cv::Point(0, y), cv::Point(cvImage.cols, y), cv::Scalar(0, 255, 0), 1);
-
+			cv::line(cvImage, cv::Point(0, y), cv::Point(cvImage.cols, y), cv::Scalar(0, 0, 255), 1);
 		}
 
 	}
+
 	rectangle(cvImage, cv::Point(0, 0), cv::Point(215, 30), cv::Scalar(0, 0, 0), -1);
 	putText(cvImage, "Calibration Result Frame", cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
 
@@ -143,6 +142,25 @@ CalibrationData CalibrationController::OnCalibrate()
 	this->updateImage(cvImage);
 	return *results;
 }
+
+void CalibrationController::OnShowErrorHeatmap()
+{
+	if (this->calibrationData == nullptr)
+	{
+		this->handleError(-1, "No calibration data available");
+		return;
+	}
+
+	if (this->calibrationData->getErrorHeatmap().empty())
+	{
+		this->handleError(-1, "No error heatmap available");
+		return;
+	}
+
+	cv::Mat errorHeatmap = this->calibrationData->getErrorHeatmap();
+	cv::imshow("Error Heatmap", errorHeatmap);
+}
+
 
 void CalibrationController::OnDefaultParameters()
 {
@@ -211,6 +229,12 @@ void CalibrationController::SaveCalibrationData(std::string path)
 		j["circles"].push_back({ circle.x, circle.y });
 	}
 
+	if (!this->calibrationData->getErrorHeatmap().empty())
+	{
+		std::vector<uint8_t> errorHeatmap(this->calibrationData->getErrorHeatmap().datastart, this->calibrationData->getErrorHeatmap().dataend);
+		j["errorHeatmap"] = errorHeatmap;
+	}
+
 	// Save to file
 	std::ofstream file(path);
 	file << j.dump(4);
@@ -254,8 +278,14 @@ void CalibrationController::LoadCalibrationData(std::string path)
 	{
 		circles.push_back(cv::Point2d(circle[0], circle[1]));
 	}
+	cv::Mat errorHeatmap;
+	if (j.contains("errorHeatmap"))
+	{
+		cv::Mat errorHeatmap(cv::Size(cvImage.cols, cvImage.rows), CV_8UC3, j["errorHeatmap"].get<std::vector<uint8_t>>().data());
+	}
+	
 	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 
-		(double)j["cy0"], (double)j["dx"], (double)j["dy"], (double)j["error"], circles);
+		(double)j["cy0"], (double)j["dx"], (double)j["dy"], (double)j["error"], errorHeatmap, circles);
 
 	// Delete the previous calibration data & set the new one
 	if (this->calibrationData != nullptr)
