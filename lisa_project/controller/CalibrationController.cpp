@@ -245,12 +245,25 @@ void CalibrationController::SaveCalibrationData(std::string path)
 	{
 		j["circles"].push_back({ circle.x, circle.y });
 	}
-
+	
+	// Save error heatmap
+	// Convert cv::Mat to a vector of triple
+	std::vector<uint8_t> errorHeatmapVec;
 	if (!this->calibrationData->getErrorHeatmap().empty())
 	{
-		std::vector<uint8_t> errorHeatmap(this->calibrationData->getErrorHeatmap().datastart, this->calibrationData->getErrorHeatmap().dataend);
-		j["errorHeatmap"] = errorHeatmap;
+		cv::Mat errorHeatmap = this->calibrationData->getErrorHeatmap();
+		for (int i = 0; i < errorHeatmap.rows; i++)
+		{
+			for (int j = 0; j < errorHeatmap.cols; j++)
+			{
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[0]);
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[1]);
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[2]);
+			}
+		}
+		j["errorHeatmap"] = errorHeatmapVec;
 	}
+
 
 	// Save to file
 	std::ofstream file(path);
@@ -295,10 +308,19 @@ void CalibrationController::LoadCalibrationData(std::string path)
 	{
 		circles.push_back(cv::Point2d(circle[0], circle[1]));
 	}
-	cv::Mat errorHeatmap;
-	if (j.contains("errorHeatmap"))
+	
+	// Load error heatmap
+	std::vector<uint8_t> errorHeatmapVec = j["errorHeatmap"];
+	cv::Mat errorHeatmap(cvImage.rows, cvImage.cols, CV_8UC3);
+	int idx = 0;
+	for (int i = 0; i < errorHeatmap.rows; i++)
 	{
-		cv::Mat errorHeatmap(cv::Size(cvImage.cols, cvImage.rows), CV_8UC3, j["errorHeatmap"].get<std::vector<uint8_t>>().data());
+		for (int j = 0; j < errorHeatmap.cols; j++)
+		{
+			errorHeatmap.at<cv::Vec3b>(i, j)[0] = errorHeatmapVec[idx++];
+			errorHeatmap.at<cv::Vec3b>(i, j)[1] = errorHeatmapVec[idx++];
+			errorHeatmap.at<cv::Vec3b>(i, j)[2] = errorHeatmapVec[idx++];
+		}
 	}
 	
 	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 

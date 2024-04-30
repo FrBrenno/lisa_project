@@ -321,7 +321,7 @@ void CalibrationDialog::OnOddSpin(wxSpinEvent& event)
 
 void CalibrationDialog::OnSave(wxCommandEvent& event)
 {
-	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.calib)|*.calib", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.calib)|*.calib|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (saveFileDialog.ShowModal() == wxID_CANCEL)
 		return;     // the user changed idea...
 
@@ -331,7 +331,7 @@ void CalibrationDialog::OnSave(wxCommandEvent& event)
 
 void CalibrationDialog::OnLoad(wxCommandEvent& event)
 {
-	wxFileDialog openFileDialog(this, _("Open Calibration File"), "", "", "Calibration Files (*.calib)|*.calib", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	wxFileDialog openFileDialog(this, _("Open Calibration File"), "", "", "Calibration Files (*.calib)|*.calib|*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 	if (openFileDialog.ShowModal() == wxID_CANCEL)
 		return;     // the user changed idea...
 
