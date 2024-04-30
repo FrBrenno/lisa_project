@@ -221,10 +221,6 @@ CalibrationData* CalibrationEngine::applyCalibrationPipeline(const Mat& image){
         cv::putText(errorHeatmap, errorString, circles[i] - cv::Point2d((X(2) + X(3)) / 4, -X(3)/10),
             cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(255, 255, 255), 1);
     }
-	
-
-    // Display the error heatmap
-    cv::imshow("Error Heatmap", errorHeatmap);
 
     // check if the solution is valid
     if (X(2) < 0.01 || X(3) < 0.01) {

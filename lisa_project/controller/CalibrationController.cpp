@@ -169,7 +169,14 @@ std::vector<cv::Point2d> CalibrationController::GetCircles()
 		return std::vector<cv::Point2d>();
 	}
 
-	return this->calibrationData->getCircles();
+	std::vector<cv::Point2d> circles = this->calibrationData->getCircles();
+	if (circles.empty())
+	{
+		this->handleError(-1, "No circles available");
+		return std::vector<cv::Point2d>();
+	}
+
+	return circles;
 }
 
 void CalibrationController::OnDefaultParameters()
