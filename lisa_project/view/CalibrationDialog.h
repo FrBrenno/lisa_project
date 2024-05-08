@@ -29,12 +29,15 @@ class CalibrationDialog : public wxDialog {
 	wxStaticText* dy_value;
 	wxStaticText* error_value;
 
+	//=== Buttons ===//
 	PreviewPanel* previewPanel;
+	wxTextCtrl* apertureTextCtrl;
 	wxButton* calibrateButton;
 	wxButton* saveButton;
 	wxButton* loadButton;
 	wxButton* defaultParametersButton;
 
+	//== Debug buttons ==//
 	wxButton* showErrorHeatmap;
 	wxButton* showCirclesPos;
 
@@ -43,6 +46,7 @@ class CalibrationDialog : public wxDialog {
 	void updateResultsView(CalibrationData calibData);
 	CalibrationParametersDto getCalibrationParameters();
 	bool validateParameters(CalibrationParametersDto param);
+	void OnApertureTextChanged(wxCommandEvent& textEvent);
 public:
 	CalibrationDialog(wxWindow* parent, ICalibrationViewListener* controller, IPreviewListener* previewListener);
 

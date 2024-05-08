@@ -60,6 +60,9 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	calibrateButton = new wxButton(this, wxID_ANY, "Calibrate");
 	calibrateButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	calibrateButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnCalibrate, this);
+	calibrateButton->Disable();
+	calibrateButton->SetToolTip("Please set the aperture before submitting");
+
 
 	//=== Results
 	wxStaticBoxSizer* resultsBox = new wxStaticBoxSizer(wxVERTICAL, this, "Results");
@@ -128,6 +131,16 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
 
+	wxBoxSizer* apertureTextCtrlSizer = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* apertureTextCtrlLabel = new wxStaticText(this, wxID_ANY, "Aperture:");
+	apertureTextCtrlLabel->SetFont(font); // Set font for the label
+	apertureTextCtrlSizer->Add(apertureTextCtrlLabel, 1, wxALIGN_RIGHT | wxALL, 5);
+	apertureTextCtrl = new wxTextCtrl(this, wxID_ANY, "");
+	apertureTextCtrl->Bind(wxEVT_TEXT, &CalibrationDialog::OnApertureTextChanged, this);
+	apertureTextCtrl->SetFocus();
+	apertureTextCtrl->SetFont(font); // Set font for the value
+	apertureTextCtrlSizer->Add(apertureTextCtrl, 1, wxALIGN_RIGHT | wxALL, 5);
+
 	saveButton = new wxButton(this, wxID_ANY, "Save Calibration File");
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	saveButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnSave, this);
@@ -148,6 +161,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 
 	// RightSizer
 	wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
+	rightSizer->Add(apertureTextCtrlSizer, 0, wxEXPAND | wxALL, 5);
 	rightSizer->Add(previewPanel, 1, wxEXPAND | wxALL, 5);
 
 	wxBoxSizer* rightButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -253,6 +267,20 @@ bool CalibrationDialog::validateParameters(CalibrationParametersDto param)
 PreviewPanel* CalibrationDialog::getPreviewPanel()
 {
 	return this->previewPanel;
+}
+
+void CalibrationDialog::OnApertureTextChanged(wxCommandEvent& textEvent)
+{
+	wxString text = apertureTextCtrl->GetValue();
+	
+	// Check is the text entry is empty
+	if (text.empty()) {
+		calibrateButton->Disable();
+	}
+	else {
+		calibrateButton->Enable();
+	}
+	textEvent.Skip();
 }
 
 void CalibrationDialog::OnClose(wxCloseEvent& event)
