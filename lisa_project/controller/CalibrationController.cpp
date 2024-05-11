@@ -5,6 +5,7 @@
 #include "../lib/nlohmann/json.hpp"
 #include <fstream>
 #include <opencv2/opencv.hpp>
+#include <regex>
 
 CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
 	BaseController(main, wfsApiService)
@@ -210,6 +211,14 @@ uint8_t CalibrationController::validateParameters(CalibrationParametersDto param
 	{
 		errors |= 0x8; // 1000
 	}
+
+	// Check if aperture name is valid: only alphanumeric characters and underscore
+	std::string apertureName = param.getApertureName();
+	if (!std::regex_match(apertureName, std::regex("^[a-zA-Z0-9_]*$")))
+	{
+		errors |= 0x10; // 0001 0000
+	}
+	
 	return errors;
 }
 

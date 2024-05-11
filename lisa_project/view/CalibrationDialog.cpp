@@ -1,5 +1,6 @@
 #include "CalibrationDialog.h"
 #include <wx/grid.h>
+#include <string>
 
 CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener* listener, IPreviewListener* previewListener) :
 	wxDialog(parent, wxID_ANY, "LISA - PCV: Calibration")
@@ -216,8 +217,9 @@ CalibrationParametersDto CalibrationDialog::getCalibrationParameters()
 	bool useInvertImage = this->useInvertImage->GetValue();
 	bool drawCircles = this->drawCircles->GetValue();
 	bool drawGrid = this->drawGrid->GetValue();
+	std::string aperture = this->apertureTextCtrl->GetValue().ToStdString();
 
-	return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
+	return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid, aperture);
 }
 
 bool CalibrationDialog::validateParameters(CalibrationParametersDto param)
