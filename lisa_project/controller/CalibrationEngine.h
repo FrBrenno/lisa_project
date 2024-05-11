@@ -4,11 +4,13 @@
 #include "model/Dto/CalibrationParametersDto.h"
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include <string>
 
 class CalibrationEngine{
     bool useInvertImage;
     bool drawCircles;
     bool drawGrid;
+    std::string aperture;
 
     cv::Size gaussKernel;
     int blockSize;

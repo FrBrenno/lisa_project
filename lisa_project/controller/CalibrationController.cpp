@@ -213,7 +213,7 @@ uint8_t CalibrationController::validateParameters(CalibrationParametersDto param
 	}
 
 	// Check if aperture name is valid: only alphanumeric characters and underscore
-	std::string apertureName = param.getApertureName();
+	std::string apertureName = param.getAperture();
 	if (!std::regex_match(apertureName, std::regex("^[a-zA-Z0-9_]*$")))
 	{
 		errors |= 0x10; // 0001 0000
@@ -241,6 +241,7 @@ void CalibrationController::SaveCalibrationData(std::string path)
 	j["useInvertImage"] = param.getUseInvertImage();
 	j["drawCircles"] = param.getDrawCircles();
 	j["drawGrid"] = param.getDrawGrid();
+	j["aperture"] = param.getAperture();
 
 	j["image"] = imagePath;
 	j["cx0"] = this->calibrationData->getRefCircle().x;
@@ -307,7 +308,8 @@ void CalibrationController::LoadCalibrationData(std::string path)
 		j["clusterDistance"],
 		j["useInvertImage"],
 		j["drawCircles"],
-		j["drawGrid"]
+		j["drawGrid"],
+		j["aperture"]
 	);
 	this->calibrationEngine->setParameters(param);
 

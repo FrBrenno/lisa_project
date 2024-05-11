@@ -14,9 +14,10 @@ CalibrationEngine::CalibrationEngine() {
     this->useInvertImage = false;
     this->drawCircles = false;
     this->drawGrid = true;
+	this->aperture = "";
 
 
-    this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
+    this->defaultParameters = CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid, aperture);
 }
 
 void CalibrationEngine::setParameters(CalibrationParametersDto param) {
@@ -27,10 +28,11 @@ void CalibrationEngine::setParameters(CalibrationParametersDto param) {
     this->useInvertImage = param.getUseInvertImage();
 	this->drawCircles = param.getDrawCircles();
 	this->drawGrid = param.getDrawGrid();
+	this->aperture = param.getAperture();
 }
 
 CalibrationParametersDto CalibrationEngine::getParameters() {
-    return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid);
+    return CalibrationParametersDto(gaussKernel, blockSize, c, clusterDistance, useInvertImage, drawCircles, drawGrid, aperture);
 }
 
 void CalibrationEngine::setDefaultParameters() {
@@ -41,6 +43,7 @@ void CalibrationEngine::setDefaultParameters() {
     this->useInvertImage = defaultParameters.getUseInvertImage();
     this->drawCircles = defaultParameters.getDrawCircles();
     this->drawGrid = defaultParameters.getDrawGrid();
+	this->aperture = defaultParameters.getAperture();
 }
 
 CalibrationParametersDto CalibrationEngine::getDefaultParameters() const {

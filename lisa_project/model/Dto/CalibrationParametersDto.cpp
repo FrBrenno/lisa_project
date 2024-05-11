@@ -7,7 +7,7 @@ CalibrationParametersDto::CalibrationParametersDto() :
 	useInvertImage(false),
 	drawCircles(false),
 	drawGrid(false),
-	apertureName("")
+	aperture("")
 {}
 
 CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blockSize, double c, double clusterDistance, 
@@ -19,7 +19,7 @@ CalibrationParametersDto::CalibrationParametersDto(cv::Size gaussKernel, int blo
 	this->useInvertImage = useInvertImage;
 	this->drawCircles = drawCircles;
 	this->drawGrid = drawGrid;
-	this->apertureName = apertureName;
+	this->aperture = apertureName;
 }
 
 cv::Size CalibrationParametersDto::getGaussKernel() const {
@@ -50,6 +50,6 @@ bool CalibrationParametersDto::getDrawGrid() const {
 	return drawGrid;
 }
 
-std::string CalibrationParametersDto::getApertureName() const {
-	return apertureName;
-}}
+std::string CalibrationParametersDto::getAperture() const {
+	return aperture;
+}

@@ -197,6 +197,7 @@ void CalibrationDialog::updateParametersView(CalibrationParametersDto param)
 	this->clusterDistance->SetValue(param.getClusterDistance());
 	this->drawCircles->SetValue(param.getDrawCircles());
 	this->drawGrid->SetValue(param.getDrawGrid());
+	this->apertureTextCtrl->SetValue(param.getAperture());
 }
 
 void CalibrationDialog::updateResultsView(CalibrationData calibData)
@@ -249,6 +250,12 @@ bool CalibrationDialog::validateParameters(CalibrationParametersDto param)
 	if (error_code & 0x8)
 	{
 		errors += "Cluster Distance must be a positive number\n";
+	}
+
+	// Check if the aperture name is valid
+	if (error_code & 0x10)
+	{
+		errors += "Aperture name is invalid\n";
 	}
 
 	// If there are no errors return true
