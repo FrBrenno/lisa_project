@@ -46,7 +46,6 @@ class CalibrationDialog : public wxDialog {
 	void updateResultsView(CalibrationData calibData);
 	CalibrationParametersDto getCalibrationParameters();
 	bool validateParameters(CalibrationParametersDto param);
-	void OnApertureTextChanged(wxCommandEvent& textEvent);
 public:
 	CalibrationDialog(wxWindow* parent, ICalibrationViewListener* controller, IPreviewListener* previewListener);
 

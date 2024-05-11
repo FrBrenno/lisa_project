@@ -60,7 +60,6 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	calibrateButton = new wxButton(this, wxID_ANY, "Calibrate");
 	calibrateButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	calibrateButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnCalibrate, this);
-	calibrateButton->Disable();
 	calibrateButton->SetToolTip("Please set the aperture before submitting");
 
 
@@ -136,7 +135,6 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	apertureTextCtrlLabel->SetFont(font); // Set font for the label
 	apertureTextCtrlSizer->Add(apertureTextCtrlLabel, 0, wxALIGN_LEFT | wxALL, 2);
 	apertureTextCtrl = new wxTextCtrl(this, wxID_ANY, "");
-	apertureTextCtrl->Bind(wxEVT_TEXT, &CalibrationDialog::OnApertureTextChanged, this);
 	apertureTextCtrl->SetFocus();
 	apertureTextCtrl->SetFont(font); // Set font for the value
 	apertureTextCtrlSizer->Add(apertureTextCtrl, 1, wxALIGN_LEFT | wxALL, 2);
@@ -269,20 +267,6 @@ PreviewPanel* CalibrationDialog::getPreviewPanel()
 	return this->previewPanel;
 }
 
-void CalibrationDialog::OnApertureTextChanged(wxCommandEvent& textEvent)
-{
-	wxString text = apertureTextCtrl->GetValue();
-	
-	// Check is the text entry is empty
-	if (text.empty()) {
-		calibrateButton->Disable();
-	}
-	else {
-		calibrateButton->Enable();
-	}
-	textEvent.Skip();
-}
-
 void CalibrationDialog::OnClose(wxCloseEvent& event)
 {
 	this->listener->OnClose();
@@ -291,7 +275,16 @@ void CalibrationDialog::OnClose(wxCloseEvent& event)
 
 void CalibrationDialog::OnCalibrate(wxCommandEvent& event)
 {
+	// Verify if aperture is set
+	if (this->apertureTextCtrl->GetValue().IsEmpty())
+	{
+		wxMessageBox("Please set the aperture name before calibrating", "Aperture not set", wxICON_ERROR);
+		return;
+	}
+
+	// Get the calibration parameters
 	CalibrationParametersDto param = this->getCalibrationParameters();
+
 	if (this->validateParameters(param)) {
 		this->listener->SetCalibrationParameters(param);
 		CalibrationData calibData = this->listener->OnCalibrate();
