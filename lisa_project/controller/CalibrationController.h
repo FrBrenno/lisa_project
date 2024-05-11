@@ -12,6 +12,7 @@ class CalibrationController: public BaseController, public ICalibrationViewListe
 	CalibrationEngine* calibrationEngine;
 
 	wxImage* lastCalibrationFrame;
+	std::vector<std::pair<CalibrationParametersDto, CalibrationData>> calibrationDataList;
 
 	wxImage drawOnImage(CalibrationData* calibData);
 	void updateImage(cv::Mat image);
@@ -35,4 +36,7 @@ public:
 	void SaveCalibrationData(std::string path) override;
 	void LoadCalibrationData(std::string path) override;
 	CalibrationData GetCalibrationData() override;
+
+	void storeCalibrationDataPair() override;
+	void deleteCalibrationDataList() override;
 };

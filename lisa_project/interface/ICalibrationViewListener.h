@@ -18,4 +18,7 @@ public:
 	virtual void SaveCalibrationData(std::string path) = 0;
 	virtual void LoadCalibrationData(std::string path) = 0;
 	virtual CalibrationData GetCalibrationData() = 0;
+
+	virtual void storeCalibrationDataPair() = 0;
+	virtual void deleteCalibrationDataList() = 0;
 };

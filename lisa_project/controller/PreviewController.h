@@ -27,7 +27,7 @@ public:
 
     void setPreview(IPreview* preview);
 
-    void startPreview();
+    void startPreview() override;
     void stopPreview() override;
     void onLoadImage(wxImage& image) override;
 

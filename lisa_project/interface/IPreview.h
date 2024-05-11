@@ -5,6 +5,7 @@
 class IPreview
 {
 public:
+	virtual void startPreview() = 0;
 	virtual void stopPreview() = 0;
 	virtual void updatePreviewButton(bool isPreviewOn) = 0;
 	virtual wxImage getFrame() = 0;

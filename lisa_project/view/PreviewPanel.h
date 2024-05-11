@@ -21,6 +21,7 @@ public:
 	void loadImage();
 
 	// Inherited via IPreview
+	void startPreview() override;
 	void stopPreview() override;
 	void updatePreviewButton(bool isPreviewOn) override;
 	wxImage getFrame() override;

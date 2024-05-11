@@ -9,8 +9,28 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	this->parent = parent;
 	this->listener = listener;
 
+	// Define font for labels and values
+	wxFont font = this->GetFont();
+	font.SetPointSize(12);
+
 	//=== View Construction ===//
 	wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+
+	//=== Counter display
+	wxBoxSizer* counterBox = new wxBoxSizer(wxHORIZONTAL);
+	wxStaticText* counterLabel = new wxStaticText(this, wxID_ANY, "Calibration Counter:");
+	counterLabel->SetFont(font);
+	counterBox->Add(counterLabel, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	calibCounter = new wxStaticText(this, wxID_ANY, "0");
+	calibCounter->SetFont(font);
+	counterBox->Add(calibCounter, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	wxStaticText* slashLabel = new wxStaticText(this, wxID_ANY, "/");
+	slashLabel->SetFont(font);
+	counterBox->Add(slashLabel, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+	wxStaticText* maxCalibLabel = new wxStaticText(this, wxID_ANY, "5");
+	maxCalibLabel->SetFont(font);
+	counterBox->Add(maxCalibLabel, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
+
 	//=== Parameters
 	wxStaticBoxSizer* parametersBox = new wxStaticBoxSizer(wxVERTICAL, this, "Parameters");
 
@@ -59,17 +79,13 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	defaultParametersButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnDefaultParameters, this);
 
 	calibrateButton = new wxButton(this, wxID_ANY, "Calibrate");
-	calibrateButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
+	calibrateButton->SetFont(font);
 	calibrateButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnCalibrate, this);
 	calibrateButton->SetToolTip("Please set the aperture before submitting");
 
 
 	//=== Results
 	wxStaticBoxSizer* resultsBox = new wxStaticBoxSizer(wxVERTICAL, this, "Results");
-
-	// Define font for labels and values
-	wxFont font = this->GetFont();
-	font.SetPointSize(12);
 
 	wxBoxSizer* cx0Sizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText* cx0Label = new wxStaticText(this, wxID_ANY, "Cx0:");
@@ -128,6 +144,17 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	resultsBox->Add(showErrorHeatmap, 1, wxEXPAND | wxALL, 5);
 	resultsBox->Add(showCirclesPos, 1, wxEXPAND | wxALL, 5);	
 
+	// Buttons Confirm and Restart calibration process
+	wxBoxSizer* confirmRestartButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
+	restartButton = new wxButton(this, wxID_ANY, "Restart");
+	restartButton->SetFont(font);
+	restartButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnRestart, this);
+	confirmRestartButtonsSizer->Add(restartButton, 1, wxEXPAND | wxALL, 5);
+	confirmButton = new wxButton(this, wxID_ANY, "Confirm");
+	confirmButton->SetFont(font);
+	confirmButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnConfirm, this);
+	confirmRestartButtonsSizer->Add(confirmButton, 1, wxEXPAND | wxALL, 5);
+
 	previewPanel = new PreviewPanel(this);
 	previewPanel->setPreviewListener(previewListener);
 
@@ -151,12 +178,14 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 
 	// Left Sizer
 	wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
+	leftSizer->Add(counterBox, 0, wxEXPAND | wxALL, 5);
 	leftSizer->Add(parametersBox, 1, wxEXPAND | wxALL, 5);
 	wxBoxSizer* leftButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
 	leftButtonsSizer->Add(defaultParametersButton, 1, wxEXPAND | wxALL, 5);
 	leftButtonsSizer->Add(calibrateButton, 1, wxEXPAND | wxALL, 5);
 	leftSizer->Add(leftButtonsSizer, 0, wxEXPAND | wxALL, 5);
 	leftSizer->Add(resultsBox, 1, wxEXPAND | wxALL, 5);
+	leftSizer->Add(confirmRestartButtonsSizer, 0, wxEXPAND | wxALL, 5);
 
 	// RightSizer
 	wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
@@ -288,6 +317,7 @@ void CalibrationDialog::OnCalibrate(wxCommandEvent& event)
 	if (this->apertureTextCtrl->GetValue().IsEmpty())
 	{
 		wxMessageBox("Please set the aperture name before calibrating", "Aperture not set", wxICON_ERROR);
+		apertureTextCtrl->SetFocus();
 		return;
 	}
 
@@ -404,6 +434,46 @@ void CalibrationDialog::OnShowCirclesPos(wxCommandEvent& event)
 
 	// Show the frame
 	frame->Show();
+}
 
+void CalibrationDialog::resetUI()
+{
+	this->previewPanel->startPreview();
+	// set default parameters
+	this->listener->OnDefaultParameters();
+	this->updateParametersView(this->listener->GetCalibrationParameters());
+	// clear results
+	this->updateResultsView(CalibrationData());
+}
 
+void CalibrationDialog::OnConfirm(wxCommandEvent& event)
+{
+	// Stores pair CalibrationParameterDto and CalibrationData in a vector
+	this->listener->storeCalibrationDataPair();
+	// Update the counter
+	int counter = std::stoi(calibCounter->GetLabel().ToStdString());
+
+	if (counter <= 4)
+	{
+		counter++;
+		calibCounter->SetLabel(std::to_string(counter));
+		this->resetUI();
+	}
+	else {
+		calibrateButton->Disable();
+		if (counter == 5) this->resetUI();
+		return;
+	}
+}
+
+void CalibrationDialog::OnRestart(wxCommandEvent& event)
+{
+	// Delete all the stored calibration data
+	this->listener->deleteCalibrationDataList();
+	// Reset the counter
+	calibCounter->SetLabel("0");
+	// Enable the calibrate button
+	calibrateButton->Enable();
+	// Reset calibration ui for the next calibration
+	this->resetUI();
 }

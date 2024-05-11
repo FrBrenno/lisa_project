@@ -21,6 +21,7 @@ class CalibrationDialog : public wxDialog {
 	wxSpinCtrl* clusterDistance;
 	wxCheckBox* drawCircles;
 	wxCheckBox* drawGrid;
+	wxStaticText* calibCounter;
 
 	//=== Results ===//
 	wxStaticText* cx0_value;
@@ -36,6 +37,8 @@ class CalibrationDialog : public wxDialog {
 	wxButton* saveButton;
 	wxButton* loadButton;
 	wxButton* defaultParametersButton;
+	wxButton* confirmButton;
+	wxButton* restartButton;
 
 	//== Debug buttons ==//
 	wxButton* showErrorHeatmap;
@@ -46,6 +49,7 @@ class CalibrationDialog : public wxDialog {
 	void updateResultsView(CalibrationData calibData);
 	CalibrationParametersDto getCalibrationParameters();
 	bool validateParameters(CalibrationParametersDto param);
+	void resetUI();
 public:
 	CalibrationDialog(wxWindow* parent, ICalibrationViewListener* controller, IPreviewListener* previewListener);
 
@@ -60,4 +64,6 @@ public:
 	void OnLoad(wxCommandEvent& event);
 	void OnShowErrorHeatmap(wxCommandEvent& event);
 	void OnShowCirclesPos(wxCommandEvent& event);
+	void OnConfirm(wxCommandEvent& event);
+	void OnRestart(wxCommandEvent& event);
 };

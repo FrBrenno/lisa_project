@@ -14,6 +14,7 @@ CalibrationController::CalibrationController(MyAppInterface* main, IApiService* 
 	this->calibrationData = new CalibrationData();
 	this->calibrationEngine = new CalibrationEngine();
 	this->lastCalibrationFrame = nullptr;
+	this->calibrationDataList = std::vector<std::pair<CalibrationParametersDto, CalibrationData>>();
 
 	EventDispatcher::Instance().SubscribeToEvent<CalibrationStartEvent>(
 		[this](const CalibrationStartEvent& event) {
@@ -27,6 +28,10 @@ CalibrationController::~CalibrationController()
 	delete previewController;
 	delete calibrationData;
 	delete calibrationEngine;
+	if (this->lastCalibrationFrame != nullptr) {
+		delete this->lastCalibrationFrame;
+	}
+	// TODO: delete all calibration data in the list
 }
 
 void CalibrationController::HandleCalibrationStart()
@@ -348,4 +353,16 @@ void CalibrationController::LoadCalibrationData(std::string path)
 CalibrationData CalibrationController::GetCalibrationData()
 {
 	return *this->calibrationData;
+}
+
+void CalibrationController::storeCalibrationDataPair()
+{
+	CalibrationParametersDto param = this->calibrationEngine->getParameters();
+	CalibrationData calibData = *this->calibrationData;
+	this->calibrationDataList.push_back(std::make_pair(param, calibData));
+}
+
+void CalibrationController::deleteCalibrationDataList()
+{
+	this->calibrationDataList.clear();
 }

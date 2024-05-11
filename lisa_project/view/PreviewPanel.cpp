@@ -38,6 +38,11 @@ PreviewPanel::~PreviewPanel()
 	delete this->captureButton;
 }
 
+void PreviewPanel::startPreview()
+{
+	this->previewListener->startPreview();
+}
+
 void PreviewPanel::stopPreview()
 {
 	this->previewListener->stopPreview();
