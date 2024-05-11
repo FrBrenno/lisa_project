@@ -134,12 +134,12 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	wxBoxSizer* apertureTextCtrlSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText* apertureTextCtrlLabel = new wxStaticText(this, wxID_ANY, "Aperture:");
 	apertureTextCtrlLabel->SetFont(font); // Set font for the label
-	apertureTextCtrlSizer->Add(apertureTextCtrlLabel, 1, wxALIGN_RIGHT | wxALL, 5);
+	apertureTextCtrlSizer->Add(apertureTextCtrlLabel, 0, wxALIGN_LEFT | wxALL, 2);
 	apertureTextCtrl = new wxTextCtrl(this, wxID_ANY, "");
 	apertureTextCtrl->Bind(wxEVT_TEXT, &CalibrationDialog::OnApertureTextChanged, this);
 	apertureTextCtrl->SetFocus();
 	apertureTextCtrl->SetFont(font); // Set font for the value
-	apertureTextCtrlSizer->Add(apertureTextCtrl, 1, wxALIGN_RIGHT | wxALL, 5);
+	apertureTextCtrlSizer->Add(apertureTextCtrl, 1, wxALIGN_LEFT | wxALL, 2);
 
 	saveButton = new wxButton(this, wxID_ANY, "Save Calibration File");
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
