@@ -452,16 +452,18 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 	this->listener->storeCalibrationDataPair();
 	// Update the counter
 	int counter = std::stoi(calibCounter->GetLabel().ToStdString());
+	counter++;
+	calibCounter->SetLabel(std::to_string(counter));
 
-	if (counter <= 4)
+	if (counter < 4)
 	{
-		counter++;
-		calibCounter->SetLabel(std::to_string(counter));
 		this->resetUI();
 	}
 	else {
+		// If the counter is 5, disable the calibrate button and reset the UI
 		calibrateButton->Disable();
-		if (counter == 5) this->resetUI();
+		this->resetUI();
+		// Compute the general result and show it
 		return;
 	}
 }
