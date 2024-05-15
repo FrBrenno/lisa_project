@@ -37,5 +37,7 @@ public:
     void setDefaultParameters();
     CalibrationParametersDto getDefaultParameters() const;
 
+    std::pair<double, std::vector<double>> computeMeanError(const Eigen::MatrixXd& solMatrix, const Eigen::MatrixXd& circleMatrix);
+    cv::Mat generateErrorHeatmap(const std::vector<cv::Point2d>& circles, const std::vector<double>& errorVector, const cv::Mat& thresh, const Eigen::MatrixXd& X);
     CalibrationData* applyCalibrationPipeline(const cv::Mat& image);
 };

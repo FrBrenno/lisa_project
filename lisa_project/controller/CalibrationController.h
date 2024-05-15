@@ -39,4 +39,5 @@ public:
 
 	void storeCalibrationDataPair() override;
 	void deleteCalibrationDataList() override;
+	CalibrationData computeMeanResult() override;
 };

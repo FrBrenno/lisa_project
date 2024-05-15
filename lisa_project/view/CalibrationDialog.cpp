@@ -459,11 +459,15 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 	{
 		this->resetUI();
 	}
-	else {
+	else if (counter == 5) {
 		// If the counter is 5, disable the calibrate button and reset the UI
 		calibrateButton->Disable();
 		this->resetUI();
 		// Compute the general result and show it
+		CalibrationData meanResult = this->listener->computeMeanResult();
+		this->updateResultsView(meanResult);
+		return;
+	} else{
 		return;
 	}
 }

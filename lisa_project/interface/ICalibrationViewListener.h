@@ -21,4 +21,5 @@ public:
 
 	virtual void storeCalibrationDataPair() = 0;
 	virtual void deleteCalibrationDataList() = 0;
+	virtual CalibrationData computeMeanResult() = 0;
 };

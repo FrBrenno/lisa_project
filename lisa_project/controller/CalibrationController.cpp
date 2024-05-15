@@ -366,3 +366,74 @@ void CalibrationController::deleteCalibrationDataList()
 {
 	this->calibrationDataList.clear();
 }
+
+CalibrationData CalibrationController::computeMeanResult(){
+	if (this->calibrationDataList.empty())
+	{
+		this->handleError(-1, "No calibration data available");
+		return CalibrationData();
+	}
+
+	// Compute the mean of the calibration data
+
+	// Circles positions
+	std::vector<cv::Point2d> meanCircles;
+	for (int i = 0; i < this->calibrationDataList[0].second.getCircles().size(); i++)
+	{
+		double x = 0;
+		double y = 0;
+		for (auto& pair : this->calibrationDataList)
+		{
+			x += pair.second.getCircles()[i].x;
+			y += pair.second.getCircles()[i].y;
+		}
+		x /= this->calibrationDataList.size();
+		y /= this->calibrationDataList.size();
+		meanCircles.push_back(cv::Point2d(x, y));
+	}
+
+	// Grid spacing
+	double dx = 0;
+	double dy = 0;
+	for (auto& pair : this->calibrationDataList)
+	{
+		dx += pair.second.getGridSpacing()[0];
+		dy += pair.second.getGridSpacing()[1];
+	}
+	dx /= this->calibrationDataList.size();
+	dy /= this->calibrationDataList.size();
+
+	// Image is the one of the calibration data with the minimal error
+	CalibrationData meanCalibData = this->calibrationDataList[0].second;
+	double minError = this->calibrationDataList[0].second.getError();
+	for (auto& pair : this->calibrationDataList)
+	{
+		if (pair.second.getError() < minError)
+		{
+			minError = pair.second.getError();
+			meanCalibData = pair.second;
+		}
+	}
+	cv::Mat meanImage = meanCalibData.getImage();
+
+	// Error and error heatmap is recomputed using CalibrationEngine
+	Eigen::MatrixXd meanSolMatrix= Eigen::MatrixXd(4, 1);
+	meanSolMatrix << meanCalibData.getRefCircle().x, meanCalibData.getRefCircle().y, dx, dy;
+	Eigen::MatrixXd meanCircleMatrix = Eigen::MatrixXd(2 * meanCircles.size(), 1);
+	for (int i = 0; i < meanCircles.size(); i++)
+	{
+		meanCircleMatrix(i, 0) = meanCircles[i].x;
+		meanCircleMatrix(i + meanCircles.size(), 0) = meanCircles[i].y;
+	}
+	std::pair<double, std::vector<double>> meanError = this->calibrationEngine->computeMeanError(meanSolMatrix, meanCircleMatrix);
+	cv::Mat meanErrorHeatmap = this->calibrationEngine->generateErrorHeatmap(meanCircles, meanError.second, meanImage, meanSolMatrix);
+
+	// update ui
+
+	this->calibrationData = new CalibrationData(meanImage, meanCalibData.getRefCircle().x, meanCalibData.getRefCircle().y, dx, dy,
+		meanError.first, meanErrorHeatmap, meanCircles);
+
+	this->updateImage(meanImage);
+
+	return *calibrationData;
+}
