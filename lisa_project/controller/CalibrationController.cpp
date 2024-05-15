@@ -433,7 +433,5 @@ CalibrationData CalibrationController::computeMeanResult(){
 	this->calibrationData = new CalibrationData(meanImage, meanCalibData.getRefCircle().x, meanCalibData.getRefCircle().y, dx, dy,
 		meanError.first, meanErrorHeatmap, meanCircles);
 
-	this->updateImage(meanImage);
-
 	return *calibrationData;
 }
