@@ -14,6 +14,7 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	font.SetPointSize(12);
 
 	//=== View Construction ===//
+
 	wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
 
 	//=== Counter display
@@ -35,8 +36,11 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	wxStaticBoxSizer* parametersBox = new wxStaticBoxSizer(wxVERTICAL, this, "Parameters");
 
 	useInvertImage = new wxCheckBox(this, wxID_ANY, "Invert Image");
+	parametersBox->Add(useInvertImage, 0, wxALIGN_LEFT | wxALL, 5);
 	drawCircles = new wxCheckBox(this, wxID_ANY, "Draw Circles");
+	parametersBox->Add(drawCircles, 0, wxALIGN_LEFT | wxALL, 5);
 	drawGrid = new wxCheckBox(this, wxID_ANY, "Draw Lines");
+	parametersBox->Add(drawGrid, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxBoxSizer* gaussBlurSizeSizer = new wxBoxSizer(wxHORIZONTAL);
 	wxStaticText* gaussBlurSizeLabel = new wxStaticText(this, wxID_ANY, "Gauss Blur Size:");
@@ -65,10 +69,6 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	clusterDistanceSizer->Add(clusterDistanceLabel, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 	clusterDistance = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 50, 1);
 	clusterDistanceSizer->Add(clusterDistance, 1, wxALIGN_CENTER_VERTICAL | wxALL, 5); 
-
-	parametersBox->Add(useInvertImage, 0, wxALIGN_LEFT | wxALL, 5);
-	parametersBox->Add(drawCircles, 0, wxALIGN_LEFT | wxALL, 5);
-	parametersBox->Add(drawGrid, 0, wxALIGN_LEFT | wxALL, 5);
 
 	parametersBox->Add(gaussBlurSizeSizer, 1, wxEXPAND | wxALIGN_CENTER_VERTICAL | wxALL, 5); 
 	parametersBox->Add(blockSizeSizer, 1, wxEXPAND | wxALIGN_CENTER_VERTICAL | wxALL, 5); 
@@ -136,13 +136,21 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	showCirclesPos->Bind(wxEVT_BUTTON, &CalibrationDialog::OnShowCirclesPos, this);
 
 	// Add sizers for each parameter to the resultsBox
-	resultsBox->Add(cx0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5); 
-	resultsBox->Add(cy0Sizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
-	resultsBox->Add(dxSizer, 1, wxEXPAND | wxLEFT | wxRIGHT, 5); 
-	resultsBox->Add(dySizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
-	resultsBox->Add(errorSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
-	resultsBox->Add(showErrorHeatmap, 1, wxEXPAND | wxALL, 5);
-	resultsBox->Add(showCirclesPos, 1, wxEXPAND | wxALL, 5);	
+	wxBoxSizer* resultsRefCircle = new wxBoxSizer(wxVERTICAL);
+	resultsRefCircle->Add(cx0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5);
+	resultsRefCircle->Add(cy0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	wxBoxSizer* resultsGridSpacing = new wxBoxSizer(wxVERTICAL);
+	resultsGridSpacing->Add(dxSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsGridSpacing->Add(dySizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	wxBoxSizer* resultsError = new wxBoxSizer(wxVERTICAL);
+	resultsError->Add(errorSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	wxBoxSizer* resultsSubBox = new wxBoxSizer(wxHORIZONTAL);
+	resultsSubBox->Add(resultsRefCircle, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsSubBox->Add(resultsGridSpacing, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsSubBox->Add(resultsError, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsBox->Add(resultsSubBox, 0, wxEXPAND | wxALL, 5);
+	resultsBox->Add(showErrorHeatmap, 0, wxEXPAND | wxALL, 5);
+	resultsBox->Add(showCirclesPos, 0, wxEXPAND | wxALL, 5);	
 
 	// Buttons Confirm and Restart calibration process
 	wxBoxSizer* confirmRestartButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -167,36 +175,34 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	apertureTextCtrl->SetFont(font); // Set font for the value
 	apertureTextCtrlSizer->Add(apertureTextCtrl, 1, wxALIGN_LEFT | wxALL, 2);
 
+	wxStaticBoxSizer* fileBox = new wxStaticBoxSizer(wxVERTICAL, this, "File");
 	saveButton = new wxButton(this, wxID_ANY, "Save Calibration File");
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	saveButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnSave, this);
+	fileBox->Add(saveButton, 0, wxEXPAND | wxALL, 5);
 	loadButton = new wxButton(this, wxID_ANY, "Load Calibration File");
 	loadButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
  	loadButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnLoad, this);
+	fileBox->Add(loadButton, 0, wxEXPAND | wxALL, 5);
 
 	Bind(wxEVT_CLOSE_WINDOW, &CalibrationDialog::OnClose, this);
 
 	// Left Sizer
 	wxBoxSizer* leftSizer = new wxBoxSizer(wxVERTICAL);
+	leftSizer->Add(fileBox, 0, wxEXPAND | wxALL, 5);
 	leftSizer->Add(counterBox, 0, wxEXPAND | wxALL, 5);
 	leftSizer->Add(parametersBox, 1, wxEXPAND | wxALL, 5);
 	wxBoxSizer* leftButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
 	leftButtonsSizer->Add(defaultParametersButton, 1, wxEXPAND | wxALL, 5);
 	leftButtonsSizer->Add(calibrateButton, 1, wxEXPAND | wxALL, 5);
 	leftSizer->Add(leftButtonsSizer, 0, wxEXPAND | wxALL, 5);
-	leftSizer->Add(resultsBox, 1, wxEXPAND | wxALL, 5);
-	leftSizer->Add(confirmRestartButtonsSizer, 0, wxEXPAND | wxALL, 5);
+	leftSizer->Add(resultsBox, 0, wxEXPAND | wxALL, 5);
 
 	// RightSizer
 	wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
 	rightSizer->Add(apertureTextCtrlSizer, 0, wxEXPAND | wxALL, 5);
-	rightSizer->Add(previewPanel, 1, wxEXPAND | wxALL, 5);
-
-	wxBoxSizer* rightButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
-	rightButtonsSizer->Add(saveButton, 1, wxEXPAND | wxALL, 5);
-	rightButtonsSizer->Add(loadButton, 1, wxEXPAND | wxALL, 5);
-
-	rightSizer->Add(rightButtonsSizer, 0, wxEXPAND | wxALL, 5);
+	rightSizer->Add(previewPanel, 0, wxEXPAND | wxALL, 5);
+	rightSizer->Add(confirmRestartButtonsSizer, 0, wxEXPAND | wxALL, 5);
 
 	// Main Sizer
 	mainSizer->Add(leftSizer, 0, wxEXPAND | wxALL, 5);
