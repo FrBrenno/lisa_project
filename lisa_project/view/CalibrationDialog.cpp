@@ -438,7 +438,6 @@ void CalibrationDialog::OnShowCirclesPos(wxCommandEvent& event)
 
 void CalibrationDialog::resetUI()
 {
-	this->previewPanel->startPreview();
 	// set default parameters
 	this->listener->OnDefaultParameters();
 	this->updateParametersView(this->listener->GetCalibrationParameters());
@@ -466,8 +465,14 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		// Compute the general result and show it
 		CalibrationData meanResult = this->listener->computeMeanResult();
 		this->updateResultsView(meanResult);
+
+		// change button label to finish
+		confirmButton->SetLabel("Finish");
 		return;
 	} else{
+		// if the counter is 6, save the calibration data and close the dialog
+		// this->listener->saveCalibrationDataList();
+		// this->EndModal(wxOK);
 		return;
 	}
 }

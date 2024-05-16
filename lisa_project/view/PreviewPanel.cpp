@@ -36,6 +36,7 @@ PreviewPanel::~PreviewPanel()
 	delete this->imageControl;
 	delete this->previewButton;
 	delete this->captureButton;
+	delete this->loadButton;
 }
 
 void PreviewPanel::startPreview()
