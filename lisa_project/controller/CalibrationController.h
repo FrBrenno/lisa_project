@@ -5,6 +5,8 @@
 #include "../model/Dto/CalibrationParametersDto.h"
 #include "PreviewController.h"
 #include "CalibrationEngine.h"
+#include "../lib/nlohmann/json.hpp"
+
 
 class CalibrationController: public BaseController, public ICalibrationViewListener{
 	CalibrationData* calibrationData;
@@ -16,6 +18,7 @@ class CalibrationController: public BaseController, public ICalibrationViewListe
 
 	wxImage drawOnImage(CalibrationData* calibData);
 	void updateImage(cv::Mat image);
+	nlohmann::json constructCalibrationJson(CalibrationParametersDto param, CalibrationData calibData, bool writeParam);
 public:
 	CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController);
 	~CalibrationController();
@@ -40,4 +43,5 @@ public:
 	void storeCalibrationDataPair() override;
 	void deleteCalibrationDataList() override;
 	CalibrationData computeMeanResult() override;
+	void saveCalibrationDataListFile(std::string path) override;
 };

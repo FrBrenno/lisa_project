@@ -22,4 +22,5 @@ public:
 	virtual void storeCalibrationDataPair() = 0;
 	virtual void deleteCalibrationDataList() = 0;
 	virtual CalibrationData computeMeanResult() = 0;
+	virtual void saveCalibrationDataListFile(std::string path) = 0;
 };

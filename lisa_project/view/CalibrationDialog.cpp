@@ -385,6 +385,7 @@ void CalibrationDialog::OnOddSpin(wxSpinEvent& event)
 
 void CalibrationDialog::OnSave(wxCommandEvent& event)
 {
+	// .calib file extension is used for calibration data of a single calibration process
 	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.calib)|*.calib|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (saveFileDialog.ShowModal() == wxID_CANCEL)
 		return;     // the user changed idea...
@@ -447,6 +448,8 @@ void CalibrationDialog::resetUI()
 	this->updateParametersView(this->listener->GetCalibrationParameters());
 	// clear results
 	this->updateResultsView(CalibrationData());
+	// set focus on aperture text entry
+	apertureTextCtrl->SetFocus();
 }
 
 void CalibrationDialog::OnConfirm(wxCommandEvent& event)
@@ -474,9 +477,15 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		confirmButton->SetLabel("Finish");
 		return;
 	} else{
-		// if the counter is 6, save the calibration data and close the dialog
-		// this->listener->saveCalibrationDataList();
-		// this->EndModal(wxOK);
+		// Open file dialog to get path on where to save calibration data list
+		// .cf file extension is used for calibration data for the whole calibration process
+		wxFileDialog saveFileDialog(this, _("Save Calibration Data"), "", "", "Calibration Data File (*.cf)|*.cf|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		if (saveFileDialog.ShowModal() == wxID_CANCEL)
+			return;     // the user changed idea...
+
+		// Save the calibration data list to a file
+		this->listener->saveCalibrationDataListFile(saveFileDialog.GetPath().ToStdString());
+		this->EndModal(wxOK);
 		return;
 	}
 }

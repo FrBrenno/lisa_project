@@ -2,9 +2,9 @@
 #include "../event/EventDispatcher.h"
 #include "../event/CalibrationStartEvent.h"
 #include "../view/CalibrationDialog.h"
-#include "../lib/nlohmann/json.hpp"
 #include <fstream>
 #include <opencv2/opencv.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <regex>
 
 CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
@@ -227,128 +227,7 @@ uint8_t CalibrationController::validateParameters(CalibrationParametersDto param
 	return errors;
 }
 
-void CalibrationController::SaveCalibrationData(std::string path)
-{
-	// Gather all information to save: calibration parameters, calibration data
-	CalibrationParametersDto param = this->calibrationEngine->getParameters();
 
-	// Save image next to the calibration data
-	std::string imagePath = path + ".png";
-	cv::Mat cvImage(this->lastCalibrationFrame->GetHeight(), this->lastCalibrationFrame->GetWidth(), CV_8UC3, this->lastCalibrationFrame->GetData());
-	cv::imwrite(imagePath, cvImage);
-
-	// Save to file in a JSON format
-	nlohmann::json j;
-	j["gaussKernel"] = { param.getGaussKernel().width, param.getGaussKernel().height };
-	j["blockSize"] = param.getBlockSize();
-	j["c"] = param.getC();
-	j["clusterDistance"] = param.getClusterDistance();
-	j["useInvertImage"] = param.getUseInvertImage();
-	j["drawCircles"] = param.getDrawCircles();
-	j["drawGrid"] = param.getDrawGrid();
-	j["aperture"] = param.getAperture();
-
-	j["image"] = imagePath;
-	j["cx0"] = this->calibrationData->getRefCircle().x;
-	j["cy0"] = this->calibrationData->getRefCircle().y;
-	j["dx"] = this->calibrationData->getGridSpacing()[0];
-	j["dy"] = this->calibrationData->getGridSpacing()[1];
-	j["error"] = this->calibrationData->getError();
-
-	j["circles"] = nlohmann::json::array();
-	for (auto& circle : this->calibrationData->getCircles())
-	{
-		j["circles"].push_back({ circle.x, circle.y });
-	}
-	
-	// Save error heatmap
-	// Convert cv::Mat to a vector of triple
-	std::vector<uint8_t> errorHeatmapVec;
-	if (!this->calibrationData->getErrorHeatmap().empty())
-	{
-		cv::Mat errorHeatmap = this->calibrationData->getErrorHeatmap();
-		for (int i = 0; i < errorHeatmap.rows; i++)
-		{
-			for (int j = 0; j < errorHeatmap.cols; j++)
-			{
-				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[0]);
-				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[1]);
-				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[2]);
-			}
-		}
-		j["errorHeatmap"] = errorHeatmapVec;
-	}
-
-
-	// Save to file
-	std::ofstream file(path);
-	file << j.dump(4);
-	file.close();
-
-}
-
-void CalibrationController::LoadCalibrationData(std::string path)
-{
-	// Load from file
-	std::ifstream file(path);
-	nlohmann::json j;
-	file >> j;
-	file.close();
-
-	// Load image
-	std::string imagePath = j["image"];
-	cv::Mat cvImage = cv::imread(imagePath);
-	wxImage image(cvImage.cols, cvImage.rows, cvImage.data, true);
-	if (this->previewController->getIsPreviewOn())
-	{
-		this->previewController->stopPreview();
-	}
-	this->previewController->setFrame(&image);
-
-	// Load calibration parameters
-	CalibrationParametersDto param(
-		cv::Size(j["gaussKernel"][0], j["gaussKernel"][1]),
-		j["blockSize"],
-		j["c"],
-		j["clusterDistance"],
-		j["useInvertImage"],
-		j["drawCircles"],
-		j["drawGrid"],
-		j["aperture"]
-	);
-	this->calibrationEngine->setParameters(param);
-
-	// Load calibration data
-	std::vector<cv::Point2d> circles;
-	for (auto& circle : j["circles"])
-	{
-		circles.push_back(cv::Point2d(circle[0], circle[1]));
-	}
-	
-	// Load error heatmap
-	std::vector<uint8_t> errorHeatmapVec = j["errorHeatmap"];
-	cv::Mat errorHeatmap(cvImage.rows, cvImage.cols, CV_8UC3);
-	int idx = 0;
-	for (int i = 0; i < errorHeatmap.rows; i++)
-	{
-		for (int j = 0; j < errorHeatmap.cols; j++)
-		{
-			errorHeatmap.at<cv::Vec3b>(i, j)[0] = errorHeatmapVec[idx++];
-			errorHeatmap.at<cv::Vec3b>(i, j)[1] = errorHeatmapVec[idx++];
-			errorHeatmap.at<cv::Vec3b>(i, j)[2] = errorHeatmapVec[idx++];
-		}
-	}
-	
-	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"], 
-		(double)j["cy0"], (double)j["dx"], (double)j["dy"], (double)j["error"], errorHeatmap, circles);
-
-	// Delete the previous calibration data & set the new one
-	if (this->calibrationData != nullptr)
-	{
-		delete this->calibrationData;
-		this->calibrationData = calibData;
-	}
-}
 
 CalibrationData CalibrationController::GetCalibrationData()
 {
@@ -434,4 +313,172 @@ CalibrationData CalibrationController::computeMeanResult(){
 		meanError.first, meanErrorHeatmap, meanCircles);
 
 	return *calibrationData;
+}
+
+
+
+nlohmann::json CalibrationController::constructCalibrationJson(CalibrationParametersDto param, CalibrationData calibData, bool writeParam)
+{
+	nlohmann::json j;
+
+	if (writeParam) {
+		j["gaussKernel"] = { param.getGaussKernel().width, param.getGaussKernel().height };
+		j["blockSize"] = param.getBlockSize();
+		j["c"] = param.getC();
+		j["clusterDistance"] = param.getClusterDistance();
+		j["useInvertImage"] = param.getUseInvertImage();
+		j["drawCircles"] = param.getDrawCircles();
+		j["drawGrid"] = param.getDrawGrid();
+		j["aperture"] = param.getAperture();
+	}
+	// the image should be added to json in the higher level because path is needed.
+	j["cx0"] = calibData.getRefCircle().x;
+	j["cy0"] = calibData.getRefCircle().y;
+	j["dx"] = calibData.getGridSpacing()[0];
+	j["dy"] = calibData.getGridSpacing()[1];
+	j["error"] = calibData.getError();
+
+	j["circles"] = nlohmann::json::array();
+	for (auto& circle : calibData.getCircles())
+	{
+		j["circles"].push_back({ circle.x, circle.y });
+	}
+
+	// Save error heatmap
+	std::vector<uint8_t> errorHeatmapVec;
+	if (!calibData.getErrorHeatmap().empty())
+	{
+		cv::Mat errorHeatmap = calibData.getErrorHeatmap();
+		for (int i = 0; i < errorHeatmap.rows; i++)
+		{
+			for (int j = 0; j < errorHeatmap.cols; j++)
+			{
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[0]);
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[1]);
+				errorHeatmapVec.push_back(errorHeatmap.at<cv::Vec3b>(i, j)[2]);
+			}
+		}
+		j["errorHeatmap"] = errorHeatmapVec;
+	}
+
+	return j;
+}
+
+
+
+
+void CalibrationController::SaveCalibrationData(std::string path)
+{
+	// Gather all information to save: calibration parameters, calibration data
+	CalibrationParametersDto param = this->calibrationEngine->getParameters();
+
+	// Save image next to the calibration data
+	std::string imagePath = path + ".png";
+	cv::Mat cvImage(this->lastCalibrationFrame->GetHeight(), this->lastCalibrationFrame->GetWidth(), CV_8UC3, this->lastCalibrationFrame->GetData());
+	cv::imwrite(imagePath, cvImage);
+
+	// create json	
+	nlohmann::json j = this->constructCalibrationJson(param, *this->calibrationData, true);
+	j["image"] = imagePath;
+
+	// Save to file
+	std::ofstream file(path);
+	file << j.dump(4);
+	file.close();
+
+}
+
+void CalibrationController::LoadCalibrationData(std::string path)
+{
+	// Load from file
+	std::ifstream file(path);
+	nlohmann::json j;
+	file >> j;
+	file.close();
+
+	// Load image
+	std::string imagePath = j["image"];
+	cv::Mat cvImage = cv::imread(imagePath);
+	wxImage image(cvImage.cols, cvImage.rows, cvImage.data, true);
+	if (this->previewController->getIsPreviewOn())
+	{
+		this->previewController->stopPreview();
+	}
+	this->previewController->setFrame(&image);
+
+	// Load calibration parameters
+	CalibrationParametersDto param(
+		cv::Size(j["gaussKernel"][0], j["gaussKernel"][1]),
+		j["blockSize"],
+		j["c"],
+		j["clusterDistance"],
+		j["useInvertImage"],
+		j["drawCircles"],
+		j["drawGrid"],
+		j["aperture"]
+	);
+	this->calibrationEngine->setParameters(param);
+
+	// Load calibration data
+	std::vector<cv::Point2d> circles;
+	for (auto& circle : j["circles"])
+	{
+		circles.push_back(cv::Point2d(circle[0], circle[1]));
+	}
+
+	// Load error heatmap
+	std::vector<uint8_t> errorHeatmapVec = j["errorHeatmap"];
+	cv::Mat errorHeatmap(cvImage.rows, cvImage.cols, CV_8UC3);
+	int idx = 0;
+	for (int i = 0; i < errorHeatmap.rows; i++)
+	{
+		for (int j = 0; j < errorHeatmap.cols; j++)
+		{
+			errorHeatmap.at<cv::Vec3b>(i, j)[0] = errorHeatmapVec[idx++];
+			errorHeatmap.at<cv::Vec3b>(i, j)[1] = errorHeatmapVec[idx++];
+			errorHeatmap.at<cv::Vec3b>(i, j)[2] = errorHeatmapVec[idx++];
+		}
+	}
+
+	CalibrationData* calibData = new CalibrationData(cvImage, (double)j["cx0"],
+		(double)j["cy0"], (double)j["dx"], (double)j["dy"], (double)j["error"], errorHeatmap, circles);
+
+	// Delete the previous calibration data & set the new one
+	if (this->calibrationData != nullptr)
+	{
+		delete this->calibrationData;
+		this->calibrationData = calibData;
+	}
+}
+
+void CalibrationController::saveCalibrationDataListFile(std::string path) {
+	// Construct a json where the main object is the mean result saved in the calibrationData attribute
+	// the others objects are the calibrationDataList
+
+	// Save the mean result
+	nlohmann::json j = this->constructCalibrationJson(CalibrationParametersDto(), *this->calibrationData, false);
+
+	// Save image
+	std::string imagePath = path + "_calibData_meanResult.png";
+	cv::imwrite(imagePath, this->calibrationData->getImage());
+	j["image"] = imagePath;
+
+	// save calibration data list
+	j["calibrationDataList"] = nlohmann::json::array();
+
+	for (auto& pair : this->calibrationDataList)
+	{
+		nlohmann::json calibDataJson = this->constructCalibrationJson(pair.first, pair.second, true);
+		// Save image next to the calibration data
+		std::string imagePath = path + "_calibData_" + std::to_string(&pair - &this->calibrationDataList[0]) + ".png";
+		cv::imwrite(imagePath, pair.second.getImage());
+		calibDataJson["image"] = imagePath;
+
+		j["calibrationDataList"].push_back(calibDataJson);
+	}
+
+	// Save to file
+	std::ofstream file(path);
+	file << j.dump(4);
+	file.close();
 }
