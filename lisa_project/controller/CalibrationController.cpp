@@ -344,33 +344,6 @@ nlohmann::ordered_json CalibrationController::constructCalibrationJson(Calibrati
 		j["circles"].push_back({ circle.x, circle.y });
 	}
 
-	// Save error heatmap
-	if (!calibData.getErrorHeatmap().empty())
-	{
-		cv::Mat errorHeatmap = calibData.getErrorHeatmap();
-		int height = errorHeatmap.rows;
-		int width = errorHeatmap.cols;
-
-		// Create a vector to store pixel information
-		std::vector<std::vector<int>> errorHeatmapVec;
-		for (int y = 0; y < height; y++)
-		{
-			for (int x = 0; x < width; x++)
-			{
-				// Access each channel using Mat::at<cv::Vec3b>
-				cv::Vec3b pixel = errorHeatmap.at<cv::Vec3b>(y, x);
-				// Create a Pixel struct and populate with channel values
-				std::vector<int> pixelValue = { pixel[0], pixel[1], pixel[2] };
-				errorHeatmapVec.push_back(pixelValue);
-			}
-			j["errorHeatmap"] = errorHeatmapVec;
-		}
-	}
-	else
-	{
-		j["errorHeatmap"] = nlohmann::ordered_json::array();
-	}
-
 	return j;
 }
 
