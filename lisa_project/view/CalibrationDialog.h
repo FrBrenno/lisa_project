@@ -35,7 +35,6 @@ class CalibrationDialog : public wxDialog {
 	wxTextCtrl* apertureTextCtrl;
 	wxButton* calibrateButton;
 	wxButton* saveButton;
-	wxButton* loadButton;
 	wxButton* defaultParametersButton;
 	wxButton* confirmButton;
 	wxButton* restartButton;
@@ -61,7 +60,6 @@ public:
 	void OnCalibrate(wxCommandEvent& event);
 	void OnDefaultParameters(wxCommandEvent& event);
 	void OnSave(wxCommandEvent& event);
-	void OnLoad(wxCommandEvent& event);
 	void OnShowErrorHeatmap(wxCommandEvent& event);
 	void OnShowCirclesPos(wxCommandEvent& event);
 	void OnConfirm(wxCommandEvent& event);

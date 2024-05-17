@@ -178,10 +178,6 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	saveButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 	saveButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnSave, this);
 	fileBox->Add(saveButton, 0, wxEXPAND | wxALL, 5);
-	loadButton = new wxButton(this, wxID_ANY, "Load Calibration File");
-	loadButton->SetFont(wxFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
- 	loadButton->Bind(wxEVT_BUTTON, &CalibrationDialog::OnLoad, this);
-	fileBox->Add(loadButton, 0, wxEXPAND | wxALL, 5);
 
 	Bind(wxEVT_CLOSE_WINDOW, &CalibrationDialog::OnClose, this);
 
@@ -385,25 +381,12 @@ void CalibrationDialog::OnOddSpin(wxSpinEvent& event)
 
 void CalibrationDialog::OnSave(wxCommandEvent& event)
 {
-	// .calib file extension is used for calibration data of a single calibration process
-	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.calib)|*.calib|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog saveFileDialog(this, _("Save Calibration File"), "", "", "Calibration Files (*.cf.json)|*.cf.json|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (saveFileDialog.ShowModal() == wxID_CANCEL)
 		return;     // the user changed idea...
 
 	// Save the file
 	this->listener->SaveCalibrationData(saveFileDialog.GetPath().ToStdString());
-}
-
-void CalibrationDialog::OnLoad(wxCommandEvent& event)
-{
-	wxFileDialog openFileDialog(this, _("Open Calibration File"), "", "", "Calibration Files (*.calib)|*.calib|*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
-	if (openFileDialog.ShowModal() == wxID_CANCEL)
-		return;     // the user changed idea...
-
-	// Load the file
-	this->listener->LoadCalibrationData(openFileDialog.GetPath().ToStdString());
-	this->updateResultsView(this->listener->GetCalibrationData());
-	this->updateParametersView(this->listener->GetCalibrationParameters());
 }
 
 void CalibrationDialog::OnShowErrorHeatmap(wxCommandEvent& event)
@@ -461,7 +444,7 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 	counter++;
 	calibCounter->SetLabel(std::to_string(counter));
 
-	if (counter < 4)
+	if (counter < 5)
 	{
 		this->resetUI();
 	}
@@ -478,8 +461,7 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		return;
 	} else{
 		// Open file dialog to get path on where to save calibration data list
-		// .cf file extension is used for calibration data for the whole calibration process
-		wxFileDialog saveFileDialog(this, _("Save Calibration Data"), "", "", "Calibration Data File (*.cf)|*.cf|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		wxFileDialog saveFileDialog(this, _("Save Calibration Data"), "", "", "Calibration Data File (*.json)|*.json|*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 		if (saveFileDialog.ShowModal() == wxID_CANCEL)
 			return;     // the user changed idea...
 
