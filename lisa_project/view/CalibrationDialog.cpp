@@ -136,18 +136,16 @@ CalibrationDialog::CalibrationDialog(wxWindow* parent, ICalibrationViewListener*
 	showCirclesPos->Bind(wxEVT_BUTTON, &CalibrationDialog::OnShowCirclesPos, this);
 
 	// Add sizers for each parameter to the resultsBox
-	wxBoxSizer* resultsRefCircle = new wxBoxSizer(wxVERTICAL);
-	resultsRefCircle->Add(cx0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5);
-	resultsRefCircle->Add(cy0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	wxBoxSizer* resultsRefCircleError = new wxBoxSizer(wxVERTICAL);
+	resultsRefCircleError->Add(cx0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 5);
+	resultsRefCircleError->Add(cy0Sizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsRefCircleError->Add(errorSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
 	wxBoxSizer* resultsGridSpacing = new wxBoxSizer(wxVERTICAL);
 	resultsGridSpacing->Add(dxSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
 	resultsGridSpacing->Add(dySizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
-	wxBoxSizer* resultsError = new wxBoxSizer(wxVERTICAL);
-	resultsError->Add(errorSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
 	wxBoxSizer* resultsSubBox = new wxBoxSizer(wxHORIZONTAL);
-	resultsSubBox->Add(resultsRefCircle, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
+	resultsSubBox->Add(resultsRefCircleError, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
 	resultsSubBox->Add(resultsGridSpacing, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
-	resultsSubBox->Add(resultsError, 0, wxEXPAND | wxLEFT | wxRIGHT, 5);
 	resultsBox->Add(resultsSubBox, 0, wxEXPAND | wxALL, 5);
 	resultsBox->Add(showErrorHeatmap, 0, wxEXPAND | wxALL, 5);
 	resultsBox->Add(showCirclesPos, 0, wxEXPAND | wxALL, 5);	
