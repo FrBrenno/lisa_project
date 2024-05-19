@@ -4,7 +4,6 @@ set(OpenCV_DIR "D:/OpenCV/opencv/build")
 # Add the absolute path to the wxWidgets root directory
 set(wxWidgets_ROOT_DIR "D:/wxWidgets-3.2.4")
 
-
 ################################################################
 cmake_minimum_required(VERSION 3.15)
 project(lisa_project VERSION 1.0 LANGUAGES CXX)
