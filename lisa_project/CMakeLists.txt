@@ -1,7 +1,7 @@
 # Add the absolute path to the OpenCV build directory
 set(OpenCV_DIR "D:/OpenCV/opencv/build")
-# Add the absolute path to the wxWidgets build directory
-set(wxWidgets_ROOT_DIR "${CMAKE_SOURCE_DIR}/lib/wxWidgets-3.2.4")
+# Add the absolute path to the wxWidgets root directory
+set(wxWidgets_ROOT_DIR "D:/wxWidgets-3.2.4")
 
 
 ################################################################
