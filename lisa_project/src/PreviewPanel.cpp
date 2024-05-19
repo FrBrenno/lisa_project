@@ -7,7 +7,7 @@ PreviewPanel::PreviewPanel(wxWindow* parent)
 	this->parent = parent;
 
 	wxImage::AddHandler(new wxPNGHandler);
-	wxBitmap placeholder("./img/lisa_logo.png", wxBITMAP_TYPE_PNG);
+	wxBitmap placeholder("../rsrc/lisa_logo.png", wxBITMAP_TYPE_PNG);
 	this->imageControl = new wxStaticBitmap(this, wxID_ANY, placeholder, wxDefaultPosition, wxSize(512, 512));
 	this->imageControl->SetDoubleBuffered(true);
 

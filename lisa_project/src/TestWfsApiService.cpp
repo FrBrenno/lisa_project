@@ -117,7 +117,7 @@ ViStatus TestWfsApiService::getImage(ViSession handle, int NUMBER_READING_IMAGES
 
 	if (calibrationTest){
 		// Load an image and store it in imageBuffer
-		cv::Mat img = cv::imread("./img/calibration_img/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
+		cv::Mat img = cv::imread("../rsrc/nice_mla_cercles_low.png", cv::IMREAD_GRAYSCALE);
 		memcpy(buffer, img.data, 512 * 512);
 	}
 	else {

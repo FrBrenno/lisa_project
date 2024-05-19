@@ -12,7 +12,7 @@ HomeFrame::HomeFrame()
 {
     //=== Icon Initialization ===//
 
-    wxBitmap iconBitmap("./img/polytech_logo.png", wxBITMAP_TYPE_PNG);
+	wxBitmap iconBitmap("../rsrc/polytech_logo.png", wxBITMAP_TYPE_PNG);
     wxIcon icon;
     icon.CopyFromBitmap(iconBitmap);
     SetIcon(icon);
