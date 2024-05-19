@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,69 +144,72 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="controller\BaseController.cpp" />
-    <ClCompile Include="controller\CalibrationController.cpp" />
-    <ClCompile Include="controller\HomeFrameController.cpp" />
-    <ClCompile Include="controller\ImageController.cpp" />
-    <ClCompile Include="controller\CalibrationEngine.cpp" />
-    <ClCompile Include="controller\InstrumentController.cpp" />
-    <ClCompile Include="controller\PreviewController.cpp" />
-    <ClCompile Include="model\CalibrationData.cpp" />
-    <ClCompile Include="model\Dto\CalibrationParametersDto.cpp" />
-    <ClCompile Include="model\Dto\InstrumentDto.cpp" />
-    <ClCompile Include="model\Dto\MlaDto.cpp" />
-    <ClCompile Include="model\Instrument.cpp" />
-    <ClCompile Include="model\Mla.cpp" />
-    <ClCompile Include="MyApp.cpp" />
-    <ClCompile Include="TestWfsApiService.cpp" />
-    <ClCompile Include="view\CalibrationDialog.cpp" />
-    <ClCompile Include="view\HomeFrame.cpp" />
-    <ClCompile Include="view\InstrumentSelectionDialog.cpp" />
-    <ClCompile Include="view\PreviewPanel.cpp" />
-    <ClCompile Include="WfsApiService.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="controller\BaseController.h" />
-    <ClInclude Include="controller\CalibrationController.h" />
-    <ClInclude Include="controller\HomeFrameController.h" />
-    <ClInclude Include="controller\ImageController.h" />
-    <ClInclude Include="controller\CalibrationEngine.h" />
-    <ClInclude Include="controller\InstrumentController.h" />
-    <ClInclude Include="controller\PreviewController.h" />
-    <ClInclude Include="event\CalibrationStartEvent.h" />
-    <ClInclude Include="event\Event.h" />
-    <ClInclude Include="event\EventBase.h" />
-    <ClInclude Include="event\EventDispatcher.h" />
-    <ClInclude Include="event\ExitEvent.h" />
-    <ClInclude Include="event\InstrumentSelectedEvent.h" />
-    <ClInclude Include="event\InstrumentSelectionEvent.h" />
-    <ClInclude Include="id\ButtonID.h" />
-    <ClInclude Include="id\MenuID.h" />
-    <ClInclude Include="interface\IApiService.h" />
-    <ClInclude Include="interface\ICalibrationViewListener.h" />
-    <ClInclude Include="interface\IHomeFrameListener.h" />
-    <ClInclude Include="interface\IInstrumentViewListener.h" />
-    <ClInclude Include="interface\IPreview.h" />
-    <ClInclude Include="interface\IPreviewListener.h" />
-    <ClInclude Include="model\CalibrationData.h" />
-    <ClInclude Include="model\Dto\CalibrationParametersDto.h" />
-    <ClInclude Include="model\Dto\InstrumentDto.h" />
-    <ClInclude Include="model\Dto\MlaDto.h" />
-    <ClInclude Include="model\Instrument.h" />
-    <ClInclude Include="model\Mla.h" />
-    <ClInclude Include="MyApp.h" />
-    <ClInclude Include="MyAppInterface.h" />
-    <ClInclude Include="TestWfsApiService.h" />
-    <ClInclude Include="view\CalibrationDialog.h" />
-    <ClInclude Include="view\HomeFrame.h" />
-    <ClInclude Include="view\InstrumentSelectionDialog.h" />
-    <ClInclude Include="view\PreviewPanel.h" />
-    <ClInclude Include="WfsApiService.h" />
-    <ClInclude Include="WfsParameters.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="img\lisa_logo.png" />
     <Image Include="img\polytech_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\BaseController.h" />
+    <ClInclude Include="include\ButtonID.h" />
+    <ClInclude Include="include\CalibrationController.h" />
+    <ClInclude Include="include\CalibrationData.h" />
+    <ClInclude Include="include\CalibrationDialog.h" />
+    <ClInclude Include="include\CalibrationEngine.h" />
+    <ClInclude Include="include\CalibrationParametersDto.h" />
+    <ClInclude Include="include\CalibrationStartEvent.h" />
+    <ClInclude Include="include\Event.h" />
+    <ClInclude Include="include\EventBase.h" />
+    <ClInclude Include="include\EventDispatcher.h" />
+    <ClInclude Include="include\ExitEvent.h" />
+    <ClInclude Include="include\HomeFrame.h" />
+    <ClInclude Include="include\HomeFrameController.h" />
+    <ClInclude Include="include\IApiService.h" />
+    <ClInclude Include="include\ICalibrationViewListener.h" />
+    <ClInclude Include="include\IHomeFrameListener.h" />
+    <ClInclude Include="include\IInstrumentViewListener.h" />
+    <ClInclude Include="include\ImageController.h" />
+    <ClInclude Include="include\Instrument.h" />
+    <ClInclude Include="include\InstrumentController.h" />
+    <ClInclude Include="include\InstrumentDto.h" />
+    <ClInclude Include="include\InstrumentSelectedEvent.h" />
+    <ClInclude Include="include\InstrumentSelectionDialog.h" />
+    <ClInclude Include="include\InstrumentSelectionEvent.h" />
+    <ClInclude Include="include\IPreview.h" />
+    <ClInclude Include="include\IPreviewListener.h" />
+    <ClInclude Include="include\MenuID.h" />
+    <ClInclude Include="include\Mla.h" />
+    <ClInclude Include="include\MlaDto.h" />
+    <ClInclude Include="include\MyApp.h" />
+    <ClInclude Include="include\MyAppInterface.h" />
+    <ClInclude Include="include\PreviewController.h" />
+    <ClInclude Include="include\PreviewPanel.h" />
+    <ClInclude Include="include\TestWfsApiService.h" />
+    <ClInclude Include="include\wfsApiService.h" />
+    <ClInclude Include="include\WfsParameters.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BaseController.cpp" />
+    <ClCompile Include="src\CalibrationController.cpp" />
+    <ClCompile Include="src\CalibrationData.cpp" />
+    <ClCompile Include="src\CalibrationDialog.cpp" />
+    <ClCompile Include="src\CalibrationEngine.cpp" />
+    <ClCompile Include="src\CalibrationParametersDto.cpp" />
+    <ClCompile Include="src\HomeFrame.cpp" />
+    <ClCompile Include="src\HomeFrameController.cpp" />
+    <ClCompile Include="src\ImageController.cpp" />
+    <ClCompile Include="src\Instrument.cpp" />
+    <ClCompile Include="src\InstrumentController.cpp" />
+    <ClCompile Include="src\InstrumentDto.cpp" />
+    <ClCompile Include="src\InstrumentSelectionDialog.cpp" />
+    <ClCompile Include="src\Mla.cpp" />
+    <ClCompile Include="src\MlaDto.cpp" />
+    <ClCompile Include="src\MyApp.cpp" />
+    <ClCompile Include="src\PreviewController.cpp" />
+    <ClCompile Include="src\PreviewPanel.cpp" />
+    <ClCompile Include="src\TestWfsApiService.cpp" />
+    <ClCompile Include="src\wfsApiService.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
