@@ -14,8 +14,7 @@
 ## Installation
 
 User should install the following libraries and softwares:
-- Thorlabs Wavefront Sensor : [WFS](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=5287&tabname=Software)
-  - Needed to be installed, so we can get all the drivers needed.
+- NI VISA Instrument Driver : [NI VISA](https://www.ni.com/fr/support/downloads/drivers/download.ni-visa.html)
 - wxWidgets : [wxWidgets](https://www.wxwidgets.org/downloads/)
 - OpenCV : [OpenCV](https://opencv.org/releases/)
 - CMake : [CMake](https://cmake.org/download/)
