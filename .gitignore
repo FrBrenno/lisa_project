@@ -6,7 +6,6 @@
 # build files
 build/
 # Library
-lib/
 lisa_project/lib/
 
 # User-specific files
