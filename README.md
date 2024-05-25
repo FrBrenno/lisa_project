@@ -19,7 +19,14 @@ User should install the following libraries and softwares:
 - OpenCV : [OpenCV](https://opencv.org/releases/)
 - CMake : [CMake](https://cmake.org/download/)
 
-Open the CMakeLists.txt file in the folder lisa_project and set the path for both wxWidgets and OpenCV libraries.
+Open the CMakeLists.txt file in the folder lisa_project and set the path for both wxWidgets and OpenCV libraries :
+``` CMake
+# Add the absolute path to the OpenCV build directory
+# You may have to include the /OpenCV/opencv/build/x64/vc15/bin directory to your system PATH
+set(OpenCV_DIR "D:/OpenCV/opencv/build")
+# Add the absolute path to the wxWidgets root directory
+set(wxWidgets_ROOT_DIR "D:/wxWidgets-3.2.4")
+```
 
 Open the command line on the root:
 ```bash
