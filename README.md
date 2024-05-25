@@ -29,7 +29,7 @@ Open the CMakeLists.txt file in the folder lisa_project and set the path for bot
 # You may have to include the /OpenCV/opencv/build/x64/vc15/bin directory to your system PATH
 set(OpenCV_DIR "D:/OpenCV/opencv/build")
 # Add the absolute path to the wxWidgets root directory
-set(wxWidgets_ROOT_DIR "D:/wxWidgets-3.2.4")
+set(wxWidgets_ROOT_DIR "D:/wxWidgets-x.x.x")
 ```
 
 Open the command line on the root:
