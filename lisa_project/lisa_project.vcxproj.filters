@@ -13,220 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers sources\Model">
-      <UniqueIdentifier>{a3902bc4-d4c9-4a6f-89da-0bd68ff8137e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Controller">
-      <UniqueIdentifier>{999222cb-1382-45e3-b764-1e2216d31752}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\View">
-      <UniqueIdentifier>{d8292a2f-ba3c-4481-b000-9fd859667ed0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Model">
-      <UniqueIdentifier>{d95ef246-404b-4bb3-88a6-c7ccde7dbd02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Controller">
-      <UniqueIdentifier>{c86df98a-7d4d-482d-83ec-5136ed16a513}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\View">
-      <UniqueIdentifier>{03c8f006-77fa-4681-bce6-a96b442ce289}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\id">
-      <UniqueIdentifier>{043226fd-0189-4021-977d-21fcaa420759}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Model\Dto">
-      <UniqueIdentifier>{e9553678-c93b-4945-a731-eb345df06780}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Model\Dto">
-      <UniqueIdentifier>{13e89769-837f-4876-a342-08451bfde981}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Interface">
-      <UniqueIdentifier>{089f2915-1aac-46ba-a65e-d53327e79731}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Events">
-      <UniqueIdentifier>{4113cf98-d36a-46b2-af4c-4725e210d7a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\Controller\Api">
-      <UniqueIdentifier>{0a66bca5-8667-49d7-8f56-b07539fea832}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Api">
-      <UniqueIdentifier>{1187fbf0-4242-4445-8329-c6dc1b564bd3}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MyApp.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\BaseController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="view\HomeFrame.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\HomeFrameController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\ImageController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Instrument.cpp">
-      <Filter>Fichiers sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\InstrumentController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="view\InstrumentSelectionDialog.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Mla.cpp">
-      <Filter>Fichiers sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Dto\InstrumentDto.cpp">
-      <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Dto\MlaDto.cpp">
-      <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\PreviewController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="WfsApiService.cpp">
-      <Filter>Fichiers sources\Api</Filter>
-    </ClCompile>
-    <ClCompile Include="TestWfsApiService.cpp">
-      <Filter>Fichiers sources\Api</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\CalibrationEngine.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="view\PreviewPanel.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="model\CalibrationData.cpp">
-      <Filter>Fichiers sources\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="view\CalibrationDialog.cpp">
-      <Filter>Fichiers sources\View</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\CalibrationController.cpp">
-      <Filter>Fichiers sources\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="model\Dto\CalibrationParametersDto.cpp">
-      <Filter>Fichiers sources\Model\Dto</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MyApp.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\BaseController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="view\HomeFrame.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\HomeFrameController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\ImageController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Instrument.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\InstrumentController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="view\InstrumentSelectionDialog.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Mla.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="id\ButtonID.h">
-      <Filter>Fichiers d%27en-tête\id</Filter>
-    </ClInclude>
-    <ClInclude Include="id\MenuID.h">
-      <Filter>Fichiers d%27en-tête\id</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Dto\InstrumentDto.h">
-      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Dto\MlaDto.h">
-      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\IHomeFrameListener.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\IInstrumentViewListener.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\IPreview.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\IPreviewListener.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\PreviewController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="MyAppInterface.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="WfsApiService.h">
-      <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\IApiService.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="TestWfsApiService.h">
-      <Filter>Fichiers d%27en-tête\Controller\Api</Filter>
-    </ClInclude>
-    <ClInclude Include="WfsParameters.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="event\CalibrationStartEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\Event.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\EventBase.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\EventDispatcher.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\ExitEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\InstrumentSelectedEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="event\InstrumentSelectionEvent.h">
-      <Filter>Fichiers d%27en-tête\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="model\CalibrationData.h">
-      <Filter>Fichiers d%27en-tête\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="view\PreviewPanel.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="view\CalibrationDialog.h">
-      <Filter>Fichiers d%27en-tête\View</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\ICalibrationViewListener.h">
-      <Filter>Fichiers d%27en-tête\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\CalibrationEngine.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\CalibrationController.h">
-      <Filter>Fichiers d%27en-tête\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="model\Dto\CalibrationParametersDto.h">
-      <Filter>Fichiers d%27en-tête\Model\Dto</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\lisa_logo.png">
@@ -235,5 +21,183 @@
     <Image Include="img\polytech_logo.png">
       <Filter>Fichiers de ressources</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\BaseController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ButtonID.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationData.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationDialog.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationEngine.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationParametersDto.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CalibrationStartEvent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Event.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EventBase.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EventDispatcher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ExitEvent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HomeFrame.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HomeFrameController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IApiService.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ICalibrationViewListener.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IHomeFrameListener.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IInstrumentViewListener.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImageController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Instrument.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InstrumentController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InstrumentDto.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InstrumentSelectedEvent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InstrumentSelectionDialog.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InstrumentSelectionEvent.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IPreview.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IPreviewListener.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MenuID.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Mla.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MlaDto.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyApp.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyAppInterface.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PreviewController.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PreviewPanel.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TestWfsApiService.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wfsApiService.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WfsParameters.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BaseController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CalibrationController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CalibrationData.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CalibrationDialog.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CalibrationEngine.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CalibrationParametersDto.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HomeFrame.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HomeFrameController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ImageController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Instrument.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InstrumentController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InstrumentDto.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InstrumentSelectionDialog.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mla.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MlaDto.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MyApp.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PreviewController.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PreviewPanel.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TestWfsApiService.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wfsApiService.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
