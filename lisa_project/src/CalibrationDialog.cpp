@@ -453,11 +453,14 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		calibrateButton->Disable();
 		this->resetUI();
 		// Compute the general result and show it
-		CalibrationData meanResult = this->listener->computeGlobalResult();
-		this->updateResultsView(meanResult);
+		CalibrationData globalResult = this->listener->computeGlobalResult();
+		this->updateResultsView(globalResult);
 
 		// change button label to finish
 		confirmButton->SetLabel("Finish");
+
+		// Show dialog box with results
+
 		return;
 	} else{
 		// Open file dialog to get path on where to save calibration data list

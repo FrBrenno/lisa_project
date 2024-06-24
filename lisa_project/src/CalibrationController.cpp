@@ -383,7 +383,7 @@ void CalibrationController::saveCalibrationDataListFile(std::string path) {
 	nlohmann::ordered_json j = this->constructCalibrationJson(CalibrationParametersDto(), *this->calibrationData, false);
 
 	// Save image
-	std::string imagePath = path + "_calibData_meanResult.png";
+	std::string imagePath = path + "_calibData_globalResult.png";
 	cv::imwrite(imagePath, this->calibrationData->getImage());
 	j["image"] = imagePath;
 
