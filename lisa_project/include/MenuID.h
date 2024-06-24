@@ -15,6 +15,7 @@ enum MenuID
 	// Calibration menu
 
 	ID_CALIBRATION_START,
+	ID_WFS_MANUAL,
 
 
 };

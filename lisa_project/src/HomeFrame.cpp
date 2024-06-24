@@ -44,6 +44,7 @@ HomeFrame::HomeFrame()
     // Help Menu
 
     wxMenu* menuHelp = new wxMenu;
+    menuHelp->Append(ID_WFS_MANUAL, "&WFS Manual PDF", "Open Wavefront Sensor Manual PDF...");
     menuHelp->Append(wxID_ABOUT);
 
     //=== Menu Bar Initialization===//
@@ -67,6 +68,7 @@ HomeFrame::HomeFrame()
     Bind(wxEVT_MENU, &HomeFrame::OnConnectAPI, this, ID_FILE_CONNECT_API);
     Bind(wxEVT_MENU, &HomeFrame::OnExit, this, wxID_EXIT);
     Bind(wxEVT_MENU, &HomeFrame::OnCalibrationStart, this, ID_CALIBRATION_START);
+	Bind(wxEVT_MENU, &HomeFrame::OnWfsManual, this, ID_WFS_MANUAL);
     Bind(wxEVT_MENU, &HomeFrame::OnAbout, this, wxID_ABOUT);
 
 
@@ -115,6 +117,18 @@ void HomeFrame::OnCalibrationStart(wxCommandEvent& event)
     EventDispatcher::Instance().PublishEvent(
 		CalibrationStartEvent()  
 	);
+}
+
+void HomeFrame::OnWfsManual(wxCommandEvent& event)
+{
+    // Path to the PDF file relative to the project directory
+    wxString pdfPath = wxGetCwd() + "/TL_WFS_Manual.pdf";
+
+    // Open the PDF file with the default system viewer
+    if (!wxLaunchDefaultBrowser(pdfPath))
+    {
+        wxLogError("Could not open the PDF file.");
+    }
 }
 
 void HomeFrame::OnAbout(wxCommandEvent& event)

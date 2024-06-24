@@ -43,6 +43,8 @@ class HomeFrame : public wxFrame
     void OnExit(wxCommandEvent& event);
 
     void OnCalibrationStart(wxCommandEvent& event);
+
+	void OnWfsManual(wxCommandEvent& event);
     /**
      * Handles when the user clicks on the about menu item.
      * 
