@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\lib\vc_x64_lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>D:\wxWidgets-3.2.4\lib\vc_x64_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include\msvc;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OpenCV\opencv\build\include;D:\wxWidgets-3.2.4\include\msvc;D:\wxWidgets-3.2.4\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\include;C:\Users\brenn\source\repos\lisa_project\lisa_project\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
