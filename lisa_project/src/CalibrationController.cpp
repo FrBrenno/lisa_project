@@ -7,6 +7,8 @@
 #include <opencv2/imgcodecs.hpp>
 #include <regex>
 
+#define CONVERSION_PX_microM 5
+
 CalibrationController::CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController) :
 	BaseController(main, wfsApiService)
 {
@@ -246,73 +248,77 @@ void CalibrationController::deleteCalibrationDataList()
 	this->calibrationDataList.clear();
 }
 
-CalibrationData CalibrationController::computeMeanResult(){
+CalibrationData CalibrationController::computeGlobalResult(){
 	if (this->calibrationDataList.empty())
 	{
 		this->handleError(-1, "No calibration data available");
 		return CalibrationData();
 	}
 
-	// Compute the mean of the calibration data
+	//=== Compute the global of the calibration data
 
-	// Circles positions
-	std::vector<cv::Point2d> meanCircles;
-	for (int i = 0; i < this->calibrationDataList[0].second.getCircles().size(); i++)
-	{
-		double x = 0;
-		double y = 0;
-		for (auto& pair : this->calibrationDataList)
-		{
-			x += pair.second.getCircles()[i].x;
-			y += pair.second.getCircles()[i].y;
-		}
-		x /= this->calibrationDataList.size();
-		y /= this->calibrationDataList.size();
-		meanCircles.push_back(cv::Point2d(x, y));
-	}
+	// Collect the index of the calibration with the least error
 
-	// Grid spacing
-	double dx = 0;
-	double dy = 0;
-	for (auto& pair : this->calibrationDataList)
-	{
-		dx += pair.second.getGridSpacing()[0];
-		dy += pair.second.getGridSpacing()[1];
-	}
-	dx /= this->calibrationDataList.size();
-	dy /= this->calibrationDataList.size();
-
-	// Image is the one of the calibration data with the minimal error
-	CalibrationData meanCalibData = this->calibrationDataList[0].second;
 	double minError = this->calibrationDataList[0].second.getError();
-	for (auto& pair : this->calibrationDataList)
+	int minErrorIndex = 0;
+	for (int i = 1; i < this->calibrationDataList.size(); i++)
 	{
-		if (pair.second.getError() < minError)
+		if (this->calibrationDataList[i].second.getError() < minError)
 		{
-			minError = pair.second.getError();
-			meanCalibData = pair.second;
+			minError = this->calibrationDataList[i].second.getError();
+			minErrorIndex = i;
 		}
 	}
-	cv::Mat meanImage = meanCalibData.getImage();
 
-	// Error and error heatmap is recomputed using CalibrationEngine
-	Eigen::MatrixXd meanSolMatrix= Eigen::MatrixXd(4, 1);
-	meanSolMatrix << meanCalibData.getRefCircle().x, meanCalibData.getRefCircle().y, dx, dy;
-	Eigen::MatrixXd meanCircleMatrix = Eigen::MatrixXd(2 * meanCircles.size(), 1);
-	for (int i = 0; i < meanCircles.size(); i++)
+	// Global circle positions are the circles positions of the calibration with the least error
+	std::vector<cv::Point2d> globalCircles = this->calibrationDataList[minErrorIndex].second.getCircles();
+
+	// Global result image is the image of the calibration with the least error
+	cv::Mat globalImage = this->calibrationDataList[minErrorIndex].second.getImage();
+
+	// Global reference circle is the one of the calibration with the least error
+	cv::Point2d globalRefCircle = this->calibrationDataList[minErrorIndex].second.getRefCircle();
+
+	// Mean Grid spacing
+	double meanDx = 0;
+	double meanDy = 0;
+	for (auto& pair : this->calibrationDataList)
 	{
-		meanCircleMatrix(i, 0) = meanCircles[i].x;
-		meanCircleMatrix(i + meanCircles.size(), 0) = meanCircles[i].y;
+		meanDx += pair.second.getGridSpacing()[0];
+		meanDy += pair.second.getGridSpacing()[1];
 	}
-	std::pair<double, std::vector<double>> meanError = this->calibrationEngine->computeMeanError(meanSolMatrix, meanCircleMatrix);
-	cv::Mat meanErrorHeatmap = this->calibrationEngine->generateErrorHeatmap(meanCircles, meanError.second, meanImage, meanSolMatrix);
+	meanDx /= this->calibrationDataList.size();
+	meanDy /= this->calibrationDataList.size();
+
+
+	//=== Compute mean error and error heatmap
+
+	// Set new mean solution matrix
+	Eigen::MatrixXd meanSolMatrix= Eigen::MatrixXd(4, 1);
+	meanSolMatrix << globalRefCircle.x, globalRefCircle.y, meanDx, meanDy;
+
+	// Reconstruct matrix B
+	Eigen::MatrixXd globalCircleMatrix = Eigen::MatrixXd(2 * globalCircles.size(), 1);
+	for (int i = 0; i < globalCircles.size(); i++)
+	{
+		globalCircleMatrix(i, 0) = globalCircles[i].x;
+		globalCircleMatrix(i + globalCircles.size(), 0) = globalCircles[i].y;
+	}
+	// Compute mean and the heatmap using the engine
+	std::pair<double, std::vector<double>> meanError = this->calibrationEngine->computeMeanError(meanSolMatrix, globalCircleMatrix);
+	cv::Mat meanErrorHeatmap = this->calibrationEngine->generateErrorHeatmap(globalCircles, meanError.second, globalImage, meanSolMatrix);
 
 	// update ui
-
-	this->calibrationData = new CalibrationData(meanImage, meanCalibData.getRefCircle().x, meanCalibData.getRefCircle().y, dx, dy,
-		meanError.first, meanErrorHeatmap, meanCircles);
+	this->calibrationData = new CalibrationData(globalImage, globalRefCircle.x, globalRefCircle.y, meanDx, meanDy,
+		meanError.first, meanErrorHeatmap, globalCircles);
 
 	return *calibrationData;
+}
+
+float CalibrationController::computeDiameter(CalibrationData calibData) {
+	float dx = calibData.getGridSpacing()[0];
+	float dy = calibData.getGridSpacing()[1];
+	return (dx + dy) / 2 * CONVERSION_PX_microM;
 }
 
 
@@ -332,11 +338,12 @@ nlohmann::ordered_json CalibrationController::constructCalibrationJson(Calibrati
 		j["aperture"] = param.getAperture();
 	}
 	// the image should be added to json in the higher level because path is needed.
-	j["cx0"] = calibData.getRefCircle().x;
-	j["cy0"] = calibData.getRefCircle().y;
-	j["dx"] = calibData.getGridSpacing()[0];
-	j["dy"] = calibData.getGridSpacing()[1];
-	j["error"] = calibData.getError();
+	j["cx0 [px]"] = calibData.getRefCircle().x;
+	j["cy0 [px]"] = calibData.getRefCircle().y;
+	j["dx [px]"] = calibData.getGridSpacing()[0];
+	j["dy [px]"] = calibData.getGridSpacing()[1];
+	j["diameter [ux]"] = computeDiameter(calibData);
+	j["error [px]"] = calibData.getError();
 
 	j["circles"] = nlohmann::ordered_json::array();
 	for (auto& circle : calibData.getCircles())

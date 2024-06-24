@@ -18,6 +18,7 @@ class CalibrationController: public BaseController, public ICalibrationViewListe
 
 	wxImage drawOnImage(CalibrationData* calibData);
 	void updateImage(cv::Mat image);
+	float computeDiameter(CalibrationData calibData);
 	nlohmann::ordered_json constructCalibrationJson(CalibrationParametersDto param, CalibrationData calibData, bool writeParam);
 public:
 	CalibrationController(MyAppInterface* main, IApiService* wfsApiService, ImageController* imageController);
@@ -41,6 +42,6 @@ public:
 
 	void storeCalibrationDataPair() override;
 	void deleteCalibrationDataList() override;
-	CalibrationData computeMeanResult() override;
+	CalibrationData computeGlobalResult() override;
 	void saveCalibrationDataListFile(std::string path) override;
 };

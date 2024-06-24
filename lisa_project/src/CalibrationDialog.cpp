@@ -453,7 +453,7 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		calibrateButton->Disable();
 		this->resetUI();
 		// Compute the general result and show it
-		CalibrationData meanResult = this->listener->computeMeanResult();
+		CalibrationData meanResult = this->listener->computeGlobalResult();
 		this->updateResultsView(meanResult);
 
 		// change button label to finish
