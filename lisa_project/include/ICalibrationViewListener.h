@@ -5,6 +5,7 @@
 
 class ICalibrationViewListener {
 public:
+	virtual float computeDiameter(CalibrationData calibData) = 0;
 	virtual uint8_t validateParameters(CalibrationParametersDto param) = 0;
 	virtual void OnDefaultParameters() = 0;
 	virtual void SetCalibrationParameters(CalibrationParametersDto param) = 0;

@@ -63,5 +63,6 @@ public:
 	void OnShowErrorHeatmap(wxCommandEvent& event);
 	void OnShowCirclesPos(wxCommandEvent& event);
 	void OnConfirm(wxCommandEvent& event);
+	void displayResultsDialog(CalibrationData& globalResult);
 	void OnRestart(wxCommandEvent& event);
 };

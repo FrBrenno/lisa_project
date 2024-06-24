@@ -459,7 +459,7 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		// change button label to finish
 		confirmButton->SetLabel("Finish");
 
-		// Show dialog box with results
+		displayResultsDialog(globalResult);
 
 		return;
 	} else{
@@ -473,6 +473,22 @@ void CalibrationDialog::OnConfirm(wxCommandEvent& event)
 		this->EndModal(wxOK);
 		return;
 	}
+}
+
+void CalibrationDialog::displayResultsDialog(CalibrationData& globalResult)
+{
+	// Show dialog box with results
+	// Create formatted string with the results: Completion Message : Diameter = x, Error = y, Cx0 = z, Cy0 = w, dx = a, dy = b
+	float diameter = this->listener->computeDiameter(globalResult);
+	std::string message = "Calibration completed successfully\n";
+	message += "Diameter = " + std::to_string(diameter) + " um\n";
+	message += "Error    = " + std::to_string(globalResult.getError()) + " px\n";
+	message += "Cx0      = " + std::to_string(globalResult.getRefCircle().x) + " px\n";
+	message += "Cy0      = " + std::to_string(globalResult.getRefCircle().y) + " px\n";
+	message += "dx		 = " + std::to_string(globalResult.getGridSpacing()[0]) + " px\n";
+	message += "dy		 = " + std::to_string(globalResult.getGridSpacing()[1]) + " px\n";
+	wxMessageDialog dialog(this, message, "Calibration Results", wxOK | wxICON_INFORMATION);
+	dialog.ShowModal();
 }
 
 void CalibrationDialog::OnRestart(wxCommandEvent& event)
