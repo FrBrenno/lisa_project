@@ -233,9 +233,9 @@ void CalibrationDialog::updateResultsView(CalibrationData calibData)
 {
 	this->cx0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().x));
 	this->cy0_value->SetLabel(wxString::Format("%.2f", calibData.getRefCircle().y));
-	this->dx_value->SetLabel(wxString::Format("%.4f mm", calibData.getGridSpacing()[0]));
-	this->dy_value->SetLabel(wxString::Format("%.4f mm", calibData.getGridSpacing()[1]));
-	this->error_value->SetLabel(wxString::Format("%.4f mm", calibData.getError()));
+	this->dx_value->SetLabel(wxString::Format("%.4f px", calibData.getGridSpacing()[0]));
+	this->dy_value->SetLabel(wxString::Format("%.4f px", calibData.getGridSpacing()[1]));
+	this->error_value->SetLabel(wxString::Format("%.4f px", calibData.getError()));
 }
 
 CalibrationParametersDto CalibrationDialog::getCalibrationParameters()
