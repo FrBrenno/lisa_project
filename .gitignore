@@ -22,9 +22,10 @@ mono_crash.*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
+##[Rr]elease/
 [Rr]eleases/
-x64/
+##x64
+lisa_project/x64
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
