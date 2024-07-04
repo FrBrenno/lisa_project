@@ -20,6 +20,7 @@ Additionally, efforts are currently underway to streamline the installation proc
 
 This project, PROJ-H402 Image Acquisition with Plenoptic Camera, aims to provide a comprehensive solution for image acquisition and calibration with a plenoptic camera setup. It encompasses various functionalities, including image preprocessing, circle detection, error computation, and calibration result analysis. By leveraging the Model-View-Controller (MVC) architecture and integrating with external APIs and hardware, the software offers a versatile platform for users to calibrate micro-lens arrays and analyze captured images.
 
+The project was submitted on the 20th of June and presented to jury on the 24th of June. The final version of the project as well as its revised report is available in the branch delivered_version.
 ## Installation
 
 To install the necessary libraries and software for this project, follow these steps:
