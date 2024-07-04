@@ -7,6 +7,11 @@
 #include "CalibrationParametersDto.h"
 #include "CalibrationData.h"
 
+/**
+ **	@class CalibrationDialog.
+ ** @brief Dialog for the calibration view.
+ ** @details This class is responsible for displaying the calibration view and handling the user input.
+ **/
 class CalibrationDialog : public wxDialog {
 	wxWindow* parent;
 	ICalibrationViewListener* listener;
@@ -43,11 +48,37 @@ class CalibrationDialog : public wxDialog {
 	wxButton* showErrorHeatmap;
 	wxButton* showCirclesPos;
 
-
+	/**
+	 * @brief Updates values on the parameters view.
+	 * 
+	 * @param param object containing parameters values to be updated.
+	 */
 	void updateParametersView(CalibrationParametersDto param);
+	/**
+	 * @brief Updates values on the results view.
+	 * 
+	 * @param calibData object containing calibration data values to be updated.
+	 */
 	void updateResultsView(CalibrationData calibData);
+	/**
+	 * @brief Construct a CalibrationParameters object from parameters values on the view.
+	 * 
+	 * @return CalibrationParametersDto object containing the calibration parameters.
+	 */
 	CalibrationParametersDto getCalibrationParameters();
+	/**
+	 * @brief Validates if user selected parameters is within acceptable range.
+	 * 
+	 * @param param Calibration parameter object
+	 * @return bool value indicating invalid parameters or 0 if valid.
+	 */
 	bool validateParameters(CalibrationParametersDto param);
+	/**
+	 * @brief Resets the UI to the default state.
+	 * 
+	 * Set engine to default parameters and reset the view.
+	 * 
+	 */
 	void resetUI();
 public:
 	CalibrationDialog(wxWindow* parent, ICalibrationViewListener* controller, IPreviewListener* previewListener);
