@@ -1,7 +1,6 @@
 #include "PreviewController.h"
 #include "EventDispatcher.h"
 
-constexpr auto PREVIEW_IMAGE_RATE = 1000/24;
 
 PreviewController::PreviewController(MyAppInterface* app, IApiService* wfsApiService, ImageController* imageController) :
 	BaseController(app, wfsApiService)

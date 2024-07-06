@@ -9,22 +9,74 @@
  */
 class Instrument{
 	// Instrument Parameters
+	/**
+	 * @brief Flag that indicates if the instrument is initialized.
+	 * 
+	 */
 	bool is_initialized;
+	/**
+	 * @brief Handle to the instrument.
+	 * 
+	 */
 	ViSession handle;
+	/**
+	 * @brief Status of the instrument.
+	 * 
+	 */
 	ViInt32 status;
+	/**
+	 * @brief Device ID of the instrument.
+	 * 
+	 */
 	ViInt32 device_id;
+	/**
+	 * @brief Resource name of the instrument.
+	 * 
+	 */
 	ViChar resourceName[WFS_BUFFER_SIZE];
 
 	// WFS Parameters
+	/**
+	 * @brief Version of the WFS driver.
+	 * 
+	 */
 	ViChar version_wfs_driver[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Version of the camera driver.
+	 * 
+	 */
 	ViChar version_cam_driver[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Manufacturer name.
+	 * 
+	 */
 	ViChar manufacturer_name[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Instrument name.
+	 * 
+	 */
 	ViChar instrument_name[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Serial number of the WFS.
+	 * 
+	 */
 	ViChar serial_number_wfs[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Serial number of the camera.
+	 * 
+	 */
 	ViChar serial_number_cam[WFS_BUFFER_SIZE];
 
 	// Camera Parameters
+	/**
+	 * @brief Number of spots in the X axis.
+	 * 
+	 */
 	ViInt32 spots_x;
+	/**
+	 * @brief Number of spots in the Y axis.
+	 * 
+	 */
 	ViInt32 spots_y;
 
 public:

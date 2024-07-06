@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @class EventBase.
+ * @brief Base class for events.
+ * @details This class is used to define the interface for events.
+ */
 class EventBase
 {
 public:

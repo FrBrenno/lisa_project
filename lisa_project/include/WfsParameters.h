@@ -2,6 +2,10 @@
 #include "thorlabs_api/WFS.h"
 
 // Device IDs
+/**
+ * @brief Device ID offset for WFS20 instruments.
+ * 
+ */
 #define  DEVICE_OFFSET_WFS20           (0x00200) // device IDs of WFS20 instruments start at 512 decimal
 
 // Camera settings

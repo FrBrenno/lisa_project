@@ -1,6 +1,11 @@
 #pragma once
 #include "IApiService.h"
 
+/**
+ * @class TestWfsApiService.
+ * @brief This class is used to test the WFS API Service. It provides necessary but mock data in 
+ * order to test the application without the need of the WFS API.
+ */
 class TestWfsApiService: public IApiService
 {
 	bool isConnected;

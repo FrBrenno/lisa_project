@@ -26,6 +26,12 @@ public:
 	 */
 	InstrumentSelectionDialog(wxWindow* parent, IInstrumentViewListener* controller);
 
+	/**
+	 * @brief Display the selection instrument dialog.
+	 * 
+	 * It clears the instrument list and populates it with the available instruments before showing the dialog.
+	 * 
+	 */
 	void ShowSelectionDialog();
 
 	/**

@@ -1,12 +1,36 @@
 #pragma once
 #include "thorlabs_api/WFS.h"
 
+/**
+ * @class InstrumentDto.
+ * @brief This class is a data transfer object for the Instrument class.
+ */
 class InstrumentDto
 {
+	/**
+	 * @brief Device ID.
+	 * 
+	 */
 	ViInt32 device_id;
+	/**
+	 * @brief In use flag.
+	 * 
+	 */
 	ViInt32 in_use;
+	/**
+	 * @brief Instrument name.
+	 * 
+	 */
 	ViChar instr_name[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Serial number.
+	 * 
+	 */
 	ViChar serNr[WFS_BUFFER_SIZE];
+	/**
+	 * @brief Resource name.
+	 * 
+	 */
 	ViChar resourceName[WFS_BUFFER_SIZE];
 
 	public:

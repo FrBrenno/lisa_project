@@ -3,6 +3,12 @@
 #include "CalibrationData.h"
 #include <string>
 
+/**
+ * @class ICalibrationViewListener.
+ * @brief Interface for the calibration view listener.
+ * 
+ * This interface defines the methods that must be implemented by the calibration view listener.
+ */
 class ICalibrationViewListener {
 public:
 

@@ -1,8 +1,16 @@
 #pragma once
 #include "thorlabs_api/visatype.h"
 
+/**
+ * @class MlaDto.
+ * @brief This model class is used to store the information of the MLA.
+ */
 class MlaDto
 {
+	/**
+	 * @brief MLA name.
+	 * 
+	 */
 	ViChar* mlaName;
 	ViReal64 CamPitchm;
 	ViReal64 lensletPitch;

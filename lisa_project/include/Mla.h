@@ -8,9 +8,21 @@
  * @brief This model class is used to store the information of the MLA.
  */
 class Mla{
+	/**
+	 * @brief Handle to the MLA.
+	 * 
+	 */
 	ViSession handle;
+	/**
+	 * @brief Flag that indicates if the MLA is initialized.
+	 * 
+	 */
 	bool is_initialized;
 
+	/**
+	 * @brief MLA name.
+	 * 
+	 */
 	ViChar* mla_name;
 	ViReal64 cam_pitch_m;
 	ViReal64 lenslet_pitch_m;
